@@ -55,12 +55,12 @@ export const HumanLeadSection = () => {
               />
             </div>
             <div className="flex flex-col gap-4">
-              <p className="text-[21px] font-notch font-bold text-[#1E1E24] leading-relaxed">
+              <p className="text-[21px] font-notch font-extrabold text-dark leading-relaxed">
                 AI screens 10,000+ profiles...
                 <br />
                 But it never makes the final call.
               </p>
-              <p className="text-[21px] font-notch font-bold text-[#1E1E24] leading-relaxed">
+              <p className="text-[21px] font-notch font-normal text-dark leading-relaxed">
                 Technology supports the process.
                 <br />
                 Humans own the outcome.
@@ -79,10 +79,10 @@ export const HumanLeadSection = () => {
               />
             </div>
             <div className="flex flex-col gap-4">
-              <p className="text-[21px] font-notch font-bold text-dark leading-relaxed">
+              <p className="text-[21px] font-notch font-extrabold text-dark leading-relaxed">
                 Ethics, Transparency & Compliance
               </p>
-              <ul className="text-[21px] font-notch font-medium text-dark leading-relaxed list-disc flex flex-col gap-2 ml-10">
+              <ul className="text-[21px] font-notch font-normal text-dark leading-relaxed list-disc flex flex-col gap-2 ml-10">
                 <li>Human oversight at every AI layer</li>
                 <li>EEOC-aligned AI usage</li>
                 <li>Continuous audits for fairness</li>

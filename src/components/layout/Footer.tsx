@@ -98,6 +98,13 @@ export const Footer = () => {
           </div>
         )}
 
+        {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}
+        {!isZoomed && (
+          <div className="absolute bottom-0 left-0 w-full h-[120px] z-20 pointer-events-none">
+             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
+          </div>
+        )}
+
         {/* Fixed Gradient Overlay - Always at bottom of viewport */}
         <div className="fixed bottom-0 left-0 w-full h-[60px] z-40 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent backdrop-blur-[1px]" />
@@ -111,7 +118,7 @@ export const Footer = () => {
         </div>
 
         {/* Footer Links - Part of the footer, scrolls with it */}
-        <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50">
+        <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50 px-4">
           <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
             <div className="flex items-center gap-8">
               <Link href="#" className="hover:text-[#0000FF] transition-colors">Terms of Service</Link>
