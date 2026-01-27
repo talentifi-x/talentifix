@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { ArrowRight, Instagram, Linkedin, Facebook, MapPin } from 'lucide-react';
 
 export const Footer = () => {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -47,7 +47,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider (Mobile only or spacing) */}
-          <div className="hidden md:block w-[1px] h-[150px] bg-gray-300" />
+          <div className="hidden md:block w-[1px] min-h-[150px] bg-gray-300" />
 
           {/* Column 2: Navigate */}
           <div className="flex flex-col gap-6">
@@ -66,7 +66,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block w-[1px] h-[150px] bg-gray-300" />
+          <div className="hidden md:block w-[1px] min-h-[150px] bg-gray-300" />
 
           {/* Column 3: Connect With Us */}
           <div className="flex flex-col gap-6">
@@ -81,6 +81,14 @@ export const Footer = () => {
               <Link href="#" className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors">
                 <Facebook className="w-6 h-6 text-[#0000FF]" />
               </Link>
+            </div>
+            <div className="flex items-start gap-3 text-gray-600">
+              <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
+              <p className="text-[18px] font-medium leading-snug">
+                26/19 Gandhibazar Main Road,
+                <br />
+                Basavanagudi, Bangalore - 560 004
+              </p>
             </div>
           </div>
 
