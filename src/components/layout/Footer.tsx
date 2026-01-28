@@ -28,12 +28,12 @@ export const Footer = () => {
 
   return (
     <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
-      
+
       <div className="w-full max-w-7xl mx-auto px-6 md:px-4 flex flex-col gap-20">
-        
+
         {/* Top Section: 3 Columns */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
-          
+
           {/* Column 1: Statement & Button */}
           <div className="flex flex-col gap-8 ">
             <h3 className="text-[32px] font-bold font-sans text-black leading-tight">
@@ -53,13 +53,19 @@ export const Footer = () => {
           <div className="flex flex-col gap-6">
             <h4 className="text-[24px] font-bold font-notch text-black">Navigate</h4>
             <nav className="flex flex-col gap-2">
-              {['Home', 'Solutions', 'Contact', 'About', 'Industries'].map((item) => (
-                <Link 
-                  key={item} 
-                  href="#" 
-                  className={`text-[18px] font-medium hover:text-[#0000FF] transition-colors ${item === 'Home' ? 'text-[#0000FF]' : 'text-gray-600'}`}
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'Solutions', href: '/solutions' },
+                { name: 'Contact', href: '/contact' },
+                { name: 'About', href: '/' },
+                { name: 'Industries', href: '/' },
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-[18px] font-medium hover:text-[#0000FF] transition-colors ${item.name === 'Home' ? 'text-[#0000FF]' : 'text-gray-600'}`}
                 >
-                  {item}
+                  {item.name}
                 </Link>
               ))}
             </nav>
@@ -97,44 +103,44 @@ export const Footer = () => {
 
 
       </div>
-              {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
-        {!isZoomed && (
-          <div className="w-full flex justify-center lg:-mt-16 lg:-mb-20 mb-16 relative z-0">
-            <h1 className="text-[20vw] md:text-[300px] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none">
-               Talentifi-X
-            </h1>
-          </div>
-        )}
-
-        {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}
-        {!isZoomed && (
-          <div className="absolute bottom-0 left-0 w-full h-[120px] z-20 pointer-events-none">
-             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
-          </div>
-        )}
-
-        {/* Fixed Gradient Overlay - Always at bottom of viewport */}
-        <div className="fixed bottom-0 left-0 w-full h-[60px] z-40 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent backdrop-blur-[1px]" />
-          <div 
-            className="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-10"
-            style={{ 
-              maskImage: 'linear-gradient(to top, black, transparent)', 
-              WebkitMaskImage: 'linear-gradient(to top, black, transparent)' 
-            }}
-          />
+      {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
+      {!isZoomed && (
+        <div className="w-full flex justify-center lg:-mt-16 lg:-mb-20 mb-16 relative z-0">
+          <h1 className="text-[20vw] md:text-[300px] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none">
+            Talentifi-X
+          </h1>
         </div>
+      )}
 
-        {/* Footer Links - Part of the footer, scrolls with it */}
-        <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50 px-4">
-          <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
-            <div className="flex items-center gap-8">
-              <Link href="#" className="hover:text-[#0000FF] transition-colors">Terms of Solutions</Link>
-              <Link href="#" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>
-            </div>
-            <p>Talentifi-x Inc © {new Date().getFullYear()}</p>
-          </div>
+      {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}
+      {!isZoomed && (
+        <div className="absolute bottom-0 left-0 w-full h-[120px] z-20 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
         </div>
+      )}
+
+      {/* Fixed Gradient Overlay - Always at bottom of viewport */}
+      <div className="fixed bottom-0 left-0 w-full h-[60px] z-40 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent backdrop-blur-[1px]" />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-10"
+          style={{
+            maskImage: 'linear-gradient(to top, black, transparent)',
+            WebkitMaskImage: 'linear-gradient(to top, black, transparent)'
+          }}
+        />
+      </div>
+
+      {/* Footer Links - Part of the footer, scrolls with it */}
+      <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50 px-4">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="hover:text-[#0000FF] transition-colors">Terms of Solutions</Link>
+            <Link href="/privacy-policy" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>
+          </div>
+          <p>Talentifi-x Inc © {new Date().getFullYear()}</p>
+        </div>
+      </div>
     </footer>
   );
 };

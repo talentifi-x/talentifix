@@ -7,6 +7,7 @@ import { SolutionsContractToHire } from "../../components/solutions/SolutionsCon
 import { SolutionsExecutiveSearch } from "../../components/solutions/SolutionsExecutiveSearch";
 import { SolutionsIncludes } from "../../components/solutions/SolutionsIncludes";
 import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor";
+import TheNextStepSection from "@components/home/TheNextStepSection";
 
 export default function Solutions() {
   return (
@@ -19,6 +20,7 @@ export default function Solutions() {
       <SolutionsExecutiveSearch />
       <SolutionsIncludes />
       <SolutionsBuiltFor />
+       <TheNextStepSection />
     </div>
   );
 }

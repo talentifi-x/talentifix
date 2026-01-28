@@ -14,7 +14,7 @@ export const SolutionsTemporaryStaffing = () => {
       />
       <div className="max-w-7xl mx-auto px-6 md:px-14 py-22">
         <div className="flex flex-col items-center justify-center text-center mb-10">
-          <h3 className="text-[34px] sm:text-[44px] lg:text-[54px] font-notch font-bold text-dark mb-8 leading-tight">
+          <h3 className="text-[34px] sm:text-[44px] lg:text-[54px] font-notch font-bold text-dark lg:mb-8 leading-tight">
             Temporary <span className="text-primary">Staffing</span><span className="text-secondary">.</span>
           </h3>
         </div>
@@ -22,8 +22,8 @@ export const SolutionsTemporaryStaffing = () => {
 
           <div className="flex flex-col gap-4">
 
-            <div className="flex flex-col gap-6">
-              <h3 className="text-[32px] sm:text-[40px] md:text-[44px] font-notch font-bold text-[#1E1E24] leading-tight">
+            <div className="flex flex-col gap-6 text-center lg:text-left">
+              <h3 className="text-[28px] sm:text-[40px] md:text-[44px] font-notch font-bold  text-dark leading-tight">
                 When Speed Matters -
                 and Quality Can&apos;t Slip<span className="text-secondary">.</span>
               </h3>

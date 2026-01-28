@@ -4,7 +4,7 @@ import { Mail, Globe } from 'lucide-react';
 
 const TheNextStepSection = () => {
   return (
-    <section className="w-full py-24 px-4 md:px-4 max-w-7xl rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
+    <section className="w-full py-24 px-4 md:px-4 max-w-7xl mx-auto rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -24,7 +24,7 @@ const TheNextStepSection = () => {
           <h2 className="text-[42px] md:text-[80px] font-bold font-notch text-black leading-[1.1] md:leading-none uppercase tracking-tight">
             The Next <span className="text-secondary">Step</span><span className="text-primary">.</span>
           </h2>
-          <p className="text-[20px] md:text-[28px] font-medium font-sans text-black leading-snug md:leading-tight max-w-[300px] md:max-w-none">
+          <p className="text-[20px] md:text-[28px] font-medium font-sans text-black leading-snug md:leading-tight max-w-75 md:max-w-none">
             Hiring doesn’t need to be complicated. <br />
             <span className="text-[#0000FF] font-bold">It needs to be intentional.</span>
           </p>

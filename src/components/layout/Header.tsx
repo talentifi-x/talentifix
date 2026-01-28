@@ -55,13 +55,13 @@ export function Header() {
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
-            <Link href="#" className={getLinkClasses("/why-us")}>
+            <Link href="/" className={getLinkClasses("/why-us")}>
               Why Us
             </Link>
-            <Link href="/Solutions" className={getLinkClasses("/Solutions")}>
+            <Link href="/solutions" className={getLinkClasses("/solutions")}>
               Solutions
             </Link>
-            <Link href="#" className={getLinkClasses("/about")}>
+            <Link href="/" className={getLinkClasses("/about")}>
               About
             </Link>
             <Link href="/contact" className={getLinkClasses("/contact")}>
@@ -71,7 +71,7 @@ export function Header() {
 
           {/* CTA Button */}
           <Link 
-            href="#" 
+            href="/" 
             className="hidden md:flex items-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
           >
             HIRE TALENT

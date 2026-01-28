@@ -16,10 +16,10 @@ export const SolutionsExecutiveSearch = () => {
         <div className=" gap-12 lg:gap-20 items-start">
           <div className="flex flex-col gap-10 ">
             <div className="flex flex-col gap-5">
-              <p className="text-[#0000FF] font-bold text-[16px] md:text-[18px] tracking-wide">
+              <p className="text-[#0000FF] font-bold text-[36px] md:text-[36px] tracking-wide">
                 Executive Search
               </p>
-              <h3 className="text-dark font-notch font-bold text-[40px] md:text-[56px] leading-tight">
+              <h3 className="text-dark font-notch font-bold text-[28px] md:text-[56px] leading-tight">
                 When Judgement Matters More Than Speed<span className="text-secondary">.</span>
               </h3>
               <p className="text-dark font-medium text-[16px] md:text-[18px] max-w-4xl">

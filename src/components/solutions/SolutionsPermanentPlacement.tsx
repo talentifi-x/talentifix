@@ -14,11 +14,11 @@ export const SolutionsPermanentPlacement = () => {
       />
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14 py-22">
         <div className="w-full flex flex-col items-center text-center">
-          <p className="text-[#0000FF] font-bold text-[16px] md:text-[18px] tracking-wide mb-4">
+          <p className="text-[#0000FF] font-bold text-[28px] md:text-[34px] tracking-wide mb-4">
             Permanent Placement
           </p>
-          <h3 className="text-[#1E1E24] font-notch font-bold text-[34px] md:text-[56px] leading-tight">
-            Because the Right Hire Compounds Over Time<span className="text-[#00DDE2]">.</span>
+          <h3 className="text-dark font-notch font-bold text-[24px] md:text-[56px] leading-tight">
+            Because the Right Hire Compounds Over Time<span className="text-secondary">.</span>
           </h3>
           <p className="mt-4 text-dark font-medium text-[14px] md:text-[18px] max-w-3xl">
             A wrong hire costs more than a vacant role. We go beyond skills and titles.
