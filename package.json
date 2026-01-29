@@ -6,11 +6,13 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
+    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 REFINE_DEVTOOLS_PORT=5011 PORT=3100 refine dev",
     "build": "refine build",
     "start": "refine start",
     "lint": "next lint",
-    "refine": "refine"
+    "refine": "refine",
+    "studio": "sanity dev --port 3333",
+    "studio:build": "sanity build"
   },
   "dependencies": {
     "@getbrevo/brevo": "^3.0.1",
@@ -22,14 +24,18 @@
     "@refinedev/nextjs-router": "^7.0.0",
     "@refinedev/simple-rest": "^6.0.0",
     "@sanity/client": "^7.14.1",
+    "@sanity/desk-tool": "^2.36.2",
     "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.7.0",
     "@types/nodemailer": "^7.0.9",
     "lucide-react": "^0.562.0",
     "next": "^15.2.4",
     "next-sanity": "^12.0.15",
     "nodemailer": "^7.0.13",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sanity": "^5.7.0",
+    "styled-components": "^6.3.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",

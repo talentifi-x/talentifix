@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 
 interface TableOfContentsItem {
@@ -22,7 +24,10 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           }
         });
       },
-      { rootMargin: '-20% 0px -80% 0px' }
+      {
+        rootMargin: '-20% 0px -80% 0px',
+        threshold: 0.1,
+      }
     );
 
     items.forEach((item) => {
@@ -49,29 +54,23 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     }
   };
 
-  if (!items || items.length === 0) {
-    return null;
-  }
+  if (!items || items.length === 0) return null;
 
   return (
-    <div className="bg-grey-accent rounded-lg p-6">
+    <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
       <h3 className="text-lg font-bold text-dark mb-4">Table of Contents</h3>
       <nav className="space-y-2">
         {items.map((item) => (
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className={`block w-full text-left py-2 px-3 rounded transition-colors ${
+            className={`block w-full text-left text-sm transition-colors hover:text-primary ${
               activeId === item.id
-                ? 'bg-primary text-white'
-                : 'text-gray-600 hover:text-primary hover:bg-white'
+                ? 'text-primary font-medium'
+                : 'text-gray-600 hover:text-gray-800'
             } ${
-              item.level === 2 ? 'ml-0' : item.level === 3 ? 'ml-4' : 'ml-8'
+              item.level === 2 ? 'pl-4' : item.level === 3 ? 'pl-8' : ''
             }`}
-            style={{
-              fontSize: item.level === 2 ? '0.875rem' : '0.8125rem',
-              fontWeight: item.level === 2 ? '600' : '400',
-            }}
           >
             {item.title}
           </button>

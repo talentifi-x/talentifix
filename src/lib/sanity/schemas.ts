@@ -71,7 +71,6 @@ export const blogSchemas = [
         of: [
           { type: 'block' },
           { type: 'image' },
-          { type: 'code' },
           { type: 'jsonTable' },
           { type: 'faqSection' },
         ],
@@ -83,6 +82,7 @@ export const blogSchemas = [
         of: [
           {
             type: 'object',
+            name: 'tableOfContentsItem',
             fields: [
               {
                 name: 'title',
@@ -234,6 +234,7 @@ export const blogSchemas = [
         of: [
           {
             type: 'object',
+            name: 'jsonTableColumn',
             fields: [
               {
                 name: 'key',
@@ -277,6 +278,7 @@ export const blogSchemas = [
         of: [
           {
             type: 'object',
+            name: 'faqItem',
             fields: [
               {
                 name: 'question',
