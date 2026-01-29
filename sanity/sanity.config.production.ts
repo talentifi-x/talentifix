@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from '@sanity/desk-tool'
+import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from '../src/lib/sanity/schemas'
+import {blogSchemas} from '../src/lib/sanity/schemas'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [deskTool(), visionTool()],
 
   schema: {
-    types: schemaTypes,
+    types: blogSchemas,
   },
 
   // Production optimizations
@@ -29,7 +29,7 @@ export default defineConfig({
     },
     actions: (prev, { schemaType }) => {
       if (schemaType === 'settings') {
-        return prev.filter(({ action }) => !['unpublish', 'delete'].includes(action))
+        return prev.filter(({ action }) => action && !['unpublish', 'delete'].includes(action))
       }
       return prev
     },
