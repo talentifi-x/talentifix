@@ -25,12 +25,12 @@ export const SolutionsContractToHire = () => {
     <section className="w-full bg-[#F2F4F8] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-14">
         {/* Header Section */}
-        <div className="flex flex-col md:items-start text-left max-w-4xl">
-          <p className="text-[#0000FF] font-bold font-notch text-[36px] md:text-[40px] tracking-wide mb-2 md:mb-4">
+        <div className="flex flex-col md:items-center text-center">
+          <p className="text-primary font-bold font-notch text-[28px] md:text-[56px] tracking-wide mb-2 md:mb-4">
             Contract-To-Hire
           </p>
-          <h3 className="text-dark font-notch font-bold text-[28px] md:text-[56px] leading-[1.1] mb-6">
-            Confidence Before<br className="md:hidden" /> Commitment<span className="text-[#00DDE2]">.</span>
+          <h3 className="text-dark font-bold  text-[36px] md:text-[36px] leading-[1.1] mb-6">
+            Confidence Before<br className="md:hidden" /> Commitment<span className="text-secondary">.</span>
           </h3>
           <p className="text-dark font-medium text-[16px] md:text-[18px] leading-relaxed">
             Sometimes, the best way to know is to work together first. Evaluate talent in real conditions, without pressure.
