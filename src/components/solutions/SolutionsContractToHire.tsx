@@ -1,13 +1,37 @@
 import React from "react";
-import { ArrowBigRight, ArrowRight } from "lucide-react";
+import { ArrowBigRight } from "lucide-react";
 import Link from "next/link";
 
-export const SolutionsContractToHire = () => {
-  const steps = [
+/* ---------- Types ---------- */
+
+interface StepData {
+  title: string;
+  description: string;
+}
+
+/* ---------- Reusable UI Pieces ---------- */
+
+const StepCircle: React.FC = () => (
+  <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[6px] ring-[#0000FF]" />
+);
+
+const FlowArrow: React.FC = () => (
+  <div className="flex items-center justify-center h-[72px]">
+    <div className="flex items-center">
+      <div className="w-[120px] h-[6px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] rounded-full" />
+      <div className="ml-2 w-0 h-0 border-t-[7px] border-b-[7px] border-l-[10px] border-t-transparent border-b-transparent border-l-[#00DDE2]" />
+    </div>
+  </div>
+);
+
+/* ---------- Main Component ---------- */
+
+export const SolutionsContractToHire: React.FC = () => {
+  const steps: StepData[] = [
     {
       title: "Entry",
       description:
-        "AI screens for technical readiness + Human validation of adaptability.",
+        "AI screens for technical and role readiness. Human recruiters validate adaptability and intent. Candidates enter with clarity — not uncertainty.",
     },
     {
       title: "Trial",
@@ -17,107 +41,134 @@ export const SolutionsContractToHire = () => {
     {
       title: "Decision",
       description:
-        "Decision become obvious. Informed, confident conversions.",
+        "Decisions become obvious. Informed, confident conversions.",
     },
   ];
 
   return (
-    <section className="w-full bg-[#F2F4F8] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-14">
-        {/* Header Section */}
-        <div className="flex flex-col md:items-center text-center">
-          <p className="text-primary font-bold font-notch text-[28px] md:text-[56px] tracking-wide mb-2 md:mb-4">
-            Contract-To-Hire
-          </p>
-          <h3 className="text-dark font-bold  text-[36px] md:text-[36px] leading-[1.1] mb-6">
-            Confidence Before<br className="md:hidden" /> Commitment<span className="text-secondary">.</span>
-          </h3>
-          <p className="text-dark font-medium text-[16px] md:text-[18px] leading-relaxed">
-            Sometimes, the best way to know is to work together first. Evaluate talent in real conditions, without pressure.
-          </p>
-        </div>
+    <section className="w-full">
+      {/* TOP SECTION */}
+      <div className="w-full bg-[#F2F4F8] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-2">
+          {/* HEADER */}
+          <div className="flex flex-col items-center text-center">
+            <p className="text-primary font-bold font-notch text-[28px] md:text-[56px] mb-2">
+              Contract-To-Hire
+            </p>
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12 items-start">
-          {/* Steps Column */}
-          <div className="lg:col-span-2 w-full">
-            {/* Mobile View: Vertical Timeline */}
-            <div className="flex md:hidden flex-col w-full relative pl-2">
-              {steps.map((step, index) => (
-                <div key={step.title} className="relative flex gap-6 pb-12 last:pb-0">
-                  {/* Connecting Line (Vertical) */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute left-[38px] top-[76px] bottom-[-6px] w-[6px] bg-gradient-to-b from-[#0000FF] to-[#00DDE2] -translate-x-1/2 z-0">
-                      {/* Arrow Head */}
-                      <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[12px] h-[12px] border-b-[4px] border-r-[4px] border-[#00DDE2] rotate-45" />
-                    </div>
-                  )}
+            <h3 className="text-dark font-bold text-[36px] mb-6">
+              Confidence Before Commitment
+              <span className="text-secondary">.</span>
+            </h3>
 
-                  {/* Circle */}
-                  <div className="relative z-10 shrink-0 w-[76px] h-[76px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[6px] ring-[#0000FF] shadow-lg" />
-
-                  {/* Content */}
-                  <div className="flex flex-col pt-2 gap-2">
-                    <h4 className="text-[24px] font-notch font-bold text-dark leading-tight">
-                      {step.title}
-                    </h4>
-                    <p className="text-[14px] font-medium text-dark leading-relaxed max-w-[240px]">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Desktop View: Horizontal Layout */}
-            <div className="hidden md:flex flex-row items-center justify-between gap-10 w-full">
-              {steps.map((step, index) => (
-                <div key={step.title} className="relative flex-1 flex flex-col items-center text-center">
-                  <div className="relative w-[86px] h-[86px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[6px] ring-[#0000FF]">
-                    {index < 2 && (
-                      <div className="absolute left-23 top-1/2 -translate-y-1/2 w-[140px] h-[8px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] rounded-full" />
-                    )}
-                    {index < 2 && (
-                      <div className="absolute left-56.5 top-1/2 -translate-y-1/2 w-[18px] h-[18px] rotate-45 border-r-[6px] border-t-[6px] border-[#00DDE2]" />
-                    )}
-                  </div>
-                  <p className="mt-6 text-dark font-notch font-bold text-[26px]">
-                    {step.title}
-                  </p>
-                  <p className="mt-3 text-dark text-[15px] font-medium max-w-55">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="text-dark font-medium text-[16px] md:text-[18px] max-w-3xl">
+              Sometimes, the best way to know is to work together first.
+              Contract-to-hire lets you evaluate talent in real conditions —
+              without pressure.
+            </p>
           </div>
 
-          {/* Card Column */}
-          <div className="w-full flex justify-center lg:block">
-            <div className="w-full max-w-md bg-white rounded-[10px] border border-transparent shadow-[0px_4px_20px_rgba(0,0,0,0.05)] px-8 py-10 flex flex-col items-center text-center">
-              <h4 className="text-[#1E1E24] font-notch font-bold text-[20px] mb-6">
-                Why Clients Choose This
+          {/* CONTENT */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* LEFT */}
+            <div className="flex flex-col gap-8 text-center lg:text-left">
+              <h4 className="text-[28px] md:text-[36px] font-notch font-bold text-dark">
+                Our Approach
               </h4>
-              <ul className="text-[#1E1E24]/80 text-[16px] font-medium space-y-2 flex flex-col items-center">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1E1E24]/80 block" />
-                  Reduce hiring risk
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1E1E24]/80 block" />
-                  Better long-term retention
-                </li>
+
+              <ul className="text-dark text-[16px] md:text-[18px] list-disc pl-5 space-y-3 max-w-2xl mx-auto lg:mx-0">
+                <li>AI screens for technical and role readiness</li>
+                <li>Human recruiters validate adaptability and intent</li>
+                <li>Candidates enter with clarity — not uncertainty</li>
               </ul>
             </div>
+
+            {/* RIGHT – FLOW */}
+            <div className="w-full overflow-x-auto md:overflow-visible">
+              <div className="min-w-[900px] md:min-w-0">
+                <div className="grid grid-rows-[72px_auto] gap-y-6">
+
+                  {/* ROW 1: CIRCLES + ARROWS (LOCKED) */}
+                  <div className="grid grid-cols-[260px_120px_260px_120px_260px] items-center justify-center">
+                    <div className="flex justify-center">
+                      <StepCircle />
+                    </div>
+
+                    <FlowArrow />
+
+                    <div className="flex justify-center">
+                      <StepCircle />
+                    </div>
+
+                    <FlowArrow />
+
+                    <div className="flex justify-center">
+                      <StepCircle />
+                    </div>
+                  </div>
+
+                  {/* ROW 2: TEXT (FREE HEIGHT) */}
+                  <div className="grid grid-cols-[260px_120px_260px_120px_260px] justify-center">
+                    <div className="flex flex-col items-center gap-3">
+                      <p className="text-dark font-notch font-bold text-[26px]">
+                        {steps[0].title}
+                      </p>
+                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
+                        {steps[0].description}
+                      </p>
+                    </div>
+
+                    <div />
+
+                    <div className="flex flex-col items-center gap-3">
+                      <p className="text-dark font-notch font-bold text-[26px]">
+                        {steps[1].title}
+                      </p>
+                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
+                        {steps[1].description}
+                      </p>
+                    </div>
+
+                    <div />
+
+                    <div className="flex flex-col items-center gap-3">
+                      <p className="text-dark font-notch font-bold text-[26px]">
+                        {steps[2].title}
+                      </p>
+                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
+                        {steps[2].description}
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex justify-center items-center mt-10">
-       <Link
-            href="/contact"
-            className="inline-flex w-full sm:w-auto items-center capitalize justify-center gap-2 px-8 py-3 text-white font-bold rounded-sm bg-linear-to-r from-[#0000FF] to-[#000099] hover:from-[#0000CC] hover:to-[#000080] transition-colors"
-          >
-            REDUCE HIRING RISK  <ArrowBigRight className="inline-block" />
-          </Link>
+      </div>
+
+      {/* IMPACT SECTION */}
+      <div className="w-full bg-dark">
+        <div className="max-w-7xl mx-auto px-6 md:px-14 py-16 flex flex-col items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <h4 className="text-white text-[28px] md:text-[36px] font-notch font-bold">
+              The Impact
+            </h4>
+            <ul className="text-white/85 text-[16px] md:text-[18px] list-disc pl-5 space-y-2">
+              <li>Reduced hiring risk</li>
+              <li>Better long-term retention</li>
+              <li>Informed, confident conversions</li>
+            </ul>
           </div>
+
+          <Link
+            href="/contact"
+            className="w-full lg:w-[50%] flex items-center justify-center gap-3 border border-secondary text-secondary font-bold uppercase px-8 py-4 rounded-md hover:bg-secondary hover:text-dark transition-colors"
+          >
+            Reduce Hiring Risk <ArrowBigRight />
+          </Link>
+        </div>
       </div>
     </section>
   );

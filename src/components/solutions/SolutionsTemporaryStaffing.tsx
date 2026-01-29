@@ -95,6 +95,7 @@ export const SolutionsTemporaryStaffing = () => {
                 <li>Talent aligned to your working style and expectations</li>
               </ul>
             </div>
+            
           </div>
           <button className="w-full lg:w-[50%] text-center flex items-center justify-center gap-3 border border-secondary text-secondary font-bold tracking-wider uppercase px-8 py-4 rounded-md hover:bg-secondary hover:text-dark transition-colors ">
             Get Temporary Talent, Done Right
