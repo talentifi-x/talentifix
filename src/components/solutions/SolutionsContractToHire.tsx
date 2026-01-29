@@ -12,14 +12,14 @@ interface StepData {
 /* ---------- Reusable UI Pieces ---------- */
 
 const StepCircle: React.FC = () => (
-  <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[6px] ring-[#0000FF]" />
+  <div className="w-[60px] h-[60px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[5px] ring-[#0000FF]" />
 );
 
 const FlowArrow: React.FC = () => (
-  <div className="flex items-center justify-center h-[72px]">
+  <div className="flex items-center justify-center h-[60px] w-full">
     <div className="flex items-center">
-      <div className="w-[120px] h-[6px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] rounded-full" />
-      <div className="ml-2 w-0 h-0 border-t-[7px] border-b-[7px] border-l-[10px] border-t-transparent border-b-transparent border-l-[#00DDE2]" />
+      <div className="w-[182px] h-[5px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] rounded-full" />
+      <div className="ml-2 w-0 h-0 border-t-[6px] border-b-[6px] border-l-[8px] border-t-transparent border-b-transparent border-l-[#00DDE2]" />
     </div>
   </div>
 );
@@ -46,7 +46,7 @@ export const SolutionsContractToHire: React.FC = () => {
   ];
 
   return (
-    <section className="w-full">
+    <section className="w-full overflow-x-hidden">
       {/* TOP SECTION */}
       <div className="w-full bg-[#F2F4F8] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-2">
@@ -69,78 +69,116 @@ export const SolutionsContractToHire: React.FC = () => {
           </div>
 
           {/* CONTENT */}
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* LEFT */}
-            <div className="flex flex-col gap-8 text-center lg:text-left">
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-12 lg:gap-6 items-start">
+            {/* LEFT (NARROWER) */}
+            <div className="flex flex-col gap-8 text-center lg:text-left max-w-[420px]">
               <h4 className="text-[28px] md:text-[36px] font-notch font-bold text-dark">
                 Our Approach
               </h4>
 
-              <ul className="text-dark text-[16px] md:text-[18px] list-disc pl-5 space-y-3 max-w-2xl mx-auto lg:mx-0">
+              <ul className="text-dark text-[16px] md:text-[18px] list-disc pl-5 space-y-3">
                 <li>AI screens for technical and role readiness</li>
                 <li>Human recruiters validate adaptability and intent</li>
                 <li>Candidates enter with clarity — not uncertainty</li>
               </ul>
             </div>
 
-            {/* RIGHT – FLOW */}
-            <div className="w-full overflow-x-auto md:overflow-visible">
-              <div className="min-w-[900px] md:min-w-0">
-                <div className="grid grid-rows-[72px_auto] gap-y-6">
+            {/* RIGHT – FLOW (WIDER) */}
+            <div className="w-full">
+              {/* DESKTOP LAYOUT (Horizontal) */}
+              <div className="hidden lg:block w-full overflow-x-auto">
+                <div className="w-full max-w-[900px]">
+                  <div className="grid grid-rows-[60px_auto] gap-y-6 pt-4">
 
-                  {/* ROW 1: CIRCLES + ARROWS (LOCKED) */}
-                  <div className="grid grid-cols-[260px_120px_260px_120px_260px] items-center justify-center">
-                    <div className="flex justify-center">
-                      <StepCircle />
+                    {/* ROW 1: CIRCLES + ARROWS */}
+                    <div className="grid grid-cols-[minmax(180px,1fr)_80px_minmax(180px,1fr)_80px_minmax(180px,1fr)] items-center">
+                      <div className="flex justify-center">
+                        <StepCircle />
+                      </div>
+
+                      <FlowArrow />
+
+                      <div className="flex justify-center">
+                        <StepCircle />
+                      </div>
+
+                      <FlowArrow />
+
+                      <div className="flex justify-center">
+                        <StepCircle />
+                      </div>
                     </div>
 
-                    <FlowArrow />
+                    {/* ROW 2: TEXT */}
+                    <div className="grid grid-cols-[minmax(180px,1fr)_80px_minmax(180px,1fr)_80px_minmax(180px,1fr)]">
+                      <div className="flex flex-col items-center gap-3">
+                        <p className="text-dark font-notch font-bold text-[26px]">
+                          {steps[0].title}
+                        </p>
+                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
+                          {steps[0].description}
+                        </p>
+                      </div>
 
-                    <div className="flex justify-center">
-                      <StepCircle />
+                      <div />
+
+                      <div className="flex flex-col items-center gap-3">
+                        <p className="text-dark font-notch font-bold text-[26px]">
+                          {steps[1].title}
+                        </p>
+                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
+                          {steps[1].description}
+                        </p>
+                      </div>
+
+                      <div />
+
+                      <div className="flex flex-col items-center gap-3">
+                        <p className="text-dark font-notch font-bold text-[26px]">
+                          {steps[2].title}
+                        </p>
+                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
+                          {steps[2].description}
+                        </p>
+                      </div>
                     </div>
 
-                    <FlowArrow />
-
-                    <div className="flex justify-center">
-                      <StepCircle />
-                    </div>
                   </div>
+                </div>
+              </div>
 
-                  {/* ROW 2: TEXT (FREE HEIGHT) */}
-                  <div className="grid grid-cols-[260px_120px_260px_120px_260px] justify-center">
-                    <div className="flex flex-col items-center gap-3">
-                      <p className="text-dark font-notch font-bold text-[26px]">
-                        {steps[0].title}
-                      </p>
-                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
-                        {steps[0].description}
-                      </p>
+              {/* MOBILE/TABLET LAYOUT (Vertical) */}
+              <div className="block lg:hidden w-full pl-4 sm:pl-10 mt-8">
+                <div className="flex flex-col">
+                  {steps.map((step, index) => (
+                    <div key={step.title} className="flex gap-6">
+                      {/* Left: Graphic Column */}
+                      <div className="flex flex-col items-center">
+                        {/* Circle */}
+                        <div className="relative z-10 shrink-0">
+                           <StepCircle />
+                        </div>
+                        
+                        {/* Connecting Line (if not last) */}
+                        {index !== steps.length - 1 && (
+                          <div className="flex-1 w-[6px] bg-gradient-to-b from-[#0000FF] to-[#00DDE2] my-[-2px] min-h-[80px] relative">
+                             {/* Arrowhead at bottom of line */}
+                             <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-[#00DDE2]" />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Right: Content Column */}
+                      <div className="flex flex-col pt-2 pb-12">
+                        <h4 className="text-[28px] font-notch font-bold text-dark leading-tight mb-3">
+                          {step.title}
+                        </h4>
+                        <p className="text-[16px] font-medium text-dark leading-relaxed max-w-[300px]">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
-
-                    <div />
-
-                    <div className="flex flex-col items-center gap-3">
-                      <p className="text-dark font-notch font-bold text-[26px]">
-                        {steps[1].title}
-                      </p>
-                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
-                        {steps[1].description}
-                      </p>
-                    </div>
-
-                    <div />
-
-                    <div className="flex flex-col items-center gap-3">
-                      <p className="text-dark font-notch font-bold text-[26px]">
-                        {steps[2].title}
-                      </p>
-                      <p className="text-dark text-[15px] font-medium text-center leading-[1.65] w-full max-w-[260px]">
-                        {steps[2].description}
-                      </p>
-                    </div>
-                  </div>
-
+                  ))}
                 </div>
               </div>
             </div>
