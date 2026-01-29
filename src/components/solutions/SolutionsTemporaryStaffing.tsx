@@ -44,23 +44,37 @@ export const SolutionsTemporaryStaffing = () => {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center   items-center gap-8 lg:pt-2">
+          <div className="flex flex-col justify-center  items-center gap-8 lg:pt-2">
+            <h4 className="text-[28px] md:text-[36px] font-notch font-bold text-dark leading-tight text-left">
+              Our Approach
+            </h4>
             {[
-              { iconSrc: "/assets/Solutions/temp-icon-1.svg", alt: "Speed and quality icon" },
-              { iconSrc: "/assets/Solutions/temp-icon-2.svg", alt: "Fast decisions icon" },
-              { iconSrc: "/assets/Solutions/temp-icon-3.svg", alt: "Screening and validation icon" },
+              {
+                iconSrc: "/assets/Solutions/temp-icon-1.svg",
+                alt: "Speed and quality icon",
+                lines: ["We don’t rush resumes.", "We accelerate decisions."],
+              },
+              {
+                iconSrc: "/assets/Solutions/temp-icon-2.svg",
+                alt: "Fast decisions icon",
+                lines: ["AI rapidly screens large talent pools for role readiness"],
+              },
+              {
+                iconSrc: "/assets/Solutions/temp-icon-3.svg",
+                alt: "Screening and validation icon",
+                lines: ["Human recruiters validate reliability, intent, and fit"],
+              },
             ].map((item) => (
               <div key={item.iconSrc} className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full">
                 <div className="w-[120px] h-[68px] bg-white rounded-[6px] flex items-center justify-center shrink-0">
                   <Image src={item.iconSrc} alt={item.alt} width={120} height={68} />
                 </div>
                 <div className="flex flex-col text-center sm:text-left">
-                  <p className="text-[18px] md:text-[20px] font-semibold text-[#1E1E24] leading-snug">
-                    We don&apos;t rush resumes.
-                  </p>
-                  <p className="text-[18px] md:text-[20px] font-semibold text-[#1E1E24] leading-snug">
-                    We accelerate decisions.
-                  </p>
+                  {item.lines.map((line) => (
+                    <p key={line} className="text-[18px] md:text-[20px] font-semibold text-[#1E1E24] leading-snug">
+                      {line}
+                    </p>
+                  ))}
                 </div>
               </div>
             ))}
@@ -73,7 +87,7 @@ export const SolutionsTemporaryStaffing = () => {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-center gap-20">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 justify-center">
               <h4 className="text-white text-[28px] md:text-[36px] font-notch font-bold leading-tight">
-                What you&apos;ll get:
+                The Impact
               </h4>
               <ul className="text-white/85 text-[16px] md:text-[18px] leading-relaxed list-disc pl-5 space-y-2">
                 <li>Rapid workforce deployment</li>
