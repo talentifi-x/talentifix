@@ -49,7 +49,7 @@ export const SolutionsContractToHire: React.FC = () => {
     <section className="w-full overflow-x-hidden">
       {/* TOP SECTION */}
       <div className="w-full bg-[#F2F4F8] py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-4">
           {/* HEADER */}
           <div className="flex flex-col items-center text-center">
             <p className="text-primary font-bold font-notch text-[28px] md:text-[56px] mb-2">
