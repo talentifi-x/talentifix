@@ -20,7 +20,7 @@ export function JsonTable({ data }: JsonTableProps) {
     if (Array.isArray(jsonData) && jsonData.length > 0) {
       const firstItem = jsonData[0];
       const keys = data.columns?.map(col => col.key) || Object.keys(firstItem);
-      const columns = data.columns || keys.map(key => ({ key, title: key }));
+      const columns = data.columns || keys.map(key => ({ key, title: key, type: 'text' as const }));
 
       return (
         <div className="my-8 overflow-x-auto">

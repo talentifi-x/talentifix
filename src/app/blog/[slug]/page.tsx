@@ -21,7 +21,7 @@ async function getBlogPost(slug: string) {
     // First get the post ID from slug
     const allPosts = await blogDataProvider.getList({
       resource: 'blogPost',
-      pagination: { current: 1, pageSize: 100 },
+      pagination: { currentPage: 1, pageSize: 100 },
       filters: [],
       sorters: [],
     });

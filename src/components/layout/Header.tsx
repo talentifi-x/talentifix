@@ -69,9 +69,9 @@ export function Header() {
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
-            <Link href="/" className={getLinkClasses("/why-us")}>
+            {/* <Link href="/" className={getLinkClasses("/why-us")}>
               Why Us
-            </Link>
+            </Link> */}
             <Link href="/solutions" className={getLinkClasses("/solutions")}>
               Solutions
             </Link>

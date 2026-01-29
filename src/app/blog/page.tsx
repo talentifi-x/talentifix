@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { blogDataProvider } from '@lib/sanity/dataProvider';
 import { urlForImage } from '@lib/sanity/client';
 
@@ -14,7 +14,7 @@ async function getBlogPosts() {
   try {
     const result = await blogDataProvider.getList({
       resource: 'blogPost',
-      pagination: { current: 1, pageSize: 12 },
+      pagination: { currentPage: 1, pageSize: 12 },
       filters: [],
       sorters: [],
     });
