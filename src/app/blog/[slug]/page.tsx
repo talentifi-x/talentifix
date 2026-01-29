@@ -11,9 +11,9 @@ import { FaqSection } from '@components/blog/FaqSection';
 import { TableOfContents } from '@components/blog/TableOfContents';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getBlogPost(slug: string) {
@@ -46,7 +46,8 @@ async function getBlogPost(slug: string) {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   
   if (!post) {
     return {
@@ -140,7 +141,8 @@ const portableTextComponents = {
 };
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();
