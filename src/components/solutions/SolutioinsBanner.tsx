@@ -15,7 +15,7 @@ export const SolutionsBanner = () => {
             Hiring ins’t about filling sets. It’s about trusting someone with your team, your culture, and your momentum.
           </p>
           <Link
-            href="/contact"
+            href="/start-hiring"
             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-3 text-white font-bold rounded-sm bg-linear-to-r from-[#0000FF] to-[#000099] hover:from-[#0000CC] hover:to-[#000080] transition-colors"
           >
             HIRE SMARTER <ArrowBigRight className="inline-block" />
