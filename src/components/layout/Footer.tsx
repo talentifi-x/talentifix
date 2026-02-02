@@ -43,7 +43,7 @@ export const Footer = () => {
   return (
     <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
 
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-4 flex flex-col gap-20">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-4 flex flex-col gap-20 relative z-10">
 
         {/* Top Section: 3 Columns */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
