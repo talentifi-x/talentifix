@@ -1,15 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const OfferingCard = ({
   icon,
   title,
   description,
+  href,
 }: {
   icon: string;
   title: string;
   description: string;
+  href: string;
 }) => (
   <div className="flex flex-col h-full">
     <div className="bg-white/30 backdrop-blur-xl border-[3px] border-white rounded-[10px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] p-8 md:p-12 flex flex-col gap-8 h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
@@ -33,10 +36,10 @@ const OfferingCard = ({
 
       {/* Know More Button */}
       <div className="mt-auto pt-4 flex flex-col items-start gap-1">
-        <button className="flex items-center gap-2 text-primary text-[22px] font-bold group">
+        <Link href={href} className="flex items-center gap-2 text-primary text-[22px] font-bold group">
           Know More
           <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-        </button>
+        </Link>
         <div className="w-[140px] h-[4px] text-secondary rounded-full" />
       </div>
     </div>
@@ -73,21 +76,25 @@ export const FormalOfferingSection = () => {
             icon="/assets/figma/formal-icon-1.svg"
             title="Temporary Staffing"
             description="Flexible workforce Solutions for project-based or seasonal needs — designed for speed without sacrificing quality."
+            href="/solutions#temporary-staffing"
           />
           <OfferingCard
             icon="/assets/figma/formal-icon-2.svg"
             title="Permanent Placement"
             description="Long-term hiring focused on performance, culture, and retention. Because the right hire compounds over time."
+            href="/solutions#permanent-placement"
           />
           <OfferingCard
             icon="/assets/figma/formal-icon-3.svg"
             title="Contract-to-Hire"
             description="Evaluate talent in real working environments before committing long-term."
+            href="/solutions#contract-to-hire"
           />
           <OfferingCard
             icon="/assets/figma/formal-icon-4.svg"
             title="Executive Search"
             description="Confidential, insight-driven leadership hiring for roles where judgment matters most."
+            href="/solutions#executive-search"
           />
         </div>
       </div>

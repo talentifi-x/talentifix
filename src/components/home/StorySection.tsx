@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const StorySection = () => {
@@ -54,10 +55,10 @@ export const StorySection = () => {
               </h3>
             </div>
 
-            <button className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg">
+            <Link href="/start-hiring" className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg">
               <span className="lg:text-[20px] text-[12px] tracking-wide">Discover Intelligent Hiring</span>
               <ArrowRight size={24} />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

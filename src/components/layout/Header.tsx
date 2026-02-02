@@ -3,8 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Instagram, Linkedin, Facebook, ArrowRight, X, Menu } from "lucide-react";
+import { Instagram, Linkedin, ArrowRight, X as CloseIcon, Menu } from "lucide-react";
 import Image from "next/image";
+
+const XLogoIcon = ({ size = 18, className }: { size?: number; className?: string }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 512 512"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+    </svg>
+  );
+};
 
 export function Header() {
   const pathname = usePathname();
@@ -39,16 +55,34 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">contact@talentifi-x.com</span>
+          <span className="text-white text-sm font-medium">hello@talentifi-x.com</span>
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-white hover:opacity-80">
+            <Link
+              href="https://www.instagram.com/talentifi.x?igsh=MXg3ZGhsMHA0eG5mZA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talentifi-X on Instagram"
+              className="text-white hover:opacity-80"
+            >
               <Instagram size={18} />
             </Link>
-            <Link href="#" className="text-white hover:opacity-80">
+            <Link
+              href="https://www.linkedin.com/company/talentifi-x/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talentifi-X on LinkedIn"
+              className="text-white hover:opacity-80"
+            >
               <Linkedin size={18} />
             </Link>
-            <Link href="#" className="text-white hover:opacity-80">
-              <Facebook size={18} />
+            <Link
+              href="https://x.com/TalentifiX"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talentifi-X on X"
+              className="text-white hover:opacity-80"
+            >
+              <XLogoIcon size={18} />
             </Link>
           </div>
         </div>
@@ -101,7 +135,7 @@ export function Header() {
             className="md:hidden p-2 rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
           </button>
         </div>
 

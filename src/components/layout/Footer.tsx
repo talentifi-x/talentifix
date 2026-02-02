@@ -2,7 +2,21 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Instagram, Linkedin, Facebook, MapPin } from 'lucide-react';
+import { ArrowRight, Instagram, Linkedin, MapPin } from 'lucide-react';
+
+const XLogoIcon = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 512 512"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+    </svg>
+  );
+};
 
 export const Footer = () => {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -40,10 +54,10 @@ export const Footer = () => {
               Staffing isn’t about filling roles. <br />
               It’s about building what comes next.
             </h3>
-            <button className="w-fit px-6 py-3 border border-[#0000FF] rounded-[4px] text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase">
+            <Link href="/start-hiring" className="w-fit px-6 py-3 border border-[#0000FF] rounded-[4px] text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase">
               Know More
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
 
           {/* Divider (Mobile only or spacing) */}
@@ -78,14 +92,32 @@ export const Footer = () => {
           <div className="flex flex-col gap-6">
             <h4 className="text-[24px] font-bold font-notch text-black">Connect With Us</h4>
             <div className="flex items-center gap-4">
-              <Link href="#" className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors">
+              <Link
+                href="https://www.instagram.com/talentifi.x?igsh=MXg3ZGhsMHA0eG5mZA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Talentifi-X on Instagram"
+                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+              >
                 <Instagram className="w-6 h-6 text-[#0000FF]" />
               </Link>
-              <Link href="#" className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors">
+              <Link
+                href="https://www.linkedin.com/company/talentifi-x/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Talentifi-X on LinkedIn"
+                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+              >
                 <Linkedin className="w-6 h-6 text-[#0000FF]" />
               </Link>
-              <Link href="#" className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors">
-                <Facebook className="w-6 h-6 text-[#0000FF]" />
+              <Link
+                href="https://x.com/TalentifiX"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Talentifi-X on X"
+                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+              >
+                <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
             </div>
             <div className="flex items-start gap-3 text-gray-600">

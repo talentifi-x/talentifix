@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const SolutionsPage = () => {
   return (
@@ -140,9 +141,12 @@ export const SolutionsPage = () => {
             your entire organization. Our rigorous screening process ensures every
             candidate is a long-term fit.
           </p>
-          <button className="bg-[#00DDE2] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300">
+          <Link
+            href="/start-hiring"
+            className="bg-[#00DDE2] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300"
+          >
             Start Your Search →
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -181,9 +185,12 @@ export const SolutionsPage = () => {
                   <p className="text-[18px] text-[#1E1E24]">Convert to permanent if it&apos;s a match</p>
                 </div>
               </div>
-              <button className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:from-[#0000e6] hover:to-[#0000b3] transition-all duration-300 mt-8">
+              <Link
+                href="/start-hiring"
+                className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:from-[#0000e6] hover:to-[#0000b3] transition-all duration-300 mt-8"
+              >
                 Learn More →
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -291,9 +298,12 @@ export const SolutionsPage = () => {
             scaling globally, we have the expertise and network to deliver the
             talent that drives your success.
           </p>
-          <button className="bg-[#00DDE2] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300 relative z-10">
+          <Link
+            href="/start-hiring"
+            className="bg-[#00DDE2] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300 relative z-10"
+          >
             Get Started Today →
-          </button>
+          </Link>
         </div>
       </section>
 

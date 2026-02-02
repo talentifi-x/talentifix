@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const SolutionsTemporaryStaffing = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section id="temporary-staffing" className="relative w-full overflow-hidden bg-white">
       <Image
         src="/assets/Solutions/temp-staffing-bg.svg"
         alt=""
