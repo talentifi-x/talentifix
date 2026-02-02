@@ -92,7 +92,7 @@ export const Footer = () => {
             <h4 className="text-[24px] font-bold font-notch text-black">Connect With Us</h4>
             <div className="flex items-center gap-4">
               <Link
-                href="https://www.instagram.com/talentifi.x?igsh=MXg3ZGhsMHA0eG5mZA=="
+                href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Talentifi-X on Instagram"

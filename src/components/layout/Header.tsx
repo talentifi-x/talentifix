@@ -58,7 +58,7 @@ export function Header() {
           <span className="text-white text-sm font-medium">contact@talentifi-x.com</span>
           <div className="flex items-center gap-4">
             <Link
-              href="https://www.instagram.com/talentifi.x?igsh=MXg3ZGhsMHA0eG5mZA=="
+              href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Talentifi-X on Instagram"
