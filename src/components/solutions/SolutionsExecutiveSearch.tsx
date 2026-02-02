@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const SolutionsExecutiveSearch = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section id="executive-search" className="relative w-full overflow-hidden bg-white scroll-mt-32">
       <Image
         src="/assets/Solutions/exec-search-bg.svg"
         alt=""

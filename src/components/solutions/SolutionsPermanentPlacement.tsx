@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const SolutionsPermanentPlacement = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section id="permanent-placement" className="relative w-full overflow-hidden bg-white scroll-mt-32">
       <Image
         src="/assets/Solutions/perm-placement-bg.svg"
         alt="The permanent placement background"

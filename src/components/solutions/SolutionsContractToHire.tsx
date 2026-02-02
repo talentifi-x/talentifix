@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const SolutionsContractToHire: React.FC = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section id="contract-to-hire" className="relative w-full overflow-hidden bg-white scroll-mt-32">
       <Image
         src="/assets/Solutions/contract-to-hire-bg.svg"
         alt=""
