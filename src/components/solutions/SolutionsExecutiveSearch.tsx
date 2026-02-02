@@ -143,7 +143,7 @@ export const SolutionsExecutiveSearch = () => {
           </div>
 
           <Link
-            href="/contact"
+            href="/start-hiring"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-4 border-2 border-primary text-primary rounded-[5px] px-6 sm:px-8 py-4 font-stack-text uppercase text-[16px] sm:text-[20px] lg:text-[24px] leading-[1.3] hover:bg-primary hover:text-white transition-colors"
           >
             Get Temporary Talent, Done Right
