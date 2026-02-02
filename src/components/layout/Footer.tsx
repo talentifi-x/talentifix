@@ -71,7 +71,6 @@ export const Footer = () => {
                 { name: 'Home', href: '/' },
                 { name: 'Solutions', href: '/solutions' },
                 { name: 'Contact', href: '/contact' },
-                { name: 'About', href: '/' },
                 { name: 'Industries', href: '/' },
               ].map((item) => (
                 <Link
@@ -167,7 +166,6 @@ export const Footer = () => {
       <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50 px-4">
         <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
           <div className="flex items-center gap-8">
-            <Link href="/" className="hover:text-[#0000FF] transition-colors">Terms of Solutions</Link>
             <Link href="/privacy-policy" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>
           </div>
           <p>Talentifi-x Inc © {new Date().getFullYear()}</p>
