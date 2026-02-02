@@ -71,7 +71,7 @@ export const Footer = () => {
                 { name: 'Home', href: '/' },
                 { name: 'Solutions', href: '/solutions' },
                 { name: 'Contact', href: '/contact' },
-                { name: 'Industries', href: '/' },
+                // { name: 'Industries', href: '/' },
               ].map((item) => (
                 <Link
                   key={item.name}
