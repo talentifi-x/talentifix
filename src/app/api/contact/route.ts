@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
               <p>Dear <span class="highlight">${firstName}</span>,</p>
               <p>Thank you for contacting Talentifi-X. We have received your message and appreciate you taking the time to reach out to us.</p>
               <p>Our team will review your inquiry and get back to you as soon as possible, typically within 24-48 business hours.</p>
-              <p>If you have any urgent questions, please don't hesitate to reach us at <a href="mailto:hello@talentifi-x.com">hello@talentifi-x.com</a>.</p>
+              <p>If you have any urgent questions, please don't hesitate to reach us at <a href="mailto:contact@talentifi-x.com">contact@talentifi-x.com</a>.</p>
               <p>Best regards,<br><span class="highlight">The Talentifi-X Team</span></p>
             </div>
             <div class="footer">

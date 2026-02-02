@@ -55,7 +55,7 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">hello@talentifi-x.com</span>
+          <span className="text-white text-sm font-medium">contact@talentifi-x.com</span>
           <div className="flex items-center gap-4">
             <Link
               href="https://www.instagram.com/talentifi.x?igsh=MXg3ZGhsMHA0eG5mZA=="
@@ -144,13 +144,13 @@ export function Header() {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 href="/"
                 className={getMobileLinkClasses("/why-us")}
                 onClick={closeMobileMenu}
               >
                 Why Us
-              </Link>
+              </Link> */}
               <Link
                 href="/solutions"
                 className={getMobileLinkClasses("/solutions")}
