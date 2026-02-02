@@ -35,7 +35,7 @@ const TheNextStepSection = () => {
           
           <div className="flex items-center gap-3 w-full md:w-auto">
             <Mail className="w-5 h-5 md:w-6 md:h-6 text-[#0000FF] flex-shrink-0" />
-            <span className="text-[16px] md:text-2xl font-bold text-black break-all md:break-normal">contact@talentifix.com</span>
+            <span className="text-[16px] md:text-2xl font-bold text-black break-all md:break-normal">contact@talentifi-x.com</span>
           </div>
 
           <div className="w-full h-[1px] md:w-[1px] md:h-8 bg-gray-200 md:bg-gray-300 block md:hidden" />

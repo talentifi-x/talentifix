@@ -1,210 +1,171 @@
 import React from "react";
-import { ArrowBigRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-/* ---------- Types ---------- */
-
-interface StepData {
-  title: string;
-  description: string;
-}
-
-/* ---------- Reusable UI Pieces ---------- */
-
-const StepCircle: React.FC = () => (
-  <div className="w-[60px] h-[60px] rounded-full bg-gradient-to-br from-[#6AE5FF] to-[#B6C8FF] ring-[5px] ring-[#0000FF]" />
-);
-
-const FlowArrow: React.FC = () => (
-  <div className="flex items-center justify-center h-[60px] w-full">
-    <div className="flex items-center">
-      <div className="w-[182px] h-[5px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] rounded-full" />
-      <div className="ml-2 w-0 h-0 border-t-[6px] border-b-[6px] border-l-[8px] border-t-transparent border-b-transparent border-l-[#00DDE2]" />
-    </div>
-  </div>
-);
-
-/* ---------- Main Component ---------- */
-
 export const SolutionsContractToHire: React.FC = () => {
-  const steps: StepData[] = [
-    {
-      title: "Entry",
-      description:
-        "AI screens for technical and role readiness. Human recruiters validate adaptability and intent. Candidates enter with clarity — not uncertainty.",
-    },
-    {
-      title: "Trial",
-      description:
-        "You observe performance. Culture alignment becomes visible.",
-    },
-    {
-      title: "Decision",
-      description:
-        "Decisions become obvious. Informed, confident conversions.",
-    },
-  ];
-
   return (
-    <section className="w-full overflow-x-hidden">
-      {/* TOP SECTION */}
-      <div className="w-full bg-[#F2F4F8] py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-4">
-          {/* HEADER */}
-          <div className="flex flex-col items-center text-center">
-            <p className="text-primary font-bold font-notch text-[28px] md:text-[56px] mb-2">
-              Contract-To-Hire
-            </p>
+    <section className="relative w-full overflow-hidden bg-white">
+      <Image
+        src="/assets/Solutions/contract-to-hire-bg.svg"
+        alt=""
+        width={1769}
+        height={819}
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[161px] -translate-x-1/2 opacity-100 max-w-none"
+      />
 
-            <h3 className="text-dark font-bold text-[36px] mb-6">
-              Confidence Before Commitment
-              <span className="text-secondary">.</span>
+      <div className="relative mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-14 py-14 lg:py-[72px]">
+        <div className="flex flex-col items-center gap-6">
+          <h2 className="text-center font-notch font-bold text-[34px] sm:text-[44px] lg:text-[54px] leading-[1.3] text-black">
+            Contract-To-<span className="text-primary">Hire</span>
+            <span className="text-primary">.</span>
+          </h2>
+        </div>
+
+        <div className="py-6 mt-10 lg:mt-14 flex flex-col items-center gap-10 lg:gap-14">
+          <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-10">
+            <h3 className="font-notch font-bold text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.3] text-dark text-center lg:text-left max-w-[664px]">
+              Confidence Before
+              <br className="hidden sm:block" />
+              Commitment<span className="text-secondary">.</span>
             </h3>
-
-            <p className="text-dark font-medium text-[16px] md:text-[18px] max-w-3xl">
+            <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
               Sometimes, the best way to know is to work together first.
-              Contract-to-hire lets you evaluate talent in real conditions —
+              
+              Contract-to-hire lets you evaluate talent in real conditions,
+            
               without pressure.
             </p>
           </div>
 
-          {/* CONTENT */}
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-12 lg:gap-6 items-start">
-            {/* LEFT (NARROWER) */}
-            <div className="flex flex-col gap-8 text-center lg:text-left max-w-[420px]">
-              <h4 className="text-[28px] md:text-[36px] font-notch font-bold text-dark">
-                Our Approach
-              </h4>
-
-              <ul className="text-dark text-[16px] md:text-[18px] list-disc pl-5 space-y-3">
-                <li>AI screens for technical and role readiness</li>
-                <li>Human recruiters validate adaptability and intent</li>
-                <li>Candidates enter with clarity — not uncertainty</li>
-              </ul>
-            </div>
-
-            {/* RIGHT – FLOW (WIDER) */}
-            <div className="w-full">
-              {/* DESKTOP LAYOUT (Horizontal) */}
-              <div className="hidden lg:block w-full overflow-x-auto">
-                <div className="w-full max-w-[900px]">
-                  <div className="grid grid-rows-[60px_auto] gap-y-6 pt-4">
-
-                    {/* ROW 1: CIRCLES + ARROWS */}
-                    <div className="grid grid-cols-[minmax(180px,1fr)_80px_minmax(180px,1fr)_80px_minmax(180px,1fr)] items-center">
-                      <div className="flex justify-center">
-                        <StepCircle />
-                      </div>
-
-                      <FlowArrow />
-
-                      <div className="flex justify-center">
-                        <StepCircle />
-                      </div>
-
-                      <FlowArrow />
-
-                      <div className="flex justify-center">
-                        <StepCircle />
-                      </div>
-                    </div>
-
-                    {/* ROW 2: TEXT */}
-                    <div className="grid grid-cols-[minmax(180px,1fr)_80px_minmax(180px,1fr)_80px_minmax(180px,1fr)]">
-                      <div className="flex flex-col items-center gap-3">
-                        <p className="text-dark font-notch font-bold text-[26px]">
-                          {steps[0].title}
-                        </p>
-                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
-                          {steps[0].description}
-                        </p>
-                      </div>
-
-                      <div />
-
-                      <div className="flex flex-col items-center gap-3">
-                        <p className="text-dark font-notch font-bold text-[26px]">
-                          {steps[1].title}
-                        </p>
-                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
-                          {steps[1].description}
-                        </p>
-                      </div>
-
-                      <div />
-
-                      <div className="flex flex-col items-center gap-3">
-                        <p className="text-dark font-notch font-bold text-[26px]">
-                          {steps[2].title}
-                        </p>
-                        <p className="text-dark text-[15px] font-medium text-center leading-[1.65] max-w-[220px]">
-                          {steps[2].description}
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="rounded-[10px] border-[3px] border-white bg-white/30 backdrop-blur-[24px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] px-6 sm:px-10 lg:px-12 py-8">
+              <div className="flex flex-col gap-4">
+                <h4 className="font-notch font-bold text-[28px] sm:text-[32px] lg:text-[40px] leading-[1.3] text-dark lg:text-left text-center">
+                  Our Approach<span className="text-primary">.</span>
+                </h4>
+                <p className="text-[14px] sm:text-[16px] lg:text-[14px] font-semibold leading-[1.3] text-dark text-center lg:text-left">
+                  You observe performance. Culture alignment becomes visible.
+                  Decisions become obvious.
+                </p>
               </div>
 
-              {/* MOBILE/TABLET LAYOUT (Vertical) */}
-              <div className="block lg:hidden w-full pl-4 sm:pl-10 mt-8">
-                <div className="flex flex-col">
-                  {steps.map((step, index) => (
-                    <div key={step.title} className="flex gap-6">
-                      {/* Left: Graphic Column */}
-                      <div className="flex flex-col items-center">
-                        {/* Circle */}
-                        <div className="relative z-10 shrink-0">
-                           <StepCircle />
-                        </div>
-                        
-                        {/* Connecting Line (if not last) */}
-                        {index !== steps.length - 1 && (
-                          <div className="flex-1 w-[6px] bg-gradient-to-b from-[#0000FF] to-[#00DDE2] my-[-2px] min-h-[80px] relative">
-                             {/* Arrowhead at bottom of line */}
-                             <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-[#00DDE2]" />
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Right: Content Column */}
-                      <div className="flex flex-col pt-2 pb-12">
-                        <h4 className="text-[28px] font-notch font-bold text-dark leading-tight mb-3">
-                          {step.title}
-                        </h4>
-                        <p className="text-[16px] font-medium text-dark leading-relaxed max-w-[300px]">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-approach-1.svg"
+                    alt=""
+                    width={90}
+                    height={90}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    AI screens for technical and role readiness
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-approach-2.svg"
+                    alt=""
+                    width={90}
+                    height={91}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    Human recruiters validate adaptability and intent
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-approach-3.svg"
+                    alt=""
+                    width={90}
+                    height={91}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    Candidates enter with clarity — not uncertainty
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* IMPACT SECTION */}
-      <div className="w-full bg-dark">
-        <div className="max-w-7xl mx-auto px-6 md:px-14 py-16 flex flex-col items-center gap-10">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <h4 className="text-white text-[28px] md:text-[36px] font-notch font-bold">
-              The Impact
-            </h4>
-            <ul className="text-white/85 text-[16px] md:text-[18px] list-disc pl-5 space-y-2">
-              <li>Reduced hiring risk</li>
-              <li>Better long-term retention</li>
-              <li>Informed, confident conversions</li>
-            </ul>
+            <div className="rounded-[10px] border-[3px] border-white bg-white/30 backdrop-blur-[24px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] px-6 sm:px-10 lg:px-12 py-8">
+              <div className="flex flex-col gap-4">
+                <h4 className="font-notch font-bold text-[28px] sm:text-[32px] lg:text-[40px] leading-[1.3] text-dark lg:text-left text-center">
+                  The Impact<span className="text-primary">.</span>
+                </h4>
+                <p className="text-[14px] sm:text-[16px] lg:text-[14px] font-semibold leading-[1.3] text-black text-center lg:text-left">
+                  This isn’t faster hiring. It’s smarter hiring.
+                </p>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-impact-1.svg"
+                    alt=""
+                    width={90}
+                    height={90}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    Reduced hiring risk
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-impact-2.svg"
+                    alt=""
+                    width={90}
+                    height={90}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    Better long-term retention
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-6">
+                  <Image
+                    src="/assets/Solutions/cth-impact-3.svg"
+                    alt=""
+                    width={90}
+                    height={89}
+                    aria-hidden="true"
+                    className="object-contain w-17.5 h-17.5"
+                  />
+                  <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
+                    Informed, confident conversions
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <Link
             href="/contact"
-            className="w-full lg:w-[50%] flex items-center justify-center gap-3 border border-secondary text-secondary font-bold uppercase px-8 py-4 rounded-md hover:bg-secondary hover:text-dark transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-4 border-2 border-primary text-primary rounded-[5px] px-6 sm:px-8 py-4 font-stack-text uppercase text-[16px] sm:text-[20px] lg:text-[24px] leading-[1.3] hover:bg-primary hover:text-white transition-colors"
           >
-            Reduce Hiring Risk <ArrowBigRight />
+            Reduce Hiring Risk
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              className="shrink-0"
+            >
+              <path
+                d="M21.5666 17.3334H5.33331V14.6667H21.5666L14.1 7.20004L16 5.33337L26.6666 16L16 26.6667L14.1 24.8L21.5666 17.3334Z"
+                fill="currentColor"
+              />
+            </svg>
           </Link>
         </div>
       </div>

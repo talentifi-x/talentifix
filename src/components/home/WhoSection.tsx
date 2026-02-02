@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const WhoSection = () => {
@@ -110,22 +111,28 @@ export const WhoSection = () => {
 
                   <div className="flex flex-wrap gap-4 mt-6">
                     {/* Primary Button */}
-                    <button className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md">
+                    <Link
+                      href="/start-hiring"
+                      className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
+                    >
                       <span className="text-[18px] font-medium font-sans">
                         Hire Talent
                       </span>
                       <ArrowRight className="w-5 h-5" />
-                    </button>
+                    </Link>
 
 
 
                     {/* Secondary Button */}
-                    <button className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5">
+                    <Link
+                      href="/join-our-network"
+                      className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
+                    >
                       <span className="text-[18px] font-medium font-sans">
                         Build Your Career
                       </span>
                       <ArrowRight className="w-5 h-5" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

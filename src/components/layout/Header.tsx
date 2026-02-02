@@ -39,7 +39,7 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">contact@talentifix.com</span>
+          <span className="text-white text-sm font-medium">contact@talentifi-x.com</span>
           <div className="flex items-center gap-4">
             <Link href="#" className="text-white hover:opacity-80">
               <Instagram size={18} />
@@ -88,7 +88,7 @@ export function Header() {
 
           {/* CTA Button (Desktop) */}
           <Link
-            href="/"
+            href="/start-hiring"
             className="hidden md:flex items-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
           >
             HIRE TALENT
@@ -152,7 +152,7 @@ export function Header() {
                 Contact
               </Link>
               <Link
-                href="/"
+                href="/start-hiring"
                 className="flex items-center justify-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
                 onClick={closeMobileMenu}
               >

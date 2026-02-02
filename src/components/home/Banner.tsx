@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const Banner = () => {
@@ -13,14 +14,20 @@ export const Banner = () => {
         </h1>
         
         <div className="flex flex-col  gap-4 mt-4">
-          <button className="bg-primary text-white px-8 py-4 rounded-[5px] flex items-center justify-center gap-2 font-bold uppercase hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+          <Link
+            href="/start-hiring"
+            className="bg-primary text-white px-8 py-4 rounded-[5px] flex items-center justify-center gap-2 font-bold uppercase hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+          >
             Hire Smarter
             <ArrowRight size={20} />
-          </button>
-          <button className="bg-white text-primary border-2 border-primary px-8 py-4 rounded-[5px] flex items-center justify-center gap-2 font-bold uppercase hover:bg-gray-50 transition-colors">
+          </Link>
+          <Link
+            href="/join-our-network"
+            className="bg-white text-primary border-2 border-primary px-8 py-4 rounded-[5px] flex items-center justify-center gap-2 font-bold uppercase hover:bg-gray-50 transition-colors"
+          >
             Find Your Next Opportunity
             <ArrowRight size={20} />
-          </button>
+          </Link>
         </div>
       </div>
 

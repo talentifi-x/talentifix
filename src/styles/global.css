@@ -51,10 +51,11 @@
   --color-dark: #1E1E24;
   --color-light-cyan: #D3F6FA;
   --color-blue-light: #0000FF;
-  --color-blue: #000099
+  --color-blue: #000099;
 
   --font-sans: "Inter", sans-serif;
   --font-notch: "Stack Sans Notch", sans-serif;
+  --font-stack-text: "Stack Sans Text", "Inter", sans-serif;
 
   --image-primary-gradient: linear-gradient(90deg, rgba(0, 0, 255, 1) 0%, rgba(0, 0, 153, 1) 100%);
 }
@@ -62,6 +63,10 @@
 body {
   margin: 0px;
   background: white;
+}
+
+p {
+  font-family: var(--font-stack-text);
 }
 
 /* Rest of the CSS from previous global.css can be kept or removed if covered by tailwind utilities */

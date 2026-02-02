@@ -1,22 +1,22 @@
 <svg width="1769" height="819" viewBox="0 0 1769 819" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.1">
-<g filter="url(#filter0_f_336_446)">
+<g filter="url(#filter0_f_336_292)">
 <ellipse cx="618.295" cy="468.078" rx="455.914" ry="188.218" fill="#0000FF"/>
 </g>
-<g filter="url(#filter1_f_336_446)">
+<g filter="url(#filter1_f_336_292)">
 <ellipse cx="1150.7" cy="350.6" rx="455.914" ry="188.218" fill="#00DDE2"/>
 </g>
 </g>
 <defs>
-<filter id="filter0_f_336_446" x="-0.000198464" y="117.478" width="1236.59" height="701.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_f_336_292" x="-0.000198464" y="117.478" width="1236.59" height="701.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="81.15" result="effect1_foregroundBlur_336_446"/>
+<feGaussianBlur stdDeviation="81.15" result="effect1_foregroundBlur_336_292"/>
 </filter>
-<filter id="filter1_f_336_446" x="532.41" y="-0.000198464" width="1236.59" height="701.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter1_f_336_292" x="532.41" y="-0.000198464" width="1236.59" height="701.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="81.15" result="effect1_foregroundBlur_336_446"/>
+<feGaussianBlur stdDeviation="81.15" result="effect1_foregroundBlur_336_292"/>
 </filter>
 </defs>
 </svg>
