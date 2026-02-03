@@ -147,13 +147,13 @@ export function Header() {
               >
                 Home
               </Link>
-              {/* <Link
-                href="/"
-                className={getMobileLinkClasses("/why-us")}
+              <Link
+                href="/about"
+                className={getMobileLinkClasses("/about")}
                 onClick={closeMobileMenu}
               >
-                Why Us
-              </Link> */}
+                About Us
+              </Link>
               <Link
                 href="/solutions"
                 className={getMobileLinkClasses("/solutions")}
