@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ArrowRight, ChevronDown, Loader2, CheckCircle, XCircle } from "lucide-react";
+import { useToast } from "@providers/toast";
 
 interface FormData {
   firstName: string;
@@ -16,6 +17,7 @@ interface FormData {
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
 export const ContactForm = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -40,6 +42,7 @@ export const ContactForm = () => {
     e.preventDefault();
     setStatus('loading');
     setResponseMessage('');
+    toast({ variant: "info", title: "Sending message…" });
 
     try {
       const response = await fetch('/api/contact', {
@@ -55,6 +58,7 @@ export const ContactForm = () => {
       if (response.ok) {
         setStatus('success');
         setResponseMessage(data.message);
+        toast({ variant: "success", title: "Message sent", description: data.message });
         // Reset form on success
         setFormData({
           firstName: '',
@@ -67,12 +71,16 @@ export const ContactForm = () => {
         });
       } else {
         setStatus('error');
-        setResponseMessage(data.error || 'Something went wrong. Please try again.');
+        const message = data.error || 'Something went wrong. Please try again.';
+        setResponseMessage(message);
+        toast({ variant: "error", title: "Failed to send message", description: message });
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setStatus('error');
-      setResponseMessage('Failed to send message. Please check your connection and try again.');
+      const message = 'Failed to send message. Please check your connection and try again.';
+      setResponseMessage(message);
+      toast({ variant: "error", title: "Failed to send message", description: message });
     }
   };
 

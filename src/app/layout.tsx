@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import React, { Suspense } from "react";
 
 import { dataProvider } from "@providers/data-provider";
+import { ToastProvider } from "@providers/toast";
 import "@styles/global.css";
 import "react-international-phone/style.css";
 
@@ -32,32 +33,34 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Suspense >
+        <ToastProvider>
+          <Suspense >
 
-          <RefineKbarProvider>
+            <RefineKbarProvider>
 
-            <Refine
-              routerProvider={routerProvider}
-              dataProvider={dataProvider}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                projectId: "npR5mU-ltUWyO-Yh0HB5",
-              }}
-            >
-              <div className="bg-(--color-bg) min-h-screen w-full">
-                <Header />
-                <div className="">
-                  {children}
+              <Refine
+                routerProvider={routerProvider}
+                dataProvider={dataProvider}
+                options={{
+                  syncWithLocation: true,
+                  warnWhenUnsavedChanges: true,
+                  projectId: "npR5mU-ltUWyO-Yh0HB5",
+                }}
+              >
+                <div className="bg-(--color-bg) min-h-screen w-full">
+                  <Header />
+                  <div className="">
+                    {children}
+                  </div>
+                  <Footer />
+                  <BackToTop />
+                  <RefineKbar />
                 </div>
-                <Footer />
-                <BackToTop />
-                <RefineKbar />
-              </div>
-            </Refine>
+              </Refine>
 
-          </RefineKbarProvider>
-        </Suspense>
+            </RefineKbarProvider>
+          </Suspense>
+        </ToastProvider>
       </body>
     </html>
   );

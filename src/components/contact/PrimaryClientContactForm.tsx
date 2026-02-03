@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { ArrowRight, CheckCircle, ChevronDown, Loader2, XCircle } from "lucide-react";
 import { PhoneInput } from "react-international-phone";
+import { useToast } from "@providers/toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -75,6 +76,7 @@ const TIMELINE_OPTIONS: Array<{ value: TimelineValue; label: string; hint: strin
 ];
 
 export const PrimaryClientContactForm = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -122,18 +124,23 @@ export const PrimaryClientContactForm = () => {
 
     if (emailBlocked) {
       setStatus("error");
-      setResponseMessage("Please use a work email (or check ‘I’m using a personal email’).");
+      const message = "Please use a work email (or check ‘I’m using a personal email’).";
+      setResponseMessage(message);
+      toast({ variant: "error", title: "Fix required fields", description: message });
       return;
     }
 
     if (formData.role === "other" && !formData.otherRole.trim()) {
       setStatus("error");
-      setResponseMessage("Please specify the role you’re looking to fill.");
+      const message = "Please specify the role you’re looking to fill.";
+      setResponseMessage(message);
+      toast({ variant: "error", title: "Fix required fields", description: message });
       return;
     }
 
     setStatus("loading");
     setResponseMessage("");
+    toast({ variant: "info", title: "Sending message…" });
 
     try {
       const response = await fetch("/api/primary-client-contact", {
@@ -150,6 +157,7 @@ export const PrimaryClientContactForm = () => {
       if (response.ok) {
         setStatus("success");
         setResponseMessage(data.message);
+        toast({ variant: "success", title: "Message sent", description: data.message });
         setFormData({
           name: "",
           email: "",
@@ -163,11 +171,15 @@ export const PrimaryClientContactForm = () => {
         });
       } else {
         setStatus("error");
-        setResponseMessage(data.error || "Something went wrong. Please try again.");
+        const message = data.error || "Something went wrong. Please try again.";
+        setResponseMessage(message);
+        toast({ variant: "error", title: "Couldn't send message", description: message });
       }
     } catch {
       setStatus("error");
-      setResponseMessage("Failed to send message. Please check your connection and try again.");
+      const message = "Failed to send message. Please check your connection and try again.";
+      setResponseMessage(message);
+      toast({ variant: "error", title: "Couldn't send message", description: message });
     }
   };
 

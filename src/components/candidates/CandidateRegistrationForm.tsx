@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useMemo, useRef, useState } from "react";
 import { ArrowRight, CheckCircle, ChevronDown, Loader2, UploadCloud, XCircle } from "lucide-react";
 import { PhoneInput } from "react-international-phone";
+import { useToast } from "@providers/toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -173,6 +174,7 @@ const ACCEPTED_MIME_TYPES = new Set([
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 
 export const CandidateRegistrationForm = () => {
+  const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [formData, setFormData] = useState<FormData>({
@@ -305,11 +307,13 @@ export const CandidateRegistrationForm = () => {
     if (error) {
       setStatus("error");
       setResponseMessage(error);
+      toast({ variant: "error", title: "Couldn't submit", description: error });
       return;
     }
 
     setStatus("loading");
     setResponseMessage("");
+    toast({ variant: "info", title: "Submitting…" });
 
     const payload = new FormData();
     payload.set("fullName", formData.fullName.trim());
@@ -350,6 +354,7 @@ export const CandidateRegistrationForm = () => {
       if (response.ok) {
         setStatus("success");
         setResponseMessage(data.message);
+        toast({ variant: "success", title: "Profile received", description: data.message });
         setFormData({
           fullName: "",
           email: "",
@@ -378,11 +383,15 @@ export const CandidateRegistrationForm = () => {
         });
       } else {
         setStatus("error");
-        setResponseMessage(data.error || "Something went wrong. Please try again.");
+        const message = data.error || "Something went wrong. Please try again.";
+        setResponseMessage(message);
+        toast({ variant: "error", title: "Couldn't submit", description: message });
       }
     } catch {
       setStatus("error");
-      setResponseMessage("Failed to submit. Please check your connection and try again.");
+      const message = "Failed to submit. Please check your connection and try again.";
+      setResponseMessage(message);
+      toast({ variant: "error", title: "Couldn't submit", description: message });
     }
   };
 
