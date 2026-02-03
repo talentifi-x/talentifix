@@ -33,7 +33,7 @@ export default function Solutions() {
       <SolutionsExecutiveSearch />
       <SolutionsIncludes />
       <SolutionsBuiltFor />
-       <TheNextStepSection />
+      <TheNextStepSection />
     </div>
   );
 }
