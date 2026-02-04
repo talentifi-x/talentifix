@@ -20,7 +20,7 @@ export const Leadership = () => {
               <div className="relative overflow-hidden rounded-[3px] aspect-[419/680] w-full">
                 <Image
                   src="/assets/about/leadership-chet.png"
-                  alt="Chet Mann"
+                  alt="Chetan “Chet” Mangalwedhe"
                   fill
                   sizes="(max-width: 1024px) 100vw, 419px"
                   className="object-cover"
@@ -35,7 +35,7 @@ export const Leadership = () => {
 
 
                 <p className="text-[34px] sm:text-[44px] md:text-[54px] font-notch font-bold text-secondary leading-tight">
-                  Chet Mann
+                  Chetan “Chet” Mangalwedhe
                 </p>
                 <p className="mt-2 text-[20px] font-stack-text font-semibold text-dark">
                   Founder, Talentifi-X
@@ -44,7 +44,7 @@ export const Leadership = () => {
                 <div className="mt-6 space-y-5 text-[16px] font-stack-text text-dark leading-relaxed">
                   <p>
                     With nearly three decades of experience across staffing, IT services, and enterprise technology,
-                    Chet Mann has spent his career navigating change — and building through it.
+                    Chetan “Chet” Mangalwedhe has spent his career navigating change — and building through it.
                   </p>
                   <p>
                     His work spans large-scale talent and technology initiatives for Fortune 500 organizations, always
