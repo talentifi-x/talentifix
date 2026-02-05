@@ -104,7 +104,7 @@ export const Footer = () => {
                 href="https://www.linkedin.com/company/talentifi-x/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Talentifi-X on LinkedIn"
+                aria-label="TalentiFi-X on LinkedIn"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <Linkedin className="w-6 h-6 text-[#0000FF]" />
@@ -113,7 +113,7 @@ export const Footer = () => {
                 href="https://x.com/TalentifiX"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Talentifi-X on X"
+                aria-label="TalentiFi-X on X"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
@@ -168,7 +168,7 @@ export const Footer = () => {
           <div className="flex items-center gap-8">
             <Link href="/privacy-policy" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>
           </div>
-          <p>Talentifi-x Inc © {new Date().getFullYear()}</p>
+          <p>TalentiFi-x Inc © {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

@@ -116,7 +116,7 @@ export const RebuildSection = () => {
             That balance is the system.
           </p>
           <p className="text-3xl font-bold text-dark leading-tight mt-2">
-            That system is <span className="font-extrabold text-5xl">Talentifi-X.</span>
+            That system is <span className="font-extrabold text-5xl">TalentiFi-X.</span>
           </p>
         </div>
 

@@ -27,7 +27,7 @@ export const WhoSection = () => {
             Who This Is Built For<span className="text-secondary">.</span>
           </h2>
           <p className="text-[20px] md:text-[24px] font-semibold text-black">
-            Talentifi-X is built for companies and professionals who refuse to settle.
+            TalentiFi-X is built for companies and professionals who refuse to settle.
           </p>
         </div>
 

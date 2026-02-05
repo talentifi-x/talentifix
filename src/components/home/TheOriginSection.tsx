@@ -34,7 +34,7 @@ const TheOriginSection = () => {
             </h2>
             
             <p className="text-[20px] md:text-[40px] font-sans text-white leading-tight font-normal">
-                Talentifi-X was built after <span className="text-secondary">23+ years in staffing. </span>
+                TalentiFi-X was built after <span className="text-secondary">23+ years in staffing. </span>
                 Years spent seeing what slows teams down.
                 What causes mis-hires. What gets ignored.
                 <br /><br />

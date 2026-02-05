@@ -37,7 +37,7 @@ const YourChapterSection = () => {
              <div className="flex flex-col gap-10">
                <div className="flex flex-col gap-4">
                  <h3 className="text-[48px] font-bold font-notch text-black leading-[1.1]">
-                    How <span className="text-[#0000FF]">Talentifi-X</span><br />
+                    How <span className="text-[#0000FF]">TalentiFi-X</span><br />
                     Works for You
                  </h3>
                  <p className="text-lg text-black">

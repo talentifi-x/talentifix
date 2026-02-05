@@ -61,7 +61,7 @@ export function Header() {
               href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Talentifi-X on Instagram"
+              aria-label="TalentiFi-X on Instagram"
               className="text-white hover:opacity-80"
             >
               <Instagram size={18} />

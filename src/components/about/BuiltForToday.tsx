@@ -66,7 +66,7 @@ export const BuiltForToday = () => {
 
         <p className="mt-12 sm:mt-14 text-[20px] sm:text-[24px] md:text-[28px] font-semibold font-notch leading-snug">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary via-[#7F7FFF] to-primary">
-            Talentifi-X is built for this reality — adaptable, compliant,
+            TalentiFi-X is built for this reality — adaptable, compliant,
             <br className="hidden sm:block" /> and ready for what&apos;s next.
           </span>
         </p>

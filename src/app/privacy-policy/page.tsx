@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-8">
-            This privacy policy (&quot;Privacy Policy&quot;) applies to the website www.talentifix.com and any other website owned or operated by or for Talentifi-X, LLC. (&quot;Talentifix&quot;) to which you may link from this website (collectively, the &quot;Talentifix Sites&quot;), and informs you about the type of information that may be collected and used by the Talentifix Sites. By visiting or using any of the Talentifix Sites, you consent to all collection of personal information, personal data, and other information/data (&quot;Information&quot;), as well as the uses described in this Privacy Policy.
+            This privacy policy (&quot;Privacy Policy&quot;) applies to the website www.talentiFix.com and any other website owned or operated by or for TalentiFi-X, LLC. (&quot;Talentifix&quot;) to which you may link from this website (collectively, the &quot;Talentifix Sites&quot;), and informs you about the type of information that may be collected and used by the Talentifix Sites. By visiting or using any of the Talentifix Sites, you consent to all collection of personal information, personal data, and other information/data (&quot;Information&quot;), as well as the uses described in this Privacy Policy.
           </p>
 
           {/* Section 1 */}
@@ -239,7 +239,7 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-700">
                 <strong>Email:</strong>{" "}
                 <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                  privacy@talentifi-x.com
+                  privacy@talentiFi-x.com
                 </a>
               </p>
             </div>
@@ -415,7 +415,7 @@ export default function PrivacyPolicyPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Grievance Officer (India)</h3>
                 <div className="text-gray-700 space-y-2">
                   <p><strong>Designation:</strong> Grievance Officer</p>
-                  <p><strong>Email:</strong> <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">privacy@talentifi-x.com</a></p>
+                  <p><strong>Email:</strong> <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">privacy@talentiFi-x.com</a></p>
                   <p><strong>Address:</strong> 26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore 560004</p>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
@@ -484,14 +484,14 @@ export default function PrivacyPolicyPage() {
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">Email:</span>
                   <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                    privacy@talentifi-x.com
+                    privacy@talentiFi-x.com
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">Mail:</span>
                   <span className="text-gray-700">
                     ATTN: Compliance Manager,<br />
-                    Talentifi-X, 26/19 Gandhi Bazar Main Road,<br />
+                    TalentiFi-X, 26/19 Gandhi Bazar Main Road,<br />
                     Basavanagudi, Bangalore 560004
                   </span>
                 </div>

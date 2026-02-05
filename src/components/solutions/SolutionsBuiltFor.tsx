@@ -80,7 +80,7 @@ export const SolutionsBuiltFor = () => {
         </p>
 
         <Link href="/start-hiring" className="mt-10 bg-[#00DDE2] text-[#1E1E24] font-stack-text text-[16px] md:text-[24px] uppercase px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300 flex items-center gap-4">
-          Talk to a Talentifi-X Expert
+          Talk to a TalentiFi-X Expert
           <ArrowRight size={32} />
         </Link>
       </div>
