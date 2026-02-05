@@ -76,7 +76,7 @@ export function Header() {
               <Linkedin size={18} />
             </Link>
             <Link
-              href="https://x.com/TalentifiX"
+              href="https://x.com/talentifi_x"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Talentifi-X on X"

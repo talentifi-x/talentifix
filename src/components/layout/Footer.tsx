@@ -110,7 +110,7 @@ export const Footer = () => {
                 <Linkedin className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
-                href="https://x.com/TalentifiX"
+                href="https://x.com/talentifi_x"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TalentiFi-X on X"
