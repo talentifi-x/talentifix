@@ -168,7 +168,7 @@ export const Footer = () => {
           <div className="flex items-center gap-8">
             <Link href="/privacy-policy" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>
           </div>
-          <p>TalentiFi-x Inc © {new Date().getFullYear()}</p>
+          <p>TalentiFi-X LLC © {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>
