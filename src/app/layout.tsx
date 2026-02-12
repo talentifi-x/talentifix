@@ -32,6 +32,20 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDENLSNNWP"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VDENLSNNWP');
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ToastProvider>
           <Suspense >
