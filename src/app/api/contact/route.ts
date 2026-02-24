@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
         { error: "Please fill all required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       to: process.env.CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      attachments: [logoAttachment],
+      attachments: [],
       html: `
         <!DOCTYPE html>
         <html>
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(90deg, #0000FF 0%, #000099 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+            .header { background: #ffffff; color: #000000; padding: 20px; border-radius: 8px 8px 0 0; }
             .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
             .field { margin-bottom: 15px; }
             .label { font-weight: bold; color: #0000FF; }
@@ -81,21 +81,23 @@ export async function POST(req: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <div style="margin-bottom: 12px;">
-                <div style="background:#F2F4F8; display:inline-block; padding:10px 14px; border-radius:12px; line-height:0; border:1px solid rgba(0,221,226,0.55); box-shadow: 0 10px 24px rgba(0,0,0,0.18);">
-                  <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
-                </div>
-              </div>
-              <h2 style="margin: 0;">New Contact Form Submission</h2>
-              <p style="margin: 10px 0 0 0; opacity: 0.9;">TalentiFi-X Website</p>
+              <h2 style="margin: 0; color: #000000;">New Contact Form Submission</h2>
+              <p style="margin: 10px 0 0 0; opacity: 0.9; color: #000000;">TalentiFi-X Website</p>
             </div>
             <div class="content">
               <div class="field"><div class="label">Name</div><div class="value">${firstName} ${lastName}</div></div>
               <div class="field"><div class="label">Email</div><div class="value"><a href="mailto:${email}">${email}</a></div></div>
-              <div class="field"><div class="label">Organization</div><div class="value">${organization || "-"}</div></div>
-              <div class="field"><div class="label">Phone</div><div class="value">${phone || "-"}</div></div>
+              <div class="field"><div class="label">Organization</div><div class="value">${
+                organization || "-"
+              }</div></div>
+              <div class="field"><div class="label">Phone</div><div class="value">${
+                phone || "-"
+              }</div></div>
               <div class="field"><div class="label">Area of Interest</div><div class="value">${formattedInterest}</div></div>
-              <div class="field"><div class="label">Message</div><div class="message-box">${message.replace(/\n/g, "<br/>")}</div></div>
+              <div class="field"><div class="label">Message</div><div class="message-box">${message.replace(
+                /\n/g,
+                "<br/>",
+              )}</div></div>
             </div>
           </div>
         </body>
@@ -136,7 +138,7 @@ export async function POST(req: NextRequest) {
                   <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
                 </div>
               </div>
-              <p style="margin: 10px 0 0 0; opacity: 0.9;">Thank you for reaching out!</p>
+              <p style="margin: 10px 0 0 0; opacity: 0.9; color: #ffffff;">Thank you for reaching out!</p>
             </div>
             <div class="content">
               <p>Dear <span class="highlight">${firstName}</span>,</p>
@@ -162,8 +164,11 @@ export async function POST(req: NextRequest) {
     // console.log("Auto-reply sent to:", replyInfo.accepted);
 
     return NextResponse.json(
-      { message: "Your message has been sent successfully. We will get back to you soon!" },
-      { status: 200 }
+      {
+        message:
+          "Your message has been sent successfully. We will get back to you soon!",
+      },
+      { status: 200 },
     );
   } catch (error) {
     console.error("SMTP error:", error);
@@ -172,8 +177,11 @@ export async function POST(req: NextRequest) {
       console.error("Error message:", error.message);
     }
     return NextResponse.json(
-      { error: "We could not send your message at the moment. Please try again later." },
-      { status: 500 }
+      {
+        error:
+          "We could not send your message at the moment. Please try again later.",
+      },
+      { status: 500 },
     );
   }
 }
