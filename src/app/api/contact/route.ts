@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.verify();
-    console.log("SMTP connection verified successfully");
+    // console.log("SMTP connection verified successfully");
 
     const areaLabels: Record<string, string> = {
       hiring: "Hiring Talent",
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    console.log("Internal email sent to:", internalInfo.accepted);
+    // console.log("Internal email sent to:", internalInfo.accepted);
 
     // Auto-reply to user
     const replyInfo = await transporter.sendMail({
@@ -159,7 +159,7 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the auto-reply email");
     }
 
-    console.log("Auto-reply sent to:", replyInfo.accepted);
+    // console.log("Auto-reply sent to:", replyInfo.accepted);
 
     return NextResponse.json(
       { message: "Your message has been sent successfully. We will get back to you soon!" },
