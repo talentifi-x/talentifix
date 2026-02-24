@@ -30,17 +30,15 @@ type EmploymentStatusValue =
   | "freelance-open"
   | "student-grad";
 
-type RoleTypeValue = "permanent" | "contract" | "contract-to-hire" | "freelance";
+type RoleTypeValue =
+  | "permanent"
+  | "contract"
+  | "contract-to-hire"
+  | "freelance";
 
 type WorkArrangementValue = "remote" | "hybrid" | "onsite" | "flexible";
 
-type SalaryValue =
-  | "10-15"
-  | "15-20"
-  | "20-30"
-  | "30-50"
-  | "50+"
-  | "prefer-not";
+type SalaryValue = "10-15" | "15-20" | "20-30" | "30-50" | "50+" | "prefer-not";
 
 type StartTimeValue =
   | "immediately"
@@ -163,7 +161,9 @@ function safeString(formData: FormData, key: string) {
 }
 
 function safeBool(formData: FormData, key: string) {
-  const value = String(formData.get(key) ?? "").trim().toLowerCase();
+  const value = String(formData.get(key) ?? "")
+    .trim()
+    .toLowerCase();
   return value === "true" || value === "1" || value === "yes" || value === "on";
 }
 
@@ -187,7 +187,8 @@ function inferMimeType(fileName: string) {
   const ext = fileExtension(fileName);
   if (ext === "pdf") return "application/pdf";
   if (ext === "doc") return "application/msword";
-  if (ext === "docx") return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  if (ext === "docx")
+    return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
   return "";
 }
 
@@ -213,8 +214,12 @@ export async function POST(req: NextRequest) {
 
     const expertise = safeString(form, "expertise") as ExpertiseValue | "";
     const otherExpertise = safeString(form, "otherExpertise");
-    const yearsExperience = safeString(form, "yearsExperience") as ExperienceValue | "";
-    const employmentStatus = safeString(form, "employmentStatus") as EmploymentStatusValue | "";
+    const yearsExperience = safeString(form, "yearsExperience") as
+      | ExperienceValue
+      | "";
+    const employmentStatus = safeString(form, "employmentStatus") as
+      | EmploymentStatusValue
+      | "";
     const topSkills = safeString(form, "topSkills");
     const jobTitle = safeString(form, "jobTitle");
     const company = safeString(form, "company");
@@ -222,7 +227,9 @@ export async function POST(req: NextRequest) {
     const roleTypesRaw = safeString(form, "roleTypes");
     const roleTypesParsed = safeJsonArray<RoleTypeValue>(roleTypesRaw) ?? [];
 
-    const workArrangement = safeString(form, "workArrangement") as WorkArrangementValue | "";
+    const workArrangement = safeString(form, "workArrangement") as
+      | WorkArrangementValue
+      | "";
     const salaryRange = safeString(form, "salaryRange") as SalaryValue | "";
     const startTime = safeString(form, "startTime") as StartTimeValue | "";
 
@@ -253,32 +260,53 @@ export async function POST(req: NextRequest) {
       !privacyConsent ||
       !heardFrom
     ) {
-      return NextResponse.json({ error: "Please fill all required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please fill all required fields" },
+        { status: 400 },
+      );
     }
 
     if (location === "other" && !otherLocation) {
-      return NextResponse.json({ error: "Please enter your location" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please enter your location" },
+        { status: 400 },
+      );
     }
 
     if (expertise === "other" && !otherExpertise) {
-      return NextResponse.json({ error: "Please specify your expertise" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please specify your expertise" },
+        { status: 400 },
+      );
     }
 
     if (heardFrom === "other" && !otherHeardFrom) {
-      return NextResponse.json({ error: "Please specify how you heard about us" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please specify how you heard about us" },
+        { status: 400 },
+      );
     }
 
     if (!(resume instanceof File)) {
-      return NextResponse.json({ error: "Please upload your resume/CV" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please upload your resume/CV" },
+        { status: 400 },
+      );
     }
 
     if (resume.size > MAX_FILE_BYTES) {
-      return NextResponse.json({ error: "Resume file must be 5MB or smaller" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Resume file must be 5MB or smaller" },
+        { status: 400 },
+      );
     }
 
     const resumeType = resume.type || inferMimeType(resume.name);
     if (resumeType && !ACCEPTED_MIME_TYPES.has(resumeType)) {
-      return NextResponse.json({ error: "Only PDF, DOC, or DOCX files are allowed" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Only PDF, DOC, or DOCX files are allowed" },
+        { status: 400 },
+      );
     }
 
     const roleTypesLabels = roleTypesParsed
@@ -287,22 +315,31 @@ export async function POST(req: NextRequest) {
       .join(", ");
 
     const locationLabel =
-      location === "other" ? otherLocation : LOCATION_LABELS[location as LocationValue] ?? location;
+      location === "other"
+        ? otherLocation
+        : LOCATION_LABELS[location as LocationValue] ?? location;
 
     const expertiseLabel =
       expertise === "other"
         ? otherExpertise
         : EXPERTISE_LABELS[expertise as ExpertiseValue] ?? expertise;
 
-    const yearsLabel = EXPERIENCE_LABELS[yearsExperience as ExperienceValue] ?? yearsExperience;
+    const yearsLabel =
+      EXPERIENCE_LABELS[yearsExperience as ExperienceValue] ?? yearsExperience;
     const employmentLabel =
-      EMPLOYMENT_LABELS[employmentStatus as EmploymentStatusValue] ?? employmentStatus;
+      EMPLOYMENT_LABELS[employmentStatus as EmploymentStatusValue] ??
+      employmentStatus;
     const workArrangementLabel =
-      WORK_ARRANGEMENT_LABELS[workArrangement as WorkArrangementValue] ?? workArrangement;
-    const salaryLabel = SALARY_LABELS[salaryRange as SalaryValue] ?? salaryRange;
-    const startTimeLabel = START_TIME_LABELS[startTime as StartTimeValue] ?? startTime;
+      WORK_ARRANGEMENT_LABELS[workArrangement as WorkArrangementValue] ??
+      workArrangement;
+    const salaryLabel =
+      SALARY_LABELS[salaryRange as SalaryValue] ?? salaryRange;
+    const startTimeLabel =
+      START_TIME_LABELS[startTime as StartTimeValue] ?? startTime;
     const heardFromLabel =
-      heardFrom === "other" ? otherHeardFrom : HEARD_FROM_LABELS[heardFrom as HeardFromValue] ?? heardFrom;
+      heardFrom === "other"
+        ? otherHeardFrom
+        : HEARD_FROM_LABELS[heardFrom as HeardFromValue] ?? heardFrom;
 
     const phoneValue = `${countryCode} ${phoneNumber}`.trim();
 
@@ -326,9 +363,9 @@ export async function POST(req: NextRequest) {
       replyTo: email,
       subject: `New Candidate: ${fullName} — ${expertiseLabel}`,
       attachments: [
-        logoAttachment,
         {
-          filename: resume.name || `resume.${fileExtension(resume.name) || "pdf"}`,
+          filename:
+            resume.name || `resume.${fileExtension(resume.name) || "pdf"}`,
           content: resumeBuffer,
           contentType: resumeType || undefined,
         },
@@ -340,7 +377,7 @@ export async function POST(req: NextRequest) {
             <style>
               body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
               .container { max-width: 640px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(90deg, #0000FF 0%, #000099 100%); color: white; padding: 20px; border-radius: 10px 10px 0 0; }
+              .header { background: #ffffff; color: #000000; padding: 20px; border-radius: 10px 10px 0 0; }
               .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 10px 10px; }
               .row { margin-bottom: 14px; }
               .label { font-weight: bold; color: #0000FF; }
@@ -351,40 +388,85 @@ export async function POST(req: NextRequest) {
           <body>
             <div class="container">
               <div class="header">
-                <div style="margin-bottom: 12px;">
-                  <div style="background:#F2F4F8; display:inline-block; padding:10px 14px; border-radius:12px; line-height:0; border:1px solid rgba(0,221,226,0.55); box-shadow: 0 10px 24px rgba(0,0,0,0.18);">
-                    <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
-                  </div>
-                </div>
-                <h2 style="margin: 0;">Candidate Registration</h2>
-                <p style="margin: 8px 0 0 0; opacity: 0.9;">Join Our Network</p>
+                <h2 style="margin: 0; color: #000000;">Candidate Registration</h2>
+                <p style="margin: 8px 0 0 0; opacity: 0.9; color: #000000;">Join Our Network</p>
               </div>
               <div class="content">
-                <div class="row"><div class="label">Name</div><div class="value">${escapeHtml(fullName)}</div></div>
-                <div class="row"><div class="label">Email</div><div class="value"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></div></div>
-                <div class="row"><div class="label">Phone</div><div class="value">${escapeHtml(phoneValue)}</div></div>
-                <div class="row"><div class="label">Location</div><div class="value">${escapeHtml(locationLabel)}</div></div>
-                <div class="row"><div class="label">LinkedIn</div><div class="value">${linkedInUrl ? `<a href="${escapeHtml(linkedInUrl)}">${escapeHtml(linkedInUrl)}</a>` : "-"}</div></div>
+                <div class="row"><div class="label">Name</div><div class="value">${escapeHtml(
+                  fullName,
+                )}</div></div>
+                <div class="row"><div class="label">Email</div><div class="value"><a href="mailto:${escapeHtml(
+                  email,
+                )}">${escapeHtml(email)}</a></div></div>
+                <div class="row"><div class="label">Phone</div><div class="value">${escapeHtml(
+                  phoneValue,
+                )}</div></div>
+                <div class="row"><div class="label">Location</div><div class="value">${escapeHtml(
+                  locationLabel,
+                )}</div></div>
+                <div class="row"><div class="label">LinkedIn</div><div class="value">${
+                  linkedInUrl
+                    ? `<a href="${escapeHtml(linkedInUrl)}">${escapeHtml(
+                        linkedInUrl,
+                      )}</a>`
+                    : "-"
+                }</div></div>
 
-                <div class="row"><div class="label">Expertise</div><div class="value">${escapeHtml(expertiseLabel)}</div></div>
-                <div class="row"><div class="label">Experience</div><div class="value">${escapeHtml(yearsLabel)}</div></div>
-                <div class="row"><div class="label">Employment Status</div><div class="value">${escapeHtml(employmentLabel)}</div></div>
-                <div class="row"><div class="label">Top Skills</div><div class="value">${escapeHtml(topSkills)}</div></div>
-                <div class="row"><div class="label">Job Title</div><div class="value">${escapeHtml(jobTitle)}</div></div>
-                <div class="row"><div class="label">Company</div><div class="value">${escapeHtml(company || "-")}</div></div>
+                <div class="row"><div class="label">Expertise</div><div class="value">${escapeHtml(
+                  expertiseLabel,
+                )}</div></div>
+                <div class="row"><div class="label">Experience</div><div class="value">${escapeHtml(
+                  yearsLabel,
+                )}</div></div>
+                <div class="row"><div class="label">Employment Status</div><div class="value">${escapeHtml(
+                  employmentLabel,
+                )}</div></div>
+                <div class="row"><div class="label">Top Skills</div><div class="value">${escapeHtml(
+                  topSkills,
+                )}</div></div>
+                <div class="row"><div class="label">Job Title</div><div class="value">${escapeHtml(
+                  jobTitle,
+                )}</div></div>
+                <div class="row"><div class="label">Company</div><div class="value">${escapeHtml(
+                  company || "-",
+                )}</div></div>
 
-                <div class="row"><div class="label">Role Type</div><div class="value">${escapeHtml(roleTypesLabels)}</div></div>
-                <div class="row"><div class="label">Work Arrangement</div><div class="value">${escapeHtml(workArrangementLabel)}</div></div>
-                <div class="row"><div class="label">Salary Range</div><div class="value">${escapeHtml(salaryLabel)}</div></div>
-                <div class="row"><div class="label">Start Time</div><div class="value">${escapeHtml(startTimeLabel)}</div></div>
+                <div class="row"><div class="label">Role Type</div><div class="value">${escapeHtml(
+                  roleTypesLabels,
+                )}</div></div>
+                <div class="row"><div class="label">Work Arrangement</div><div class="value">${escapeHtml(
+                  workArrangementLabel,
+                )}</div></div>
+                <div class="row"><div class="label">Salary Range</div><div class="value">${escapeHtml(
+                  salaryLabel,
+                )}</div></div>
+                <div class="row"><div class="label">Start Time</div><div class="value">${escapeHtml(
+                  startTimeLabel,
+                )}</div></div>
 
-                <div class="row"><div class="label">GitHub</div><div class="value">${githubUrl ? `<a href="${escapeHtml(githubUrl)}">${escapeHtml(githubUrl)}</a>` : "-"}</div></div>
-                <div class="row"><div class="label">Portfolio</div><div class="value">${portfolioUrl ? `<a href="${escapeHtml(portfolioUrl)}">${escapeHtml(portfolioUrl)}</a>` : "-"}</div></div>
+                <div class="row"><div class="label">GitHub</div><div class="value">${
+                  githubUrl
+                    ? `<a href="${escapeHtml(githubUrl)}">${escapeHtml(
+                        githubUrl,
+                      )}</a>`
+                    : "-"
+                }</div></div>
+                <div class="row"><div class="label">Portfolio</div><div class="value">${
+                  portfolioUrl
+                    ? `<a href="${escapeHtml(portfolioUrl)}">${escapeHtml(
+                        portfolioUrl,
+                      )}</a>`
+                    : "-"
+                }</div></div>
                 <div class="row">
                   <div class="label">Targets</div>
-                  <div class="value"><div class="box">${escapeHtml(targets || "-").replaceAll("\n", "<br/>")}</div></div>
+                  <div class="value"><div class="box">${escapeHtml(
+                    targets || "-",
+                  ).replaceAll("\n", "<br/>")}</div></div>
                 </div>
-                <div class="row"><div class="label">Heard From</div><div class="value">${escapeHtml(heardFromLabel)}</div></div>
+                <div class="row"><div class="label">Heard From</div><div class="value">${escapeHtml(
+                  heardFromLabel,
+                )}</div></div>
               </div>
             </div>
           </body>
@@ -396,7 +478,9 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://talentifix.com").replace(/\/$/, "");
+    const siteUrl = (
+      process.env.NEXT_PUBLIC_SITE_URL || "https://talentifix.com"
+    ).replace(/\/$/, "");
     const privacyUrl = `${siteUrl}/privacy-policy`;
 
     const replyInfo = await transporter.sendMail({
@@ -427,13 +511,15 @@ export async function POST(req: NextRequest) {
                       <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
                     </div>
                   </div>
-                  <p style="margin: 8px 0 0 0; opacity: 0.9;">Thanks for joining our network</p>
+                  <p style="margin: 8px 0 0 0; opacity: 0.9; color: #ffffff;">Thanks for joining our network</p>
                 </div>
                 <div class="content">
                   <p>Hi ${escapeHtml(fullName)},</p>
                   <p>Thanks for joining our talent network. We specialize in AI/ML and Cybersecurity roles, and we review every profile personally.</p>
                   <p class="muted">If we have a relevant opportunity, we&apos;ll reach out — usually within 48 hours.</p>
-                  <p class="muted">Privacy policy: <a href="${escapeHtml(privacyUrl)}">${escapeHtml(privacyUrl)}</a></p>
+                  <p class="muted">Privacy policy: <a href="${escapeHtml(
+                    privacyUrl,
+                  )}">${escapeHtml(privacyUrl)}</a></p>
                 </div>
               </div>
             </div>
@@ -447,14 +533,19 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: "Thanks — your profile is in. We’ll reach out if there’s a relevant opportunity." },
+      {
+        message:
+          "Thanks — your profile is in. We’ll reach out if there’s a relevant opportunity.",
+      },
       { status: 200 },
     );
   } catch {
     return NextResponse.json(
-      { error: "We could not submit your profile at the moment. Please try again later." },
+      {
+        error:
+          "We could not submit your profile at the moment. Please try again later.",
+      },
       { status: 500 },
     );
   }
 }
-

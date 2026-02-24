@@ -51,7 +51,10 @@ const FREE_EMAIL_DOMAINS = new Set([
 function getEmailDomain(email: string) {
   const atIndex = email.lastIndexOf("@");
   if (atIndex === -1) return "";
-  return email.slice(atIndex + 1).trim().toLowerCase();
+  return email
+    .slice(atIndex + 1)
+    .trim()
+    .toLowerCase();
 }
 
 function isFreeEmail(email: string) {
@@ -93,11 +96,17 @@ export async function POST(req: NextRequest) {
     const allowPersonalEmail = Boolean(body?.allowPersonalEmail ?? false);
 
     if (!name || !email || !companyName || !role || !timeline) {
-      return NextResponse.json({ error: "Please fill all required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please fill all required fields" },
+        { status: 400 },
+      );
     }
 
     if (role === "other" && !otherRole) {
-      return NextResponse.json({ error: "Please specify the role" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please specify the role" },
+        { status: 400 },
+      );
     }
 
     const roleLabel = role === "other" ? otherRole : ROLE_LABELS[role];
@@ -122,14 +131,16 @@ export async function POST(req: NextRequest) {
 
     await transporter.verify();
 
-    const phoneValue = phoneNumber ? `${countryCode || ""} ${phoneNumber}`.trim() : "-";
+    const phoneValue = phoneNumber
+      ? `${countryCode || ""} ${phoneNumber}`.trim()
+      : "-";
 
     const internalInfo = await transporter.sendMail({
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: process.env.CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `Start Hiring Lead: ${roleLabel}`,
-      attachments: [logoAttachment],
+      attachments: [],
       html: `
         <!DOCTYPE html>
         <html>
@@ -137,7 +148,7 @@ export async function POST(req: NextRequest) {
             <style>
               body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
               .container { max-width: 640px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(90deg, #0000FF 0%, #000099 100%); color: white; padding: 20px; border-radius: 10px 10px 0 0; }
+              .header { background: #ffffff; color: #000000; padding: 20px; border-radius: 10px 10px 0 0; }
               .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 10px 10px; }
               .row { margin-bottom: 14px; }
               .label { font-weight: bold; color: #0000FF; }
@@ -148,13 +159,8 @@ export async function POST(req: NextRequest) {
           <body>
             <div class="container">
               <div class="header">
-                <div style="margin-bottom: 12px;">
-                  <div style="background:#F2F4F8; display:inline-block; padding:10px 14px; border-radius:12px; line-height:0; border:1px solid rgba(0,221,226,0.55); box-shadow: 0 10px 24px rgba(0,0,0,0.18);">
-                    <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
-                  </div>
-                </div>
-                <h2 style="margin: 0;">Primary Client Contact Form</h2>
-                <p style="margin: 8px 0 0 0; opacity: 0.9;">Start Hiring CTA</p>
+                <h2 style="margin: 0; color: #000000;">Primary Client Contact Form</h2>
+                <p style="margin: 8px 0 0 0; opacity: 0.9; color: #000000;">Start Hiring CTA</p>
               </div>
               <div class="content">
                 <div class="row">
@@ -163,7 +169,9 @@ export async function POST(req: NextRequest) {
                 </div>
                 <div class="row">
                   <div class="label">Email</div>
-                  <div class="value"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></div>
+                  <div class="value"><a href="mailto:${escapeHtml(
+                    email,
+                  )}">${escapeHtml(email)}</a></div>
                 </div>
                 <div class="row">
                   <div class="label">Company</div>
@@ -184,7 +192,10 @@ export async function POST(req: NextRequest) {
                 <div class="row">
                   <div class="label">Notes</div>
                   <div class="value">
-                    <div class="notes">${escapeHtml(notes || "-").replaceAll("\n", "<br/>")}</div>
+                    <div class="notes">${escapeHtml(notes || "-").replaceAll(
+                      "\n",
+                      "<br/>",
+                    )}</div>
                   </div>
                 </div>
               </div>
@@ -198,9 +209,13 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://talentifix.com").replace(/\/$/, "");
+    const siteUrl = (
+      process.env.NEXT_PUBLIC_SITE_URL || "https://talentifix.com"
+    ).replace(/\/$/, "");
     const helpfulLink = `${siteUrl}/blog`;
-    const contactPhone = process.env.CONTACT_PHONE ? String(process.env.CONTACT_PHONE) : "";
+    const contactPhone = process.env.CONTACT_PHONE
+      ? String(process.env.CONTACT_PHONE)
+      : "";
 
     const replyInfo = await transporter.sendMail({
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
@@ -232,22 +247,28 @@ export async function POST(req: NextRequest) {
                       <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
                     </div>
                   </div>
-                  <p style="margin: 8px 0 0 0; opacity: 0.9;">Thanks for reaching out</p>
+                  <p style="margin: 8px 0 0 0; opacity: 0.9; color: #ffffff;">Thanks for reaching out</p>
                 </div>
                 <div class="content">
                   <p>Hi ${escapeHtml(name)},</p>
-                  <p>Thanks for reaching out about your ${escapeHtml(roleLabel)} search.</p>
+                  <p>Thanks for reaching out about your ${escapeHtml(
+                    roleLabel,
+                  )} search.</p>
                   <p>I&apos;m Chet, founder of TalentiFi-X. I&apos;ve personally read your message and will respond within the next <strong>4 hours</strong> with:</p>
                   <ul class="bullet">
                     <li>Initial thoughts on your search</li>
                     <li>Our approach for this role</li>
                     <li>Timeline and next steps</li>
                   </ul>
-                  <p class="muted" style="margin-top: 16px;">In the meantime, you might find this helpful: <a href="${escapeHtml(helpfulLink)}">Read recent insights</a></p>
+                  <p class="muted" style="margin-top: 16px;">In the meantime, you might find this helpful: <a href="${escapeHtml(
+                    helpfulLink,
+                  )}">Read recent insights</a></p>
                   <p style="margin-top: 18px;">Talk soon,<br/>Chet</p>
                   ${
                     contactPhone
-                      ? `<p class="muted">P.S. Need to talk urgently? Call me directly: ${escapeHtml(contactPhone)}</p>`
+                      ? `<p class="muted">P.S. Need to talk urgently? Call me directly: ${escapeHtml(
+                          contactPhone,
+                        )}</p>`
                       : ""
                   }
                 </div>
@@ -266,14 +287,19 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: "Thanks — we’ve received your details and will respond shortly." },
+      {
+        message:
+          "Thanks — we’ve received your details and will respond shortly.",
+      },
       { status: 200 },
     );
   } catch {
     return NextResponse.json(
-      { error: "We could not send your message at the moment. Please try again later." },
+      {
+        error:
+          "We could not send your message at the moment. Please try again later.",
+      },
       { status: 500 },
     );
   }
 }
-
