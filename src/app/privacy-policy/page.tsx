@@ -238,8 +238,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p className="text-gray-700">
                 <strong>Email:</strong>{" "}
-                <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                  privacy@talentiFi-x.com
+                <a href="mailto:privacy@TalentiFi-X.com" className="text-[#0000FF] hover:underline">
+                  privacy@TalentiFi-X.com
                 </a>
               </p>
             </div>
@@ -415,7 +415,7 @@ export default function PrivacyPolicyPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Grievance Officer (India)</h3>
                 <div className="text-gray-700 space-y-2">
                   <p><strong>Designation:</strong> Grievance Officer</p>
-                  <p><strong>Email:</strong> <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">privacy@talentiFi-x.com</a></p>
+                  <p><strong>Email:</strong> <a href="mailto:privacy@TalentiFi-X.com" className="text-[#0000FF] hover:underline">privacy@TalentiFi-X.com</a></p>
                   <p><strong>Address:</strong> 26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore 560004</p>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
@@ -483,8 +483,8 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">Email:</span>
-                  <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                    privacy@talentiFi-x.com
+                  <a href="mailto:privacy@TalentiFi-X.com" className="text-[#0000FF] hover:underline">
+                    privacy@TalentiFi-X.com
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
@@ -497,14 +497,14 @@ export default function PrivacyPolicyPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">EU DPO:</span>
-                  <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                    privacy@talentifi-x.com
+                  <a href="mailto:privacy@TalentiFi-X.com" className="text-[#0000FF] hover:underline">
+                    privacy@TalentiFi-X.com
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">India GO:</span>
-                  <a href="mailto:privacy@talentifi-x.com" className="text-[#0000FF] hover:underline">
-                    privacy@talentifi-x.com
+                  <a href="mailto:privacy@TalentiFi-X.com" className="text-[#0000FF] hover:underline">
+                    privacy@TalentiFi-X.com
                   </a>
                 </div>
               </div>

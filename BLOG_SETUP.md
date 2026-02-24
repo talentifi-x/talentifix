@@ -59,7 +59,7 @@ The blog includes the following schemas:
 
 ## 6. Color Theme
 
-The blog follows the Talentifi-X color scheme:
+The blog follows the TalentiFi-X color scheme:
 - Primary: `#0000FF` (blue)
 - Secondary: `#00DDE2` (cyan)
 - Background: `#F8F9FA` (light gray)

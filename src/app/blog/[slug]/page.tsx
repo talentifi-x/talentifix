@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   
   if (!post) {
     return {
-      title: 'Post Not Found - Talentifi-X',
+      title: 'Post Not Found - TalentiFi-X',
     };
   }
 

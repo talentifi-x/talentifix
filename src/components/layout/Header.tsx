@@ -55,7 +55,7 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">contact@talentifi-x.com</span>
+          <span className="text-white text-sm font-medium">contact@TalentiFi-X.com</span>
           <div className="flex items-center gap-4">
             <Link
               href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
@@ -67,10 +67,10 @@ export function Header() {
               <Instagram size={18} />
             </Link>
             <Link
-              href="https://www.linkedin.com/company/talentifi-x/"
+              href="https://www.linkedin.com/company/TalentiFi-X/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Talentifi-X on LinkedIn"
+              aria-label="TalentiFi-X on LinkedIn"
               className="text-white hover:opacity-80"
             >
               <Linkedin size={18} />
@@ -79,7 +79,7 @@ export function Header() {
               href="https://x.com/talentifi_x"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Talentifi-X on X"
+              aria-label="TalentiFi-X on X"
               className="text-white hover:opacity-80"
             >
               <XLogoIcon size={18} />
@@ -94,7 +94,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Link href="/" className="w-[200px] h-[200px] flex items-center justify-center">
-              <Image src="/logos/logo.svg" alt="Talentifi-X Logo" width={200} height={200} />
+              <Image src="/logos/logo.svg" alt="TalentiFi-X Logo" width={200} height={200} />
             </Link>
           </div>
 

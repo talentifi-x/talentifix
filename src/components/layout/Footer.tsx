@@ -95,13 +95,13 @@ export const Footer = () => {
                 href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Talentifi-X on Instagram"
+                aria-label="TalentiFi-X on Instagram"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <Instagram className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
-                href="https://www.linkedin.com/company/talentifi-x/"
+                href="https://www.linkedin.com/company/TalentiFi-X/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TalentiFi-X on LinkedIn"
@@ -136,9 +136,9 @@ export const Footer = () => {
       </div>
       {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
       {!isZoomed && (
-        <div className="w-full flex justify-center lg:-mt-16 lg:-mb-20 mb-16 relative z-0">
-          <h1 className="text-[20vw] md:text-[300px] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none">
-            Talentifi-X
+        <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
+          <h1 className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
+            TalentiFi-X
           </h1>
         </div>
       )}
@@ -163,7 +163,7 @@ export const Footer = () => {
       </div>
 
       {/* Footer Links - Part of the footer, scrolls with it */}
-      <div className="absolute bottom-0 left-0 w-full flex flex-col justify-end pb-8 z-50 px-4">
+      <div className="relative z-50 w-full flex flex-col justify-end pb-8 px-4">
         <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
           <div className="flex items-center gap-8">
             <Link href="/privacy-policy" className="hover:text-[#0000FF] transition-colors">Privacy Policy</Link>

@@ -41,51 +41,73 @@ const HowItWorksSection = () => {
         
         {/* Header */}
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
-          <h2 className="lg:text-[54px] text-[40px] font-bold font-notch text-black leading-tight">
+          <h2 className="text-[clamp(32px,4.5vw,54px)] font-bold font-notch text-black leading-tight">
             How It <span className="text-primary">Works</span><span className="text-secondary">.</span>
           </h2>
-          <p className="lg:text-2xl text-[18px] font-bold font-sans text-black">
+          <p className="text-[clamp(16px,2vw,24px)] font-bold font-sans text-black">
             A Clear, Human-Centered Process
           </p>
         </div>
 
-        {/* Desktop View (Horizontal) */}
-        <div className="hidden md:flex relative w-full flex-row justify-between items-start gap-8">
-           {/* Connecting Line */}
-           <div className="absolute top-12 left-0 w-full h-2.25 bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-20" />
-           
-           {steps.map((step, index) => (
-             <div key={index} className="relative flex flex-col items-center gap-4 text-center z-10 flex-1">
-               {/* Icon Circle */}
-               <div className="w-46 h-46 flex items-center justify-center">
-                  <div className="w-64 h-64 relative">
-                    <Image 
-                      src={step.icon} 
-                      alt={step.title}
-                      width={200}
-                      height={200}
-                      className="object-contain"
-                    />
+        {/* Tablet View (768px–1024px): Icon left + text right with connector */}
+        <div className="hidden md:block lg:hidden w-full">
+          <div className="relative w-full max-w-3xl mx-auto">
+            <div className="absolute left-[60px] top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#0000FF] to-[#00DDE2] opacity-25" />
+            <div className="flex flex-col gap-10">
+              {steps.map((step, index) => (
+                <div key={index} className="relative z-10 flex items-start gap-8">
+                  <div className="shrink-0">
+                    <div className="relative w-[120px] h-[120px]">
+                      <Image src={step.icon} alt={step.title} fill sizes="120px" className="object-contain" />
+                    </div>
                   </div>
-               </div>
 
-               {/* Text */}
-               <div className="flex flex-col gap-2">
-                 <h3 className="text-[32px] font-bold font-notch text-black leading-tight">
-                   {step.title}
-                 </h3>
-                 {step.days && (
-                   <span className="text-2xl font-bold font-sans text-black uppercase">
-                     {step.days}
-                   </span>
-                 )}
-               </div>
-               
-               <p className="text-lg font-sans text-black font-semibold max-w-[200px]">
-                 {step.desc}
-               </p>
-             </div>
-           ))}
+                  <div className="flex flex-col gap-2 pt-4">
+                    <h3 className="text-[clamp(22px,2.6vw,28px)] font-bold font-notch text-black leading-tight">
+                      {step.title}
+                    </h3>
+                    {step.days && (
+                      <span className="text-[14px] font-bold font-sans text-black uppercase tracking-wide">
+                        {step.days}
+                      </span>
+                    )}
+                    <p className="text-[15px] font-sans text-black font-medium leading-relaxed opacity-80 max-w-[38rem]">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop View (≥1024px): Single row with small icons + connector */}
+        <div className="hidden lg:block relative w-full">
+          <div className="absolute left-0 right-0 top-[52px] h-[3px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-20" />
+          <div className="grid w-full grid-cols-5 gap-6 xl:gap-8">
+            {steps.map((step, index) => (
+              <div key={index} className="relative flex flex-col items-center gap-4 text-center z-10">
+                <div className="relative w-[104px] h-[104px]">
+                  <Image src={step.icon} alt={step.title} fill sizes="104px" className="object-contain" />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-[clamp(18px,1.6vw,26px)] font-bold font-notch text-black leading-tight">
+                    {step.title}
+                  </h3>
+                  {step.days && (
+                    <span className="text-[clamp(12px,1.1vw,16px)] font-bold font-sans text-black uppercase tracking-wide">
+                      {step.days}
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-[clamp(12px,1.05vw,14px)] font-sans text-black font-medium leading-relaxed opacity-80 max-w-[190px]">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Mobile View (Vertical Timeline) - Matches Image */}
@@ -96,21 +118,9 @@ const HowItWorksSection = () => {
            {steps.map((step, index) => (
              <div key={index} className="relative z-10 flex flex-col items-center text-center gap-4 w-full">
                
-               {/* Hexagon Container with Border */}
-               <div className="relative w-[120px] h-[120px] flex items-center justify-center filter drop-shadow-sm">
-                  {/* Border Gradient Layer */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#0000FF] via-[#7F7FFF] to-[#00DDE2]" 
-                       style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} 
-                  />
-                  {/* Inner White Layer */}
-                  <div className="absolute inset-[2px] bg-white flex items-center justify-center" 
-                       style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                  >
-                      <div className="w-[50px] h-[50px] relative">
-                        <Image src={step.icon} alt={step.title} fill className="object-contain" />
-                      </div>
-                  </div>
-               </div>
+              <div className="relative w-[120px] h-[120px]">
+                <Image src={step.icon} alt={step.title} fill sizes="120px" className="object-contain" />
+              </div>
 
                {/* Text */}
                <div className="flex flex-col gap-1 items-center bg-[#F2F4F8] px-2 pt-2 pb-4 w-full">

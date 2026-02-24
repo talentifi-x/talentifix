@@ -7,7 +7,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 
 export default defineConfig({
   name: 'production',
-  title: 'Talentifi-X Blog Studio',
+  title: 'TalentiFi-X Blog Studio',
 
   projectId,
   dataset,

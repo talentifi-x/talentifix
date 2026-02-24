@@ -14,7 +14,7 @@ import "react-international-phone/style.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Talentifi-X",
+  title: "TalentiFi-X",
   description: "Intelligent Hiring Platform",
   icons: {
     icon: "/favicon.ico",
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 import { Header } from "@components/layout/Header";
 import { Footer } from "@components/layout/Footer";
 import { BackToTop } from "@components/layout/BackToTop";
+import { CookieConsent } from "@components/layout/CookieConsent";
 
 export default async function RootLayout({
   children,
@@ -68,6 +69,7 @@ export default async function RootLayout({
                   </div>
                   <Footer />
                   <BackToTop />
+                  <CookieConsent />
                   <RefineKbar />
                 </div>
               </Refine>

@@ -74,7 +74,7 @@ const YourChapterSection = () => {
               <div className="relative w-full h-full min-h-125 rounded-md overflow-hidden">
                  <Image
                    src="/assets/figma/your-chapter-image.png"
-                   alt="Talentifi-X Works for You"
+                   alt="TalentiFi-X Works for You"
                    fill
                    className="object-cover object-top"
                  />

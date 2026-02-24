@@ -333,13 +333,13 @@ export const SolutionsPage = () => {
             <div>
               <h4 className="text-white text-[24px] font-notch font-bold mb-4">Contact</h4>
               <div className="space-y-2 text-white/80">
-                <p>Email: contact@talentifi-x.com</p>
+                <p>Email: contact@TalentiFi-X.com</p>
                 <p>Address: 26/19 Gandhibazar Main Road,<br />Basavanagudi, Bangalore - 560 004</p>
               </div>
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
-            <p className="text-white/60">© 2024 Talentifi-X. All rights reserved.</p>
+            <p className="text-white/60">© 2024 TalentiFi-X. All rights reserved.</p>
           </div>
         </div>
       </footer>

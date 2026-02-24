@@ -381,7 +381,7 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://talentifi-x.com").replace(/\/$/, "");
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://TalentiFi-X.com").replace(/\/$/, "");
     const privacyUrl = `${siteUrl}/privacy-policy`;
 
     const replyInfo = await transporter.sendMail({

@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://talentifi-x.com").replace(/\/$/, "");
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://TalentiFi-X.com").replace(/\/$/, "");
     const helpfulLink = `${siteUrl}/blog`;
     const contactPhone = process.env.CONTACT_PHONE ? String(process.env.CONTACT_PHONE) : "";
 
@@ -211,13 +211,13 @@ export async function POST(req: NextRequest) {
             <div class="container">
               <div class="card">
                 <div class="header">
-                  <h2 style="margin: 0;">Talentifi-X</h2>
+                  <h2 style="margin: 0;">TalentiFi-X</h2>
                   <p style="margin: 8px 0 0 0; opacity: 0.9;">Thanks for reaching out</p>
                 </div>
                 <div class="content">
                   <p>Hi ${escapeHtml(name)},</p>
                   <p>Thanks for reaching out about your ${escapeHtml(roleLabel)} search.</p>
-                  <p>I&apos;m Chet, founder of Talentifi-X. I&apos;ve personally read your message and will respond within the next <strong>4 hours</strong> with:</p>
+                  <p>I&apos;m Chet, founder of TalentiFi-X. I&apos;ve personally read your message and will respond within the next <strong>4 hours</strong> with:</p>
                   <ul class="bullet">
                     <li>Initial thoughts on your search</li>
                     <li>Our approach for this role</li>

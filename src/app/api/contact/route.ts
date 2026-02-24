@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
           <div class="container">
             <div class="header">
               <h2 style="margin: 0;">New Contact Form Submission</h2>
-              <p style="margin: 10px 0 0 0; opacity: 0.9;">Talentifi-X Website</p>
+              <p style="margin: 10px 0 0 0; opacity: 0.9;">TalentiFi-X Website</p>
             </div>
             <div class="content">
               <div class="field">
@@ -131,7 +131,7 @@ export async function POST(req: NextRequest) {
     const replyInfo = await transporter.sendMail({
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: email,
-      subject: "Thank you for contacting Talentifi-X",
+      subject: "Thank you for contacting TalentiFi-X",
       html: `
         <!DOCTYPE html>
         <html>
@@ -148,19 +148,19 @@ export async function POST(req: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <h1 style="margin: 0; font-size: 28px;">Talentifi-X</h1>
+              <h1 style="margin: 0; font-size: 28px;">TalentiFi-X</h1>
               <p style="margin: 10px 0 0 0; opacity: 0.9;">Thank you for reaching out!</p>
             </div>
             <div class="content">
               <p>Dear <span class="highlight">${firstName}</span>,</p>
-              <p>Thank you for contacting Talentifi-X. We have received your message and appreciate you taking the time to reach out to us.</p>
+              <p>Thank you for contacting TalentiFi-X. We have received your message and appreciate you taking the time to reach out to us.</p>
               <p>Our team will review your inquiry and get back to you as soon as possible, typically within 24-48 business hours.</p>
-              <p>If you have any urgent questions, please don't hesitate to reach us at <a href="mailto:contact@talentifi-x.com">contact@talentifi-x.com</a>.</p>
-              <p>Best regards,<br><span class="highlight">The Talentifi-X Team</span></p>
+              <p>If you have any urgent questions, please don't hesitate to reach us at <a href="mailto:contact@TalentiFi-X.com">contact@TalentiFi-X.com</a>.</p>
+              <p>Best regards,<br><span class="highlight">The TalentiFi-X Team</span></p>
             </div>
             <div class="footer">
               <p>26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore 560004</p>
-              <p>© ${new Date().getFullYear()} Talentifi-X. All rights reserved.</p>
+              <p>© ${new Date().getFullYear()} TalentiFi-X. All rights reserved.</p>
             </div>
           </div>
         </body>
