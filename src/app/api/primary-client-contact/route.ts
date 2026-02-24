@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
 
 export const runtime = "nodejs";
 
@@ -72,6 +73,14 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
+    const logoCid = "talentifi-logo";
+    const logoPath = path.join(process.cwd(), "public", "logos", "logo.png");
+    const logoAttachment = {
+      filename: "logo.png",
+      path: logoPath,
+      cid: logoCid,
+    };
+
     const name = String(body?.name ?? "").trim();
     const email = String(body?.email ?? "").trim();
     const companyName = String(body?.companyName ?? "").trim();
@@ -120,6 +129,7 @@ export async function POST(req: NextRequest) {
       to: process.env.CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `Start Hiring Lead: ${roleLabel}`,
+      attachments: [logoAttachment],
       html: `
         <!DOCTYPE html>
         <html>
@@ -138,6 +148,11 @@ export async function POST(req: NextRequest) {
           <body>
             <div class="container">
               <div class="header">
+                <div style="margin-bottom: 12px;">
+                  <div style="background:#F2F4F8; display:inline-block; padding:10px 14px; border-radius:12px; line-height:0; border:1px solid rgba(0,221,226,0.55); box-shadow: 0 10px 24px rgba(0,0,0,0.18);">
+                    <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
+                  </div>
+                </div>
                 <h2 style="margin: 0;">Primary Client Contact Form</h2>
                 <p style="margin: 8px 0 0 0; opacity: 0.9;">Start Hiring CTA</p>
               </div>
@@ -183,7 +198,7 @@ export async function POST(req: NextRequest) {
       throw new Error("SMTP did not accept the internal notification email");
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://TalentiFi-X.com").replace(/\/$/, "");
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://talentifix.com").replace(/\/$/, "");
     const helpfulLink = `${siteUrl}/blog`;
     const contactPhone = process.env.CONTACT_PHONE ? String(process.env.CONTACT_PHONE) : "";
 
@@ -191,6 +206,7 @@ export async function POST(req: NextRequest) {
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: email,
       subject: `Got it - Let's talk about your ${roleLabel} hire`,
+      attachments: [logoAttachment],
       html: `
         <!DOCTYPE html>
         <html>
@@ -211,7 +227,11 @@ export async function POST(req: NextRequest) {
             <div class="container">
               <div class="card">
                 <div class="header">
-                  <h2 style="margin: 0;">TalentiFi-X</h2>
+                  <div style="margin-bottom: 12px;">
+                    <div style="background:#F2F4F8; display:inline-block; padding:12px 16px; border-radius:14px; line-height:0; border:1px solid rgba(0,221,226,0.55); box-shadow: 0 10px 24px rgba(0,0,0,0.18);">
+                      <img src="cid:${logoCid}" alt="TalentiFi-X" height="38" style="display:block; height:38px; width:auto;" />
+                    </div>
+                  </div>
                   <p style="margin: 8px 0 0 0; opacity: 0.9;">Thanks for reaching out</p>
                 </div>
                 <div class="content">

@@ -85,7 +85,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block w-[1px] min-h-[150px] bg-gray-300" />
+          <div className="hidden md:block w-px min-h-[150px] bg-gray-300" />
 
           {/* Column 3: Connect With Us */}
           <div className="flex flex-col gap-6">
@@ -95,16 +95,16 @@ export const Footer = () => {
                 href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="TalentiFi-X on Instagram"
+                aria-label="talentifi-X on Instagram"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <Instagram className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
-                href="https://www.linkedin.com/company/TalentiFi-X/"
+                href="https://www.linkedin.com/company/talentifi-X/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="TalentiFi-X on LinkedIn"
+                aria-label="talentifi-X on LinkedIn"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <Linkedin className="w-6 h-6 text-[#0000FF]" />
@@ -113,7 +113,7 @@ export const Footer = () => {
                 href="https://x.com/talentifi_x"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="TalentiFi-X on X"
+                aria-label="talentifi-X on X"
                 className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
               >
                 <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
@@ -138,7 +138,7 @@ export const Footer = () => {
       {!isZoomed && (
         <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
           <h1 className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
-            TalentiFi-X
+            Talentifi-X
           </h1>
         </div>
       )}
