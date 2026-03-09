@@ -10,6 +10,7 @@ export const HumanLeadSection = () => {
           src="/assets/figma/human-bg.png"
           alt="Human Background"
           fill
+          sizes="100vw"
           className="object-cover opacity-10"
           quality={100}
         />
@@ -21,6 +22,7 @@ export const HumanLeadSection = () => {
           src="/assets/figma/human-group-2.svg"
           alt="Decoration Left"
           fill
+          sizes="(max-width: 768px) 0px, 598px"
           className="object-contain"
         />
       </div>
@@ -29,6 +31,7 @@ export const HumanLeadSection = () => {
           src="/assets/figma/human-group-3.svg"
           alt="Decoration Right"
           fill
+          sizes="448px"
           className="object-contain"
         />
       </div>
@@ -51,6 +54,7 @@ export const HumanLeadSection = () => {
                 src="/assets/figma/human-card-1.png"
                 alt="AI Icon"
                 fill
+                sizes="94px"
                 className="object-contain"
               />
             </div>
@@ -75,6 +79,7 @@ export const HumanLeadSection = () => {
                 src="/assets/figma/human-card-2.png"
                 alt="Ethics Icon"
                 fill
+                sizes="94px"
                 className="object-contain"
               />
             </div>

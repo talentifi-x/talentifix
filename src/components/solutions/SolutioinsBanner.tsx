@@ -12,11 +12,12 @@ export const SolutionsBanner = () => {
             Not Just Roles. Responsibility.
           </h2>
           <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-black leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-            Hiring ins’t about filling sets. It’s about trusting someone with your team, your culture, and your momentum.
+            Hiring ins’t about filling sets. It’s about trusting someone with
+            your team, your culture, and your momentum.
           </p>
           <Link
             href="/start-hiring"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-3 text-white font-bold rounded-sm bg-linear-to-r from-[#0000FF] to-[#000099] hover:from-[#0000CC] hover:to-[#000080] transition-colors"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-3 text-white font-bold rounded-sm bg-linear-to-r from-[#0000FF] to-blue hover:from-[#0000CC] hover:to-[#000080] transition-colors"
           >
             HIRE SMARTER <ArrowBigRight className="inline-block" />
           </Link>
@@ -29,7 +30,7 @@ export const SolutionsBanner = () => {
             width={600}
             height={400}
             sizes="(max-width: 1024px) 100vw, 600px"
-            className="w-full max-w-[560px] h-auto"
+            className="w-full max-w-140 h-auto"
             priority
           />
         </div>

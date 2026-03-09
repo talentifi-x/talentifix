@@ -58,6 +58,7 @@ export const FormalOfferingSection = () => {
           src="/assets/figma/formal-favicon.svg"
           alt="Favicon Background"
           fill
+          sizes="272px"
           className="object-contain"
         />
       </div>

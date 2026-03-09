@@ -34,7 +34,14 @@ export const BuiltForToday = () => {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-linear-to-b from-white/0 via-white/0 to-black/20" />
         <div className="absolute -right-28 top-1/2 hidden md:block h-[520px] w-[520px] -translate-y-1/2 opacity-10">
-          <Image src="/assets/about/built-today-favicon.svg" alt="" fill className="object-contain" aria-hidden="true" />
+          <Image
+            src="/assets/about/built-today-favicon.svg"
+            alt=""
+            fill
+            sizes="520px"
+            className="object-contain"
+            aria-hidden="true"
+          />
         </div>
       </div>
 
@@ -65,7 +72,7 @@ export const BuiltForToday = () => {
         </div>
 
         <p className="mt-12 sm:mt-14 text-[20px] sm:text-[24px] md:text-[28px] font-semibold font-notch leading-snug">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary via-[#7F7FFF] to-primary">
+          <span className="bg-clip-text text-transparent bg-linear-to-r from-secondary via-[#7F7FFF] to-primary">
             TalentiFi-X is built for this reality — adaptable, compliant,
             <br className="hidden sm:block" /> and ready for what&apos;s next.
           </span>
@@ -74,4 +81,3 @@ export const BuiltForToday = () => {
     </section>
   );
 };
-

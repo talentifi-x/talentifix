@@ -5,7 +5,7 @@ interface JsonTableProps {
     columns?: Array<{
       key: string;
       title: string;
-      type?: 'text' | 'number' | 'boolean' | 'date' | 'link';
+      type?: "text" | "number" | "boolean" | "date" | "link";
     }>;
   };
 }
@@ -15,12 +15,15 @@ export function JsonTable({ data }: JsonTableProps) {
 
   try {
     const jsonData = JSON.parse(data.jsonData);
-    
+
     // Handle array of objects
     if (Array.isArray(jsonData) && jsonData.length > 0) {
       const firstItem = jsonData[0];
-      const keys = data.columns?.map(col => col.key) || Object.keys(firstItem);
-      const columns = data.columns || keys.map(key => ({ key, title: key, type: 'text' as const }));
+      const keys =
+        data.columns?.map((col) => col.key) || Object.keys(firstItem);
+      const columns =
+        data.columns ||
+        keys.map((key) => ({ key, title: key, type: "text" as const }));
 
       return (
         <div className="my-8 overflow-x-auto">
@@ -42,18 +45,20 @@ export function JsonTable({ data }: JsonTableProps) {
                 </tr>
               </thead>
               <tbody>
-                {jsonData.map((item: any, index: number) => (
-                  <tr key={index} className="hover:bg-gray-50">
-                    {columns.map((column) => (
-                      <td
-                        key={column.key}
-                        className="px-4 py-3 text-sm text-gray-700 border-b border-gray-100"
-                      >
-                        {renderCellValue(item[column.key], column.type)}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
+                {jsonData.map(
+                  (item: Record<string, unknown>, index: number) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      {columns.map((column) => (
+                        <td
+                          key={column.key}
+                          className="px-4 py-3 text-sm text-gray-700 border-b border-gray-100"
+                        >
+                          {renderCellValue(item[column.key], column.type)}
+                        </td>
+                      ))}
+                    </tr>
+                  ),
+                )}
               </tbody>
             </table>
           </div>
@@ -62,9 +67,9 @@ export function JsonTable({ data }: JsonTableProps) {
     }
 
     // Handle single object
-    if (typeof jsonData === 'object' && jsonData !== null) {
+    if (typeof jsonData === "object" && jsonData !== null) {
       const entries = Object.entries(jsonData);
-      
+
       return (
         <div className="my-8 overflow-x-auto">
           {data.title && (
@@ -92,7 +97,7 @@ export function JsonTable({ data }: JsonTableProps) {
 
     return null;
   } catch (error) {
-    console.error('Error parsing JSON table data:', error);
+    console.error("Error parsing JSON table data:", error);
     return (
       <div className="my-8 p-4 bg-red-50 border border-red-200 rounded-lg">
         <p className="text-red-600">Error loading table data</p>
@@ -101,35 +106,37 @@ export function JsonTable({ data }: JsonTableProps) {
   }
 }
 
-function renderCellValue(value: any, type?: string) {
+function renderCellValue(value: unknown, type?: string) {
   if (value === null || value === undefined) {
     return <span className="text-gray-400">-</span>;
   }
 
   switch (type) {
-    case 'boolean':
+    case "boolean":
       return (
-        <span className={`px-2 py-1 rounded text-xs font-medium ${
-          value ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-        }`}>
-          {value ? 'Yes' : 'No'}
+        <span
+          className={`px-2 py-1 rounded text-xs font-medium ${
+            value ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+          }`}
+        >
+          {value ? "Yes" : "No"}
         </span>
       );
-    case 'date':
-      return new Date(value).toLocaleDateString();
-    case 'link':
+    case "date":
+      return new Date(String(value)).toLocaleDateString();
+    case "link":
       return (
         <a
-          href={value}
+          href={String(value)}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
         >
-          {value}
+          {String(value)}
         </a>
       );
-    case 'number':
-      return typeof value === 'number' ? value.toLocaleString() : value;
+    case "number":
+      return typeof value === "number" ? value.toLocaleString() : String(value);
     default:
       return String(value);
   }

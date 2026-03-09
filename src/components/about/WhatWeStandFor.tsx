@@ -8,7 +8,7 @@ const values = [
   "Quality Over Volume",
 ] as const;
 
-export const  WhatWeStandFor = () => {
+export const WhatWeStandFor = () => {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="relative w-full px-4 sm:px-6 md:px-14 py-18 sm:py-22">
@@ -34,13 +34,12 @@ export const  WhatWeStandFor = () => {
           <div className="mt-10 sm:mt-12 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             {values.map((label) => (
               <div key={label} className="w-full flex justify-center">
-                <div className="w-full max-w-[520px] rounded-full p-[2px] bg-gradient-to-r from-primary to-secondary">
+                <div className="w-full max-w-[520px] rounded-full p-[2px] bg-linear-to-r from-primary to-secondary">
                   <div className="rounded-full bg-white px-6 sm:px-10 py-4 sm:py-5 text-[14px] sm:text-[16px] md:text-[18px] font-bold text-black shadow-[0px_10px_30px_rgba(0,0,0,0.08)]">
                     {label}
                   </div>
                 </div>
               </div>
-
             ))}
           </div>
         </div>
@@ -49,7 +48,8 @@ export const  WhatWeStandFor = () => {
       <div className="w-full bg-black px-4 sm:px-6 md:px-14 py-6 sm:py-7">
         <p className="max-w-6xl mx-auto text-center text-white text-[16px] sm:text-[18px] md:text-[20px] font-notch font-semibold leading-tight">
           We don&apos;t send resume stacks. We{" "}
-          <span className="text-secondary">deliver candidates</span> who make sense.
+          <span className="text-secondary">deliver candidates</span> who make
+          sense.
         </p>
       </div>
     </section>

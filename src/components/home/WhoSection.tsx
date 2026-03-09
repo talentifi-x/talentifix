@@ -18,6 +18,7 @@ export const WhoSection = () => {
           src="/banner-home/icons/who.svg"
           alt="Favicon Background"
           fill
+          sizes="347px"
           className="object-contain"
         />
       </div>
@@ -37,7 +38,7 @@ export const WhoSection = () => {
         {/* Main Card */}
         <div className="w-full max-w-7xl bg-white rounded-[20px] shadow-[0px_10px_40px_rgba(0,0,0,0.05)] overflow-hidden">
           {/* Tabs Header */}
-          <div className="flex w-full border-b border-[#ECECEC]">
+          <div className="flex w-full border-b border-grey">
             {/* Leaders Tab */}
             <button
               onClick={() => setActiveTab("leaders")}
@@ -49,7 +50,7 @@ export const WhoSection = () => {
                 Leaders
               </span>
               {activeTab === "leaders" && (
-                <div className="absolute bottom-0 left-0 w-full h-[4px] bg-gradient-to-r from-blue-light to-primary shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-blue-light to-primary shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
               )}
             </button>
 
@@ -64,7 +65,7 @@ export const WhoSection = () => {
                 Teams
               </span>
               {activeTab === "teams" && (
-                <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
               )}
             </button>
 
@@ -79,17 +80,17 @@ export const WhoSection = () => {
                 Talent
               </span>
               {activeTab === "talent" && (
-                <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
               )}
             </button>
           </div>
 
           {/* Content Area */}
-          <div className="p-8 md:p-16 min-h-[400px] flex items-center">
+          <div className="p-8 md:p-16 min-h-100 flex items-center">
             {activeTab === "leaders" && (
               <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
                 {/* Hexagon Image */}
-                <div className="relative w-[280px] h-[300px] md:w-[320px] md:h-[340px] flex-shrink-0">
+                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
                   <div
                     className="relative w-full h-full"
                     style={{
@@ -101,16 +102,17 @@ export const WhoSection = () => {
                       src="/assets/figma/who-polygon.png"
                       alt="Leaders"
                       fill
+                      sizes="(max-width: 768px) 280px, 320px"
                       className="object-cover"
                     />
                   </div>
                 </div>
 
                 {/* Text Content */}
-                <div className="flex flex-col gap-6 max-w-[600px]">
+                <div className="flex flex-col gap-6 max-w-150">
                   <div className="flex flex-col gap-2">
                     <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Leaders<span className="text-[#00DDE2]">.</span>
+                      Leaders<span className="text-secondary">.</span>
                     </h3>
                     <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
                       Hiring roles that actually matter
@@ -146,7 +148,7 @@ export const WhoSection = () => {
 
             {activeTab === "teams" && (
               <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div className="relative w-[280px] h-[300px] md:w-[320px] md:h-[340px] flex-shrink-0">
+                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
                   <div
                     className="relative w-full h-full"
                     style={{
@@ -158,15 +160,16 @@ export const WhoSection = () => {
                       src="/assets/figma/who-polygon.png"
                       alt="Teams"
                       fill
+                      sizes="(max-width: 768px) 280px, 320px"
                       className="object-cover"
                     />
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-6 max-w-[600px]">
+                <div className="flex flex-col gap-6 max-w-150">
                   <div className="flex flex-col gap-2">
                     <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Teams<span className="text-[#00DDE2]">.</span>
+                      Teams<span className="text-secondary">.</span>
                     </h3>
                     <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
                       Teams that can’t afford mis-hires
@@ -200,7 +203,7 @@ export const WhoSection = () => {
 
             {activeTab === "talent" && (
               <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div className="relative w-[280px] h-[300px] md:w-[320px] md:h-[340px] flex-shrink-0">
+                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
                   <div
                     className="relative w-full h-full"
                     style={{
@@ -212,15 +215,16 @@ export const WhoSection = () => {
                       src="/assets/figma/who-polygon.png"
                       alt="Talent"
                       fill
+                      sizes="(max-width: 768px) 280px, 320px"
                       className="object-cover"
                     />
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-6 max-w-[600px]">
+                <div className="flex flex-col gap-6 max-w-150">
                   <div className="flex flex-col gap-2">
                     <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Talent<span className="text-[#00DDE2]">.</span>
+                      Talent<span className="text-secondary">.</span>
                     </h3>
                     <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
                       Talent seeking alignment, not randomness

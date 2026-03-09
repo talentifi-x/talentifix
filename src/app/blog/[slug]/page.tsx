@@ -34,11 +34,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
   if (sanityPost) {
     return {
-      title: `${sanityPost.title} | TalentiFi-X`,
+      title: sanityPost.title,
       description: sanityPost.introduction?.slice(0, 160),
+      openGraph: {
+        title: sanityPost.title,
+        description: sanityPost.introduction?.slice(0, 160) ?? undefined,
+        ...(sanityPost.image ? { images: [{ url: sanityPost.image }] } : {}),
+        type: "article",
+      },
     };
   }
-  return { title: "Post Not Found | TalentiFi-X" };
+  // Fallback to static blogPosts data when Sanity is unavailable
+  const staticPost = blogPosts.find((p) => p.slug === slug);
+  if (staticPost) {
+    return {
+      title: staticPost.title,
+      description: staticPost.introduction.slice(0, 160),
+      openGraph: {
+        title: staticPost.title,
+        description: staticPost.introduction.slice(0, 160),
+        type: "article",
+      },
+    };
+  }
+  return { title: "Post Not Found" };
 }
 
 export async function generateStaticParams() {
@@ -424,6 +443,7 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
               src={value.asset.url}
               alt={value.alt ?? ""}
               fill
+              sizes="(max-width: 1024px) 100vw, 896px"
               className="object-cover"
             />
           </div>
@@ -440,6 +460,7 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
             src={post.image}
             alt={post.title}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -562,6 +583,7 @@ export default async function BlogPostPage({ params }: Props) {
           src={post.image}
           alt={post.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

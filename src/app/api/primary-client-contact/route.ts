@@ -63,6 +63,8 @@ function isFreeEmail(email: string) {
   return FREE_EMAIL_DOMAINS.has(domain);
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -98,6 +100,13 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !companyName || !role || !timeline) {
       return NextResponse.json(
         { error: "Please fill all required fields" },
+        { status: 400 },
+      );
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid email address" },
         { status: 400 },
       );
     }

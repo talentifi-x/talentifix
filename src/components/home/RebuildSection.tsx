@@ -12,6 +12,7 @@ export const RebuildSection = () => {
           src="/banner-home/bg-rebuild.webp"
           alt="Background"
           fill
+          sizes="100vw"
           className="hidden md:block object-cover"
           quality={100}
         />
@@ -20,6 +21,7 @@ export const RebuildSection = () => {
           src="/banner-home/mobile-rebuild.webp"
           alt="Background Mobile"
           fill
+          sizes="100vw"
           className="block md:hidden object-cover"
           quality={100}
         />

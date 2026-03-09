@@ -59,7 +59,10 @@ export function CookieConsent() {
             </p>
             <p className="text-xs text-gray-600 sm:text-sm">
               You can accept or reject non-essential cookies. See our{" "}
-              <Link href="/privacy-policy" className="font-semibold text-[#0000FF] hover:underline">
+              <Link
+                href="/privacy-policy"
+                className="font-semibold text-[#0000FF] hover:underline"
+              >
                 Privacy Policy
               </Link>
               .
@@ -77,14 +80,14 @@ export function CookieConsent() {
             <button
               type="button"
               onClick={() => persistAndClose("accepted")}
-              className="w-full rounded-[8px] bg-gradient-to-r from-[#0000FF] to-[#00DDE2] px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:w-auto"
+              className="w-full rounded-[8px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:w-auto"
             >
               Accept
             </button>
           </div>
         </div>
 
-        <div className="h-1 w-full bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-60" />
+        <div className="h-1 w-full bg-linear-to-r from-[#0000FF] to-[#00DDE2] opacity-60" />
       </div>
     </div>
   );

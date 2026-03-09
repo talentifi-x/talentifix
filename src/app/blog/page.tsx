@@ -4,7 +4,7 @@ import { ArrowRight, Clock, Tag } from "lucide-react";
 import { getAllSanityPosts, type SanityPost } from "@/sanity/lib/queries";
 
 export const metadata = {
-  title: "Blog | TalentiFi-X",
+  title: "Blog",
   description: "Insights on staffing, AI, and the future of hiring.",
 };
 
@@ -63,7 +63,7 @@ export default async function BlogPage() {
               width={700}
               height={467}
               sizes="(max-width: 1024px) 100vw, 700px"
-              className="w-full max-w-[660px] h-auto"
+              className="w-full max-w-165 h-auto"
               priority
             />
           </div>
@@ -73,6 +73,13 @@ export default async function BlogPage() {
       {/* Blog Grid */}
       <section className="w-full pb-24 px-6 md:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allPosts.length === 0 && (
+            <div className="col-span-full py-24 text-center">
+              <p className="text-dark/50 font-sans text-lg">
+                No posts published yet. Check back soon.
+              </p>
+            </div>
+          )}
           {allPosts.map((post) => (
             <Link
               key={post.slug}
@@ -80,11 +87,12 @@ export default async function BlogPage() {
               className="group flex flex-col bg-white rounded-[10px] overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
             >
               {/* Thumbnail */}
-              <div className="relative w-full h-[220px] overflow-hidden bg-gray-100">
+              <div className="relative w-full h-55 overflow-hidden bg-gray-100">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Category badge */}

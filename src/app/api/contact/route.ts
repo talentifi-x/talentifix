@@ -4,6 +4,24 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+// Strips newlines/tabs to prevent SMTP header injection
+function safeField(value: unknown): string {
+  return String(value ?? "")
+    .trim()
+    .replace(/[\r\n\t]/g, " ");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -17,19 +35,24 @@ export async function POST(req: NextRequest) {
       cid: logoCid,
     };
 
-    const {
-      firstName,
-      lastName,
-      organization,
-      email,
-      phone,
-      areaOfInterest,
-      message,
-    } = body;
+    const firstName = safeField(body?.firstName);
+    const lastName = safeField(body?.lastName);
+    const organization = safeField(body?.organization);
+    const email = safeField(body?.email);
+    const phone = safeField(body?.phone);
+    const areaOfInterest = safeField(body?.areaOfInterest);
+    const message = String(body?.message ?? "").trim();
 
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
         { error: "Please fill all required fields" },
+        { status: 400 },
+      );
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid email address" },
         { status: 400 },
       );
     }
@@ -45,7 +68,6 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.verify();
-    // console.log("SMTP connection verified successfully");
 
     const areaLabels: Record<string, string> = {
       hiring: "Hiring Talent",
@@ -53,8 +75,7 @@ export async function POST(req: NextRequest) {
       partnership: "Partnership",
       other: "Other",
     };
-    const formattedInterest =
-      areaLabels[areaOfInterest] || areaOfInterest || "-";
+    const formattedInterest = areaLabels[areaOfInterest] || "-";
 
     // Internal notification email
     const internalInfo = await transporter.sendMail({
@@ -85,19 +106,24 @@ export async function POST(req: NextRequest) {
               <p style="margin: 10px 0 0 0; opacity: 0.9; color: #000000;">TalentiFi-X Website</p>
             </div>
             <div class="content">
-              <div class="field"><div class="label">Name</div><div class="value">${firstName} ${lastName}</div></div>
-              <div class="field"><div class="label">Email</div><div class="value"><a href="mailto:${email}">${email}</a></div></div>
+              <div class="field"><div class="label">Name</div><div class="value">${escapeHtml(
+                firstName,
+              )} ${escapeHtml(lastName)}</div></div>
+              <div class="field"><div class="label">Email</div><div class="value"><a href="mailto:${escapeHtml(
+                email,
+              )}">${escapeHtml(email)}</a></div></div>
               <div class="field"><div class="label">Organization</div><div class="value">${
-                organization || "-"
+                escapeHtml(organization) || "-"
               }</div></div>
               <div class="field"><div class="label">Phone</div><div class="value">${
-                phone || "-"
+                escapeHtml(phone) || "-"
               }</div></div>
-              <div class="field"><div class="label">Area of Interest</div><div class="value">${formattedInterest}</div></div>
-              <div class="field"><div class="label">Message</div><div class="message-box">${message.replace(
-                /\n/g,
-                "<br/>",
+              <div class="field"><div class="label">Area of Interest</div><div class="value">${escapeHtml(
+                formattedInterest,
               )}</div></div>
+              <div class="field"><div class="label">Message</div><div class="message-box">${escapeHtml(
+                message,
+              ).replace(/\n/g, "<br/>")}</div></div>
             </div>
           </div>
         </body>
@@ -108,8 +134,6 @@ export async function POST(req: NextRequest) {
     if (!internalInfo.accepted || internalInfo.accepted.length === 0) {
       throw new Error("SMTP did not accept the internal notification email");
     }
-
-    // console.log("Internal email sent to:", internalInfo.accepted);
 
     // Auto-reply to user
     const replyInfo = await transporter.sendMail({
@@ -141,7 +165,9 @@ export async function POST(req: NextRequest) {
               <p style="margin: 10px 0 0 0; opacity: 0.9; color: #ffffff;">Thank you for reaching out!</p>
             </div>
             <div class="content">
-              <p>Dear <span class="highlight">${firstName}</span>,</p>
+              <p>Dear <span class="highlight">${escapeHtml(
+                firstName,
+              )}</span>,</p>
               <p>Thank you for contacting TalentiFi-X. We have received your message and appreciate you taking the time to reach out to us.</p>
               <p>Our team will review your inquiry and get back to you as soon as possible, typically within 24-48 business hours.</p>
               <p>If you have any urgent questions, please reach us at <a href="mailto:contact@TalentiFi-X.com">contact@TalentiFi-X.com</a>.</p>
@@ -160,8 +186,6 @@ export async function POST(req: NextRequest) {
     if (!replyInfo.accepted || replyInfo.accepted.length === 0) {
       throw new Error("SMTP did not accept the auto-reply email");
     }
-
-    // console.log("Auto-reply sent to:", replyInfo.accepted);
 
     return NextResponse.json(
       {

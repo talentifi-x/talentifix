@@ -25,6 +25,7 @@ export const StorySection = () => {
               src="/assets/figma/story-image.png"
               alt="The Story Begins"
               fill
+              sizes="(max-width: 1024px) 100vw, 710px"
               className="object-contain"
             />
           </div>
@@ -38,6 +39,7 @@ export const StorySection = () => {
               src="/assets/figma/story-card-bg.png"
               alt="Background Pattern"
               fill
+              sizes="100vw"
               className="object-cover opacity-10"
             />
             {/* White overlay if needed, but Figma says white + image. Assuming image is the pattern. */}
@@ -47,17 +49,17 @@ export const StorySection = () => {
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center justify-center py-16 px-6 gap-10">
             <div className="flex flex-col items-center gap-2">
-              <h3 className="text-[24px] md:text-[48px] font-bold font-notch text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-dark to-gray-400">
+              <h3 className="text-[24px] md:text-[48px] font-bold font-notch text-center bg-clip-text text-transparent bg-linear-to-r from-gray-400 via-dark to-gray-400">
                 Hiring becomes waiting.
               </h3>
-              <h3 className="text-[30px] md:text-[56px] font-bold font-notch text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-dark to-gray-400">
+              <h3 className="text-[30px] md:text-[56px] font-bold font-notch text-center bg-clip-text text-transparent bg-linear-to-r from-gray-400 via-dark to-gray-400">
                 Waiting becomes settling.
               </h3>
             </div>
 
             <Link
               href="/start-hiring"
-              className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg"
+              className="bg-linear-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg"
             >
               <span className="lg:text-[20px] text-[12px] tracking-wide">
                 Discover Intelligent Hiring

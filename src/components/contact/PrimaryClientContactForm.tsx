@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { ArrowRight, CheckCircle, ChevronDown, Loader2, XCircle } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  ChevronDown,
+  Loader2,
+  XCircle,
+} from "lucide-react";
 import { PhoneInput } from "react-international-phone";
 import { useToast } from "@providers/toast";
 
@@ -49,7 +55,10 @@ const FREE_EMAIL_DOMAINS = new Set([
 function getEmailDomain(email: string) {
   const atIndex = email.lastIndexOf("@");
   if (atIndex === -1) return "";
-  return email.slice(atIndex + 1).trim().toLowerCase();
+  return email
+    .slice(atIndex + 1)
+    .trim()
+    .toLowerCase();
 }
 
 function isFreeEmail(email: string) {
@@ -69,10 +78,22 @@ const ROLE_OPTIONS: Array<{ value: RoleValue; label: string }> = [
   { value: "other", label: "Other Technical Role (Please specify)" },
 ];
 
-const TIMELINE_OPTIONS: Array<{ value: TimelineValue; label: string; hint: string }> = [
-  { value: "urgent", label: "⚡ Urgent", hint: "Need to hire within 2–4 weeks" },
+const TIMELINE_OPTIONS: Array<{
+  value: TimelineValue;
+  label: string;
+  hint: string;
+}> = [
+  {
+    value: "urgent",
+    label: "⚡ Urgent",
+    hint: "Need to hire within 2–4 weeks",
+  },
   { value: "active", label: "🎯 Active", hint: "Hiring in next 1–2 months" },
-  { value: "planning", label: "📋 Planning", hint: "Exploring for future needs" },
+  {
+    value: "planning",
+    label: "📋 Planning",
+    hint: "Exploring for future needs",
+  },
 ];
 
 export const PrimaryClientContactForm = () => {
@@ -100,16 +121,22 @@ export const PrimaryClientContactForm = () => {
 
   const roleLabel = useMemo(() => {
     const option = ROLE_OPTIONS.find((r) => r.value === formData.role);
-    if (formData.role === "other" && formData.otherRole.trim()) return formData.otherRole.trim();
+    if (formData.role === "other" && formData.otherRole.trim())
+      return formData.otherRole.trim();
     return option?.label ?? "";
   }, [formData.role, formData.otherRole]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value, type } = e.target as HTMLInputElement;
     if (type === "checkbox") {
-      setFormData((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: (e.target as HTMLInputElement).checked,
+      }));
       return;
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -124,9 +151,14 @@ export const PrimaryClientContactForm = () => {
 
     if (emailBlocked) {
       setStatus("error");
-      const message = "Please use a work email (or check ‘I’m using a personal email’).";
+      const message =
+        "Please use a work email (or check ‘I’m using a personal email’).";
       setResponseMessage(message);
-      toast({ variant: "error", title: "Fix required fields", description: message });
+      toast({
+        variant: "error",
+        title: "Fix required fields",
+        description: message,
+      });
       return;
     }
 
@@ -134,7 +166,11 @@ export const PrimaryClientContactForm = () => {
       setStatus("error");
       const message = "Please specify the role you’re looking to fill.";
       setResponseMessage(message);
-      toast({ variant: "error", title: "Fix required fields", description: message });
+      toast({
+        variant: "error",
+        title: "Fix required fields",
+        description: message,
+      });
       return;
     }
 
@@ -157,7 +193,11 @@ export const PrimaryClientContactForm = () => {
       if (response.ok) {
         setStatus("success");
         setResponseMessage(data.message);
-        toast({ variant: "success", title: "Message sent", description: data.message });
+        toast({
+          variant: "success",
+          title: "Message sent",
+          description: data.message,
+        });
         setFormData({
           name: "",
           email: "",
@@ -173,13 +213,22 @@ export const PrimaryClientContactForm = () => {
         setStatus("error");
         const message = data.error || "Something went wrong. Please try again.";
         setResponseMessage(message);
-        toast({ variant: "error", title: "Couldn't send message", description: message });
+        toast({
+          variant: "error",
+          title: "Couldn't send message",
+          description: message,
+        });
       }
     } catch {
       setStatus("error");
-      const message = "Failed to send message. Please check your connection and try again.";
+      const message =
+        "Failed to send message. Please check your connection and try again.";
       setResponseMessage(message);
-      toast({ variant: "error", title: "Couldn't send message", description: message });
+      toast({
+        variant: "error",
+        title: "Couldn't send message",
+        description: message,
+      });
     }
   };
 
@@ -188,11 +237,12 @@ export const PrimaryClientContactForm = () => {
       <div className="w-full max-w-4xl flex flex-col gap-10">
         <div className="flex flex-col gap-4">
           <h2 className="text-[40px] font-bold font-notch text-[#1E1E24]">
-            Let&apos;s Discuss Your Hiring Needs<span className="text-[#00DDE2]">.</span>
+            Let&apos;s Discuss Your Hiring Needs
+            <span className="text-[#00DDE2]">.</span>
           </h2>
           <p className="text-lg text-[#1E1E24] opacity-60 font-medium max-w-2xl">
-            Low friction, fast response. Share a few details and we&apos;ll get back within 4
-            business hours — usually faster.
+            Low friction, fast response. Share a few details and we&apos;ll get
+            back within 4 business hours — usually faster.
           </p>
         </div>
 
@@ -200,7 +250,9 @@ export const PrimaryClientContactForm = () => {
           <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-lg p-4">
             <CheckCircle className="w-6 h-6 text-green-600 shrink-0 mt-0.5" />
             <div>
-              <p className="text-green-800 font-medium">Message Sent Successfully!</p>
+              <p className="text-green-800 font-medium">
+                Message Sent Successfully!
+              </p>
               <p className="text-green-700 text-sm mt-1">{responseMessage}</p>
             </div>
           </div>
@@ -210,7 +262,9 @@ export const PrimaryClientContactForm = () => {
           <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-lg p-4">
             <XCircle className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
             <div>
-              <p className="text-red-800 font-medium">Couldn&apos;t Send Your Message</p>
+              <p className="text-red-800 font-medium">
+                Couldn&apos;t Send Your Message
+              </p>
               <p className="text-red-700 text-sm mt-1">{responseMessage}</p>
             </div>
           </div>
@@ -218,7 +272,10 @@ export const PrimaryClientContactForm = () => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-lg font-medium text-[#1E1E24]">
+            <label
+              htmlFor="name"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
               Your Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -234,7 +291,10 @@ export const PrimaryClientContactForm = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-lg font-medium text-[#1E1E24]">
+            <label
+              htmlFor="email"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
               Work Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -267,7 +327,10 @@ export const PrimaryClientContactForm = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="companyName" className="text-lg font-medium text-[#1E1E24]">
+            <label
+              htmlFor="companyName"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
               Company Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -284,20 +347,32 @@ export const PrimaryClientContactForm = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-lg font-medium text-[#1E1E24]">Phone Number</label>
+            <label
+              htmlFor="clientPhone"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
+              Phone Number
+            </label>
             <PhoneInput
               defaultCountry="in"
               value={formData.phoneNumber}
-              onChange={(phone) => setFormData((prev) => ({ ...prev, phoneNumber: phone }))}
+              onChange={(phone) =>
+                setFormData((prev) => ({ ...prev, phoneNumber: phone }))
+              }
               inputClassName="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
+              inputProps={{ id: "clientPhone" }}
               className="w-full"
               placeholder="+91 98765 43210"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="role" className="text-lg font-medium text-[#1E1E24]">
-              What role are you looking to fill? <span className="text-red-500">*</span>
+            <label
+              htmlFor="role"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
+              What role are you looking to fill?{" "}
+              <span className="text-red-500">*</span>
             </label>
             <div className="relative">
               <select
@@ -324,6 +399,7 @@ export const PrimaryClientContactForm = () => {
                 type="text"
                 id="otherRole"
                 name="otherRole"
+                aria-label="Specify other role"
                 value={formData.otherRole}
                 onChange={handleChange}
                 required
@@ -352,17 +428,29 @@ export const PrimaryClientContactForm = () => {
                         : "border-[#1E1E24] bg-[#F2F4F8] hover:bg-white",
                     ].join(" ")}
                   >
-                    <div className="font-bold text-[#1E1E24]">{option.label}</div>
-                    <div className="text-sm text-[#1E1E24]/70 mt-1">{option.hint}</div>
+                    <div className="font-bold text-[#1E1E24]">
+                      {option.label}
+                    </div>
+                    <div className="text-sm text-[#1E1E24]/70 mt-1">
+                      {option.hint}
+                    </div>
                   </button>
                 );
               })}
             </div>
-            <input type="hidden" name="timeline" value={formData.timeline} required />
+            <input
+              type="hidden"
+              name="timeline"
+              value={formData.timeline}
+              required
+            />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="notes" className="text-lg font-medium text-[#1E1E24]">
+            <label
+              htmlFor="notes"
+              className="text-lg font-medium text-[#1E1E24]"
+            >
               Anything else we should know?
             </label>
             <textarea
@@ -394,7 +482,8 @@ export const PrimaryClientContactForm = () => {
               )}
             </button>
             <p className="text-sm text-[#1E1E24]/60">
-              We&apos;ll respond within 4 hours during business hours. Usually faster.
+              We&apos;ll respond within 4 hours during business hours. Usually
+              faster.
             </p>
           </div>
         </form>

@@ -65,7 +65,7 @@ export function Header() {
   return (
     <div className="w-full flex flex-col font-sans sticky top-0 z-100">
       {/* Top Bar */}
-      <div className="w-full bg-linear-to-br from-primary to-[#000099]">
+      <div className="w-full bg-linear-to-br from-primary to-blue">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between h-10">
           <span className="text-white text-sm font-medium">
             contact@TalentiFi-X.com
@@ -103,13 +103,13 @@ export function Header() {
       </div>
 
       {/* Navigation Bar */}
-      <nav className="w-full bg-white h-[80px] shadow-sm relative z-50">
+      <nav className="w-full bg-white h-20 shadow-sm relative z-50">
         <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Link
               href="/"
-              className="w-[200px] h-[200px] flex items-center justify-center"
+              className="w-50 h-50 flex items-center justify-center"
             >
               <Image
                 src="/logos/logo.svg"
@@ -125,9 +125,6 @@ export function Header() {
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
-            {/* <Link href="/" className={getLinkClasses("/why-us")}>
-              Why Us
-            </Link> */}
             <Link href="/solutions" className={getLinkClasses("/solutions")}>
               Solutions
             </Link>

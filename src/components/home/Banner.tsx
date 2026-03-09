@@ -39,6 +39,7 @@ export const Banner = () => {
               src="/banner-home/banner.webp"
               alt="Staffing Rebuilt 3D Graphic"
               fill
+              sizes="(max-width: 1024px) 100vw, 750px"
               className="object-contain"
               priority
             />
