@@ -9,6 +9,9 @@ const nextConfig = {
   output: "standalone",
   outputFileTracingRoot: __dirname,
   ...(isWindows ? { outputFileTracing: false } : {}),
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
+  },
 };
 
 export default nextConfig;

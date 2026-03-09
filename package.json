@@ -11,8 +11,7 @@
     "start": "refine start",
     "lint": "next lint",
     "refine": "refine",
-    "studio": "sanity dev --port 3333",
-    "studio:build": "sanity build"
+    "studio": "echo 'Sanity studio removed - reinstall to use'"
   },
   "dependencies": {
     "@getbrevo/brevo": "^3.0.1",
@@ -23,20 +22,18 @@
     "@refinedev/kbar": "^2.0.0",
     "@refinedev/nextjs-router": "^7.0.0",
     "@refinedev/simple-rest": "^6.0.0",
-    "@sanity/client": "^7.14.1",
-    "@sanity/desk-tool": "^2.36.2",
-    "@sanity/image-url": "^2.0.3",
-    "@sanity/vision": "^4.12.0",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^3.99.0",
     "@types/nodemailer": "^7.0.9",
     "lucide-react": "^0.562.0",
     "next": "^15.2.4",
-    "next-sanity": "^12.0.15",
+    "next-sanity": "^9.12.3",
     "nodemailer": "^7.0.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-international-phone": "^4.7.0",
-    "sanity": "^4.12.0",
-    "styled-components": "^6.3.8"
+    "sanity": "^3.99.0",
+    "styled-components": "^6.3.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",

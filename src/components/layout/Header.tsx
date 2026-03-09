@@ -66,7 +66,7 @@ export function Header() {
     <div className="w-full flex flex-col font-sans sticky top-0 z-100">
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
-        <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
+        <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between h-10">
           <span className="text-white text-sm font-medium">
             contact@TalentiFi-X.com
           </span>
@@ -104,7 +104,7 @@ export function Header() {
 
       {/* Navigation Bar */}
       <nav className="w-full bg-white h-[80px] shadow-sm relative z-50">
-        <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-4 flex items-center justify-between">
+        <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Link

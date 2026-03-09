@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export const StorySection = () => {
   return (
-    <section className="w-full py-20 px-6 md:px-4 flex flex-col gap-14 bg-white">
+    <section className="w-full py-20 px-6 md:px-8 flex flex-col gap-14 bg-white">
       <div className=" max-w-7xl mx-auto">
         {/* Top Part: Story Text & Image */}
         <div className="flex flex-col lg:flex-row items-center lg:gap-16 xl:gap-48 justify-between">
@@ -12,7 +12,7 @@ export const StorySection = () => {
           <div className="flex flex-col lg:gap-12 gap-4 flex-1">
             <h2 className="text-[50px] md:text-[80px] lg:leading-[1.3] leading-none font-bold text-dark font-notch">
               The Story <br />
-              Begins<span className="text-secondary">.</span> 
+              Begins<span className="text-secondary">.</span>
             </h2>
             <p className="lg:text-[24px] text-[20px] leading-[1.3] font-sans text-dark font-normal">
               It Always Started the Same Way
@@ -55,8 +55,13 @@ export const StorySection = () => {
               </h3>
             </div>
 
-            <Link href="/start-hiring" className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg">
-              <span className="lg:text-[20px] text-[12px] tracking-wide">Discover Intelligent Hiring</span>
+            <Link
+              href="/start-hiring"
+              className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white px-12 py-6 rounded-[5px] flex items-center justify-center gap-4 font-normal uppercase hover:opacity-90 transition-opacity shadow-lg"
+            >
+              <span className="lg:text-[20px] text-[12px] tracking-wide">
+                Discover Intelligent Hiring
+              </span>
               <ArrowRight size={24} />
             </Link>
           </div>

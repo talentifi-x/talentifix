@@ -3,9 +3,15 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Tag, ArrowLeft } from "lucide-react";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { FaqSection } from "@components/blog/FaqSection";
 import { TableOfContents } from "@components/blog/TableOfContents";
 import { blogPosts, BlogSection } from "@data/blogData";
+import {
+  getSanityPostBySlug,
+  getAllSanityPostSlugs,
+  type SanityPostFull,
+} from "@/sanity/lib/queries";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -21,18 +27,23 @@ const toId = (str: string) =>
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
-  if (!post) return { title: "Post Not Found | TalentiFi-X" };
-  return {
-    title: `${post.title} | TalentiFi-X`,
-    description: post.introduction.slice(0, 160),
-  };
+  const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+  if (sanityPost) {
+    return {
+      title: `${sanityPost.title} | TalentiFi-X`,
+      description: sanityPost.introduction?.slice(0, 160),
+    };
+  }
+  return { title: "Post Not Found | TalentiFi-X" };
 }
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await getAllSanityPostSlugs().catch(() => []);
+  return slugs;
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -300,10 +311,237 @@ function SectionContent({ section }: { section: BlogSection }) {
   );
 }
 
+// ─── Sanity post renderer ─────────────────────────────────────────────────────
+
+function SanityPostPage({ post }: { post: SanityPostFull }) {
+  const date = post.publishedAt
+    ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
+
+  // Build TOC by scanning body for h2 blocks
+  type RawBlock = {
+    _type: string;
+    style?: string;
+    children?: { text: string }[];
+  };
+  const bodyBlocks = (post.body ?? []) as RawBlock[];
+  const tocItems = [
+    ...bodyBlocks
+      .filter(
+        (b) => b._type === "block" && (b.style === "h2" || b.style === "h3"),
+      )
+      .map((b) => ({
+        title: b.children?.map((c) => c.text).join("") ?? "",
+        id: toId(b.children?.map((c) => c.text).join("") ?? ""),
+        level: b.style === "h3" ? 2 : 1,
+      })),
+    ...(post.faq && post.faq.length > 0
+      ? [{ title: "Frequently Asked Questions", id: "faq", level: 1 }]
+      : []),
+  ];
+
+  const portableComponents: PortableTextComponents = {
+    block: {
+      h2: ({ value, children }) => {
+        const text =
+          (value as RawBlock).children?.map((c) => c.text).join("") ?? "";
+        return (
+          <h2
+            id={toId(text)}
+            className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200 scroll-mt-36 mt-12"
+          >
+            {children}
+          </h2>
+        );
+      },
+      h3: ({ value, children }) => {
+        const text =
+          (value as RawBlock).children?.map((c) => c.text).join("") ?? "";
+        return (
+          <h3
+            id={toId(text)}
+            className="text-[18px] md:text-[22px] font-notch font-bold text-dark mb-3 mt-8 scroll-mt-36"
+          >
+            {children}
+          </h3>
+        );
+      },
+      normal: ({ children }) => (
+        <p className="text-dark/70 font-sans text-base md:text-lg leading-relaxed mb-4">
+          {children}
+        </p>
+      ),
+      blockquote: ({ children }) => (
+        <div className="bg-secondary/10 border-l-4 border-secondary rounded-r-lg px-5 py-4 my-4">
+          <p className="font-sans text-dark/80 text-base leading-relaxed italic">
+            {children}
+          </p>
+        </div>
+      ),
+    },
+    list: {
+      bullet: ({ children }) => (
+        <ul className="flex flex-col gap-2.5 ml-1 mb-4">{children}</ul>
+      ),
+      number: ({ children }) => (
+        <ol className="flex flex-col gap-2.5 ml-4 mb-4 list-decimal">
+          {children}
+        </ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }) => (
+        <li className="flex items-start gap-3 font-sans text-dark/70 text-base leading-relaxed">
+          <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-primary" />
+          <span>{children}</span>
+        </li>
+      ),
+      number: ({ children }) => (
+        <li className="font-sans text-dark/70 text-base leading-relaxed">
+          {children}
+        </li>
+      ),
+    },
+    marks: {
+      strong: ({ children }) => (
+        <strong className="font-bold text-dark">{children}</strong>
+      ),
+      em: ({ children }) => <em className="italic">{children}</em>,
+    },
+    types: {
+      image: ({
+        value,
+      }: {
+        value: { asset?: { url?: string }; alt?: string };
+      }) =>
+        value?.asset?.url ? (
+          <div className="relative my-8 rounded-lg overflow-hidden aspect-video">
+            <Image
+              src={value.asset.url}
+              alt={value.alt ?? ""}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ) : null,
+    },
+  };
+
+  return (
+    <div className="w-full bg-[#F7F9FC] min-h-screen">
+      {/* Hero image */}
+      <div className="w-full h-80 md:h-115 relative overflow-hidden">
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <div className="w-full h-full bg-primary/10" />
+        )}
+        <div className="absolute inset-0 bg-linear-to-b from-dark/20 via-dark/10 to-[#F7F9FC]" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
+        {/* Back link */}
+        <div className="pt-8 pb-4">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Blog
+          </Link>
+        </div>
+
+        {/* Two-column layout */}
+        <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
+          {/* Sticky TOC */}
+          {tocItems.length > 0 && (
+            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky top-8">
+              <TableOfContents items={tocItems} />
+            </aside>
+          )}
+
+          {/* Article */}
+          <article className="flex-1 min-w-0">
+            <header className="mb-10">
+              <div className="flex items-center gap-4 text-dark/40 text-xs font-sans mb-4">
+                <span>{date}</span>
+                {post.readTime && (
+                  <>
+                    <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3 h-3" />
+                      {post.readTime}
+                    </span>
+                  </>
+                )}
+              </div>
+              <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
+                {post.title}
+              </h1>
+              <div className="w-14 h-1 bg-primary rounded-full mb-6" />
+              {post.introduction && (
+                <p className="text-dark/70 font-sans text-base md:text-lg leading-relaxed">
+                  {post.introduction}
+                </p>
+              )}
+            </header>
+
+            {/* Mobile TOC */}
+            {tocItems.length > 0 && (
+              <div className="lg:hidden mb-10">
+                <TableOfContents items={tocItems} />
+              </div>
+            )}
+
+            {/* Body */}
+            {post.body && post.body.length > 0 && (
+              <div className="flex flex-col gap-0">
+                <PortableText
+                  value={
+                    post.body as Parameters<typeof PortableText>[0]["value"]
+                  }
+                  components={portableComponents}
+                />
+              </div>
+            )}
+
+            {/* FAQ */}
+            {post.faq && post.faq.length > 0 && (
+              <section id="faq" className="scroll-mt-36 mt-12">
+                <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
+                  Frequently Asked Questions
+                </h2>
+                <FaqSection faqs={post.faq} />
+              </section>
+            )}
+          </article>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
+
+  // Try Sanity first
+  const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+  if (sanityPost) return <SanityPostPage post={sanityPost} />;
+
+  // Fall back to static data
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
@@ -328,7 +566,7 @@ export default async function BlogPostPage({ params }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-linear-to-b from-dark/20 via-dark/10 to-[#F7F9FC]" />
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 md:px-4">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6">
           <span className="inline-flex items-center gap-2 bg-primary text-white text-xs font-notch font-bold uppercase tracking-wider px-3 py-1.5 rounded-sm">
             <Tag className="w-3 h-3" />
             {post.category}
@@ -336,7 +574,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-4 pb-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
         {/* Back link */}
         <div className="pt-8 pb-4">
           <Link
@@ -386,7 +624,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.sections.map((section) => {
                 const id = toId(section.heading);
                 return (
-                  <section key={id} id={id} className="scroll-mt-24">
+                  <section key={id} id={id} className="scroll-mt-36">
                     <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
                       {section.heading}
                     </h2>
@@ -396,7 +634,7 @@ export default async function BlogPostPage({ params }: Props) {
               })}
 
               {/* ── FAQ ── */}
-              <section id="faq" className="scroll-mt-24">
+              <section id="faq" className="scroll-mt-36">
                 <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
                   Frequently Asked Questions
                 </h2>
