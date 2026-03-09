@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface TableOfContentsItem {
   title: string;
@@ -13,7 +13,7 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ items }: TableOfContentsProps) {
-  const [activeId, setActiveId] = useState<string>('');
+  const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,52 +25,46 @@ export function TableOfContents({ items }: TableOfContentsProps) {
         });
       },
       {
-        rootMargin: '-20% 0px -80% 0px',
-        threshold: 0.1,
-      }
+        rootMargin: "-10% 0px -80% 0px",
+        threshold: 0,
+      },
     );
 
     items.forEach((item) => {
       const element = document.getElementById(item.id);
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => {
       items.forEach((item) => {
         const element = document.getElementById(item.id);
-        if (element) {
-          observer.unobserve(element);
-        }
+        if (element) observer.unobserve(element);
       });
     };
   }, [items]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-      <h3 className="text-lg font-bold text-dark mb-4">Table of Contents</h3>
-      <nav className="space-y-2">
+    <div className="bg-white rounded-[10px] p-5 border border-gray-100 shadow-sm">
+      <h3 className="font-notch font-bold text-dark text-sm uppercase tracking-widest mb-4 pb-3 border-b border-gray-100">
+        Contents
+      </h3>
+      <nav className="flex flex-col gap-0.5">
         {items.map((item) => (
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className={`block w-full text-left text-sm transition-colors hover:text-primary ${
+            className={`text-left text-sm leading-snug py-1.5 px-2 rounded-md transition-colors w-full ${
               activeId === item.id
-                ? 'text-primary font-medium'
-                : 'text-gray-600 hover:text-gray-800'
-            } ${
-              item.level === 2 ? 'pl-4' : item.level === 3 ? 'pl-8' : ''
-            }`}
+                ? "bg-primary/8 text-primary font-semibold"
+                : "text-dark/50 hover:text-dark hover:bg-gray-50"
+            } ${item.level === 2 ? "pl-5" : item.level === 3 ? "pl-8" : ""}`}
           >
             {item.title}
           </button>

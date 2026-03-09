@@ -1,258 +1,420 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Calendar, Clock, ArrowLeft, User, Tag } from 'lucide-react';
-import { PortableText } from '@portabletext/react';
-import { blogDataProvider } from '@lib/sanity/dataProvider';
-import { urlForImage } from '@lib/sanity/client';
-import { JsonTable } from '@components/blog/JsonTable';
-import { FaqSection } from '@components/blog/FaqSection';
-import { TableOfContents } from '@components/blog/TableOfContents';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { Clock, Tag, ArrowLeft } from "lucide-react";
+import { FaqSection } from "@components/blog/FaqSection";
+import { TableOfContents } from "@components/blog/TableOfContents";
+import { blogPosts, BlogSection } from "@data/blogData";
 
-interface BlogPostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+interface Props {
+  params: Promise<{ slug: string }>;
 }
 
-async function getBlogPost(slug: string) {
-  try {
-    // First get the post ID from slug
-    const allPosts = await blogDataProvider.getList({
-      resource: 'blogPost',
-      pagination: { currentPage: 1, pageSize: 100 },
-      filters: [],
-      sorters: [],
-    });
-    
-    const post = allPosts.data.find((p: any) => p.slug.current === slug);
-    
-    if (!post) {
-      return null;
-    }
+const toId = (str: string) =>
+  str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
-    // Get full post data
-    const result = await blogDataProvider.getOne({
-      resource: 'blogPost',
-      id: post._id,
-    });
+// ─── Metadata ────────────────────────────────────────────────────────────────
 
-    return result.data;
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
-    return null;
-  }
-}
-
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getBlogPost(slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found - TalentiFi-X',
-    };
-  }
-
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return { title: "Post Not Found | TalentiFi-X" };
   return {
-    title: post.seoTitle || post.title,
-    description: post.seoDescription || post.excerpt,
-    openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-      images: post.featuredImage ? [urlForImage(post.featuredImage).url()] : [],
-    },
+    title: `${post.title} | TalentiFi-X`,
+    description: post.introduction.slice(0, 160),
   };
 }
 
-function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+export function generateStaticParams() {
+  return blogPosts.map((p) => ({ slug: p.slug }));
 }
 
-const portableTextComponents = {
-  types: {
-    jsonTable: ({ value }: any) => <JsonTable data={value} />,
-    faqSection: ({ value }: any) => <FaqSection data={value} />,
-    image: ({ value }: any) => (
-      <div className="my-8">
-        <Image
-          src={urlForImage(value).url()}
-          alt={value.alt || 'Blog image'}
-          width={800}
-          height={400}
-          className="rounded-lg"
-        />
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function BulletList({
+  items,
+  dotClass = "bg-primary",
+}: {
+  items: string[];
+  dotClass?: string;
+}) {
+  return (
+    <ul className="flex flex-col gap-2.5 ml-1">
+      {items.map((item, i) => (
+        <li
+          key={i}
+          className="flex items-start gap-3 font-sans text-dark/70 text-base leading-relaxed"
+        >
+          <span
+            className={`mt-2 shrink-0 w-1.5 h-1.5 rounded-full ${dotClass}`}
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function CardList({
+  items,
+  accent = "border-primary",
+}: {
+  items: { title: string; description: string }[];
+  accent?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-3 mt-1">
+      {items.map((card, i) => (
+        <div
+          key={i}
+          className={`border-l-4 ${accent} bg-white rounded-r-lg pl-4 pr-5 py-3 shadow-sm`}
+        >
+          <p className="font-notch font-bold text-dark text-[15px] mb-1">
+            {card.title}
+          </p>
+          <p className="font-sans text-dark/60 text-sm leading-relaxed">
+            {card.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TwoColumn({
+  leftLabel,
+  leftItems,
+  leftDot,
+  leftBg,
+  leftBorder,
+  rightLabel,
+  rightItems,
+  rightDot,
+  rightBg,
+  rightBorder,
+}: {
+  leftLabel: string;
+  leftItems: string[];
+  leftDot: string;
+  leftBg: string;
+  leftBorder: string;
+  rightLabel: string;
+  rightItems: string[];
+  rightDot: string;
+  rightBg: string;
+  rightBorder: string;
+}) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+      <div className={`${leftBg} ${leftBorder} border rounded-lg p-4`}>
+        <p className="font-notch font-bold text-sm uppercase tracking-wider mb-3 text-primary">
+          {leftLabel}
+        </p>
+        <ul className="flex flex-col gap-2">
+          {leftItems.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-2 font-sans text-dark/70 text-sm"
+            >
+              <span
+                className={`mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full ${leftDot}`}
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-    ),
-  },
-  block: {
-    h1: ({ children }: any) => (
-      <h1 className="text-4xl font-bold text-dark mb-6 mt-8">{children}</h1>
-    ),
-    h2: ({ children }: any) => (
-      <h2 className="text-3xl font-bold text-dark mb-4 mt-8">{children}</h2>
-    ),
-    h3: ({ children }: any) => (
-      <h3 className="text-2xl font-bold text-dark mb-4 mt-6">{children}</h3>
-    ),
-    h4: ({ children }: any) => (
-      <h4 className="text-xl font-bold text-dark mb-3 mt-6">{children}</h4>
-    ),
-    normal: ({ children }: any) => (
-      <p className="text-gray-700 mb-4 leading-relaxed">{children}</p>
-    ),
-    blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-600">
-        {children}
-      </blockquote>
-    ),
-  },
-  marks: {
-    strong: ({ children }: any) => <strong className="font-bold">{children}</strong>,
-    em: ({ children }: any) => <em className="italic">{children}</em>,
-    link: ({ value, children }: any) => (
-      <a
-        href={value.href}
-        target={value.blank ? '_blank' : '_self'}
-        rel={value.blank ? 'noopener noreferrer' : ''}
-        className="text-primary hover:underline"
-      >
-        {children}
-      </a>
-    ),
-  },
-  list: {
-    bullet: ({ children }: any) => (
-      <ul className="list-disc pl-6 mb-4 space-y-2">{children}</ul>
-    ),
-    number: ({ children }: any) => (
-      <ol className="list-decimal pl-6 mb-4 space-y-2">{children}</ol>
-    ),
-  },
-  listItem: {
-    bullet: ({ children }: any) => <li className="text-gray-700">{children}</li>,
-    number: ({ children }: any) => <li className="text-gray-700">{children}</li>,
-  },
-};
+      <div className={`${rightBg} ${rightBorder} border rounded-lg p-4`}>
+        <p className="font-notch font-bold text-sm uppercase tracking-wider mb-3 text-dark">
+          {rightLabel}
+        </p>
+        <ul className="flex flex-col gap-2">
+          {rightItems.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-2 font-sans text-dark/70 text-sm"
+            >
+              <span
+                className={`mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full ${rightDot}`}
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
-  const post = await getBlogPost(slug);
-
-  if (!post) {
-    notFound();
-  }
+function SectionContent({ section }: { section: BlogSection }) {
+  const hasAiHuman =
+    (section.ai_roles ?? section.ai_responsibilities) &&
+    (section.human_roles ?? section.human_responsibilities);
 
   return (
-    <div className="w-full bg-white min-h-screen">
-      {/* Hero Section */}
-      <section className="w-full bg-gradient-to-br from-primary to-[#000099] py-16">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              {post.categories?.map((category: any) => (
-                <span
-                  key={category._id}
-                  className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                >
-                  {category.title}
-                </span>
-              ))}
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {post.title}
-            </h1>
-            <p className="text-xl text-white/90 mb-8">
-              {post.excerpt}
+    <div className="flex flex-col gap-4">
+      {section.content && (
+        <p className="text-dark/70 font-sans text-base md:text-lg leading-relaxed">
+          {section.content}
+        </p>
+      )}
+
+      {/* Generic bullet lists */}
+      {section.points && <BulletList items={section.points} />}
+      {section.benefits && <BulletList items={section.benefits} />}
+      {section.challenges && <BulletList items={section.challenges} />}
+      {section.causes && <BulletList items={section.causes} />}
+      {section.indicators && <BulletList items={section.indicators} />}
+      {section.needs && <BulletList items={section.needs} />}
+      {section.advantages && <BulletList items={section.advantages} />}
+      {section.capabilities && <BulletList items={section.capabilities} />}
+      {section.misconceptions && <BulletList items={section.misconceptions} />}
+      {section.successful_partners && (
+        <BulletList items={section.successful_partners} />
+      )}
+      {section.future_characteristics && (
+        <BulletList items={section.future_characteristics} />
+      )}
+      {section.effects && <BulletList items={section.effects} />}
+      {section.impacts && (
+        <BulletList items={section.impacts} dotClass="bg-dark/40" />
+      )}
+      {section.risks && (
+        <BulletList items={section.risks} dotClass="bg-amber-400" />
+      )}
+      {section.not_defined_by && (
+        <BulletList items={section.not_defined_by} dotClass="bg-dark/30" />
+      )}
+      {section.defined_by && <BulletList items={section.defined_by} />}
+
+      {/* Card lists */}
+      {section.issues && (
+        <CardList items={section.issues} accent="border-primary" />
+      )}
+      {section.automation_areas && (
+        <CardList items={section.automation_areas} accent="border-primary" />
+      )}
+      {section.human_only_areas && (
+        <CardList items={section.human_only_areas} accent="border-secondary" />
+      )}
+
+      {/* AI vs Human two-column */}
+      {hasAiHuman && (
+        <TwoColumn
+          leftLabel="AI Handles"
+          leftItems={(section.ai_roles ?? section.ai_responsibilities)!}
+          leftDot="bg-primary"
+          leftBg="bg-primary/5"
+          leftBorder="border-primary/20"
+          rightLabel="Humans Handle"
+          rightItems={(section.human_roles ?? section.human_responsibilities)!}
+          rightDot="bg-secondary"
+          rightBg="bg-secondary/10"
+          rightBorder="border-secondary/30"
+        />
+      )}
+
+      {/* Insight callout */}
+      {section.insight && (
+        <div className="bg-secondary/10 border-l-4 border-secondary rounded-r-lg px-5 py-4 mt-1">
+          <p className="font-sans text-dark/80 text-base leading-relaxed italic">
+            {section.insight}
+          </p>
+        </div>
+      )}
+
+      {/* Warning */}
+      {section.warning && (
+        <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg px-5 py-4">
+          <p className="font-sans text-amber-900/80 text-base leading-relaxed">
+            {section.warning}
+          </p>
+        </div>
+      )}
+
+      {/* Q&A */}
+      {section.question && (
+        <div className="bg-primary/5 border border-primary/20 rounded-lg px-5 py-4 flex flex-col gap-2">
+          <p className="font-notch font-bold text-primary text-base">
+            {section.question}
+          </p>
+          {section.explanation && (
+            <p className="font-sans text-dark/70 text-base">
+              {section.explanation}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-white/80">
-              {post.author && (
-                <div className="flex items-center gap-2">
-                  <User size={16} />
-                  <span>{post.author.name}</span>
-                </div>
-              )}
-              <div className="flex items-center gap-2">
-                <Calendar size={16} />
-                <span>{formatDate(post.publishedAt)}</span>
+          )}
+        </div>
+      )}
+
+      {/* Vision */}
+      {section.vision && (
+        <div className="bg-dark/5 border-l-4 border-dark/20 rounded-r-lg px-5 py-4">
+          <p className="font-sans text-dark/80 text-base leading-relaxed italic">
+            {section.vision}
+          </p>
+        </div>
+      )}
+
+      {section.impact && (
+        <p className="text-dark/70 font-sans text-base leading-relaxed">
+          {section.impact}
+        </p>
+      )}
+      {section.candidate_expectations && (
+        <p className="text-dark/70 font-sans text-base leading-relaxed">
+          {section.candidate_expectations}
+        </p>
+      )}
+      {section.summary && (
+        <p className="text-dark/70 font-sans text-base leading-relaxed">
+          {section.summary}
+        </p>
+      )}
+
+      {/* Key message pill */}
+      {section.key_message && (
+        <div className="flex justify-start mt-2">
+          <span className="inline-block bg-primary text-white font-notch font-bold text-sm tracking-widest uppercase px-6 py-3 rounded-sm">
+            {section.key_message}
+          </span>
+        </div>
+      )}
+
+      {section.conclusion && (
+        <p className="text-dark/70 font-sans text-base leading-relaxed">
+          {section.conclusion}
+        </p>
+      )}
+      {section.closing && (
+        <p className="text-dark font-sans text-base leading-relaxed font-semibold">
+          {section.closing}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) notFound();
+
+  const tocItems = [
+    ...post.sections.map((s) => ({
+      title: s.heading,
+      id: toId(s.heading),
+      level: 1,
+    })),
+    { title: "Frequently Asked Questions", id: "faq", level: 1 },
+  ];
+
+  return (
+    <div className="w-full bg-[#F7F9FC] min-h-screen">
+      {/* ── Hero image ── */}
+      <div className="w-full h-80 md:h-115 relative overflow-hidden">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-dark/20 via-dark/10 to-[#F7F9FC]" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 md:px-4">
+          <span className="inline-flex items-center gap-2 bg-primary text-white text-xs font-notch font-bold uppercase tracking-wider px-3 py-1.5 rounded-sm">
+            <Tag className="w-3 h-3" />
+            {post.category}
+          </span>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-4 pb-24">
+        {/* Back link */}
+        <div className="pt-8 pb-4">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Blog
+          </Link>
+        </div>
+
+        {/* ── Two-column layout ── */}
+        <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
+          {/* ── LEFT: Sticky Table of Contents ── */}
+          <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky top-8">
+            <TableOfContents items={tocItems} />
+          </aside>
+
+          {/* ── RIGHT: Article ── */}
+          <article className="flex-1 min-w-0">
+            {/* Title + meta */}
+            <header className="mb-10">
+              <div className="flex items-center gap-4 text-dark/40 text-xs font-sans mb-4">
+                <span>{post.date}</span>
+                <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  {post.readTime}
+                </span>
               </div>
-              {post.readingTime && (
-                <div className="flex items-center gap-2">
-                  <Clock size={16} />
-                  <span>{post.readingTime} min read</span>
-                </div>
-              )}
+              <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
+                {post.title}
+              </h1>
+              <div className="w-14 h-1 bg-primary rounded-full mb-6" />
+              <p className="text-dark/70 font-sans text-base md:text-lg leading-relaxed">
+                {post.introduction}
+              </p>
+            </header>
+
+            {/* Mobile TOC (shown only on small screens) */}
+            <div className="lg:hidden mb-10">
+              <TableOfContents items={tocItems} />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="w-full py-16">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-4">
-          <div className="grid lg:grid-cols-4 gap-12">
-            {/* Sidebar - Table of Contents */}
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24">
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8 transition-colors"
-                >
-                  <ArrowLeft size={16} />
-                  Back to Blog
-                </Link>
-                
-                {post.tableOfContents && post.tableOfContents.length > 0 && (
-                  <TableOfContents items={post.tableOfContents} />
-                )}
+            {/* ── Sections ── */}
+            <div className="flex flex-col gap-12">
+              {post.sections.map((section) => {
+                const id = toId(section.heading);
+                return (
+                  <section key={id} id={id} className="scroll-mt-24">
+                    <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
+                      {section.heading}
+                    </h2>
+                    <SectionContent section={section} />
+                  </section>
+                );
+              })}
 
-                {/* Tags */}
-                {post.tags && post.tags.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-lg font-bold text-dark mb-4">Tags</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags.map((tag: string) => (
-                        <span
-                          key={tag}
-                          className="bg-grey-accent text-gray-600 px-3 py-1 rounded-full text-sm"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+              {/* ── FAQ ── */}
+              <section id="faq" className="scroll-mt-24">
+                <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
+                  Frequently Asked Questions
+                </h2>
+                <FaqSection faqs={post.faq} />
+              </section>
+            </div>
+
+            {/* Tagline footer */}
+            {post.tagline && (
+              <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+                <p className="font-notch font-bold text-dark/30 text-base tracking-widest uppercase">
+                  {post.tagline}
+                </p>
               </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-3">
-              {post.featuredImage && (
-                <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8">
-                  <Image
-                    src={urlForImage(post.featuredImage).url()}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-
-              <div className="prose prose-lg max-w-none">
-                <PortableText
-                  value={post.content}
-                  components={portableTextComponents}
-                />
-              </div>
-            </article>
-          </div>
+            )}
+          </article>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
