@@ -27,7 +27,7 @@ export const WhoSection = () => {
         {/* Header */}
         <div className="flex flex-col items-center gap-6 text-center">
           <h2 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-            Who This Is Built For<span className="text-secondary">.</span>
+            Who Is This Built For<span className="text-secondary">.</span>
           </h2>
           <p className="text-[20px] md:text-[24px] font-semibold text-black">
             TalentiFi-X is built for companies and professionals who refuse to
