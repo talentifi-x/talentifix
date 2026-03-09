@@ -10,23 +10,38 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="w-full bg-[#F7F9FC] min-h-screen">
+    <div className="w-full bg-white min-h-screen">
       {/* Hero */}
-      <section className="w-full pt-20 pb-16 px-6 md:px-4 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-primary/5 rounded-full blur-3xl pointer-events-none -z-0" />
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-4">
-          <span className="inline-block text-primary font-notch font-bold text-sm tracking-widest uppercase border border-primary/30 px-4 py-1.5 rounded-sm bg-primary/5 w-fit">
-            Our Blog
-          </span>
-          <h1 className="text-[56px] md:text-[80px] leading-none font-bold text-dark font-notch tracking-tight">
-            Insights<span className="text-secondary">.</span>
-            <br />
-            Ideas<span className="text-secondary">.</span>
-          </h1>
-          <p className="text-dark/60 font-sans text-base md:text-lg max-w-xl leading-relaxed mt-2">
-            Perspectives on staffing, AI, and building the workforce of
-            tomorrow.
-          </p>
+      <section className="w-full h-[calc(100vh-120px)] px-6 md:px-14 relative overflow-hidden bg-white flex items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
+          {/* Text */}
+          <div className="w-full lg:flex-1 flex flex-col gap-6 text-center lg:text-left">
+            <span className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto lg:mx-0">
+              Our Blog
+            </span>
+            <h1 className="text-[72px] md:text-[110px] leading-none font-bold text-dark font-notch tracking-tight">
+              Insights<span className="text-secondary">.</span>
+              <br />
+              Ideas<span className="text-secondary">.</span>
+            </h1>
+            <p className="text-dark/60 font-sans text-lg md:text-2xl max-w-xl leading-relaxed mt-2 mx-auto lg:mx-0">
+              Perspectives on staffing, AI, and building the workforce of
+              tomorrow.
+            </p>
+          </div>
+
+          {/* Image */}
+          <div className="w-full lg:flex-1 flex justify-center">
+            <Image
+              src="/assets/Solutions/hero-visual-blog.png"
+              alt="Blog Hero Visual"
+              width={700}
+              height={467}
+              sizes="(max-width: 1024px) 100vw, 700px"
+              className="w-full max-w-[660px] h-auto"
+              priority
+            />
+          </div>
         </div>
       </section>
 

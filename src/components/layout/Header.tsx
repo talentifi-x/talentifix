@@ -3,10 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Instagram, Linkedin, ArrowRight, X as CloseIcon, Menu } from "lucide-react";
+import {
+  Instagram,
+  Linkedin,
+  ArrowRight,
+  X as CloseIcon,
+  Menu,
+} from "lucide-react";
 import Image from "next/image";
 
-const XLogoIcon = ({ size = 18, className }: { size?: number; className?: string }) => {
+const XLogoIcon = ({
+  size = 18,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) => {
   return (
     <svg
       width={size}
@@ -55,7 +67,9 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-[#000099]">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-4 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">contact@TalentiFi-X.com</span>
+          <span className="text-white text-sm font-medium">
+            contact@TalentiFi-X.com
+          </span>
           <div className="flex items-center gap-4">
             <Link
               href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
@@ -93,8 +107,16 @@ export function Header() {
         <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Link href="/" className="w-[200px] h-[200px] flex items-center justify-center">
-              <Image src="/logos/logo.svg" alt="TalentiFi-X Logo" width={200} height={200} />
+            <Link
+              href="/"
+              className="w-[200px] h-[200px] flex items-center justify-center"
+            >
+              <Image
+                src="/logos/logo.svg"
+                alt="TalentiFi-X Logo"
+                width={200}
+                height={200}
+              />
             </Link>
           </div>
 
@@ -109,9 +131,12 @@ export function Header() {
             <Link href="/solutions" className={getLinkClasses("/solutions")}>
               Solutions
             </Link>
-           <Link href="/about" className={getLinkClasses("/about")}>
+            <Link href="/about" className={getLinkClasses("/about")}>
               About
-            </Link> 
+            </Link>
+            <Link href="/blog" className={getLinkClasses("/blog")}>
+              Blog
+            </Link>
             <Link href="/contact" className={getLinkClasses("/contact")}>
               Contact
             </Link>
@@ -160,6 +185,13 @@ export function Header() {
                 onClick={closeMobileMenu}
               >
                 Solutions
+              </Link>
+              <Link
+                href="/blog"
+                className={getMobileLinkClasses("/blog")}
+                onClick={closeMobileMenu}
+              >
+                Blog
               </Link>
               <Link
                 href="/contact"
