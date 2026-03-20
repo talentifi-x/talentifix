@@ -47,10 +47,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
-          name="google-site-verification"
-          content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ"
-        />
+          <meta
+            name="google-site-verification"
+            content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ"
+          />
+          <link rel="canonical" href="https://talentifix.com/" />
       </head>
       <body className={inter.className}>
         <Script
