@@ -24,6 +24,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/sitemap.html`,
+      lastModified: new Date(),
+      priority: 0.2,
+    },
   ];
 
   let blogRoutes: MetadataRoute.Sitemap;
