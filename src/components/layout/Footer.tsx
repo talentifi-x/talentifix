@@ -42,7 +42,7 @@ export const Footer = () => {
 
   return (
     <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-4 flex flex-col gap-20 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-20 relative z-10">
         {/* Top Section: 3 Columns */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
           {/* Column 1: Statement & Button */}
@@ -53,7 +53,7 @@ export const Footer = () => {
             </h3>
             <Link
               href="/start-hiring"
-              className="w-fit px-6 py-3 border border-[#0000FF] rounded-[4px] text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
+              className="w-fit px-6 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
             >
               Know More
               <ArrowRight className="w-4 h-4" />
@@ -61,7 +61,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider (Mobile only or spacing) */}
-          <div className="hidden md:block w-[1px] min-h-[150px] bg-gray-300" />
+          <div className="hidden md:block w-px min-h-37.5 bg-gray-300" />
 
           {/* Column 2: Navigate */}
           <div className="flex flex-col gap-6">
@@ -74,7 +74,6 @@ export const Footer = () => {
                 { name: "Solutions", href: "/solutions" },
                 { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" },
-                // { name: 'Industries', href: '/' },
               ].map((item) => (
                 <Link
                   key={item.name}
@@ -90,7 +89,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block w-px min-h-[150px] bg-gray-300" />
+          <div className="hidden md:block w-px min-h-37.5 bg-gray-300" />
 
           {/* Column 3: Connect With Us */}
           <div className="flex flex-col gap-6">
@@ -103,7 +102,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="talentifi-X on Instagram"
-                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <Instagram className="w-6 h-6 text-[#0000FF]" />
               </Link>
@@ -112,7 +111,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="talentifi-X on LinkedIn"
-                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <Linkedin className="w-6 h-6 text-[#0000FF]" />
               </Link>
@@ -121,7 +120,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="talentifi-X on X"
-                className="p-2 border border-[#E5E7EB] rounded-[8px] hover:border-[#0000FF] group transition-colors"
+                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
@@ -140,7 +139,7 @@ export const Footer = () => {
       {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
       {!isZoomed && (
         <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
-          <h1 className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-gradient-to-r from-[#0000FF] to-[#00DDE2] bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
+          <h1 className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-linear-to-r from-[#0000FF] to-secondary bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
             Talentifi-X
           </h1>
         </div>
@@ -148,16 +147,16 @@ export const Footer = () => {
 
       {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}
       {!isZoomed && (
-        <div className="absolute bottom-0 left-0 w-full h-[120px] z-20 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
+        <div className="absolute bottom-0 left-0 w-full h-30 z-20 pointer-events-none">
+          <div className="absolute inset-0 bg-linear-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
         </div>
       )}
 
       {/* Fixed Gradient Overlay - Always at bottom of viewport */}
-      <div className="fixed bottom-0 left-0 w-full h-[60px] z-40 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent backdrop-blur-[1px]" />
+      <div className="fixed bottom-0 left-0 w-full h-15 z-40 pointer-events-none">
+        <div className="absolute inset-0 bg-linear-to-t from-white via-white/40 to-transparent backdrop-blur-[1px]" />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#00DDE2] opacity-10"
+          className="absolute inset-0 bg-linear-to-r from-[#0000FF] to-secondary opacity-10"
           style={{
             maskImage: "linear-gradient(to top, black, transparent)",
             WebkitMaskImage: "linear-gradient(to top, black, transparent)",

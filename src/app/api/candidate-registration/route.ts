@@ -140,6 +140,8 @@ const ACCEPTED_MIME_TYPES = new Set([
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -262,6 +264,13 @@ export async function POST(req: NextRequest) {
     ) {
       return NextResponse.json(
         { error: "Please fill all required fields" },
+        { status: 400 },
+      );
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid email address" },
         { status: 400 },
       );
     }

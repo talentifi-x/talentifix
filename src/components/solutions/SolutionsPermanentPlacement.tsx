@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export const SolutionsPermanentPlacement = () => {
   return (
-    <section id="permanent-placement" className="relative w-full overflow-hidden bg-white scroll-mt-32">
+    <section
+      id="permanent-placement"
+      className="relative w-full overflow-hidden bg-white scroll-mt-32"
+    >
       <Image
         src="/assets/Solutions/perm-placement-bg.svg"
         alt="The permanent placement background"
@@ -33,8 +36,7 @@ export const SolutionsPermanentPlacement = () => {
               Permanent hires shape culture.
               <br />
               They influence performance long after onboarding.
-              <br />
-              A wrong hire costs more than a vacant role.
+              <br />A wrong hire costs more than a vacant role.
             </p>
           </div>
 
@@ -73,7 +75,8 @@ export const SolutionsPermanentPlacement = () => {
                     className="object-contain w-17.5 h-17.5"
                   />
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] leading-[1.3] text-dark font-semibold max-w-[250px]">
-                    Humans assess culture fit, communication, and long-term potential
+                    Humans assess culture fit, communication, and long-term
+                    potential
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-6">
@@ -104,7 +107,7 @@ export const SolutionsPermanentPlacement = () => {
 
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
                 <div className="flex flex-col items-center gap-6">
-                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-linear-to-b from-primary to-secondary bg-clip-text text-transparent">
                     12
                   </p>
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
@@ -112,7 +115,7 @@ export const SolutionsPermanentPlacement = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-6">
-                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-linear-to-b from-primary to-secondary bg-clip-text text-transparent">
                     94%
                   </p>
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
@@ -120,7 +123,7 @@ export const SolutionsPermanentPlacement = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-6">
-                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+                  <p className="font-notch font-bold text-[48px] sm:text-[56px] lg:text-[50px] leading-[1.3] bg-linear-to-b from-primary to-secondary bg-clip-text text-transparent">
                     94%
                   </p>
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">

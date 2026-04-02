@@ -1,9 +1,9 @@
-import { DevtoolsProvider } from "@providers/devtools";
-import { GitHubBanner, Refine } from "@refinedev/core";
+import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import React, { Suspense } from "react";
 
 import { dataProvider } from "@providers/data-provider";
@@ -14,10 +14,23 @@ import "react-international-phone/style.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TalentiFi-X",
-  description: "Intelligent Hiring Platform",
+  title: {
+    default: "TalentiFi-X | Intelligent Staffing for the AI Age",
+    template: "%s | TalentiFi-X",
+  },
+  description:
+    "TalentiFi-X rebuilds staffing for the AI age. Human-led, AI-assisted hiring for AI, ML, and cybersecurity talent across India. Staffing. Rebuilt.",
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    siteName: "TalentiFi-X",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@talentifi_x",
   },
 };
 
@@ -34,25 +47,28 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDENLSNNWP"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-VDENLSNNWP');
-            `,
-          }}
-        />
+          <meta
+            name="google-site-verification"
+            content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ"
+          />
+          <link rel="canonical" href="https://talentifix.com/" />
       </head>
       <body className={inter.className}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VDENLSNNWP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VDENLSNNWP');
+          `}
+        </Script>
         <ToastProvider>
-          <Suspense >
-
+          <Suspense>
             <RefineKbarProvider>
-
               <Refine
                 routerProvider={routerProvider}
                 dataProvider={dataProvider}
@@ -63,17 +79,20 @@ export default async function RootLayout({
                 }}
               >
                 <div className="bg-(--color-bg) min-h-screen w-full">
+                  <a
+                    href="#main-content"
+                    className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-[5px] focus:font-bold"
+                  >
+                    Skip to main content
+                  </a>
                   <Header />
-                  <div className="">
-                    {children}
-                  </div>
+                  <main id="main-content">{children}</main>
                   <Footer />
                   <BackToTop />
                   <CookieConsent />
                   <RefineKbar />
                 </div>
               </Refine>
-
             </RefineKbarProvider>
           </Suspense>
         </ToastProvider>

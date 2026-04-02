@@ -1,7 +1,14 @@
 import React from "react";
+import { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@components/contact/ContactForm";
 import TheNextStepSection from "@components/home/TheNextStepSection";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with TalentiFi-X for hiring, partnerships, or any questions.",
+};
 
 export default function ContactPage() {
   return (
@@ -19,9 +26,9 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <div className="w-full max-w-7xl mx-auto px-4 py-20 flex justify-center">
-         <div className="w-full max-w-5xl rounded-[10px] overflow-hidden">
-            <ContactForm />
-         </div>
+        <div className="w-full max-w-5xl rounded-[10px] overflow-hidden">
+          <ContactForm />
+        </div>
       </div>
 
       {/* Next Step Section */}

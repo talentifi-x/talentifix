@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import React, { useMemo, useRef, useState } from "react";
-import { ArrowRight, CheckCircle, ChevronDown, Loader2, UploadCloud, XCircle } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  ChevronDown,
+  Loader2,
+  UploadCloud,
+  XCircle,
+} from "lucide-react";
 import { PhoneInput } from "react-international-phone";
 import { useToast } from "@providers/toast";
 
@@ -34,17 +41,15 @@ type EmploymentStatusValue =
   | "freelance-open"
   | "student-grad";
 
-type RoleTypeValue = "permanent" | "contract" | "contract-to-hire" | "freelance";
+type RoleTypeValue =
+  | "permanent"
+  | "contract"
+  | "contract-to-hire"
+  | "freelance";
 
 type WorkArrangementValue = "remote" | "hybrid" | "onsite" | "flexible";
 
-type SalaryValue =
-  | "10-15"
-  | "15-20"
-  | "20-30"
-  | "30-50"
-  | "50+"
-  | "prefer-not";
+type SalaryValue = "10-15" | "15-20" | "20-30" | "30-50" | "50+" | "prefer-not";
 
 type StartTimeValue =
   | "immediately"
@@ -103,7 +108,10 @@ const LOCATION_OPTIONS: Array<{ value: LocationValue; label: string }> = [
 const EXPERTISE_OPTIONS: Array<{ value: ExpertiseValue; label: string }> = [
   { value: "ml-ai-engineering", label: "Machine Learning / AI Engineering" },
   { value: "data-science-ml-ai", label: "Data Science (ML/AI focus)" },
-  { value: "cybersecurity-info-sec", label: "Cybersecurity / Information Security" },
+  {
+    value: "cybersecurity-info-sec",
+    label: "Cybersecurity / Information Security",
+  },
   { value: "cloud-security", label: "Cloud Security" },
   { value: "other", label: "Other Technical Role" },
 ];
@@ -116,7 +124,10 @@ const EXPERIENCE_OPTIONS: Array<{ value: ExperienceValue; label: string }> = [
   { value: "15+", label: "15+ years" },
 ];
 
-const EMPLOYMENT_OPTIONS: Array<{ value: EmploymentStatusValue; label: string }> = [
+const EMPLOYMENT_OPTIONS: Array<{
+  value: EmploymentStatusValue;
+  label: string;
+}> = [
   { value: "employed-open", label: "Employed, open to opportunities" },
   { value: "employed-looking", label: "Employed, actively looking" },
   { value: "between-jobs", label: "Between jobs, available immediately" },
@@ -131,7 +142,10 @@ const ROLE_TYPE_OPTIONS: Array<{ value: RoleTypeValue; label: string }> = [
   { value: "freelance", label: "Freelance/Project-based" },
 ];
 
-const WORK_ARRANGEMENT_OPTIONS: Array<{ value: WorkArrangementValue; label: string }> = [
+const WORK_ARRANGEMENT_OPTIONS: Array<{
+  value: WorkArrangementValue;
+  label: string;
+}> = [
   { value: "remote", label: "Remote only" },
   { value: "hybrid", label: "Hybrid (2-3 days in office)" },
   { value: "onsite", label: "On-site preferred" },
@@ -218,14 +232,22 @@ export const CandidateRegistrationForm = () => {
     return "";
   }, [formData.resumeFile]);
 
-  const roleTypesInvalid = useMemo(() => formData.roleTypes.length === 0, [formData.roleTypes]);
+  const roleTypesInvalid = useMemo(
+    () => formData.roleTypes.length === 0,
+    [formData.roleTypes],
+  );
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value, type } = e.target as HTMLInputElement;
     if (type === "checkbox") {
-      setFormData((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: (e.target as HTMLInputElement).checked,
+      }));
       return;
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -236,7 +258,9 @@ export const CandidateRegistrationForm = () => {
       const exists = prev.roleTypes.includes(value);
       return {
         ...prev,
-        roleTypes: exists ? prev.roleTypes.filter((t) => t !== value) : [...prev.roleTypes, value],
+        roleTypes: exists
+          ? prev.roleTypes.filter((t) => t !== value)
+          : [...prev.roleTypes, value],
       };
     });
   };
@@ -281,23 +305,32 @@ export const CandidateRegistrationForm = () => {
     if (!formData.email.trim()) return "Please enter your email address.";
     if (!formData.phoneNumber.trim()) return "Please enter your phone number.";
     if (!formData.location) return "Please select your current location.";
-    if (formData.location === "other" && !formData.otherLocation.trim()) return "Please enter your location.";
+    if (formData.location === "other" && !formData.otherLocation.trim())
+      return "Please enter your location.";
     if (!formData.expertise) return "Please select your primary expertise.";
-    if (formData.expertise === "other" && !formData.otherExpertise.trim()) return "Please specify your expertise.";
+    if (formData.expertise === "other" && !formData.otherExpertise.trim())
+      return "Please specify your expertise.";
     if (!formData.yearsExperience) return "Please select years of experience.";
-    if (!formData.employmentStatus) return "Please select your current employment status.";
-    if (!formData.topSkills.trim()) return "Please enter your top technical skills.";
-    if (!formData.jobTitle.trim()) return "Please enter your current/most recent job title.";
+    if (!formData.employmentStatus)
+      return "Please select your current employment status.";
+    if (!formData.topSkills.trim())
+      return "Please enter your top technical skills.";
+    if (!formData.jobTitle.trim())
+      return "Please enter your current/most recent job title.";
     if (roleTypesInvalid) return "Please select at least one role type.";
-    if (!formData.workArrangement) return "Please select your preferred work arrangement.";
-    if (!formData.salaryRange) return "Please select your expected salary range.";
+    if (!formData.workArrangement)
+      return "Please select your preferred work arrangement.";
+    if (!formData.salaryRange)
+      return "Please select your expected salary range.";
     if (!formData.startTime) return "Please select when you could start.";
     if (!formData.resumeFile) return "Please upload your resume/CV.";
     if (resumeError) return resumeError;
     if (!formData.privacyConsent) return "Please agree to the privacy policy.";
-    if (formData.heardFrom === "other" && !formData.otherHeardFrom.trim()) return "Please specify how you heard about us.";
+    if (formData.heardFrom === "other" && !formData.otherHeardFrom.trim())
+      return "Please specify how you heard about us.";
     if (formData.heardFrom && formData.heardFrom !== "other") return "";
-    if (!formData.heardFrom) return "Please select how you heard about Talentifix.";
+    if (!formData.heardFrom)
+      return "Please select how you heard about TalentiFi-X.";
     return "";
   };
 
@@ -354,7 +387,11 @@ export const CandidateRegistrationForm = () => {
       if (response.ok) {
         setStatus("success");
         setResponseMessage(data.message);
-        toast({ variant: "success", title: "Profile received", description: data.message });
+        toast({
+          variant: "success",
+          title: "Profile received",
+          description: data.message,
+        });
         setFormData({
           fullName: "",
           email: "",
@@ -385,13 +422,22 @@ export const CandidateRegistrationForm = () => {
         setStatus("error");
         const message = data.error || "Something went wrong. Please try again.";
         setResponseMessage(message);
-        toast({ variant: "error", title: "Couldn't submit", description: message });
+        toast({
+          variant: "error",
+          title: "Couldn't submit",
+          description: message,
+        });
       }
     } catch {
       setStatus("error");
-      const message = "Failed to submit. Please check your connection and try again.";
+      const message =
+        "Failed to submit. Please check your connection and try again.";
       setResponseMessage(message);
-      toast({ variant: "error", title: "Couldn't submit", description: message });
+      toast({
+        variant: "error",
+        title: "Couldn't submit",
+        description: message,
+      });
     }
   };
 
@@ -405,7 +451,8 @@ export const CandidateRegistrationForm = () => {
             Join Our Talent Network<span className="text-[#00DDE2]">.</span>
           </h2>
           <p className="text-lg text-[#1E1E24] opacity-70 font-medium max-w-3xl">
-            We specialize in AI/ML and Cybersecurity roles. If that&apos;s you, let&apos;s connect.
+            We specialize in AI/ML and Cybersecurity roles. If that&apos;s you,
+            let&apos;s connect.
           </p>
         </div>
 
@@ -434,7 +481,10 @@ export const CandidateRegistrationForm = () => {
             <h3 className="text-[22px] font-bold text-[#1E1E24]">Basic Info</h3>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="fullName" className="text-lg font-medium text-[#1E1E24]">
+              <label
+                htmlFor="fullName"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -449,7 +499,10 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="text-lg font-medium text-[#1E1E24]">
+              <label
+                htmlFor="email"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -465,21 +518,30 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-lg font-medium text-[#1E1E24]">
+              <label
+                htmlFor="candidatePhone"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <PhoneInput
                 defaultCountry="in"
                 value={formData.phoneNumber}
-                onChange={(phone) => setFormData((prev) => ({ ...prev, phoneNumber: phone }))}
+                onChange={(phone) =>
+                  setFormData((prev) => ({ ...prev, phoneNumber: phone }))
+                }
                 inputClassName="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
+                inputProps={{ id: "candidatePhone" }}
                 className="w-full"
                 placeholder="+91 98765 43210"
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="location" className="text-lg font-medium text-[#1E1E24]">
+              <label
+                htmlFor="location"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
                 Current Location <span className="text-red-500">*</span>
               </label>
               <div className="relative">
@@ -506,6 +568,7 @@ export const CandidateRegistrationForm = () => {
                 <input
                   id="otherLocation"
                   name="otherLocation"
+                  aria-label="Other location"
                   value={formData.otherLocation}
                   onChange={handleChange}
                   required
@@ -516,8 +579,12 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="linkedInUrl" className="text-lg font-medium text-[#1E1E24]">
-                LinkedIn Profile URL <span className="text-[#1E1E24]/50">(Optional)</span>
+              <label
+                htmlFor="linkedInUrl"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
+                LinkedIn Profile URL{" "}
+                <span className="text-[#1E1E24]/50">(Optional)</span>
               </label>
               <input
                 type="url"
@@ -535,11 +602,14 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">Professional Profile</h3>
+            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+              Professional Profile
+            </h3>
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
-                What&apos;s your primary expertise? <span className="text-red-500">*</span>
+                What&apos;s your primary expertise?{" "}
+                <span className="text-red-500">*</span>
               </p>
               <div className="flex flex-col gap-3">
                 {EXPERTISE_OPTIONS.map((option) => {
@@ -567,6 +637,7 @@ export const CandidateRegistrationForm = () => {
                 <input
                   id="otherExpertise"
                   name="otherExpertise"
+                  aria-label="Other expertise area"
                   value={formData.otherExpertise}
                   onChange={handleChange}
                   required
@@ -577,8 +648,12 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="yearsExperience" className="text-lg font-medium text-[#1E1E24]">
-                Years of professional experience <span className="text-red-500">*</span>
+              <label
+                htmlFor="yearsExperience"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
+                Years of professional experience{" "}
+                <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <select
@@ -604,7 +679,8 @@ export const CandidateRegistrationForm = () => {
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
-                Current Employment Status <span className="text-red-500">*</span>
+                Current Employment Status{" "}
+                <span className="text-red-500">*</span>
               </p>
               <div className="flex flex-col gap-3">
                 {EMPLOYMENT_OPTIONS.map((option) => {
@@ -619,7 +695,9 @@ export const CandidateRegistrationForm = () => {
                         name="employmentStatus"
                         value={option.value}
                         checked={checked}
-                        onChange={() => handleEmploymentStatusChange(option.value)}
+                        onChange={() =>
+                          handleEmploymentStatusChange(option.value)
+                        }
                         className="h-4 w-4 accent-[#0000FF]"
                         required
                       />
@@ -631,8 +709,12 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="topSkills" className="text-lg font-medium text-[#1E1E24]">
-                What are your top 3-5 technical skills? <span className="text-red-500">*</span>
+              <label
+                htmlFor="topSkills"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
+                What are your top 3-5 technical skills?{" "}
+                <span className="text-red-500">*</span>
               </label>
               <input
                 id="topSkills"
@@ -648,8 +730,12 @@ export const CandidateRegistrationForm = () => {
 
             <div className="flex flex-col md:flex-row gap-6 w-full">
               <div className="flex-1 flex flex-col gap-2">
-                <label htmlFor="jobTitle" className="text-lg font-medium text-[#1E1E24]">
-                  Current/Most Recent Job Title <span className="text-red-500">*</span>
+                <label
+                  htmlFor="jobTitle"
+                  className="text-lg font-medium text-[#1E1E24]"
+                >
+                  Current/Most Recent Job Title{" "}
+                  <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="jobTitle"
@@ -662,8 +748,12 @@ export const CandidateRegistrationForm = () => {
                 />
               </div>
               <div className="flex-1 flex flex-col gap-2">
-                <label htmlFor="company" className="text-lg font-medium text-[#1E1E24]">
-                  Current/Most Recent Company <span className="text-[#1E1E24]/50">(Optional)</span>
+                <label
+                  htmlFor="company"
+                  className="text-lg font-medium text-[#1E1E24]"
+                >
+                  Current/Most Recent Company{" "}
+                  <span className="text-[#1E1E24]/50">(Optional)</span>
                 </label>
                 <input
                   id="company"
@@ -678,11 +768,14 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">Job Preferences</h3>
+            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+              Job Preferences
+            </h3>
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
-                What type of role are you looking for? <span className="text-red-500">*</span>
+                What type of role are you looking for?{" "}
+                <span className="text-red-500">*</span>
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {ROLE_TYPE_OPTIONS.map((option) => {
@@ -704,13 +797,16 @@ export const CandidateRegistrationForm = () => {
                 })}
               </div>
               {roleTypesInvalid && status === "error" && (
-                <p className="text-sm text-red-700">Select at least one role type.</p>
+                <p className="text-sm text-red-700">
+                  Select at least one role type.
+                </p>
               )}
             </div>
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
-                Preferred work arrangement <span className="text-red-500">*</span>
+                Preferred work arrangement{" "}
+                <span className="text-red-500">*</span>
               </p>
               <div className="flex flex-col gap-3">
                 {WORK_ARRANGEMENT_OPTIONS.map((option) => {
@@ -725,7 +821,9 @@ export const CandidateRegistrationForm = () => {
                         name="workArrangement"
                         value={option.value}
                         checked={checked}
-                        onChange={() => handleWorkArrangementChange(option.value)}
+                        onChange={() =>
+                          handleWorkArrangementChange(option.value)
+                        }
                         className="h-4 w-4 accent-[#0000FF]"
                         required
                       />
@@ -737,8 +835,12 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="salaryRange" className="text-lg font-medium text-[#1E1E24]">
-                Expected salary range (Annual CTC) <span className="text-red-500">*</span>
+              <label
+                htmlFor="salaryRange"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
+                Expected salary range (Annual CTC){" "}
+                <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <select
@@ -764,7 +866,8 @@ export const CandidateRegistrationForm = () => {
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
-                When could you start a new role? <span className="text-red-500">*</span>
+                When could you start a new role?{" "}
+                <span className="text-red-500">*</span>
               </p>
               <div className="flex flex-col gap-3">
                 {START_TIME_OPTIONS.map((option) => {
@@ -792,7 +895,9 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">Additional Info</h3>
+            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+              Additional Info
+            </h3>
 
             <div className="flex flex-col gap-2">
               <p className="text-lg font-medium text-[#1E1E24]">
@@ -808,7 +913,16 @@ export const CandidateRegistrationForm = () => {
               />
 
               <div
+                role="button"
+                tabIndex={0}
+                aria-label="Upload resume: drag and drop or click to browse"
                 onClick={openFilePicker}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openFilePicker();
+                  }
+                }}
                 onDrop={onDrop}
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -817,7 +931,9 @@ export const CandidateRegistrationForm = () => {
                 onDragLeave={() => setIsDragging(false)}
                 className={[
                   "w-full border rounded-[10px] p-6 cursor-pointer transition-colors",
-                  isDragging ? "border-[#0000FF] bg-white" : "border-[#1E1E24] bg-[#F2F4F8] hover:bg-white",
+                  isDragging
+                    ? "border-[#0000FF] bg-white"
+                    : "border-[#1E1E24] bg-[#F2F4F8] hover:bg-white",
                 ].join(" ")}
               >
                 <div className="flex items-center gap-4">
@@ -833,20 +949,27 @@ export const CandidateRegistrationForm = () => {
                     </p>
                     {resumeName && (
                       <p className="text-sm text-[#1E1E24]/80 mt-2">
-                        Selected: <span className="font-medium">{resumeName}</span>
+                        Selected:{" "}
+                        <span className="font-medium">{resumeName}</span>
                       </p>
                     )}
                   </div>
                 </div>
               </div>
 
-              {resumeError && <p className="text-sm text-red-700">{resumeError}</p>}
+              {resumeError && (
+                <p className="text-sm text-red-700">{resumeError}</p>
+              )}
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 w-full">
               <div className="flex-1 flex flex-col gap-2">
-                <label htmlFor="githubUrl" className="text-lg font-medium text-[#1E1E24]">
-                  GitHub Profile URL <span className="text-[#1E1E24]/50">(Optional)</span>
+                <label
+                  htmlFor="githubUrl"
+                  className="text-lg font-medium text-[#1E1E24]"
+                >
+                  GitHub Profile URL{" "}
+                  <span className="text-[#1E1E24]/50">(Optional)</span>
                 </label>
                 <input
                   type="url"
@@ -859,8 +982,12 @@ export const CandidateRegistrationForm = () => {
                 />
               </div>
               <div className="flex-1 flex flex-col gap-2">
-                <label htmlFor="portfolioUrl" className="text-lg font-medium text-[#1E1E24]">
-                  Portfolio / Personal Website <span className="text-[#1E1E24]/50">(Optional)</span>
+                <label
+                  htmlFor="portfolioUrl"
+                  className="text-lg font-medium text-[#1E1E24]"
+                >
+                  Portfolio / Personal Website{" "}
+                  <span className="text-[#1E1E24]/50">(Optional)</span>
                 </label>
                 <input
                   type="url"
@@ -875,7 +1002,10 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="targets" className="text-lg font-medium text-[#1E1E24]">
+              <label
+                htmlFor="targets"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
                 Any specific companies or types of roles you&apos;re targeting?{" "}
                 <span className="text-[#1E1E24]/50">(Optional)</span>
               </label>
@@ -891,8 +1021,12 @@ export const CandidateRegistrationForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="heardFrom" className="text-lg font-medium text-[#1E1E24]">
-                How did you hear about Talentifix? <span className="text-red-500">*</span>
+              <label
+                htmlFor="heardFrom"
+                className="text-lg font-medium text-[#1E1E24]"
+              >
+                How did you hear about TalentiFi-X?{" "}
+                <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <select
@@ -918,6 +1052,7 @@ export const CandidateRegistrationForm = () => {
                 <input
                   id="otherHeardFrom"
                   name="otherHeardFrom"
+                  aria-label="How you heard about TalentiFi-X"
                   value={formData.otherHeardFrom}
                   onChange={handleChange}
                   required
@@ -938,8 +1073,12 @@ export const CandidateRegistrationForm = () => {
                   required
                 />
                 <span className="text-sm md:text-base">
-                  I agree to Talentifix storing and processing my information for recruitment purposes.{" "}
-                  <Link href="/privacy-policy" className="text-[#0000FF] underline">
+                  I agree to TalentiFi-X storing and processing my information
+                  for recruitment purposes.{" "}
+                  <Link
+                    href="/privacy-policy"
+                    className="text-[#0000FF] underline"
+                  >
                     Privacy Policy
                   </Link>
                 </span>
@@ -965,8 +1104,8 @@ export const CandidateRegistrationForm = () => {
               )}
             </button>
             <p className="text-sm text-[#1E1E24]/60 max-w-3xl">
-              We review every profile personally and will reach out if we have relevant opportunities.
-              Usually within 48 hours.
+              We review every profile personally and will reach out if we have
+              relevant opportunities. Usually within 48 hours.
             </p>
           </div>
         </form>

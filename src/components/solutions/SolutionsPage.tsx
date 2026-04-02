@@ -8,31 +8,68 @@ export const SolutionsPage = () => {
       {/* Header */}
       <header className="w-full flex flex-col items-center py-14 pb-14">
         <div className="w-full h-[60px] bg-[#0000FF] flex items-center justify-center">
-          <h1 className="text-white text-[32px] font-notch font-bold">Solutions</h1>
+          <h1 className="text-white text-[32px] font-notch font-bold">
+            Solutions
+          </h1>
         </div>
         <div className="w-full flex items-center justify-center gap-24 mt-8">
           <nav className="flex gap-8">
-            <a href="#" className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors">Home</a>
-            <a href="#" className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors">Solutions</a>
-            <a href="#" className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors">Contact</a>
-            <a href="#" className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors">About</a>
-            <a href="#" className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors">Industries</a>
+            <a
+              href="#"
+              className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors"
+            >
+              Solutions
+            </a>
+            <a
+              href="#"
+              className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors"
+            >
+              Contact
+            </a>
+            <a
+              href="#"
+              className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#"
+              className="text-[#1E1E24] text-[18px] font-medium hover:text-[#0000FF] transition-colors"
+            >
+              Industries
+            </a>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative w-full flex items-center justify-center py-16 px-14" style={{backgroundImage: "url('/assets/Solutions/hero-visual.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section
+        className="relative w-full flex items-center justify-center py-16 px-14"
+        style={{
+          backgroundImage: "url('/assets/Solutions/hero-visual.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="flex items-center gap-20 max-w-7xl">
           <div className="flex-1">
             <h2 className="text-[50px] font-notch font-bold text-white mb-6 leading-tight">
-              We don&apos;t just fill roles.<br />
-              We build teams that<br />
+              We don&apos;t just fill roles.
+              <br />
+              We build teams that
+              <br />
               build companies.
             </h2>
             <p className="text-[20px] text-white leading-relaxed mb-8">
-              From temporary staffing to executive search, we deliver hiring Solutions
-              that scale with your business — fast, precise, and built for results.
+              From temporary staffing to executive search, we deliver hiring
+              Solutions that scale with your business — fast, precise, and built
+              for results.
             </p>
           </div>
           <div className="flex-1 flex justify-center">
@@ -48,7 +85,14 @@ export const SolutionsPage = () => {
       </section>
 
       {/* AI for Speed Section */}
-      <section className="relative w-full flex items-center justify-center py-22 px-14 bg-white" style={{backgroundImage: "url('/assets/Solutions/ai-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section
+        className="relative w-full flex items-center justify-center py-22 px-14 bg-white"
+        style={{
+          backgroundImage: "url('/assets/Solutions/ai-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="flex items-center gap-20 max-w-7xl">
           <div className="flex-1 flex justify-center">
             <Image
@@ -61,7 +105,8 @@ export const SolutionsPage = () => {
           </div>
           <div className="flex-1">
             <h3 className="text-[50px] font-notch font-bold text-[#1E1E24] mb-6 leading-tight">
-              AI for Speed.<br />
+              AI for Speed.
+              <br />
               Humans for Precision.
             </h3>
             <p className="text-[20px] text-[#1E1E24] leading-relaxed mb-8">
@@ -71,9 +116,10 @@ export const SolutionsPage = () => {
             </p>
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-lg">
               <p className="text-[18px] text-[#1E1E24] font-medium">
-                ✓ 3x faster candidate sourcing<br />
-                ✓ 40% better culture-fit matches<br />
-                ✓ 90% reduction in time-to-hire
+                ✓ 3x faster candidate sourcing
+                <br />
+                ✓ 40% better culture-fit matches
+                <br />✓ 90% reduction in time-to-hire
               </p>
             </div>
           </div>
@@ -94,24 +140,51 @@ export const SolutionsPage = () => {
               </p>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <Image src="/assets/Solutions/temp-icon-1.svg" alt="Icon" width={50} height={50} />
+                  <Image
+                    src="/assets/Solutions/temp-icon-1.svg"
+                    alt="Icon"
+                    width={50}
+                    height={50}
+                  />
                   <div>
-                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Rapid Deployment</h4>
-                    <p className="text-[18px] text-[#1E1E24]">Qualified candidates within 24-48 hours</p>
+                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                      Rapid Deployment
+                    </h4>
+                    <p className="text-[18px] text-[#1E1E24]">
+                      Qualified candidates within 24-48 hours
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Image src="/assets/Solutions/temp-icon-2.svg" alt="Icon" width={50} height={50} />
+                  <Image
+                    src="/assets/Solutions/temp-icon-2.svg"
+                    alt="Icon"
+                    width={50}
+                    height={50}
+                  />
                   <div>
-                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Flexible Terms</h4>
-                    <p className="text-[18px] text-[#1E1E24]">Short-term, long-term, or project-based</p>
+                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                      Flexible Terms
+                    </h4>
+                    <p className="text-[18px] text-[#1E1E24]">
+                      Short-term, long-term, or project-based
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Image src="/assets/Solutions/temp-icon-3.svg" alt="Icon" width={50} height={50} />
+                  <Image
+                    src="/assets/Solutions/temp-icon-3.svg"
+                    alt="Icon"
+                    width={50}
+                    height={50}
+                  />
                   <div>
-                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Risk-Free Trial</h4>
-                    <p className="text-[18px] text-[#1E1E24]">Try before you commit</p>
+                    <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                      Risk-Free Trial
+                    </h4>
+                    <p className="text-[18px] text-[#1E1E24]">
+                      Try before you commit
+                    </p>
                   </div>
                 </div>
               </div>
@@ -130,16 +203,24 @@ export const SolutionsPage = () => {
       </section>
 
       {/* Permanent Placement Section */}
-      <section className="relative w-full py-22 px-14" style={{backgroundImage: "url('/assets/Solutions/perm-placement-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section
+        className="relative w-full py-22 px-14"
+        style={{
+          backgroundImage: "url('/assets/Solutions/perm-placement-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="max-w-7xl mx-auto text-center">
           <h3 className="text-[50px] font-notch font-bold text-white mb-6 leading-tight">
-            This isn&apos;t faster hiring.<br />
+            This isn&apos;t faster hiring.
+            <br />
             It&apos;s smarter hiring.
           </h3>
           <p className="text-[20px] text-white leading-relaxed mb-12 max-w-4xl mx-auto">
-            Find permanent team members who don&apos;t just fill positions — they elevate
-            your entire organization. Our rigorous screening process ensures every
-            candidate is a long-term fit.
+            Find permanent team members who don&apos;t just fill positions —
+            they elevate your entire organization. Our rigorous screening
+            process ensures every candidate is a long-term fit.
           </p>
           <Link
             href="/start-hiring"
@@ -168,26 +249,39 @@ export const SolutionsPage = () => {
                 Contract-to-hire
               </h3>
               <p className="text-[20px] text-[#1E1E24] leading-relaxed mb-8">
-                Test drive talent before making a permanent commitment. It&apos;s the
-                smart way to ensure perfect fit — for both you and the candidate.
+                Test drive talent before making a permanent commitment.
+                It&apos;s the smart way to ensure perfect fit — for both you and
+                the candidate.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">1</div>
-                  <p className="text-[18px] text-[#1E1E24]">Start with a contract role (3-6 months)</p>
+                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">
+                    1
+                  </div>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Start with a contract role (3-6 months)
+                  </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">2</div>
-                  <p className="text-[18px] text-[#1E1E24]">Evaluate performance and culture fit</p>
+                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">
+                    2
+                  </div>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Evaluate performance and culture fit
+                  </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">3</div>
-                  <p className="text-[18px] text-[#1E1E24]">Convert to permanent if it&apos;s a match</p>
+                  <div className="w-8 h-8 bg-[#0000FF] rounded-full flex items-center justify-center text-white font-bold">
+                    3
+                  </div>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Convert to permanent if it&apos;s a match
+                  </p>
                 </div>
               </div>
               <Link
                 href="/start-hiring"
-                className="bg-gradient-to-r from-[#0000FF] to-[#000099] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:from-[#0000e6] hover:to-[#0000b3] transition-all duration-300 mt-8"
+                className="bg-linear-to-r from-[#0000FF] to-[#000099] text-white font-notch font-bold text-[20px] px-8 py-4 rounded-[5px] hover:opacity-90 transition-all duration-300 mt-8"
               >
                 Learn More →
               </Link>
@@ -205,21 +299,34 @@ export const SolutionsPage = () => {
                 Executive Search
               </h3>
               <p className="text-[20px] text-[#1E1E24] leading-relaxed mb-8">
-                Leadership that transforms organizations. We identify and attract
-                exceptional C-suite and senior executives who drive strategic growth.
+                Leadership that transforms organizations. We identify and
+                attract exceptional C-suite and senior executives who drive
+                strategic growth.
               </p>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Confidential Search</h4>
-                  <p className="text-[18px] text-[#1E1E24]">Discreet process protecting your company&apos;s privacy</p>
+                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                    Confidential Search
+                  </h4>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Discreet process protecting your company&apos;s privacy
+                  </p>
                 </div>
                 <div>
-                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Market Mapping</h4>
-                  <p className="text-[18px] text-[#1E1E24]">Comprehensive analysis of top talent in your industry</p>
+                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                    Market Mapping
+                  </h4>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Comprehensive analysis of top talent in your industry
+                  </p>
                 </div>
                 <div>
-                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">Cultural Alignment</h4>
-                  <p className="text-[18px] text-[#1E1E24]">Leaders who fit your vision and values</p>
+                  <h4 className="text-[24px] font-notch font-bold text-[#1E1E24] mb-2">
+                    Cultural Alignment
+                  </h4>
+                  <p className="text-[18px] text-[#1E1E24]">
+                    Leaders who fit your vision and values
+                  </p>
                 </div>
               </div>
             </div>
@@ -237,7 +344,14 @@ export const SolutionsPage = () => {
       </section>
 
       {/* Solutions Includes Section */}
-      <section className="relative w-full py-22 px-14" style={{backgroundImage: "url('/assets/Solutions/Solutions-includes-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section
+        className="relative w-full py-22 px-14"
+        style={{
+          backgroundImage: "url('/assets/Solutions/Solutions-includes-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="max-w-7xl mx-auto text-center">
           <h3 className="text-[50px] font-notch font-bold text-white mb-12 leading-tight">
             Every Solutions Includes:
@@ -247,22 +361,34 @@ export const SolutionsPage = () => {
               <div className="w-16 h-16 bg-[#00DDE2] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">✓</span>
               </div>
-              <h4 className="text-[24px] font-notch font-bold text-white mb-3">AI-Powered Matching</h4>
-              <p className="text-[18px] text-white">Advanced algorithms identify the best candidates</p>
+              <h4 className="text-[24px] font-notch font-bold text-white mb-3">
+                AI-Powered Matching
+              </h4>
+              <p className="text-[18px] text-white">
+                Advanced algorithms identify the best candidates
+              </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#00DDE2] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">✓</span>
               </div>
-              <h4 className="text-[24px] font-notch font-bold text-white mb-3">Human Expertise</h4>
-              <p className="text-[18px] text-white">Expert recruiters validate every match</p>
+              <h4 className="text-[24px] font-notch font-bold text-white mb-3">
+                Human Expertise
+              </h4>
+              <p className="text-[18px] text-white">
+                Expert recruiters validate every match
+              </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#00DDE2] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">✓</span>
               </div>
-              <h4 className="text-[24px] font-notch font-bold text-white mb-3">Guaranteed Results</h4>
-              <p className="text-[18px] text-white">We stand behind every placement</p>
+              <h4 className="text-[24px] font-notch font-bold text-white mb-3">
+                Guaranteed Results
+              </h4>
+              <p className="text-[18px] text-white">
+                We stand behind every placement
+              </p>
             </div>
           </div>
         </div>
@@ -294,9 +420,9 @@ export const SolutionsPage = () => {
             these Solutions were built for you.
           </h3>
           <p className="text-[20px] text-[#1E1E24] leading-relaxed mb-12 max-w-4xl mx-auto relative z-10">
-            Whether you&apos;re a startup building your founding team or an enterprise
-            scaling globally, we have the expertise and network to deliver the
-            talent that drives your success.
+            Whether you&apos;re a startup building your founding team or an
+            enterprise scaling globally, we have the expertise and network to
+            deliver the talent that drives your success.
           </p>
           <Link
             href="/start-hiring"
@@ -312,34 +438,91 @@ export const SolutionsPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-start mb-12">
             <div>
-              <h4 className="text-white text-[24px] font-notch font-bold mb-4">Navigate</h4>
+              <h4 className="text-white text-[24px] font-notch font-bold mb-4">
+                Navigate
+              </h4>
               <nav className="space-y-2">
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Home</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Solutions</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Contact</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">About</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Industries</a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Home
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Solutions
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Contact
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  About
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Industries
+                </a>
               </nav>
             </div>
             <div>
-              <h4 className="text-white text-[24px] font-notch font-bold mb-4">Solutions</h4>
+              <h4 className="text-white text-[24px] font-notch font-bold mb-4">
+                Solutions
+              </h4>
               <nav className="space-y-2">
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Temporary Staffing</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Permanent Placement</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Contract-to-hire</a>
-                <a href="#" className="block text-white/80 hover:text-white transition-colors">Executive Search</a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Temporary Staffing
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Permanent Placement
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Contract-to-hire
+                </a>
+                <a
+                  href="#"
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
+                  Executive Search
+                </a>
               </nav>
             </div>
             <div>
-              <h4 className="text-white text-[24px] font-notch font-bold mb-4">Contact</h4>
+              <h4 className="text-white text-[24px] font-notch font-bold mb-4">
+                Contact
+              </h4>
               <div className="space-y-2 text-white/80">
                 <p>Email: contact@TalentiFi-X.com</p>
-                <p>Address: 26/19 Gandhibazar Main Road,<br />Basavanagudi, Bangalore - 560 004</p>
+                <p>
+                  Address: 26/19 Gandhibazar Main Road,
+                  <br />
+                  Basavanagudi, Bangalore - 560 004
+                </p>
               </div>
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
-            <p className="text-white/60">© 2024 TalentiFi-X. All rights reserved.</p>
+            <p className="text-white/60">
+              © {new Date().getFullYear()} TalentiFi-X. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
