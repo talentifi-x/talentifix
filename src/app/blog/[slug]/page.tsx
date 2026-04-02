@@ -27,7 +27,7 @@ const toId = (str: string) =>
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -60,10 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: "Post Not Found" };
 }
 
-export async function generateStaticParams() {
-  const slugs = await getAllSanityPostSlugs().catch(() => []);
-  return slugs;
-}
+// generateStaticParams is not used with force-dynamic
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 

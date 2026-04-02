@@ -8,7 +8,7 @@ export const metadata = {
   description: "Insights on staffing, AI, and the future of hiring.",
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPage() {
   let sanityPosts: SanityPost[] = [];
