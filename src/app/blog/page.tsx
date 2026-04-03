@@ -22,6 +22,7 @@ export default async function BlogPage() {
     slug: p.slug,
     title: p.title,
     category: p.category ?? "Blog",
+    author: p.author,
     date: p.publishedAt
       ? new Date(p.publishedAt).toLocaleDateString("en-US", {
           year: "numeric",
@@ -116,6 +117,12 @@ export default async function BlogPage() {
                 <h2 className="text-[18px] font-bold font-notch text-dark leading-snug group-hover:text-primary transition-colors line-clamp-3">
                   {post.title}
                 </h2>
+                
+                {post.author && (
+                  <p className="text-dark/80 font-sans text-xs">
+                    Author: <span className="font-semibold text-dark">{post.author}</span>
+                  </p>
+                )}
 
                 <p className="text-dark/60 font-sans text-sm leading-relaxed line-clamp-3 flex-1">
                   {post.introduction}
