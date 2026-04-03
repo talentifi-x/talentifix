@@ -27,7 +27,7 @@ const toId = (str: string) =>
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -60,7 +60,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: "Post Not Found" };
 }
 
-// generateStaticParams is not used with force-dynamic
+export async function generateStaticParams() {
+  const slugs = await getAllSanityPostSlugs().catch(() => []);
+  return slugs;
+}
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -504,6 +507,11 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
                   </>
                 )}
               </div>
+              {post.author && (
+                <div className="text-dark/60 font-sans text-[15px] mb-5">
+                  Author: <span className="font-semibold text-dark">{post.author}</span>
+                </div>
+              )}
               <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
                 {post.title}
               </h1>
@@ -624,6 +632,11 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.readTime}
                 </span>
               </div>
+              {post.author && (
+                <div className="text-dark/60 font-sans text-[15px] mb-5">
+                  Author: <span className="font-semibold text-dark">{post.author}</span>
+                </div>
+              )}
               <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
                 {post.title}
               </h1>
