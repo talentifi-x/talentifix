@@ -5,6 +5,7 @@ export interface SanityPost {
   slug: string;
   publishedAt: string;
   category: string;
+  author?: string;
   readTime: string;
   introduction: string;
   image: string | null;
@@ -22,6 +23,7 @@ export async function getAllSanityPosts(): Promise<SanityPost[]> {
       "slug": slug.current,
       publishedAt,
       category,
+      author,
       readTime,
       introduction,
       "image": mainImage.asset->url
@@ -42,6 +44,7 @@ export async function getSanityPostBySlug(
       "slug": slug.current,
       publishedAt,
       category,
+      author,
       readTime,
       introduction,
       "image": mainImage.asset->url,
