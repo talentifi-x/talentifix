@@ -2,7 +2,19 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Instagram, Linkedin, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
+
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><circle cx="12" cy="12" r="5" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 const XLogoIcon = ({ className }: { className?: string }) => {
   return (
@@ -104,7 +116,7 @@ export const Footer = () => {
                 aria-label="talentifi-X on Instagram"
                 className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
-                <Instagram className="w-6 h-6 text-[#0000FF]" />
+                <InstagramIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/talentifi-X/"
@@ -113,7 +125,7 @@ export const Footer = () => {
                 aria-label="talentifi-X on LinkedIn"
                 className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
-                <Linkedin className="w-6 h-6 text-[#0000FF]" />
+                <LinkedinIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
                 href="https://x.com/talentifi_x"

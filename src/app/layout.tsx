@@ -8,7 +8,7 @@ import React, { Suspense } from "react";
 
 import { dataProvider } from "@providers/data-provider";
 import { ToastProvider } from "@providers/toast";
-import "@styles/globals.css";
+import "@styles/global.css";
 import "react-international-phone/style.css";
 
 const inter = Inter({ subsets: ["latin"] });
