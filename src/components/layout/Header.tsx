@@ -134,6 +134,9 @@ export function Header() {
             <Link href="/blog" className={getLinkClasses("/blog")}>
               Blog
             </Link>
+            <Link href="/jobs" className={getLinkClasses("/jobs")}>
+              Careers
+            </Link>
             <Link href="/contact" className={getLinkClasses("/contact")}>
               Contact
             </Link>
@@ -189,6 +192,13 @@ export function Header() {
                 onClick={closeMobileMenu}
               >
                 Blog
+              </Link>
+              <Link
+                href="/jobs"
+                className={getMobileLinkClasses("/jobs")}
+                onClick={closeMobileMenu}
+              >
+                Careers
               </Link>
               <Link
                 href="/contact"
