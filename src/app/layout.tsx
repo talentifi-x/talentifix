@@ -38,6 +38,7 @@ import { Header } from "@components/layout/Header";
 import { Footer } from "@components/layout/Footer";
 import { BackToTop } from "@components/layout/BackToTop";
 import { CookieConsent } from "@components/layout/CookieConsent";
+import Link from "next/link";
 
 export default async function RootLayout({
   children,
@@ -51,7 +52,7 @@ export default async function RootLayout({
             name="google-site-verification"
             content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ"
           />
-          <link rel="canonical" href="https://talentifix.com/" />
+          {/* Canonical URLs are set per-page via metadata */}
       </head>
       <body className={inter.className}>
         <Script
@@ -79,12 +80,12 @@ export default async function RootLayout({
                 }}
               >
                 <div className="bg-(--color-bg) min-h-screen w-full">
-                  <a
+                  <Link
                     href="#main-content"
-                    className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-[5px] focus:font-bold"
+                    className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-9999 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-[5px] focus:font-bold"
                   >
                     Skip to main content
-                  </a>
+                  </Link>
                   <Header />
                   <main id="main-content">{children}</main>
                   <Footer />

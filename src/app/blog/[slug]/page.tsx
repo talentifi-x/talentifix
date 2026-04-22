@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: sanityPost.title,
       description: sanityPost.introduction?.slice(0, 160),
+      alternates: {
+        canonical: `https://www.talentifi-x.com/blog/${slug}`,
+      },
       openGraph: {
         title: sanityPost.title,
         description: sanityPost.introduction?.slice(0, 160) ?? undefined,
@@ -50,6 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: staticPost.title,
       description: staticPost.introduction.slice(0, 160),
+      alternates: {
+        canonical: `https://www.talentifi-x.com/blog/${slug}`,
+      },
       openGraph: {
         title: staticPost.title,
         description: staticPost.introduction.slice(0, 160),

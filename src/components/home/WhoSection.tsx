@@ -15,7 +15,7 @@ export const WhoSection = () => {
       {/* Background Favicon */}
       <div className="absolute -left-28 -top-9.75 w-86.75 h-107 pointer-events-none opacity-100">
         <Image
-          src="/banner-home/icons/who.svg"
+          src="/icons/who.svg"
           alt="Favicon Background"
           fill
           sizes="347px"
