@@ -48,5 +48,8 @@
   },
   "refine": {
     "projectId": "npR5mU-ltUWyO-Yh0HB5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
   }
 }
