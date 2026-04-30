@@ -56,9 +56,9 @@ export const Footer = () => {
     <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-20 relative z-10">
         {/* Top Section: 3 Columns */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
+        <div className="flex flex-col md:flex-row items-start gap-12 md:gap-8">
           {/* Column 1: Statement & Button */}
-          <div className="flex flex-col gap-8 ">
+          <div className="flex flex-col gap-8 flex-1">
             <h3 className="text-[32px] font-bold font-sans text-black leading-tight">
               Staffing isn’t about filling roles. <br />
               It’s about building what comes next.
@@ -73,7 +73,7 @@ export const Footer = () => {
           </div>
 
           {/* Divider (Mobile only or spacing) */}
-          <div className="hidden md:block w-px min-h-37.5 bg-gray-300" />
+          <div className="hidden md:block w-px self-stretch bg-gray-300" />
 
           {/* Column 2: Navigate */}
           <div className="flex flex-col gap-6">
@@ -101,10 +101,10 @@ export const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block w-px min-h-37.5 bg-gray-300" />
+          <div className="hidden md:block w-px self-stretch bg-gray-300" />
 
           {/* Column 3: Connect With Us */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 flex-1">
             <h4 className="text-[24px] font-bold font-notch text-black">
               Connect With Us
             </h4>
@@ -137,13 +137,23 @@ export const Footer = () => {
                 <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
             </div>
-            <div className="flex items-start gap-3 text-gray-600">
-              <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
-              <p className="text-[18px] font-medium leading-snug">
-                26/19 Gandhibazar Main Road,
-                <br />
-                Basavanagudi, Bangalore - 560 004
-              </p>
+            <div className="flex flex-wrap gap-x-10 gap-y-4 text-gray-600">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
+                <p className="text-[18px] font-medium leading-snug">
+                  26/19 Gandhi Bazar Main Road,
+                  <br />
+                  Basavanagudi, Bangalore - 560 004
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
+                <p className="text-[18px] font-medium leading-snug">
+                  13201 NW Freeway, Suite 800,
+                  <br />
+                  Houston, TX 77040
+                </p>
+              </div>
             </div>
           </div>
         </div>

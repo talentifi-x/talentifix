@@ -773,8 +773,12 @@ export default function PrivacyPolicyPage() {
                     </a>
                   </p>
                   <p>
-                    <strong>Address:</strong> 26/19 Gandhi Bazar Main Road,
-                    Basavanagudi, Bangalore 560004
+                    <strong>India:</strong> 26/19 Gandhi Bazar Main Road,
+                    Basavanagudi, Bangalore - 560 004
+                  </p>
+                  <p>
+                    <strong>US:</strong> 13201 NW Freeway, Suite 800,
+                    Houston, TX 77040
                   </p>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
@@ -882,11 +886,11 @@ export default function PrivacyPolicyPage() {
                 <div className="flex items-start gap-3">
                   <span className="font-bold text-gray-900 w-24">Mail:</span>
                   <span className="text-gray-700">
-                    ATTN: Compliance Manager,
+                    ATTN: Compliance Manager, TalentiFi-X
                     <br />
-                    TalentiFi-X, 26/19 Gandhi Bazar Main Road,
+                    India: 26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore - 560 004
                     <br />
-                    Basavanagudi, Bangalore 560004
+                    US: 13201 NW Freeway, Suite 800, Houston, TX 77040
                   </span>
                 </div>
                 <div className="flex items-start gap-3">

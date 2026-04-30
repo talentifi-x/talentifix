@@ -132,7 +132,7 @@ export function Header() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
@@ -156,25 +156,25 @@ export function Header() {
           {/* CTA Button (Desktop) */}
           <Link
             href="/start-hiring"
-            className="hidden md:flex items-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
+            className="hidden lg:flex items-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
           >
             HIRE TALENT
             <ArrowRight size={20} />
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile/Tablet Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile/Tablet Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50">
             <div className="flex flex-col p-6 space-y-6">
               <Link
                 href="/"
