@@ -140,6 +140,7 @@ export const Footer = () => {
             <div className="flex flex-wrap gap-x-10 gap-y-4 text-gray-600">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
+                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">IN</span>
                 <p className="text-[18px] font-medium leading-snug">
                   26/19 Gandhi Bazar Main Road,
                   <br />
@@ -148,6 +149,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
+                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">US</span>
                 <p className="text-[18px] font-medium leading-snug">
                   13201 NW Freeway, Suite 800,
                   <br />
