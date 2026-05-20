@@ -436,6 +436,30 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
         <strong className="font-bold text-dark">{children}</strong>
       ),
       em: ({ children }) => <em className="italic">{children}</em>,
+      link: ({ value, children }) => {
+        const href: string = (value as { href?: string })?.href ?? "#";
+        const isInternal = href.startsWith("/");
+        if (isInternal) {
+          return (
+            <Link
+              href={href}
+              className="text-primary underline underline-offset-2 hover:opacity-75 transition-opacity"
+            >
+              {children}
+            </Link>
+          );
+        }
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-2 hover:opacity-75 transition-opacity"
+          >
+            {children}
+          </a>
+        );
+      },
     },
     types: {
       image: ({
