@@ -1,12 +1,8 @@
-import { Refine } from "@refinedev/core";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import React, { Suspense } from "react";
+import React from "react";
 
-import { dataProvider } from "@providers/data-provider";
 import { ToastProvider } from "@providers/toast";
 import "@styles/global.css";
 import "react-international-phone/style.css";
@@ -84,34 +80,19 @@ export default async function RootLayout({
           </Script>
         )}
         <ToastProvider>
-          <Suspense>
-            <RefineKbarProvider>
-              <Refine
-                routerProvider={routerProvider}
-                dataProvider={dataProvider}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  projectId: "npR5mU-ltUWyO-Yh0HB5",
-                }}
-              >
-                <div className="bg-(--color-bg) min-h-screen w-full">
-                  <Link
-                    href="#main-content"
-                    className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-9999 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-[5px] focus:font-bold"
-                  >
-                    Skip to main content
-                  </Link>
-                  <Header />
-                  <main id="main-content">{children}</main>
-                  <Footer />
-                  <BackToTop />
-                  <CookieConsent />
-                  <RefineKbar />
-                </div>
-              </Refine>
-            </RefineKbarProvider>
-          </Suspense>
+          <div className="bg-(--color-bg) min-h-screen w-full">
+            <Link
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-9999 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-[5px] focus:font-bold"
+            >
+              Skip to main content
+            </Link>
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <BackToTop />
+            <CookieConsent />
+          </div>
         </ToastProvider>
       </body>
     </html>
