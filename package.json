@@ -6,22 +6,15 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 REFINE_DEVTOOLS_PORT=5011 PORT=3100 refine dev",
-    "build": "refine build",
-    "start": "refine start",
+    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 PORT=3100 next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
-    "refine": "refine",
     "studio": "echo 'Sanity studio removed - reinstall to use'",
     "audit": "npm audit"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.3",
-    "@refinedev/cli": "^2.16.52",
-    "@refinedev/core": "^5.0.12",
-    "@refinedev/devtools": "^2.0.5",
-    "@refinedev/kbar": "^2.0.1",
-    "@refinedev/nextjs-router": "^7.0.5",
-    "@refinedev/simple-rest": "^6.0.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.20.0",
     "lucide-react": "^1.8.0",
@@ -45,9 +38,6 @@
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
-  },
-  "refine": {
-    "projectId": "npR5mU-ltUWyO-Yh0HB5"
   },
   "pnpm": {
     "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
