@@ -121,84 +121,82 @@ const post = {
 
 const body = [
   para(
-    "There is a question most HR leaders and TA teams in India are not asking about their AI hiring tools."
+    "There is a question most HR leaders and TA teams in India are not asking about their AI hiring tools.",
   ),
   para(
-    "Not 'does it work?' They have the demos and the dashboards to answer that."
+    "Not 'does it work?' They have the demos and the dashboards to answer that.",
   ),
   para(
-    "The question they are not asking is: what exactly is it optimising for?"
+    "The question they are not asking is: what exactly is it optimising for?",
   ),
   para(
-    "Because the answer to that question, if you dig into it, changes how you think about every AI-powered shortlist you have ever approved."
+    "Because the answer to that question, if you dig into it, changes how you think about every AI-powered shortlist you have ever approved.",
   ),
 
   heading("What Amoral Drift Actually Means"),
   para(
-    "The term comes from AI ethics. An amoral system is not an immoral one. It has no intention to harm. It's simply indifferent to outcomes outside its objective."
+    "The term comes from AI ethics. An amoral system is not an immoral one. It has no intention to harm. It's simply indifferent to outcomes outside its objective.",
   ),
   para(
-    "An AI hiring tool trained on your historical 'successful hires' has one job: find candidates who look like the people who succeeded in your organisation before. It does that job very well. That is the problem."
+    "An AI hiring tool trained on your historical 'successful hires' has one job: find candidates who look like the people who succeeded in your organisation before. It does that job very well. That is the problem.",
   ),
   para(
-    "Because your previous successful hires were not a random sample of the talent market. They were shaped by every bias, assumption and pattern in your hiring process over the years. Conscious and unconscious. Defensible and indefensible. Intentional and accidental."
+    "Because your previous successful hires were not a random sample of the talent market. They were shaped by every bias, assumption and pattern in your hiring process over the years. Conscious and unconscious. Defensible and indefensible. Intentional and accidental.",
   ),
   para(
-    "The AI doesn't know this. It can't know this. It sees the data. It finds the pattern. It optimises."
+    "The AI doesn't know this. It can't know this. It sees the data. It finds the pattern. It optimises.",
   ),
   para(
-    "And the output, a ranked shortlist, a scored candidate pool, a filtered application pipeline, looks entirely objective. It has numbers. It has percentages. It has confidence scores."
+    "And the output, a ranked shortlist, a scored candidate pool, a filtered application pipeline, looks entirely objective. It has numbers. It has percentages. It has confidence scores.",
   ),
   blockquote(
-    "The score is not objectivity. It is your past, quantified and accelerated and invisible."
+    "The score is not objectivity. It is your past, quantified and accelerated and invisible.",
   ),
   para(
-    "That is amoral drift. Not malice. Not a programming error. Just an optimisation system doing exactly what it was told, and telling you exactly what you wanted to hear."
+    "That is amoral drift. Not malice. Not a programming error. Just an optimisation system doing exactly what it was told, and telling you exactly what you wanted to hear.",
   ),
 
   heading("Three Ways It Shows Up in Practice"),
   para(
-    "Across the searches we have reviewed and the conversations we have had with TA leaders in India, amoral drift tends to appear in three consistent patterns."
+    "Across the searches we have reviewed and the conversations we have had with TA leaders in India, amoral drift tends to appear in three consistent patterns.",
   ),
 
   heading("1. The University Preference Trap", "h3"),
   para(
-    "A resume screener trained on a company's last 200 successful hires learns something about those hires: a disproportionate number came from the same five or six universities. Maybe that was coincidence. Maybe it reflected a genuine historical sourcing strategy. Maybe it reflected a preference in the hiring managers who made those calls."
+    "A resume screener trained on a company's last 200 successful hires learns something about those hires: a disproportionate number came from the same five or six universities. Maybe that was coincidence. Maybe it reflected a genuine historical sourcing strategy. Maybe it reflected a preference in the hiring managers who made those calls.",
   ),
   para(
-    "It doesn't matter. The AI doesn't ask. It observes, it learns, and it begins to quietly down-score candidates from universities outside that cluster. Without anyone explicitly telling it to. Without any audit trail that makes the pattern visible."
+    "It doesn't matter. The AI doesn't ask. It observes, it learns, and it begins to quietly down-score candidates from universities outside that cluster. Without anyone explicitly telling it to. Without any audit trail that makes the pattern visible.",
   ),
   para(
-    "The company never made a policy decision to prefer certain universities. The AI made it for them. And because the output is a number, not a name, it feels like neutrality."
+    "The company never made a policy decision to prefer certain universities. The AI made it for them. And because the output is a number, not a name, it feels like neutrality.",
   ),
 
   heading("2. The Employment Gap Penalty", "h3"),
   para(
-    "A predictive scoring model trained on tenure data will notice, over thousands of historical candidates, that people with clean linear career histories, no gaps, no career pivots, no unexplained periods, tended to score better on retention metrics."
+    "A predictive scoring model trained on tenure data will notice, over thousands of historical candidates, that people with clean linear career histories, no gaps, no career pivots, no unexplained periods, tended to score better on retention metrics.",
   ),
   para("So the model learns to penalise employment gaps."),
   para(
-    "It doesn't know why those gaps exist. It doesn't distinguish between a gap caused by redundancy, a gap caused by a caregiving responsibility, a gap caused by health, or a gap caused by someone deliberately taking time to build a skill or raise a child or grieve a loss."
+    "It doesn't know why those gaps exist. It doesn't distinguish between a gap caused by redundancy, a gap caused by a caregiving responsibility, a gap caused by health, or a gap caused by someone deliberately taking time to build a skill or raise a child or grieve a loss.",
   ),
+  para("It sees a gap. It assigns a penalty. The candidate scores lower."),
   para(
-    "It sees a gap. It assigns a penalty. The candidate scores lower."
-  ),
-  para(
-    "This quietly removes caregivers, returning mothers, veterans in transition and career changers from shortlists. Not through prejudice. Through pattern matching that was never designed to be fair. It was designed to predict. The two are not the same thing."
+    "This quietly removes caregivers, returning mothers, veterans in transition and career changers from shortlists. Not through prejudice. Through pattern matching that was never designed to be fair. It was designed to predict. The two are not the same thing.",
   ),
 
   heading("3. Structural Diversity Decline", "h3"),
   para(
-    "This is the most insidious pattern, because it builds slowly and compounds over years."
+    "This is the most insidious pattern, because it builds slowly and compounds over years.",
   ),
   para(
-    "A sourcing algorithm that reinforces existing talent pools begins to shrink the effective candidate universe with every search cycle. The candidates it finds look more and more like the candidates it has always found. The pipeline narrows. The organisation becomes slightly more homogenous with every hire."
+    "A sourcing algorithm that reinforces existing talent pools begins to shrink the effective candidate universe with every search cycle. The candidates it finds look more and more like the candidates it has always found. The pipeline narrows. The organisation becomes slightly more homogenous with every hire.",
   ),
   para(
-    "Not dramatically. Not in a way that shows up in a single quarter's data. But over three, five, ten years, the cumulative effect is a talent pool that reflects neither the market nor the organisation's own stated values around diversity."
+    "Not dramatically. Not in a way that shows up in a single quarter's data. But over three, five, ten years, the cumulative effect is a talent pool that reflects neither the market nor the organisation's own stated values around diversity.",
   ),
   para(
-    "And because every step of the way the tool was 'working', delivering shortlists, meeting SLAs, producing scores, no alarm was ever triggered."
+    "And because every step of the way the tool was 'working', delivering shortlists, meeting SLAs, producing scores, no alarm was ever triggered.",
   ),
 
   heading("Why This Is Happening More in India Right Now"),
@@ -211,93 +209,93 @@ const body = [
     ", where AI is now common in early-stage screening for CFO, FP&A and controllership roles.",
   ]),
   para(
-    "This is largely positive. AI genuinely helps with volume processing, candidate matching at scale, and removing some of the most blatant forms of human inconsistency from early-stage screening."
+    "This is largely positive. AI genuinely helps with volume processing, candidate matching at scale, and removing some of the most blatant forms of human inconsistency from early-stage screening.",
   ),
   para("But the adoption has outpaced the audit culture."),
   para(
-    "Most companies adopting AI hiring tools in India have not asked the vendor when the model was last audited for disparate impact. Most have not run a test to see whether the tool's outputs vary systematically across candidate demographic groups. Most have not defined what success looks like for the model beyond 'shortlist quality', a metric that the same model is often used to define."
+    "Most companies adopting AI hiring tools in India have not asked the vendor when the model was last audited for disparate impact. Most have not run a test to see whether the tool's outputs vary systematically across candidate demographic groups. Most have not defined what success looks like for the model beyond 'shortlist quality', a metric that the same model is often used to define.",
   ),
   para(
-    "In India's 2026 hiring market, where roughly 30 to 35 percent of mid-to-large companies now use at least one AI tool in their hiring process, most of those tools have never been audited for amoral drift."
+    "In India's 2026 hiring market, where roughly 30 to 35 percent of mid-to-large companies now use at least one AI tool in their hiring process, most of those tools have never been audited for amoral drift.",
   ),
   para(
-    "This is going to be a major issue in the next three to five years. The organisations that get ahead of it now will be the ones with the talent pools, the cultures and the reputations to attract the best people. The ones that don't will wonder why their pipelines keep delivering the same profiles, and why their DE&I numbers never seem to move."
+    "This is going to be a major issue in the next three to five years. The organisations that get ahead of it now will be the ones with the talent pools, the cultures and the reputations to attract the best people. The ones that don't will wonder why their pipelines keep delivering the same profiles, and why their DE&I numbers never seem to move.",
   ),
 
   heading("The Questions to Ask Your AI Vendor Today"),
   para(
-    "If your organisation uses AI-assisted screening, sourcing or scoring in any part of your hiring process, these are the questions you need to ask. Not next quarter. Now."
+    "If your organisation uses AI-assisted screening, sourcing or scoring in any part of your hiring process, these are the questions you need to ask. Not next quarter. Now.",
   ),
   numbered(
-    "What data was used to train this model, and how old is it? If the training data is more than two years old or reflects a specific historical period in your hiring, it may be encoding patterns that no longer reflect your needs or your values."
+    "What data was used to train this model, and how old is it? If the training data is more than two years old or reflects a specific historical period in your hiring, it may be encoding patterns that no longer reflect your needs or your values.",
   ),
   numbered(
-    "Has the model been tested for disparate impact across demographic groups? Specifically: does it produce different shortlist rates for candidates from different educational backgrounds, genders, career histories or geographies? If the vendor cannot answer this, that is your answer."
+    "Has the model been tested for disparate impact across demographic groups? Specifically: does it produce different shortlist rates for candidates from different educational backgrounds, genders, career histories or geographies? If the vendor cannot answer this, that is your answer.",
   ),
   numbered(
-    "How is the model updated when my hiring data changes? If the model is static, trained once and deployed, it will drift further from your current needs with every passing search cycle. A model that learns from your ongoing placements needs to be audited regularly for what it is learning."
+    "How is the model updated when my hiring data changes? If the model is static, trained once and deployed, it will drift further from your current needs with every passing search cycle. A model that learns from your ongoing placements needs to be audited regularly for what it is learning.",
   ),
   numbered(
-    "What is the human override rate in our shortlists? If your recruiters are consistently overriding the AI's recommendations, adding candidates who scored low or removing candidates who scored high, that is a signal worth examining. The override pattern often reveals where the model is miscalibrated."
+    "What is the human override rate in our shortlists? If your recruiters are consistently overriding the AI's recommendations, adding candidates who scored low or removing candidates who scored high, that is a signal worth examining. The override pattern often reveals where the model is miscalibrated.",
   ),
   numbered(
-    "Can we see a breakdown of shortlist diversity over the last 12 months? Not just quality metrics. Diversity metrics. If the pipeline is narrowing, the data will show it before the culture does."
+    "Can we see a breakdown of shortlist diversity over the last 12 months? Not just quality metrics. Diversity metrics. If the pipeline is narrowing, the data will show it before the culture does.",
   ),
 
   heading("The Human Led, AI Assisted Answer"),
   para(
-    "At TalentiFi-X, Human Led, AI Assisted is not a positioning line. It is a structural decision built directly in response to amoral drift."
+    "At TalentiFi-X, Human Led, AI Assisted is not a positioning line. It is a structural decision built directly in response to amoral drift.",
   ),
   para(
-    "Our AI layer handles the things AI does well and that do not require human judgment: scanning thousands of candidates simultaneously, scoring against a precisely defined success profile, flagging technical qualifications, and surfacing candidates who might not match the JD exactly but match the underlying success pattern."
+    "Our AI layer handles the things AI does well and that do not require human judgement: scanning thousands of candidates simultaneously, scoring against a precisely defined success profile, flagging technical qualifications, and surfacing candidates who might not match the JD exactly but match the underlying success pattern.",
   ),
   para(
-    "Our human layer handles everything that requires something the AI cannot have: context, accountability, and a genuine understanding of what the role needs versus what the historical data says it needed."
+    "Our human layer handles everything that requires something the AI cannot have: context, accountability, and a genuine understanding of what the role needs versus what the historical data says it needed.",
   ),
   para(
-    "This includes, specifically, the intake conversation, where the success profile is defined before the AI is briefed. It includes the human validation stage, where cultural fit, motivation and potential are assessed by domain experts who can ask a follow-up question. And it includes the offer and post-placement stages, where the decisions being made have consequences for real people's lives and careers."
+    "This includes, specifically, the intake conversation, where the success profile is defined before the AI is briefed. It includes the human validation stage, where cultural fit, motivation and potential are assessed by domain experts who can ask a follow-up question. And it includes the offer and post-placement stages, where the decisions being made have consequences for real people's lives and careers.",
   ),
   blockquote(
-    "The AI is never the last decision-maker. Not because AI is untrustworthy. Because some decisions require having something to lose, and an AI system does not."
+    "The AI is never the last decision-maker. Not because AI is untrustworthy. Because some decisions require having something to lose, and an AI system does not.",
   ),
   para(
-    "The organisations getting AI right in hiring are not the ones using the most AI. They are the ones being most precise about which decisions belong to the machine and which ones belong to the human."
+    "The organisations getting AI right in hiring are not the ones using the most AI. They are the ones being most precise about which decisions belong to the machine and which ones belong to the human.",
   ),
 
   heading("How to Audit Your Hiring AI for Amoral Drift"),
   para(
-    "You do not need a data science team to begin this process. You need three things: access to your historical shortlist data, the willingness to ask uncomfortable questions, and a vendor who is not defensive when you ask them."
+    "You do not need a data science team to begin this process. You need three things: access to your historical shortlist data, the willingness to ask uncomfortable questions, and a vendor who is not defensive when you ask them.",
   ),
 
   heading("Step 1: Map your last 24 months of shortlists", "h3"),
   para(
-    "Pull the candidates your AI tool surfaced and shortlisted versus the candidates your recruiters ultimately advanced. Look for patterns: educational institutions, career trajectory shapes, employment history structures. If the AI's shortlists are significantly skewed toward certain profiles that your recruiters then diversify, the model needs attention."
+    "Pull the candidates your AI tool surfaced and shortlisted versus the candidates your recruiters ultimately advanced. Look for patterns: educational institutions, career trajectory shapes, employment history structures. If the AI's shortlists are significantly skewed toward certain profiles that your recruiters then diversify, the model needs attention.",
   ),
 
   heading("Step 2: Test with anonymised profiles", "h3"),
   para(
-    "Create a set of anonymised candidate profiles that are technically equivalent but vary in employment gap history, institution attended and career trajectory. Run them through your AI tool. If the scores vary significantly based on those non-performance-relevant factors, you have found amoral drift in your system."
+    "Create a set of anonymised candidate profiles that are technically equivalent but vary in employment gap history, institution attended and career trajectory. Run them through your AI tool. If the scores vary significantly based on those non-performance-relevant factors, you have found amoral drift in your system.",
   ),
 
   heading("Step 3: Ask the vendor for a disparate impact report", "h3"),
   para(
-    "This is a standard analysis in responsible AI deployment. It measures whether the tool produces different outcomes for different demographic groups. Any reputable AI vendor should be able to provide this. If they cannot, or will not, that should significantly affect your decision about whether to continue using the tool."
+    "This is a standard analysis in responsible AI deployment. It measures whether the tool produces different outcomes for different demographic groups. Any reputable AI vendor should be able to provide this. If they cannot, or will not, that should significantly affect your decision about whether to continue using the tool.",
   ),
 
   heading("Step 4: Define the human override policy explicitly", "h3"),
   para(
-    "Every AI hiring tool should have a documented process for when a human can override the AI's output, and what happens to that override data. If your process treats AI recommendations as the default and human overrides as exceptions that require justification, you have inverted the model. The AI is a tool. The human is the decision-maker."
+    "Every AI hiring tool should have a documented process for when a human can override the AI's output, and what happens to that override data. If your process treats AI recommendations as the default and human overrides as exceptions that require justification, you have inverted the model. The AI is a tool. The human is the decision-maker.",
   ),
 
   heading("The Bottom Line"),
   para(
-    "AI in hiring is not good or bad. It is a tool. Used with precision and with humans in the right seats, it makes the hiring process faster, more consistent, and less subject to the individual biases of any one recruiter."
+    "AI in hiring is not good or bad. It is a tool. Used with precision and with humans in the right seats, it makes the hiring process faster, more consistent, and less subject to the individual biases of any one recruiter.",
   ),
   para(
-    "Used without audit, without a clear human-machine handover framework, and without the willingness to ask what exactly the model is optimising for, it quietly reproduces the past at scale."
+    "Used without audit, without a clear human-machine handover framework, and without the willingness to ask what exactly the model is optimising for, it quietly reproduces the past at scale.",
   ),
   para(
-    "The hiring market in India is changing faster than at any point in a generation. The talent you need for the next stage of your organisation does not necessarily look like the talent that got you here."
+    "The hiring market in India is changing faster than at any point in a generation. The talent you need for the next stage of your organisation does not necessarily look like the talent that got you here.",
   ),
   blockquote("Make sure your AI knows that."),
 
@@ -308,7 +306,7 @@ const body = [
       text: "3 to 5 precision-matched candidates",
       href: "/blog/why-sending-30-resumes-is-lazy-hiring-and-why-3-5-is-the-future",
     },
-    " in 12 days, with human experts in every decision that matters and AI handling everything that does not require judgment.",
+    " in 12 days, with human experts in every decision that matters and AI handling everything that does not require judgement.",
   ]),
   linkPara([
     "Read more about ",
@@ -345,7 +343,7 @@ const faq = [
     _type: "faqItem",
     question: "What is Human Led, AI Assisted hiring?",
     answer:
-      "Human Led, AI Assisted is a hiring model in which AI handles volume processing, pattern matching and speed, while human experts handle cultural fit, motivation, offer strategy and every final decision. The AI is never the last decision-maker. The model is specifically designed to prevent amoral drift by keeping human judgment in the seat for decisions that require context and accountability.",
+      "Human Led, AI Assisted is a hiring model in which AI handles volume processing, pattern matching and speed, while human experts handle cultural fit, motivation, offer strategy and every final decision. The AI is never the last decision-maker. The model is specifically designed to prevent amoral drift by keeping human judgement in the seat for decisions that require context and accountability.",
   },
   {
     _key: k(),

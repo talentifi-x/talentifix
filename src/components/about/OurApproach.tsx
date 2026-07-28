@@ -8,7 +8,7 @@ const items = [
     iconAlt: "",
   },
   {
-    title: "Humans ensure judgment, cultural\nfit, and long-term success.",
+    title: "Humans ensure judgement, cultural\nfit, and long-term success.",
     iconSrc: "/assets/about/approach-team.svg",
     iconAlt: "",
   },

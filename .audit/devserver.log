@@ -1,0 +1,105 @@
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+
+> talentifix@0.1.0 dev
+> cross-env NODE_OPTIONS=--max_old_space_size=4096 PORT=3100 next dev
+
+   ▲ Next.js 15.5.12
+   - Local:        http://localhost:3100
+   - Network:      http://192.168.1.34:3100
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 9.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 30s (790 modules)
+ GET / 200 in 34200ms
+ ✓ Compiled in 5s (287 modules)
+ GET / 200 in 1601ms
+ ✓ Compiled in 3.1s (287 modules)
+ ✓ Compiled in 1006ms (287 modules)
+ ✓ Compiled in 2.6s (287 modules)
+ ✓ Compiled in 1129ms (287 modules)
+ ✓ Compiled in 2.2s (287 modules)
+ ✓ Compiled in 4.5s (287 modules)
+ ✓ Compiled in 3.4s (287 modules)
+ ✓ Compiled in 1797ms (287 modules)
+ ✓ Compiled in 2.2s (287 modules)
+ ✓ Compiled in 1448ms (287 modules)
+ ✓ Compiled in 3.7s (287 modules)
+ ✓ Compiled in 3.2s (287 modules)
+ ✓ Compiled in 1519ms (287 modules)
+ ✓ Compiled in 1839ms (287 modules)
+ ✓ Compiled in 963ms (287 modules)
+ ✓ Compiled in 4.4s (287 modules)
+ ✓ Compiled in 1769ms (287 modules)
+ ✓ Compiled in 2.7s (287 modules)
+ ✓ Compiled in 1199ms (287 modules)
+ ✓ Compiled in 1971ms (287 modules)
+ ✓ Compiled in 2.1s (287 modules)
+ ✓ Compiled in 1319ms (287 modules)
+ ✓ Compiled in 1822ms (287 modules)
+ ✓ Compiled in 2.4s (287 modules)
+ ✓ Compiled in 2.3s (287 modules)
+ ✓ Compiled in 1807ms (287 modules)
+ ○ Compiling /sitemap.xml ...
+ ✓ Compiled /sitemap.xml in 10.6s (655 modules)
+ GET /sitemap.xml 200 in 12833ms
+ ○ Compiling /robots.txt ...
+ ✓ Compiled /robots.txt in 848ms (658 modules)
+ GET /robots.txt 200 in 1255ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1412ms (776 modules)
+ GET / 200 in 4609ms
+   Reload env: .env.local
+ ✓ Compiled in 1747ms (1050 modules)
+ GET /robots.txt 200 in 367ms
+ GET /robots.txt 200 in 72ms
+ GET /sitemap.xml 200 in 767ms
+ GET / 200 in 3045ms
+ ✓ Compiled in 1487ms (288 modules)
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 47.2s (4443 modules)
+ GET /blog/cost-of-hiring-delay-60-days-impact 200 in 60531ms
+ ✓ Compiled in 3.1s (1787 modules)
+ ✓ Compiled in 415ms (1787 modules)
+ ✓ Compiled in 308ms (1787 modules)
+ ✓ Compiled in 301ms (1787 modules)
+ ✓ Compiled in 358ms (1787 modules)
+ ✓ Compiled in 298ms (1787 modules)
+ ✓ Compiled in 299ms (1787 modules)
+ ✓ Compiled in 380ms (1787 modules)
+ ✓ Compiled in 285ms (1787 modules)
+ ✓ Compiled in 308ms (1787 modules)
+ ✓ Compiled in 281ms (1787 modules)
+ ✓ Compiled in 316ms (1787 modules)
+ ✓ Compiled in 277ms (1787 modules)
+ ✓ Compiled in 296ms (1787 modules)
+ ✓ Compiled in 300ms (1787 modules)
+ ✓ Compiled in 286ms (1787 modules)
+ ✓ Compiled in 406ms (1787 modules)
+ ✓ Compiled in 355ms (1787 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1407ms (1787 modules)
+ ✓ Compiled in 395ms (1787 modules)
+ ✓ Compiled in 437ms (1787 modules)
+ ✓ Compiled in 290ms (1787 modules)
+ ✓ Compiled in 375ms (1787 modules)
+ ✓ Compiled in 356ms (1787 modules)
+ ✓ Compiled in 1357ms (1787 modules)
+ ✓ Compiled in 496ms (1787 modules)
+ ✓ Compiled in 398ms (1787 modules)
+ ✓ Compiled in 386ms (1787 modules)
+ ✓ Compiled in 373ms (1787 modules)
+ ✓ Compiled in 267ms (1787 modules)
+ ⨯ ./
+Module not found: Can't resolve 'C:\Users\Karan\Desktop\Projects\Digitally next_projects\Talentifix\node_modules\next-sanity\dist\visual-editing\client-component.js'
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./
+Module not found: Can't resolve 'C:\Users\Karan\Desktop\Projects\Digitally next_projects\Talentifix\node_modules\@sanity\next-loader\dist\client-components\live-stream.js'
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./
+Module not found: Can't resolve 'C:\Users\Karan\Desktop\Projects\Digitally next_projects\Talentifix\node_modules\@sanity\next-loader\dist\client-components\live-stream.js'
+
+https://nextjs.org/docs/messages/module-not-found

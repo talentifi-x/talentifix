@@ -1,0 +1,186 @@
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1404
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1404, reused 918, downloaded 0, added 0
+Progress: resolved 1404, reused 1157, downloaded 63, added 0
+Progress: resolved 1404, reused 1157, downloaded 105, added 70
+Progress: resolved 1404, reused 1157, downloaded 106, added 225
+Progress: resolved 1404, reused 1157, downloaded 106, added 366
+Progress: resolved 1404, reused 1157, downloaded 106, added 439
+Progress: resolved 1404, reused 1157, downloaded 106, added 478
+Progress: resolved 1404, reused 1157, downloaded 106, added 502
+Progress: resolved 1404, reused 1157, downloaded 106, added 543
+Progress: resolved 1404, reused 1157, downloaded 106, added 604
+Progress: resolved 1404, reused 1157, downloaded 106, added 686
+Progress: resolved 1404, reused 1157, downloaded 106, added 760
+Progress: resolved 1404, reused 1157, downloaded 106, added 827
+Progress: resolved 1404, reused 1157, downloaded 106, added 914
+Progress: resolved 1404, reused 1157, downloaded 106, added 974
+Progress: resolved 1404, reused 1157, downloaded 106, added 1015
+Progress: resolved 1404, reused 1157, downloaded 106, added 1048
+Progress: resolved 1404, reused 1157, downloaded 106, added 1111
+Progress: resolved 1404, reused 1157, downloaded 106, added 1187
+Progress: resolved 1404, reused 1157, downloaded 106, added 1242
+Progress: resolved 1404, reused 1157, downloaded 129, added 1261
+Progress: resolved 1404, reused 1157, downloaded 166, added 1302
+Progress: resolved 1404, reused 1157, downloaded 212, added 1361
+Progress: resolved 1404, reused 1157, downloaded 243, added 1389
+Progress: resolved 1404, reused 1157, downloaded 246, added 1396
+Progress: resolved 1404, reused 1157, downloaded 247, added 1398
+Progress: resolved 1404, reused 1157, downloaded 247, added 1400
+Progress: resolved 1404, reused 1157, downloaded 247, added 1401
+Progress: resolved 1404, reused 1157, downloaded 247, added 1402
+Progress: resolved 1404, reused 1157, downloaded 247, added 1403
+Progress: resolved 1404, reused 1157, downloaded 247, added 1404
+Progress: resolved 1404, reused 1157, downloaded 247, added 1404, done
+.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check
+.../sharp@0.34.5/node_modules/sharp install$ node install/check.js || npm run build
+.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
+.../sharp@0.34.5/node_modules/sharp install: Done
+.../node_modules/unrs-resolver postinstall: Done
+.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+
+dependencies:
++ @portabletext/react 6.0.3
++ @refinedev/cli 2.16.52
++ @refinedev/core 5.0.12
++ @refinedev/devtools 2.0.5
++ @refinedev/kbar 2.0.1
++ @refinedev/nextjs-router 7.0.5
++ @refinedev/simple-rest 6.0.1
++ @sanity/image-url 2.1.1
++ @sanity/vision 5.20.0
++ lucide-react 1.8.0
++ next 16.2.3
++ next-sanity 12.2.2
++ nodemailer 8.0.5
++ react 19.2.5
++ react-dom 19.2.5
++ react-international-phone 4.8.0
++ sanity 5.20.0
+
+devDependencies:
++ @tailwindcss/postcss 4.2.2
++ @types/node 25.6.0
++ @types/nodemailer 8.0.0
++ @types/react 19.2.14
++ @types/react-dom 19.2.3
++ cross-env 10.1.0
++ eslint 10.2.0
++ eslint-config-next 16.2.3
++ postcss 8.5.9
++ tailwindcss 4.2.2
++ typescript 6.0.2
+
+Done in 36s using pnpm v9.15.9
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+
+> talentifix@0.1.0 build C:\Users\Karan\Desktop\Projects\Digitally next_projects\Talentifix
+> refine build
+
+[1m[38;2;173;127;168m▲ Next.js 16.2.3[39m[22m (Turbopack)
+- Environments: .env.local
+
+[37m[1m [22m[39m Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./node_modules/.pnpm/sanity@5.20.0_@emotion+is-prop-valid@1.4.0_@noble+hashes@2.2.0_@oclif+core@4.10.5_@sanity+cli_327et6azdmuy4isbdsvh5e3gz4/node_modules/sanity/lib/index.js:194:1
+[1m[31mModule not found[39m[22m: Can't resolve [32m'@portabletext/plugin-markdown-shortcuts'[39m
+  [90m192 |[0m [36mimport[0m set$2 [36mfrom[0m [32m"lodash-es/set.js"[0m;
+  [90m193 |[0m [36mimport[0m { htmlToPortableText } [36mfrom[0m [32m"@portabletext/html"[0m;
+[31m[1m>[0m [90m194 |[0m [36mimport[0m { [33mMarkdownShortcutsPlugin[0m } [36mfrom[0m [32m"@portabletext/plugin-markdown-shortcuts"[0m;
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m195 |[0m [36mimport[0m { [33mPasteLinkPlugin[0m } [36mfrom[0m [32m"@portabletext/plugin-paste-link"[0m;
+  [90m196 |[0m [36mimport[0m { createDecoratorGuard, [33mTypographyPlugin[0m } [36mfrom[0m [32m"@portabletext/plugin-typography"[0m;
+  [90m197 |[0m [36mimport[0m find$1 [36mfrom[0m [32m"lodash-es/find.js"[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/.pnpm/sanity@5.20.0_@emotion+is-prop-valid@1.4.0_@noble+hashes@2.2.0_@oclif+core@4.10.5_@sanity+cli_327et6azdmuy4isbdsvh5e3gz4/node_modules/sanity/lib/index.js [Client Component Browser]
+    ./sanity.config.ts [Client Component Browser]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/.pnpm/sanity@5.20.0_@emotion+is-prop-valid@1.4.0_@noble+hashes@2.2.0_@oclif+core@4.10.5_@sanity+cli_327et6azdmuy4isbdsvh5e3gz4/node_modules/sanity/lib/index.js [Client Component SSR]
+    ./sanity.config.ts [Client Component SSR]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/getDefaultExtensions.js:2:1
+[1m[31mModule not found[39m[22m: Can't resolve [32m'@uiw/codemirror-extensions-basic-setup'[39m
+  [90m1 |[0m [36mimport[0m { indentWithTab } [36mfrom[0m [32m'@codemirror/commands'[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m { basicSetup } [36mfrom[0m [32m'@uiw/codemirror-extensions-basic-setup'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m [36mimport[0m { [33mEditorView[0m, keymap, placeholder } [36mfrom[0m [32m'@codemirror/view'[0m;
+  [90m4 |[0m [36mimport[0m { oneDark } [36mfrom[0m [32m'@codemirror/theme-one-dark'[0m;
+  [90m5 |[0m [36mimport[0m { [33mEditorState[0m } [36mfrom[0m [32m'@codemirror/state'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/getDefaultExtensions.js [Client Component Browser]
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/index.js [Client Component Browser]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/SanityVision.js [Client Component Browser]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/index.js [Client Component Browser]
+    ./sanity.config.ts [Client Component Browser]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/getDefaultExtensions.js [Client Component SSR]
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/index.js [Client Component SSR]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/SanityVision.js [Client Component SSR]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/index.js [Client Component SSR]
+    ./sanity.config.ts [Client Component SSR]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/index.js:9:1
+[1m[31mModule not found[39m[22m: Can't resolve [32m'@uiw/codemirror-extensions-basic-setup'[39m
+  [90m 7 |[0m [36mexport[0m * [36mfrom[0m [32m'@codemirror/view'[0m;
+  [90m 8 |[0m [36mexport[0m * [36mfrom[0m [32m'@codemirror/state'[0m;
+[31m[1m>[0m [90m 9 |[0m [36mexport[0m * [36mfrom[0m [32m'@uiw/codemirror-extensions-basic-setup'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m [36mexport[0m * [36mfrom[0m [32m"./useCodeMirror.js"[0m;
+  [90m11 |[0m [36mexport[0m * [36mfrom[0m [32m"./getDefaultExtensions.js"[0m;
+  [90m12 |[0m [36mexport[0m * [36mfrom[0m [32m"./utils.js"[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/index.js [Client Component Browser]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/SanityVision.js [Client Component Browser]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/index.js [Client Component Browser]
+    ./sanity.config.ts [Client Component Browser]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/.pnpm/@uiw+react-codemirror@4.25.9_@babel+runtime@7.29.2_@codemirror+autocomplete@6.20.1_@codemirro_htlsjkbdbe47qeyayw3dxgwpay/node_modules/@uiw/react-codemirror/esm/index.js [Client Component SSR]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/SanityVision.js [Client Component SSR]
+    ./node_modules/.pnpm/@sanity+vision@5.20.0_@babel+runtime@7.29.2_@codemirror+lint@6.9.5_@codemirror+theme-one-dark_bvni7p764n35zxu4smdfmtfpem/node_modules/@sanity/vision/lib/_chunks-es/index.js [Client Component SSR]
+    ./sanity.config.ts [Client Component SSR]
+    ./sanity.config.ts [Server Component]
+    ./src/app/studio/[[...tool]]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+ ELIFECYCLE  Command failed with exit code 1.

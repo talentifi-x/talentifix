@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export const SolutionsExecutiveSearch = () => {
   return (
-    <section id="executive-search" className="relative w-full overflow-hidden bg-white scroll-mt-32">
+    <section
+      id="executive-search"
+      className="relative w-full overflow-hidden bg-white scroll-mt-32"
+    >
       <Image
         src="/assets/Solutions/exec-search-bg.svg"
         alt=""
@@ -24,7 +27,7 @@ export const SolutionsExecutiveSearch = () => {
         <div className="py-6 mt-10 lg:mt-14 flex flex-col items-center gap-10 lg:gap-14">
           <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-10">
             <h3 className="font-notch font-bold text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.3] text-dark text-center lg:text-left max-w-[664px]">
-              When Judgment Matters More
+              When judgement Matters More
               <br className="hidden sm:block" />
               Than Speed<span className="text-secondary">.</span>
             </h3>
@@ -42,9 +45,7 @@ export const SolutionsExecutiveSearch = () => {
                   Our Approach<span className="text-primary">.</span>
                 </h4>
                 <p className="text-[14px] sm:text-[16px] lg:text-[14px] font-semibold leading-[1.3] text-dark text-center lg:text-left">
-                  AI supports research.
-                
-                  Humans lead decisions.
+                  AI supports research. Humans lead decisions.
                 </p>
               </div>
 

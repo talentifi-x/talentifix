@@ -1,0 +1,58 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.onlyBuiltDependencies". See https://pnpm.io/settings for the new home of each setting.
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1157
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1157, reused 253, downloaded 7, added 0
+Progress: resolved 1157, reused 253, downloaded 45, added 161
+Progress: resolved 1157, reused 253, downloaded 83, added 226
+Progress: resolved 1157, reused 253, downloaded 148, added 267
+Progress: resolved 1157, reused 253, downloaded 280, added 287
+Progress: resolved 1157, reused 253, downloaded 380, added 353
+Progress: resolved 1157, reused 253, downloaded 492, added 369
+Progress: resolved 1157, reused 253, downloaded 617, added 451
+Progress: resolved 1157, reused 253, downloaded 720, added 480
+Progress: resolved 1157, reused 253, downloaded 837, added 556
+Progress: resolved 1157, reused 253, downloaded 890, added 609
+Progress: resolved 1157, reused 253, downloaded 900, added 804
+Progress: resolved 1157, reused 253, downloaded 900, added 895
+Progress: resolved 1157, reused 253, downloaded 900, added 971
+Progress: resolved 1157, reused 253, downloaded 901, added 1038
+Progress: resolved 1157, reused 253, downloaded 901, added 1133
+Progress: resolved 1157, reused 253, downloaded 902, added 1152
+Progress: resolved 1157, reused 253, downloaded 902, added 1153
+Progress: resolved 1157, reused 253, downloaded 903, added 1154
+Progress: resolved 1157, reused 253, downloaded 903, added 1156
+Progress: resolved 1157, reused 253, downloaded 904, added 1156
+Progress: resolved 1157, reused 253, downloaded 904, added 1157
+Progress: resolved 1157, reused 253, downloaded 904, added 1157, done
+
+dependencies:
++ @portabletext/react 6.0.3
++ @sanity/image-url 2.1.1
++ @sanity/vision 5.20.0
++ lucide-react 1.8.0
++ next 16.2.3
++ next-sanity 12.2.2
++ nodemailer 8.0.5
++ react 19.2.5
++ react-dom 19.2.5
++ react-international-phone 4.8.0
++ sanity 5.20.0
+
+devDependencies:
++ @tailwindcss/postcss 4.2.2
++ @types/node 25.6.0
++ @types/nodemailer 8.0.0
++ @types/react 19.2.14
++ @types/react-dom 19.2.3
++ cross-env 10.1.0
++ eslint 10.2.0
++ eslint-config-next 16.2.3
++ postcss 8.5.9
++ tailwindcss 4.2.2
++ typescript 6.0.2
+
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: esbuild@0.27.7, sharp@0.34.5, unrs-resolver@1.11.1
+
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.

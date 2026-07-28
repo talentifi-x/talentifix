@@ -13,6 +13,7 @@ import HowItWorksSection from "@components/home/HowItWorksSection";
 import WhereWeSpecializeSection from "@components/home/WhereWeSpecializeSection";
 import TheOriginSection from "@components/home/TheOriginSection";
 import TheNextStepSection from "@components/home/TheNextStepSection";
+import { ClientsSection } from "@components/home/ClientsSection";
 
 export const metadata: Metadata = {
   title: "Intelligent Hiring for the AI Age",
@@ -31,6 +32,7 @@ export default function Home() {
     <main className="w-full flex flex-col items-center bg-white">
       <Banner />
       <StorySection />
+      <ClientsSection />
       <StatsSection />
       <StatementSection />
       <RebuildSection />
