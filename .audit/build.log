@@ -1,0 +1,57 @@
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+
+> talentifix@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.12
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 39.5s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/44) ...
+   Generating static pages (11/44) 
+   Generating static pages (22/44) 
+   Generating static pages (33/44) 
+ ✓ Generating static pages (44/44)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                                                        Size  First Load JS  Revalidate  Expire
+┌ ○ /                                                                                           2.66 kB         114 kB
+├ ○ /_not-found                                                                                   148 B         103 kB
+├ ○ /about                                                                                        492 B         108 kB
+├ ƒ /api/candidate-registration                                                                   148 B         103 kB
+├ ƒ /api/contact                                                                                  148 B         103 kB
+├ ƒ /api/job-application                                                                          148 B         103 kB
+├ ƒ /api/primary-client-contact                                                                   148 B         103 kB
+├ ○ /blog                                                                                       2.84 kB         173 kB          1m      1y
+├ ● /blog/[slug]                                                                                2.15 kB         172 kB          1m      1y
+├   ├ /blog/what-20-years-of-placing-talent-taught-me-about-hiring-and-why-i-built-talentifi-x                                  1m      1y
+├   ├ /blog/cost-of-hiring-delay-60-days-impact                                                                                 1m      1y
+├   ├ /blog/ai-in-staffing-what-should-be-automated-and-what-should-never-be                                                    1m      1y
+├   └ [+19 more paths]
+├ ○ /contact                                                                                    4.04 kB         112 kB
+├ ○ /jobs                                                                                         341 B         165 kB          1m      1y
+├ ● /jobs/[slug]                                                                                4.44 kB         179 kB          1m      1y
+├   ├ /jobs/senior-manager-business-development                                                                                 1m      1y
+├   └ /jobs/senior-us-it-recruiter                                                                                              1m      1y
+├ ○ /join-our-network                                                                           6.56 kB         122 kB
+├ ○ /privacy-policy                                                                               169 B         106 kB
+├ ○ /robots.txt                                                                                   148 B         103 kB
+├ ○ /sitemap.html                                                                                 341 B         165 kB          1m      1y
+├ ○ /sitemap.xml                                                                                  148 B         103 kB
+├ ○ /solutions                                                                                    178 B         111 kB
+├ ○ /start-hiring                                                                               4.08 kB         117 kB
+└ ○ /studio/[[...tool]]                                                                         1.46 MB        1.62 MB
++ First Load JS shared by all                                                                    102 kB
+  ├ chunks/1255-31341e05e682b6b5.js                                                             45.5 kB
+  ├ chunks/4bd1b696-182b6b13bdad92e3.js                                                         54.2 kB
+  └ other shared chunks (total)                                                                 2.66 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

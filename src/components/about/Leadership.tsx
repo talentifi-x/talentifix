@@ -62,7 +62,7 @@ export const Leadership = () => {
                       Guided by the belief that “in the noise of change, true
                       leaders find the signals,” Chet founded TalentiFi-X to
                       rebuild hiring for today’s reality — combining AI-assisted
-                      speed with experienced human judgment.
+                      speed with experienced human judgement.
                     </p>
                     <p className="text-primary font-medium">
                       TalentiFi-X reflects that vision: modern, ethical, and

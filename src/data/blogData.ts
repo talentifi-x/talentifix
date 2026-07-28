@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
           "Eliminating noise early in the process",
         ],
         warning:
-          "However, AI alone does not fix hiring. When AI replaces judgment instead of supporting it, it creates new risks—bias, misinterpretation, and loss of accountability.",
+          "However, AI alone does not fix hiring. When AI replaces judgement instead of supporting it, it creates new risks—bias, misinterpretation, and loss of accountability.",
       },
       {
         heading: "The Mistake Companies Are Making with AI",
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
         explanation:
           "The better question is: Where should AI be used—and where should it not?",
         insight:
-          "AI is exceptional at speed and scale but not built for context, nuance, or human judgment. Hiring decisions affect teams, culture, and lives, and require accountability that technology cannot own.",
+          "AI is exceptional at speed and scale but not built for context, nuance, or human judgement. Hiring decisions affect teams, culture, and lives, and require accountability that technology cannot own.",
       },
       {
         heading: "What Comes Next: A Rebuilt Staffing Model",
@@ -195,7 +195,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "Can AI replace recruiters?",
         answer:
-          "No. AI can support recruiters by handling scale and screening, but human judgment remains essential for hiring decisions.",
+          "No. AI can support recruiters by handling scale and screening, but human judgement remains essential for hiring decisions.",
       },
       {
         question: "What is modern staffing?",
@@ -253,7 +253,7 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Administrative Efficiency",
             description:
-              "Scheduling, documentation, compliance tracking, and workflow coordination are ideal automation tasks that improve efficiency without affecting hiring judgment.",
+              "Scheduling, documentation, compliance tracking, and workflow coordination are ideal automation tasks that improve efficiency without affecting hiring judgement.",
           },
         ],
       },
@@ -270,12 +270,12 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Final Hiring Decisions",
             description:
-              "Hiring decisions require accountability, nuance, and responsibility. AI can support decision-making but should never replace human judgment.",
+              "Hiring decisions require accountability, nuance, and responsibility. AI can support decision-making but should never replace human judgement.",
           },
           {
             title: "Candidate Intent and Motivation",
             description:
-              "Understanding why a candidate wants a role requires conversation, listening, and contextual judgment—areas where human recruiters remain irreplaceable.",
+              "Understanding why a candidate wants a role requires conversation, listening, and contextual judgement—areas where human recruiters remain irreplaceable.",
           },
           {
             title: "Ethical Accountability",
@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "The Biggest Mistake Companies Make with AI",
         content: "Many organizations frame AI adoption as an either/or choice.",
-        misconceptions: ["AI or recruiters", "Automation or judgment"],
+        misconceptions: ["AI or recruiters", "Automation or judgement"],
         insight:
           "The real opportunity lies in combining the strengths of both. AI should support hiring—not own it.",
       },
@@ -308,7 +308,7 @@ export const blogPosts: BlogPost[] = [
           "Accountability",
         ],
         summary:
-          "This balance creates hiring systems that are faster, fairer, and more reliable without sacrificing human judgment.",
+          "This balance creates hiring systems that are faster, fairer, and more reliable without sacrificing human judgement.",
         key_message: "AI screens. Humans decide.",
       },
       {
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
           "Slow or unclear hiring processes losing top talent",
         ],
         conclusion:
-          "Organizations that automate without judgment risk scaling the wrong decisions faster. Those that balance AI with human insight build stronger, longer-lasting teams.",
+          "Organizations that automate without judgement risk scaling the wrong decisions faster. Those that balance AI with human insight build stronger, longer-lasting teams.",
       },
       {
         heading: "The Future of AI in Staffing",
@@ -337,7 +337,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "Can AI replace recruiters in staffing?",
         answer:
-          "No. AI can assist recruiters by handling scale and screening, but human judgment is essential for hiring decisions.",
+          "No. AI can assist recruiters by handling scale and screening, but human judgement is essential for hiring decisions.",
       },
       {
         question: "What are the risks of AI-only hiring?",
@@ -363,7 +363,7 @@ export const blogPosts: BlogPost[] = [
     tagline: "Staffing. Rebuilt.",
     core_principles: [
       "Precision over volume",
-      "Judgment over noise",
+      "judgement over noise",
       "Clarity over confusion",
     ],
     key_message: "AI screens. Humans decide.",
@@ -444,12 +444,12 @@ export const blogPosts: BlogPost[] = [
           "Highlight role-relevant candidates",
         ],
         impact:
-          "This enables recruiters to focus their time on judgment, context, and evaluation.",
+          "This enables recruiters to focus their time on judgement, context, and evaluation.",
       },
       {
         heading: "Where Humans Still Matter Most",
         content:
-          "While AI can filter candidates efficiently, it cannot replace human judgment.",
+          "While AI can filter candidates efficiently, it cannot replace human judgement.",
         human_responsibilities: [
           "Assess cultural alignment",
           "Understand candidate motivation and intent",
@@ -457,7 +457,7 @@ export const blogPosts: BlogPost[] = [
           "Take responsibility for hiring decisions",
         ],
         summary:
-          "The strongest hiring outcomes come from AI-assisted screening combined with human-led judgment.",
+          "The strongest hiring outcomes come from AI-assisted screening combined with human-led judgement.",
       },
       {
         heading: "The Shift from Quantity to Clarity",

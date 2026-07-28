@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: sanityPost.title,
       description: sanityPost.introduction?.slice(0, 160),
       alternates: {
-        canonical: `https://www.talentifi-x.com/blog/${slug}`,
+        canonical: `https://www.talentifix.com/blog/${slug}`,
       },
       openGraph: {
         title: sanityPost.title,

@@ -72,7 +72,7 @@ This is a role for someone who knows how to open doors, build relationships, and
 
   whoYouAre: `You're not waiting for leads to come to you. You have a hunter mindset, an established network in India's staffing ecosystem, and you thrive in environments where performance is visible and rewarded. You've worked with mid to large enterprise clients and you know what it takes to get to a Fortune 1000 vendor list — and stay on it.`,
 
-  whyJoinIntro: `We're not a traditional staffing company. TalentiFi-X was built on a single belief — that the best hiring outcomes come from human judgment, accelerated by intelligence. Our Human Led · AI Assisted model means you'll be working with a team that combines deep talent expertise with smart systems.`,
+  whyJoinIntro: `We're not a traditional staffing company. TalentiFi-X was built on a single belief — that the best hiring outcomes come from human judgement, accelerated by intelligence. Our Human Led · AI Assisted model means you'll be working with a team that combines deep talent expertise with smart systems.`,
 
   whyJoinPoints: [
     "A high-performance, target-driven culture",

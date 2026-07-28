@@ -97,7 +97,7 @@ export const FormalOfferingSection = () => {
           <OfferingCard
             icon="/assets/figma/formal-icon-4.svg"
             title="Executive Search"
-            description="Confidential, insight-driven leadership hiring for roles where judgment matters most."
+            description="Confidential, insight-driven leadership hiring for roles where judgement matters most."
             href="/solutions#executive-search"
           />
         </div>
