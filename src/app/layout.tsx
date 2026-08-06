@@ -10,6 +10,9 @@ import "react-international-phone/style.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.talentifix.com",
+  ),
   title: {
     default: "TalentiFi-X | Intelligent Staffing for the AI Age",
     template: "%s | TalentiFi-X",

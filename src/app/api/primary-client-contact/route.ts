@@ -302,7 +302,8 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 },
     );
-  } catch {
+  } catch (error) {
+    console.error("[primary-client-contact] submission failed:", error);
     return NextResponse.json(
       {
         error:

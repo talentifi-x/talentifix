@@ -1,0 +1,7 @@
+# New home for what used to be `pnpm.onlyBuiltDependencies` in package.json,
+# which pnpm 11 no longer reads. sharp powers next/image optimization, so it
+# must be allowed to run its install script.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

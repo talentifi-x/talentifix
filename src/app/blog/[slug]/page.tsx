@@ -29,6 +29,10 @@ const toId = (str: string) =>
 
 export const revalidate = 60;
 
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.talentifix.com"
+).replace(/\/$/, "");
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
@@ -37,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: sanityPost.title,
       description: sanityPost.introduction?.slice(0, 160),
       alternates: {
-        canonical: `https://www.talentifix.com/blog/${slug}`,
+        canonical: `${SITE_URL}/blog/${slug}`,
       },
       openGraph: {
         title: sanityPost.title,
@@ -54,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: staticPost.title,
       description: staticPost.introduction.slice(0, 160),
       alternates: {
-        canonical: `https://www.talentifi-x.com/blog/${slug}`,
+        canonical: `${SITE_URL}/blog/${slug}`,
       },
       openGraph: {
         title: staticPost.title,

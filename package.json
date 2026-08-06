@@ -12,7 +12,7 @@
     "lint": "next lint",
     "refine": "refine",
     "studio": "echo 'Sanity studio removed - reinstall to use'",
-    "audit": "npm audit"
+    "audit": "pnpm audit"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.3",
@@ -25,7 +25,7 @@
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.20.0",
     "lucide-react": "^1.8.0",
-    "next": "^16.2.3",
+    "next": "^16.2.12",
     "next-sanity": "^12.2.2",
     "nodemailer": "^8.0.5",
     "react": "^19.2.5",
@@ -41,15 +41,12 @@
     "@types/react-dom": "^19.2.3",
     "cross-env": "^10.1.0",
     "eslint": "^10.2.0",
-    "eslint-config-next": "^16.2.3",
+    "eslint-config-next": "^16.2.12",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
   },
   "refine": {
     "projectId": "npR5mU-ltUWyO-Yh0HB5"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
   }
 }

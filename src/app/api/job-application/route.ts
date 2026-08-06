@@ -254,7 +254,8 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 },
     );
-  } catch {
+  } catch (error) {
+    console.error("[job-application] submission failed:", error);
     return NextResponse.json(
       {
         error:

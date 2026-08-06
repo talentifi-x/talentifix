@@ -1,5 +1,8 @@
 import { MetadataRoute } from "next";
-import { getAllSanityPostSlugs } from "@/sanity/lib/queries";
+import {
+  getAllSanityPostSlugs,
+  getAllSanityJobSlugs,
+} from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -12,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/about`, lastModified: new Date(), priority: 0.8 },
     { url: `${baseUrl}/solutions`, lastModified: new Date(), priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), priority: 0.9 },
+    { url: `${baseUrl}/jobs`, lastModified: new Date(), priority: 0.9 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), priority: 0.7 },
     { url: `${baseUrl}/start-hiring`, lastModified: new Date(), priority: 0.8 },
     {
@@ -48,5 +52,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
   }
 
-  return [...staticRoutes, ...blogRoutes];
+  let jobRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const slugs = await getAllSanityJobSlugs();
+    jobRoutes = slugs
+      .filter(({ slug }) => !!slug)
+      .map(({ slug }) => ({
+        url: `${baseUrl}/jobs/${slug}`,
+        lastModified: new Date(),
+        priority: 0.8,
+      }));
+  } catch {
+    // Sanity unavailable — job listings live only in the CMS, so omit them
+    jobRoutes = [];
+  }
+
+  return [...staticRoutes, ...blogRoutes, ...jobRoutes];
 }
