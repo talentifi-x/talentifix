@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { getAllSanityPostSlugs } from "@/sanity/lib/queries";
+import {
+  getAllSanityPostSlugs,
+  getAllSanityJobSlugs,
+} from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
 
 export const metadata = {
@@ -14,6 +17,7 @@ const staticPaths = [
   "/about",
   "/solutions",
   "/blog",
+  "/jobs",
   "/contact",
   "/start-hiring",
   "/join-our-network",
@@ -33,6 +37,14 @@ export default async function SitemapHtmlPage() {
     blogSlugs = blogPosts.map((post) => post.slug);
   }
 
+  let jobSlugs: string[] = [];
+  try {
+    const slugs = await getAllSanityJobSlugs();
+    jobSlugs = slugs.map((item) => item.slug).filter(Boolean);
+  } catch {
+    jobSlugs = [];
+  }
+
   const urls = [
     ...staticPaths.map((path) => ({
       path,
@@ -41,6 +53,10 @@ export default async function SitemapHtmlPage() {
     ...blogSlugs.map((slug) => ({
       path: `/blog/${slug}`,
       url: `${baseUrl}/blog/${slug}`,
+    })),
+    ...jobSlugs.map((slug) => ({
+      path: `/jobs/${slug}`,
+      url: `${baseUrl}/jobs/${slug}`,
     })),
   ];
 

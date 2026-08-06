@@ -5,6 +5,11 @@
 **Stack:** TypeScript · Next.js 16.2.3 (App Router) · React 19.2.5 · Tailwind CSS 4 · Sanity CMS 5 · Nodemailer/Brevo SMTP · pnpm
 **Scope:** Code quality & bugs · Security · Dependencies & config · Architecture & docs
 
+> **Correction + remediation note (added 2026-07-28, after the initial pass).**
+> Finding **D1 was overstated and has been downgraded from Critical to Medium.** The original text claimed both canonical lines in `blog/[slug]/page.tsx` pointed at `www.talentifi-x.com`. On re-verification against both the working tree and `HEAD`, only line 57 — the static-fallback branch, which renders solely during a Sanity outage — carried the wrong domain. Line 40, the branch that actually serves in production, was already correct. The corrected finding is inline below.
+> A separate issue *was* confirmed by this re-check and is recorded as **D1b**: `NEXT_PUBLIC_SITE_URL` pointed at the non-www host, which `curl` confirms 301s to `www.talentifix.com`.
+> **Ten quick-win items have since been fixed and verified** — see *Remediation log* at the end of this report. Findings below describe the state at the time of the audit and are annotated `[FIXED]` where remediated.
+
 **Coverage note:** All 72 files under `src/` were enumerated; every API route, config file, `sanity/` module, layout, sitemap/robots, and the four form components were read in full. The larger presentational components (`CandidateRegistrationForm.tsx`, `privacy-policy/page.tsx`, `blog/[slug]/page.tsx`) were sampled by targeted grep rather than read line-by-line. Tools run: `tsc --noEmit` (fails), `pnpm audit` (120 advisories), `pnpm outdated`, `eslint` (cannot run — see C2), `npm audit` (cannot run — see C4). **No test suite exists**, so no test results are reported. Runtime/browser behaviour was not exercised; findings are static. The `.next/`, `node_modules/`, and `.audit/` directories were excluded except where a finding lives there.
 
 ---
@@ -23,28 +28,40 @@ Underneath those, the quality gates are silently dead. ESLint 10 cannot read the
 
 ## Scorecard
 
+As found (with D1 corrected to Medium and D1b added):
+
 | Dimension | Critical | High | Medium | Low |
 |---|---|---|---|---|
 | Code quality & bugs | 0 | 2 | 5 | 3 |
 | Security | 1 | 3 | 3 | 1 |
 | Dependencies & config | 0 | 3 | 4 | 3 |
-| Architecture & docs | 1 | 3 | 4 | 2 |
-| **Total** | **2** | **11** | **16** | **9** |
+| Architecture & docs | 0 | 3 | 6 | 2 |
+| **Total** | **1** | **11** | **18** | **9** |
 
-**Overall health:** Sound application code sitting on an unpatched framework with dead quality gates and two misconfigurations that actively cost search traffic and privacy compliance.
+Remaining open after the remediation pass (12 items fixed — see *Remediation log*):
+
+| Dimension | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Code quality & bugs | 0 | 2 | 4 | 2 |
+| Security | 0 | 2 | 2 | 0 |
+| Dependencies & config | 0 | 3 | 3 | 1 |
+| Architecture & docs | 0 | 2 | 3 | 2 |
+| **Total** | **0** | **9** | **12** | **5** |
+
+**Overall health:** Sound application code. The framework is now patched and the search-facing misconfigurations are fixed; what remains is a dead lint toolchain, an unused framework in the build path, and no abuse protection on the public forms.
 
 ---
 
 ## Top priorities
 
-1. **[Critical] Next.js 16.2.3 has 11 high-severity advisories** — SSRF, middleware/proxy bypass, and DoS; all patched in 16.2.11. `package.json:23`
-2. **[Critical] Blog canonicals point at a domain the site does not serve** — every post tells Google the real page lives on `www.talentifi-x.com`. `src/app/blog/[slug]/page.tsx:40,57`
-3. **[High] Cookie consent banner is decorative** — GA and Clarity load regardless of Accept/Reject. `src/app/layout.tsx:59-81`
-4. **[High] Linting has not run in some time** — ESLint 10 requires flat config; `next lint` no longer exists in Next 16. `.eslintrc.json`, `package.json:12`
-5. **[High] No rate limiting or bot protection on four public POST endpoints**, one of which accepts 5 MB file uploads. `src/app/api/*/route.ts`
-6. **[High] `@refinedev` sits in the build critical path with zero usage** — six packages and all three npm scripts route through a framework the code no longer imports. `package.json:8-11`
-7. **[High] 113 MB of unoptimized images in `public/`**, with single files up to 8.5 MB. `public/banner-home/banner.webp`
-8. **[High] `/jobs` and `/jobs/[slug]` are absent from both sitemaps.** `src/app/sitemap.ts:10-32`
+1. ~~**[Critical] Next.js 16.2.3 has 11 high-severity advisories**~~ — **FIXED**, upgraded to 16.2.12; `pnpm audit` now reports 0 advisories against `next`.
+2. **[High] Cookie consent banner is decorative** — GA and Clarity load regardless of Accept/Reject. `src/app/layout.tsx:59-81`
+3. **[High] Linting has not run in some time** — ESLint 10 requires flat config; `next lint` no longer exists in Next 16. `.eslintrc.json`, `package.json:12`
+4. **[High] No rate limiting or bot protection on four public POST endpoints**, one of which accepts 5 MB file uploads. `src/app/api/*/route.ts`
+5. **[High] `@refinedev` sits in the build critical path with zero usage** — six packages and all three npm scripts route through a framework the code no longer imports. `package.json:8-11`
+6. **[High] 113 MB of unoptimized images in `public/`**, with single files up to 8.5 MB. `public/banner-home/banner.webp`
+7. ~~**[High] `/jobs` and `/jobs/[slug]` are absent from both sitemaps**~~ — **FIXED**, sitemap now emits 34 URLs including all job pages.
+8. **[High] Unvalidated dropdown values crash the start-hiring endpoint** — returns a silent 500 on the primary conversion path. `src/app/api/primary-client-contact/route.ts:121-122`
 
 ---
 
@@ -234,11 +251,18 @@ Underneath those, the quality gates are silently dead. ESLint 10 cannot read the
 
 ### D. Architecture & docs
 
-#### [Critical] Every blog post declares a canonical URL on the wrong domain
-- **Location:** `src/app/blog/[slug]/page.tsx:40` and `:57`
-- **Issue:** `alternates: { canonical: \`https://www.talentifi-x.com/blog/${slug}\` }` — hardcoded on both the Sanity and static-fallback branches. The site is served from `talentifix.com` (`NEXT_PUBLIC_SITE_URL` in `.env.local`), and `robots.ts:5`, `sitemap.ts:7`, and `sitemap.html/page.tsx:25` all use that value. `www.talentifi-x.com` (with the hyphen) is a different hostname.
-- **Impact:** A canonical tag is a directive: it tells Google the authoritative copy of this page lives elsewhere. Every blog post on the site is currently pointing at a hostname the site does not serve, while the sitemap simultaneously submits the `talentifix.com` URLs. The likely outcome is that the entire blog is dropped from the index — which would also nullify the nine blog upload scripts in `scripts/`.
-- **Fix:** Derive the canonical from the same base URL everything else uses: `` canonical: `${baseUrl}/blog/${slug}` `` with `baseUrl` from `NEXT_PUBLIC_SITE_URL`. Better, set `metadataBase` once in the root layout (D5) and use the relative path `/blog/${slug}`. Then request re-indexing in Search Console.
+#### [Medium] [FIXED] Static-fallback canonical pointed at the wrong domain
+> *Downgraded from Critical. The original finding claimed both canonical branches were wrong; only the fallback branch was.*
+- **Location:** `src/app/blog/[slug]/page.tsx:57` (the static-fallback branch). Line 40, the Sanity branch, was already correct.
+- **Issue:** The fallback branch hardcoded `` canonical: `https://www.talentifi-x.com/blog/${slug}` `` — a different hostname from the `talentifix.com` used by `robots.ts:5`, `sitemap.ts:7`, and `sitemap.html/page.tsx:25`. Both branches hardcoded their host rather than deriving it, which is how the two drifted apart.
+- **Impact:** Limited, because this branch only renders when Sanity is unreachable — the Sanity branch serves in production and was correct. During an outage, though, Google would be told the authoritative copy lives on a hostname the site does not serve.
+- **Fix applied:** Both branches now derive from a single `SITE_URL` constant built from `NEXT_PUBLIC_SITE_URL` (`blog/[slug]/page.tsx:32-34`), so they cannot drift again. Verified in the built output: `<link rel="canonical" href="https://www.talentifix.com/blog/..."/>`.
+
+#### [Medium] [FIXED] `NEXT_PUBLIC_SITE_URL` pointed at a redirecting host
+- **Location:** `.env.local` (`NEXT_PUBLIC_SITE_URL`); consumed by `robots.ts:5`, `sitemap.ts:7`, `sitemap.html/page.tsx:25`, and three API routes
+- **Issue:** The value was `https://talentifix.com`, but `curl -L` confirms that host 301s to `https://www.talentifix.com`. Every sitemap URL and — after the D1 fix wired canonicals to the same variable — every canonical tag therefore pointed at a redirect rather than the final URL.
+- **Impact:** Search engines follow the redirect, so this is a dilution rather than a breakage: crawl budget is spent on redirects and canonical signals point one hop away from the real URL. It became more significant once canonicals derived from the same variable.
+- **Fix applied:** `.env.local` now sets `https://www.talentifix.com`; rebuild confirms every `<loc>` in `sitemap.xml` and every canonical uses the www host. **The matching Vercel environment variable still needs updating — that is the value production actually builds with, and it is outside this repo.**
 
 #### [High] README is the unmodified Refine scaffold
 - **Location:** `README.MD:1-40`
@@ -368,9 +392,53 @@ Runtime-facing subset: `next`, `nodemailer`, `postcss`, `undici`, `sharp`. The r
 | `@types/node` (dev) | 25.6.0 | 26.1.1 | Major |
 | `@types/react` / `@types/nodemailer` (dev) | — | — | Patch |
 
+---
+
+## Remediation log — 2026-07-28
+
+Twelve items fixed in a single pass after the audit. Every change was verified by a clean `tsc --noEmit` and a successful production build; search-facing changes were additionally verified against the generated build output rather than assumed.
+
+| # | Finding | Change | Verification |
+|---|---|---|---|
+| 1 | B1 (Critical) | `next` 16.2.3 → **16.2.12**, `eslint-config-next` likewise | `pnpm audit`: **0** advisories against `next` (was 11 high + 9 moderate). Total tree 120 → 114. |
+| 2 | D1 (Medium) | Both canonical branches in `blog/[slug]/page.tsx` derive from one `SITE_URL` constant | Built HTML emits `<link rel="canonical" href="https://www.talentifix.com/blog/…"/>` |
+| 3 | D1b (Medium) | `NEXT_PUBLIC_SITE_URL` → `https://www.talentifix.com` in `.env.local` | `curl -L` confirmed the non-www host 301s to www; rebuild confirms all 34 `<loc>` entries use www |
+| 4 | D3 (High) | `/jobs` + `getAllSanityJobSlugs()` added to `sitemap.ts` and `sitemap.html/page.tsx` | `sitemap.xml` grew 31 → **34** URLs; both job slugs present in XML and HTML sitemaps |
+| 5 | D5 (Medium, partial) | `metadataBase` added to root layout | OG images now resolve absolute (`og:image` → full `cdn.sanity.io` URL); build emits no `metadataBase` warning |
+| 6 | A8 / C5 | `tsconfig.json` target `es5` → **ES2022** | `npx tsc --noEmit` exits **0** (previously failed with TS5107) |
+| 7 | A3 (Medium) | Bound and logged the swallowed error in all three silent routes | `console.error` with a route-tagged prefix in each |
+| 8 | B5 (Medium) | Sanity client: dropped `token`, set `useCdn: true` | Build fetched all 22 posts + 2 jobs **without** the token — confirming published content needed no auth |
+| 9 | C4 (Medium) | `"audit": "npm audit"` → `"pnpm audit"` | Runs and reports instead of erroring `ENOLOCK` |
+| 10 | D7 (Medium) | `font-display: swap` on all six `@font-face` blocks | 6/6 applied, no stray edits elsewhere in `global.css` |
+| 11 | B8 (Low) | `.audit/` and `audit/*.docx` added to `.gitignore` | — |
+| 12 | C9 (Low) | `onlyBuiltDependencies` moved to `pnpm-workspace.yaml` as `allowBuilds` | **sharp now builds** — it had silently stopped, which would have degraded `next/image` optimization |
+
+Item 12 was a Low finding that turned out to matter more than its rating: pnpm 11 had stopped reading the `pnpm` block in `package.json`, so `sharp` was never built. Moving the setting to its new home restored it.
+
+### Not fixed, and why
+
+- **D5 (OG image)** — `metadataBase` is in place, but no default `openGraph.images` was added. The only candidate asset is `public/logos/logo.png` (9 KB), which is a logo, not a 1200×630 social card; pointing at it would look worse than the current no-image state while still declaring `summary_large_image`. **Needs a designed asset.**
+- **Vercel environment variable** — `NEXT_PUBLIC_SITE_URL` was corrected in `.env.local`, but production builds from the Vercel dashboard value. **That still needs changing**, or production will continue emitting non-www canonicals.
+- Everything else in the Top priorities list — consent gating, ESLint flat config, `@refinedev` removal, rate limiting, image re-encoding, and the two API-route bugs — is untouched and remains open.
+
+### Verification commands
+
+| Command | Before | After |
+|---|---|---|
+| `npx tsc --noEmit` | `error TS5107` | **exit 0, clean** |
+| `pnpm build` | not run | **succeeds** — 43 static pages, 22 blog + 2 job routes prerendered |
+| `pnpm audit` (next only) | 11 high, 9 moderate | **0** |
+| `pnpm audit` (total) | 120 (1C/50H/55M/14L) | 114 (1C/46H/55M/12L) |
+| `sitemap.xml` URL count | 31 | **34** |
+
+The residual 1 critical / 46 high are transitive, reaching the tree through `@sanity/cli` and `@refinedev/cli` and executing only at build time. Removing `@refinedev` (finding C1) is the single largest remaining reduction available.
+
+---
+
 ### Notes on what was verified and what was not
 
 - **Not a finding:** Sanity draft content is *not* exposed by the tokened client. `@sanity/client@7.21.0` defaults to the `published` perspective, so `*[_type == "post"]` returns published documents only. The token is still worth removing for least-privilege and CDN reasons (B5).
 - **Not a finding:** the SSR bailout identified in the June 2026 audit appears resolved — `src/app/layout.tsx` no longer wraps the tree in a Refine provider, and no `useSearchParams` call remains outside a Suspense boundary.
 - **Not verified:** whether `talentifi-x.com` resolves and accepts mail (D6). This determines whether the `careers@talentifi-x.com` fallback at `job-application/route.ts:100` silently discards applications.
-- **Not verified:** production response headers, actual Core Web Vitals, and whether the deployed `NEXT_PUBLIC_SITE_URL` matches `.env.local`. All findings here are from static analysis of the working tree at commit `fcc4510`.
+- **Now verified (remediation pass):** `talentifix.com` 301s to `www.talentifix.com` — the www host is canonical. This was checked with `curl -L` and drove fix #3.
+- **Not verified:** production response headers, actual Core Web Vitals, and whether the deployed `NEXT_PUBLIC_SITE_URL` matches `.env.local` — the Vercel dashboard value is outside this repo. All audit findings are from static analysis of the working tree at commit `4b417a2`.

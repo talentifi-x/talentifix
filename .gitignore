@@ -32,6 +32,10 @@ yarn-error.log*
 # claude
 .claude/
 
+# audit artifacts (logs, Lighthouse dumps, rendered HTML)
+.audit/
+audit/*.docx
+
 # vercel
 .vercel
 
