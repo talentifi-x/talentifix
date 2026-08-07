@@ -5,14 +5,34 @@ import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 
 const InstagramIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><circle cx="12" cy="12" r="5" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <circle cx="12" cy="12" r="5" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
   </svg>
 );
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
   </svg>
 );
 
@@ -85,6 +105,7 @@ export const Footer = () => {
                 { name: "Home", href: "/" },
                 { name: "Solutions", href: "/solutions" },
                 { name: "Blog", href: "/blog" },
+                { name: "Media", href: "/media" },
                 { name: "Contact", href: "/contact" },
               ].map((item) => (
                 <Link
@@ -140,7 +161,9 @@ export const Footer = () => {
             <div className="flex flex-wrap gap-x-10 gap-y-4 text-gray-600">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
-                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">IN</span>
+                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">
+                  IN
+                </span>
                 <p className="text-[18px] font-medium leading-snug">
                   26/19 Gandhi Bazar Main Road,
                   <br />
@@ -149,7 +172,9 @@ export const Footer = () => {
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
-                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">US</span>
+                <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">
+                  US
+                </span>
                 <p className="text-[18px] font-medium leading-snug">
                   13201 NW Freeway, Suite 800,
                   <br />
@@ -163,9 +188,10 @@ export const Footer = () => {
       {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
       {!isZoomed && (
         <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
-          <h1 className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-linear-to-r from-[#0000FF] to-secondary bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
+          {/* Decorative wordmark - not a heading, so every page keeps a single H1 */}
+          <div className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-linear-to-r from-[#0000FF] to-secondary bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
             Talentifi-X
-          </h1>
+          </div>
         </div>
       )}
 

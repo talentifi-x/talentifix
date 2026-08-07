@@ -19,6 +19,8 @@ const staticPaths = [
   "/blog",
   "/jobs",
   "/contact",
+  "/media",
+  "/insights/talentifi-x-gcc-summit-2026",
   "/start-hiring",
   "/join-our-network",
   "/privacy-policy",

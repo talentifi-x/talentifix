@@ -17,6 +17,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/blog`, lastModified: new Date(), priority: 0.9 },
     { url: `${baseUrl}/jobs`, lastModified: new Date(), priority: 0.9 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), priority: 0.7 },
+    { url: `${baseUrl}/media`, lastModified: new Date(), priority: 0.7 },
+    {
+      url: `${baseUrl}/insights/talentifi-x-gcc-summit-2026`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
     { url: `${baseUrl}/start-hiring`, lastModified: new Date(), priority: 0.8 },
     {
       url: `${baseUrl}/join-our-network`,
@@ -44,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
   } catch {
-    // Sanity unavailable — fall back to static blog posts
+    // Sanity unavailable - fall back to static blog posts
     blogRoutes = blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(),
@@ -63,7 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
       }));
   } catch {
-    // Sanity unavailable — job listings live only in the CMS, so omit them
+    // Sanity unavailable - job listings live only in the CMS, so omit them
     jobRoutes = [];
   }
 
