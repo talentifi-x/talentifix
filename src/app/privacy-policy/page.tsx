@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Read TalentiFi-X's privacy policy — how we collect, use, and protect your personal information.",
+    "Read TalentiFi-X's privacy policy - how we collect, use, and protect your personal information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -121,8 +121,8 @@ export default function PrivacyPolicyPage() {
                 <p className="text-gray-700 leading-relaxed">
                   Talentifix may store and process Information in the United
                   States of America, India, or any other country in which
-                  Talentifix or its affiliates, subsidiaries, or agents—domestic
-                  or foreign—maintain facilities. By using the Talentifix Sites,
+                  Talentifix or its affiliates, subsidiaries, or agents-domestic
+                  or foreign-maintain facilities. By using the Talentifix Sites,
                   you consent to any such transfer of Information outside of the
                   country where you reside, where you are a citizen, and/or
                   where you access the Talentifix Site(s).
@@ -777,8 +777,8 @@ export default function PrivacyPolicyPage() {
                     Basavanagudi, Bangalore - 560 004
                   </p>
                   <p>
-                    <strong>US:</strong> 13201 NW Freeway, Suite 800,
-                    Houston, TX 77040
+                    <strong>US:</strong> 13201 NW Freeway, Suite 800, Houston,
+                    TX 77040
                   </p>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
@@ -888,7 +888,8 @@ export default function PrivacyPolicyPage() {
                   <span className="text-gray-700">
                     ATTN: Compliance Manager, TalentiFi-X
                     <br />
-                    India: 26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore - 560 004
+                    India: 26/19 Gandhi Bazar Main Road, Basavanagudi, Bangalore
+                    - 560 004
                     <br />
                     US: 13201 NW Freeway, Suite 800, Houston, TX 77040
                   </span>

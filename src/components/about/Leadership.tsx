@@ -50,7 +50,7 @@ export const Leadership = () => {
                     <p>
                       With nearly three decades of experience across staffing,
                       IT services, and enterprise technology, Chetan “Chet”
-                      Mangalwedhe has spent his career navigating change — and
+                      Mangalwedhe has spent his career navigating change - and
                       building through it.
                     </p>
                     <p>
@@ -61,7 +61,7 @@ export const Leadership = () => {
                     <p>
                       Guided by the belief that “in the noise of change, true
                       leaders find the signals,” Chet founded TalentiFi-X to
-                      rebuild hiring for today’s reality — combining AI-assisted
+                      rebuild hiring for today’s reality - combining AI-assisted
                       speed with experienced human judgement.
                     </p>
                     <p className="text-primary font-medium">

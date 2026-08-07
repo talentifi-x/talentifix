@@ -43,7 +43,7 @@ export default async function JobsPage() {
           {openJobs.length === 0 && (
             <div className="py-24 text-center">
               <p className="text-dark/50 font-sans text-lg">
-                No open roles right now. Check back soon — or send your CV to{" "}
+                No open roles right now. Check back soon - or send your CV to{" "}
                 <a
                   href="mailto:careers@talentifi-x.com"
                   className="text-primary font-bold underline"

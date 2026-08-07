@@ -242,7 +242,7 @@ export const PrimaryClientContactForm = () => {
           </h2>
           <p className="text-lg text-[#1E1E24] opacity-60 font-medium max-w-2xl">
             Low friction, fast response. Share a few details and we&apos;ll get
-            back within 4 business hours — usually faster.
+            back within 4 business hours - usually faster.
           </p>
         </div>
 

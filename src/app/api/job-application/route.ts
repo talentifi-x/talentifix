@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: careersTo,
       replyTo: email,
-      subject: `New Application: ${fullName} — ${jobTitle}`,
+      subject: `New Application: ${fullName} - ${jobTitle}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -199,7 +199,7 @@ export async function POST(req: NextRequest) {
     const replyInfo = await transporter.sendMail({
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: email,
-      subject: `We received your application — ${jobTitle}`,
+      subject: `We received your application - ${jobTitle}`,
       attachments: [logoAttachment],
       html: `
         <!DOCTYPE html>
@@ -233,7 +233,7 @@ export async function POST(req: NextRequest) {
                   <p>Thanks for applying to the <strong>${escapeHtml(jobTitle)}</strong> role at TalentiFi-X. Your application is with our team.</p>
                   <p class="muted">We review every application personally. If your profile is a strong match, our team will reach out within 5 business days.</p>
                   <p class="muted">In the meantime, feel free to learn more about us at <a href="${escapeHtml(siteUrl)}">${escapeHtml(siteUrl.replace(/^https?:\/\//, ""))}</a>.</p>
-                  <p class="muted" style="margin-top: 22px;">— TalentiFi-X · Human Led · AI Assisted</p>
+                  <p class="muted" style="margin-top: 22px;">- TalentiFi-X · Human Led · AI Assisted</p>
                   <p class="muted" style="font-size: 12px;">Privacy policy: <a href="${escapeHtml(privacyUrl)}">${escapeHtml(privacyUrl)}</a></p>
                 </div>
               </div>
@@ -250,7 +250,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         message:
-          "Thanks — your application is in. We'll reach out if there's a match.",
+          "Thanks - your application is in. We'll reach out if there's a match.",
       },
       { status: 200 },
     );

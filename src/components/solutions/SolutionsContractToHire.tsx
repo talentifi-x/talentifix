@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export const SolutionsContractToHire: React.FC = () => {
   return (
-    <section id="contract-to-hire" className="relative w-full overflow-hidden bg-white scroll-mt-32">
+    <section
+      id="contract-to-hire"
+      className="relative w-full overflow-hidden bg-white scroll-mt-32"
+    >
       <Image
         src="/assets/Solutions/contract-to-hire-bg.svg"
         alt=""
@@ -31,9 +34,7 @@ export const SolutionsContractToHire: React.FC = () => {
             </h3>
             <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
               Sometimes, the best way to know is to work together first.
-              
               Contract-to-hire lets you evaluate talent in real conditions,
-            
               without pressure.
             </p>
           </div>
@@ -87,7 +88,7 @@ export const SolutionsContractToHire: React.FC = () => {
                     className="object-contain w-17.5 h-17.5"
                   />
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
-                    Candidates enter with clarity — not uncertainty
+                    Candidates enter with clarity - not uncertainty
                   </p>
                 </div>
               </div>

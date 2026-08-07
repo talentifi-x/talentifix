@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 export default function NotFound() {
   return (
     <section className="w-full min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-6 md:px-4 py-24 bg-[#F7F9FC] relative overflow-hidden">
-      {/* Background blur blobs — matches site pattern */}
+      {/* Background blur blobs - matches site pattern */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-primary/5 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-1/4 right-0 w-87.5 h-87.5 bg-secondary/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 left-0 w-75 h-75 bg-primary/5 rounded-full blur-2xl pointer-events-none -z-10" />
@@ -23,7 +23,7 @@ export default function NotFound() {
           Error 404
         </span>
 
-        {/* Heading — mirrors "Staffing. Rebuilt." style */}
+        {/* Heading - mirrors "Staffing. Rebuilt." style */}
         <h1 className="text-[60px] md:text-[90px] leading-none font-bold text-dark font-notch tracking-tight">
           Page Not<span className="text-secondary">.</span>
           <br />
@@ -36,7 +36,7 @@ export default function NotFound() {
           Let&apos;s get you back on track.
         </p>
 
-        {/* CTA buttons — exact same pattern as Banner */}
+        {/* CTA buttons - exact same pattern as Banner */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
           <Link
             href="/"

@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
     date: "March 9, 2026",
     readTime: "7 min read",
     introduction:
-      "The staffing industry was built for a different era. An era where roles were local, talent pools were limited, and hiring timelines moved at a slower pace. For decades, that system worked well enough. But today, it's under visible strain. Despite advances in technology, hiring has become slower, noisier, and more unpredictable for many organizations. Roles stay open longer. Resume volumes increase. Hiring decisions feel rushed—or endlessly delayed. The problem isn't talent. The problem is that traditional staffing models haven't evolved at the pace of the modern workforce.",
+      "The staffing industry was built for a different era. An era where roles were local, talent pools were limited, and hiring timelines moved at a slower pace. For decades, that system worked well enough. But today, it's under visible strain. Despite advances in technology, hiring has become slower, noisier, and more unpredictable for many organizations. Roles stay open longer. Resume volumes increase. Hiring decisions feel rushed-or endlessly delayed. The problem isn't talent. The problem is that traditional staffing models haven't evolved at the pace of the modern workforce.",
     sections: [
       {
         heading: "The Reality of Hiring Today",
@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Slow, Linear Processes",
             description:
-              "Hiring workflows were designed for a time when talent had fewer options. Today's top candidates often receive multiple offers within days—not weeks. Long hiring cycles now actively work against companies.",
+              "Hiring workflows were designed for a time when talent had fewer options. Today's top candidates often receive multiple offers within days-not weeks. Long hiring cycles now actively work against companies.",
           },
           {
             title: "Limited Talent Reach",
@@ -119,7 +119,7 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Inconsistent Evaluation",
             description:
-              "Without structure, screening quality varies widely. Cultural fit, intent, and long-term potential are often assessed too late—or not at all.",
+              "Without structure, screening quality varies widely. Cultural fit, intent, and long-term potential are often assessed too late-or not at all.",
           },
         ],
       },
@@ -133,13 +133,13 @@ export const blogPosts: BlogPost[] = [
           "Eliminating noise early in the process",
         ],
         warning:
-          "However, AI alone does not fix hiring. When AI replaces judgement instead of supporting it, it creates new risks—bias, misinterpretation, and loss of accountability.",
+          "However, AI alone does not fix hiring. When AI replaces judgement instead of supporting it, it creates new risks-bias, misinterpretation, and loss of accountability.",
       },
       {
         heading: "The Mistake Companies Are Making with AI",
         question: "Will AI replace recruiters?",
         explanation:
-          "The better question is: Where should AI be used—and where should it not?",
+          "The better question is: Where should AI be used-and where should it not?",
         insight:
           "AI is exceptional at speed and scale but not built for context, nuance, or human judgement. Hiring decisions affect teams, culture, and lives, and require accountability that technology cannot own.",
       },
@@ -183,7 +183,7 @@ export const blogPosts: BlogPost[] = [
           "Human-led accountability",
         ],
         closing:
-          "Traditional staffing isn't broken because people failed. It's broken because the system stopped evolving. What comes next is a model built for today's reality—faster, fairer, and more intentional. Staffing. Rebuilt.",
+          "Traditional staffing isn't broken because people failed. It's broken because the system stopped evolving. What comes next is a model built for today's reality-faster, fairer, and more intentional. Staffing. Rebuilt.",
       },
     ],
     faq: [
@@ -207,7 +207,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-in-staffing-what-should-be-automated-and-what-should-never-be",
     title:
-      "AI in Staffing: What Should Be Automated — and What Should Never Be",
+      "AI in Staffing: What Should Be Automated - and What Should Never Be",
     category: "AI & Staffing",
     type: "blog_post",
     image: "/blogs/b2.png",
@@ -215,7 +215,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     tagline: "Staffing. Rebuilt.",
     introduction:
-      "Artificial intelligence is no longer a future concept in staffing. It's already here—screening resumes, ranking candidates, and influencing hiring decisions across industries. Yet, as AI adoption accelerates, one critical question often gets overlooked: Just because something can be automated, does it mean it should be? The future of staffing depends not on how much we automate—but on where automation belongs, and where it doesn't.",
+      "Artificial intelligence is no longer a future concept in staffing. It's already here-screening resumes, ranking candidates, and influencing hiring decisions across industries. Yet, as AI adoption accelerates, one critical question often gets overlooked: Just because something can be automated, does it mean it should be? The future of staffing depends not on how much we automate-but on where automation belongs, and where it doesn't.",
     sections: [
       {
         heading: "Why AI Entered Staffing in the First Place",
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
           "Candidates felt lost in the process",
         ],
         conclusion:
-          "AI emerged as a response to scale and speed—two areas where traditional staffing struggled most. Used correctly, AI offers genuine value. Used blindly, it creates new risks.",
+          "AI emerged as a response to scale and speed-two areas where traditional staffing struggled most. Used correctly, AI offers genuine value. Used blindly, it creates new risks.",
       },
       {
         heading: "What Should Be Automated in Staffing",
@@ -265,7 +265,7 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Cultural Fit and Team Alignment",
             description:
-              "Culture involves communication style, values, adaptability, and interpersonal dynamics—factors algorithms cannot truly interpret. Automating cultural evaluation can lead to superficial matches and higher attrition.",
+              "Culture involves communication style, values, adaptability, and interpersonal dynamics-factors algorithms cannot truly interpret. Automating cultural evaluation can lead to superficial matches and higher attrition.",
           },
           {
             title: "Final Hiring Decisions",
@@ -275,7 +275,7 @@ export const blogPosts: BlogPost[] = [
           {
             title: "Candidate Intent and Motivation",
             description:
-              "Understanding why a candidate wants a role requires conversation, listening, and contextual judgement—areas where human recruiters remain irreplaceable.",
+              "Understanding why a candidate wants a role requires conversation, listening, and contextual judgement-areas where human recruiters remain irreplaceable.",
           },
           {
             title: "Ethical Accountability",
@@ -289,7 +289,7 @@ export const blogPosts: BlogPost[] = [
         content: "Many organizations frame AI adoption as an either/or choice.",
         misconceptions: ["AI or recruiters", "Automation or judgement"],
         insight:
-          "The real opportunity lies in combining the strengths of both. AI should support hiring—not own it.",
+          "The real opportunity lies in combining the strengths of both. AI should support hiring-not own it.",
       },
       {
         heading: "A Smarter Model: Human-Led, AI-Assisted Staffing",
@@ -330,7 +330,7 @@ export const blogPosts: BlogPost[] = [
         vision:
           "The future belongs to intelligent systems guided by responsible humans.",
         closing:
-          "Staffing that works is not louder, faster, or more complex. It's clearer. And clarity comes from knowing exactly what should be automated—and what should never be.",
+          "Staffing that works is not louder, faster, or more complex. It's clearer. And clarity comes from knowing exactly what should be automated-and what should never be.",
       },
     ],
     faq: [

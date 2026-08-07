@@ -136,7 +136,7 @@ export const SolutionsExecutiveSearch = () => {
                     className="object-contain w-17.5 h-17.5"
                   />
                   <p className="text-center text-[14px] sm:text-[15px] lg:text-[12px] font-semibold leading-[1.3] text-dark max-w-[250px]">
-                    Strategic partnership — not transactional hiring
+                    Strategic partnership - not transactional hiring
                   </p>
                 </div>
               </div>
