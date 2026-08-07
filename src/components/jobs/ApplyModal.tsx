@@ -146,7 +146,7 @@ export function ApplyModal({
         title: "Application submitted",
         description:
           data?.message ||
-          "Thanks — we'll reach out if your profile is a strong match.",
+          "Thanks - we'll reach out if your profile is a strong match.",
         variant: "success",
       });
     } catch (err) {
@@ -218,7 +218,7 @@ export function ApplyModal({
               <span className="text-secondary">.</span>
             </h3>
             <p className="text-dark/70 font-sans text-base max-w-md">
-              Thanks for applying. Our team reviews every application — if your
+              Thanks for applying. Our team reviews every application - if your
               profile is a strong match, we&apos;ll reach out within 5 business
               days.
             </p>
@@ -271,8 +271,7 @@ export function ApplyModal({
                   disabled={status === "loading"}
                   inputClassName="!w-full !border-0 !text-base !py-2.5 !text-dark !bg-transparent focus:!outline-none"
                   countrySelectorStyleProps={{
-                    buttonClassName:
-                      "!border-0 !bg-transparent !pr-2 !h-auto",
+                    buttonClassName: "!border-0 !bg-transparent !pr-2 !h-auto",
                   }}
                   className="w-full border border-gray-200 rounded-sm px-3 py-1 bg-white focus-within:border-primary transition-colors"
                 />

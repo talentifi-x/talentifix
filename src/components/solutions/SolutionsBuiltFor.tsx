@@ -38,11 +38,23 @@ export const SolutionsBuiltFor = () => {
   return (
     <section className="relative w-full bg-[#F2F4F8] overflow-hidden px-6 md:px-14 py-22">
       <div className="pointer-events-none absolute right-20 top-16 hidden md:block opacity-35">
-        <Image src="/assets/Solutions/cube-2.png" alt="" width={238} height={298} aria-hidden="true" />
+        <Image
+          src="/assets/Solutions/cube-2.png"
+          alt=""
+          width={238}
+          height={298}
+          aria-hidden="true"
+        />
       </div>
 
       <div className="pointer-events-none absolute left-20 bottom-14 hidden md:block opacity-35">
-        <Image src="/assets/Solutions/cube-1.png" alt="" width={171} height={211} aria-hidden="true" />
+        <Image
+          src="/assets/Solutions/cube-1.png"
+          alt=""
+          width={171}
+          height={211}
+          aria-hidden="true"
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
@@ -75,11 +87,14 @@ export const SolutionsBuiltFor = () => {
         </div>
 
         <p className="mt-16 text-[22px] md:text-[32px] font-notch font-bold text-black leading-tight">
-          If hiring matters to your business — these Solutions were{" "}
+          If hiring matters to your business - these Solutions were{" "}
           <span className="text-[#0000FF]">built for you.</span>
         </p>
 
-        <Link href="/start-hiring" className="mt-10 bg-[#00DDE2] text-[#1E1E24] font-stack-text text-[16px] md:text-[24px] uppercase px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300 flex items-center gap-4">
+        <Link
+          href="/start-hiring"
+          className="mt-10 bg-[#00DDE2] text-[#1E1E24] font-stack-text text-[16px] md:text-[24px] uppercase px-8 py-4 rounded-[5px] hover:bg-[#00c4c9] transition-colors duration-300 flex items-center gap-4"
+        >
           Talk to a TalentiFi-X Expert
           <ArrowRight size={32} />
         </Link>

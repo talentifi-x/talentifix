@@ -1,7 +1,7 @@
 /**
  * Upload a job posting to Sanity.
  *
- * Usage (Node 20+ required — uses --env-file):
+ * Usage (Node 20+ required - uses --env-file):
  *   node --env-file=.env scripts/upload-job-us-it-recruiter.mjs
  *
  * Required env vars (already used by the Next.js app):
@@ -39,14 +39,14 @@ const job = {
   slug: "senior-us-it-recruiter",
   badge: "Now Hiring · Immediate Joiners Preferred",
   isOpen: true,
-  location: "Basavanagudi, Bengaluru — On-site",
+  location: "Basavanagudi, Bengaluru - On-site",
   employmentType:
     "Full-time | US Night Shift · 6:30 PM – 3:30 AM IST | Mon–Fri",
   experience: "5+ Years Experience",
   department: "US IT Recruitment",
   applyEmail: "careers@talentifi-x.com",
 
-  aboutRole: `TalentiFi-X is looking for a seasoned Senior US IT Recruiter to join our high-performing team in Bengaluru. If you have 5+ years of hands-on experience in US staffing, know your way around C2C, W2, and 1099, and consistently deliver quality IT talent across the US market — this role was built for you.
+  aboutRole: `TalentiFi-X is looking for a seasoned Senior US IT Recruiter to join our high-performing team in Bengaluru. If you have 5+ years of hands-on experience in US staffing, know your way around C2C, W2, and 1099, and consistently deliver quality IT talent across the US market - this role was built for you.
 
 We work with diverse US clients across cutting-edge tech roles. You'll have strong leadership support, a performance-driven culture, and real room to grow.
 
@@ -63,7 +63,7 @@ Immediate joiners are strongly preferred.`,
 
   requirements: [
     "5+ years of proven experience in US IT recruitment",
-    "Strong understanding of US staffing tax terms — C2C, W2, 1099",
+    "Strong understanding of US staffing tax terms - C2C, W2, 1099",
     "Knowledge of US compliance requirements and staffing regulations",
     "Hands-on experience with Dice, Monster, and LinkedIn Recruiter",
     "Excellent communication and negotiation skills",
@@ -71,11 +71,11 @@ Immediate joiners are strongly preferred.`,
     "Strong relationship-building skills with clients and candidates alike",
   ],
 
-  whoYouAre: `You understand the US market — not just the tools, but the culture, the timelines, and what it takes to close in a competitive environment. You're organised, proactive, and you don't let pipelines go cold. You thrive working nights, you're used to working across time zones, and you take ownership of your numbers.
+  whoYouAre: `You understand the US market - not just the tools, but the culture, the timelines, and what it takes to close in a competitive environment. You're organised, proactive, and you don't let pipelines go cold. You thrive working nights, you're used to working across time zones, and you take ownership of your numbers.
 
-If that sounds like you — we'd like to meet you.`,
+If that sounds like you - we'd like to meet you.`,
 
-  whyJoinIntro: `TalentiFi-X is built on a simple belief — hiring is a human discipline, accelerated by intelligence. Our Human Led · AI Assisted model means our recruiters work smarter, not just harder. You'll work with a team that takes quality seriously and a leadership team that invests in its people.`,
+  whyJoinIntro: `TalentiFi-X is built on a simple belief - hiring is a human discipline, accelerated by intelligence. Our Human Led · AI Assisted model means our recruiters work smarter, not just harder. You'll work with a team that takes quality seriously and a leadership team that invests in its people.`,
 
   whyJoinPoints: [
     "Diverse US clients across technology domains",

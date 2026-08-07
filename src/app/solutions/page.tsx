@@ -13,7 +13,7 @@ import TheNextStepSection from "@components/home/TheNextStepSection";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Explore TalentiFi-X staffing solutions: temporary staffing, permanent placement, contract-to-hire, and executive search — AI-assisted and human-led.",
+    "Explore TalentiFi-X staffing solutions: temporary staffing, permanent placement, contract-to-hire, and executive search - AI-assisted and human-led.",
 };
 
 const SolutionsDivider = () => {

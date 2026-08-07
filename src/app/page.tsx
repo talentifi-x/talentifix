@@ -15,6 +15,7 @@ import TheOriginSection from "@components/home/TheOriginSection";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 import { ClientsSection } from "@components/home/ClientsSection";
 import { Bannertwo } from "@components/home/Bannertwo";
+import { Bannerthree } from "@components/home/Bannerthree";
 
 export const metadata: Metadata = {
   title: "Intelligent Hiring for the AI Age",
@@ -33,6 +34,7 @@ export default function Home() {
     <main className="w-full flex flex-col items-center bg-white">
       <Banner />
       <Bannertwo />
+      <Bannerthree />
       <StorySection />
       <ClientsSection />
       <StatsSection />

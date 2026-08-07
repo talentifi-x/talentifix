@@ -8,12 +8,8 @@ import {
   Building2,
   Mail,
 } from "lucide-react";
-import {
-  getAllSanityJobSlugs,
-  getSanityJobBySlug,
-} from "@/sanity/lib/queries";
+import { getAllSanityJobSlugs, getSanityJobBySlug } from "@/sanity/lib/queries";
 import { ApplyButton } from "@/components/jobs/ApplyButton";
-
 
 export const revalidate = 60;
 
@@ -48,11 +44,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function JobPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function JobPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
 
   let job;
@@ -264,7 +256,7 @@ function BulletList({ items }: { items: string[] }) {
           key={i}
           className="flex gap-3 text-dark/70 font-sans text-lg leading-relaxed"
         >
-          <span className="text-primary font-bold shrink-0 mt-0.5">—</span>
+          <span className="text-primary font-bold shrink-0 mt-0.5">-</span>
           <span>{item}</span>
         </li>
       ))}

@@ -35,7 +35,7 @@ export const jobType = defineType({
       name: "location",
       title: "Location",
       type: "string",
-      description: 'e.g. "Bengaluru, India — On-site"',
+      description: 'e.g. "Bengaluru, India - On-site"',
     }),
     defineField({
       name: "employmentType",
@@ -94,13 +94,13 @@ export const jobType = defineType({
     }),
     defineField({
       name: "whyJoinIntro",
-      title: "Why TalentiFi-X — Intro",
+      title: "Why TalentiFi-X - Intro",
       type: "text",
       rows: 5,
     }),
     defineField({
       name: "whyJoinPoints",
-      title: "Why TalentiFi-X — Bullets",
+      title: "Why TalentiFi-X - Bullets",
       type: "array",
       of: [{ type: "string" }],
     }),

@@ -298,7 +298,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         message:
-          "Thanks — we’ve received your details and will respond shortly.",
+          "Thanks - we’ve received your details and will respond shortly.",
       },
       { status: 200 },
     );

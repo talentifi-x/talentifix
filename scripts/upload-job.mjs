@@ -1,7 +1,7 @@
 /**
  * Upload a job posting to Sanity.
  *
- * Usage (Node 20+ required — uses --env-file):
+ * Usage (Node 20+ required - uses --env-file):
  *   node --env-file=.env.local scripts/upload-job.mjs
  *
  * Required env vars (already used by the Next.js app):
@@ -39,19 +39,19 @@ const job = {
   slug: "senior-manager-business-development",
   badge: "Now Hiring",
   isOpen: true,
-  location: "Bengaluru, India — On-site",
+  location: "Bengaluru, India - On-site",
   employmentType: "Full-time | Day Shift",
   experience: "10+ Years Experience",
   department: "Domestic Staffing & Staff Augmentation",
   applyEmail: "careers@talentifi-x.com",
 
-  aboutRole: `TalentiFi-X is growing — and we're looking for a high-impact Senior Manager – Business Development to lead our growth across India's staffing market.
+  aboutRole: `TalentiFi-X is growing - and we're looking for a high-impact Senior Manager – Business Development to lead our growth across India's staffing market.
 
-This is a role for someone who knows how to open doors, build relationships, and close. If you have a decade of experience in staffing sales, an established network in India's enterprise ecosystem, and the drive to build something meaningful — we'd like to talk.`,
+This is a role for someone who knows how to open doors, build relationships, and close. If you have a decade of experience in staffing sales, an established network in India's enterprise ecosystem, and the drive to build something meaningful - we'd like to talk.`,
 
   responsibilities: [
     "Drive new business acquisition across domestic staffing and staff augmentation",
-    "Own the full sales lifecycle — from lead generation and pitching to closure and collections",
+    "Own the full sales lifecycle - from lead generation and pitching to closure and collections",
     "Build lasting relationships with procurement, sourcing, and leadership stakeholders",
     "Identify and manage RFP / RFI / RFQ opportunities end-to-end",
     "Lead market research, cold outreach, and strategic lead-generation initiatives",
@@ -70,15 +70,15 @@ This is a role for someone who knows how to open doors, build relationships, and
     "A demonstrated ability to achieve and scale revenue consistently",
   ],
 
-  whoYouAre: `You're not waiting for leads to come to you. You have a hunter mindset, an established network in India's staffing ecosystem, and you thrive in environments where performance is visible and rewarded. You've worked with mid to large enterprise clients and you know what it takes to get to a Fortune 1000 vendor list — and stay on it.`,
+  whoYouAre: `You're not waiting for leads to come to you. You have a hunter mindset, an established network in India's staffing ecosystem, and you thrive in environments where performance is visible and rewarded. You've worked with mid to large enterprise clients and you know what it takes to get to a Fortune 1000 vendor list - and stay on it.`,
 
-  whyJoinIntro: `We're not a traditional staffing company. TalentiFi-X was built on a single belief — that the best hiring outcomes come from human judgement, accelerated by intelligence. Our Human Led · AI Assisted model means you'll be working with a team that combines deep talent expertise with smart systems.`,
+  whyJoinIntro: `We're not a traditional staffing company. TalentiFi-X was built on a single belief - that the best hiring outcomes come from human judgement, accelerated by intelligence. Our Human Led · AI Assisted model means you'll be working with a team that combines deep talent expertise with smart systems.`,
 
   whyJoinPoints: [
     "A high-performance, target-driven culture",
     "Direct access to leadership and decision-makers",
     "Real growth opportunities as the company scales",
-    "Work that matters — helping India's best companies find their best people",
+    "Work that matters - helping India's best companies find their best people",
   ],
 
   metaTitle:

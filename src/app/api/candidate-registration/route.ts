@@ -326,12 +326,12 @@ export async function POST(req: NextRequest) {
     const locationLabel =
       location === "other"
         ? otherLocation
-        : LOCATION_LABELS[location as LocationValue] ?? location;
+        : (LOCATION_LABELS[location as LocationValue] ?? location);
 
     const expertiseLabel =
       expertise === "other"
         ? otherExpertise
-        : EXPERTISE_LABELS[expertise as ExpertiseValue] ?? expertise;
+        : (EXPERTISE_LABELS[expertise as ExpertiseValue] ?? expertise);
 
     const yearsLabel =
       EXPERIENCE_LABELS[yearsExperience as ExperienceValue] ?? yearsExperience;
@@ -348,7 +348,7 @@ export async function POST(req: NextRequest) {
     const heardFromLabel =
       heardFrom === "other"
         ? otherHeardFrom
-        : HEARD_FROM_LABELS[heardFrom as HeardFromValue] ?? heardFrom;
+        : (HEARD_FROM_LABELS[heardFrom as HeardFromValue] ?? heardFrom);
 
     const phoneValue = `${countryCode} ${phoneNumber}`.trim();
 
@@ -370,7 +370,7 @@ export async function POST(req: NextRequest) {
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: process.env.CONTACT_TO_EMAIL,
       replyTo: email,
-      subject: `New Candidate: ${fullName} — ${expertiseLabel}`,
+      subject: `New Candidate: ${fullName} - ${expertiseLabel}`,
       attachments: [
         {
           filename:
@@ -525,7 +525,7 @@ export async function POST(req: NextRequest) {
                 <div class="content">
                   <p>Hi ${escapeHtml(fullName)},</p>
                   <p>Thanks for joining our talent network. We specialize in AI/ML and Cybersecurity roles, and we review every profile personally.</p>
-                  <p class="muted">If we have a relevant opportunity, we&apos;ll reach out — usually within 48 hours.</p>
+                  <p class="muted">If we have a relevant opportunity, we&apos;ll reach out - usually within 48 hours.</p>
                   <p class="muted">Privacy policy: <a href="${escapeHtml(
                     privacyUrl,
                   )}">${escapeHtml(privacyUrl)}</a></p>
@@ -544,7 +544,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         message:
-          "Thanks — your profile is in. We’ll reach out if there’s a relevant opportunity.",
+          "Thanks - your profile is in. We’ll reach out if there’s a relevant opportunity.",
       },
       { status: 200 },
     );

@@ -132,7 +132,7 @@ export function Header() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
@@ -150,6 +150,9 @@ export function Header() {
             </Link>
             <Link href="/contact" className={getLinkClasses("/contact")}>
               Contact
+            </Link>
+            <Link href="/media" className={getLinkClasses("/media")}>
+              Media
             </Link>
           </div>
 
@@ -217,6 +220,13 @@ export function Header() {
                 onClick={closeMobileMenu}
               >
                 Contact
+              </Link>
+              <Link
+                href="/media"
+                className={getMobileLinkClasses("/media")}
+                onClick={closeMobileMenu}
+              >
+                Media
               </Link>
               <Link
                 href="/start-hiring"
