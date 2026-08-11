@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { gccSummitGallery } from "@data/mediaData";
+import { GccCarousel } from "@components/insights/GccCarousel";
 
 const SLUG = "/insights/talentifi-x-gcc-summit-2026";
 const BANNER = "/banner/gcc-summit-2026-bengaluru-banner.png";
@@ -178,7 +179,30 @@ export default function GccSummit2026Page() {
         </div>
       </section>
 
-      {/* 2. What We Heard */}
+      {/* 2. Conversations Beyond the Stage - auto-scrolling event gallery */}
+      {gccSummitGallery.length > 0 && (
+        <section className="w-full pb-16 md:pb-24">
+          {/* Same container as the site header so the gallery lines up with the navbar */}
+          <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
+            <div className="mb-8 md:mb-12">
+              <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-5">
+                Conversations Beyond the Stage
+                <span className="text-secondary">.</span>
+              </h2>
+              <p className="text-dark/60 text-lg leading-relaxed max-w-3xl">
+                Beyond the sessions, GCC Summit 2026 created opportunities for
+                the TalentiFi-X team to exchange perspectives with leaders
+                across technology, innovation, workforce transformation and the
+                broader GCC ecosystem.
+              </p>
+            </div>
+
+            <GccCarousel images={gccSummitGallery} />
+          </div>
+        </section>
+      )}
+
+      {/* 3. What We Heard */}
       <section className="w-full bg-grey-accent px-6 md:px-8 py-16 md:py-24">
         <div className="w-full max-w-6xl mx-auto">
           <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-10 md:mb-14">
@@ -206,46 +230,6 @@ export default function GccSummit2026Page() {
           </div>
         </div>
       </section>
-
-      {/* 3. Conversations Beyond the Stage - renders once approved photographs are added */}
-      {gccSummitGallery.length > 0 && (
-        <section className="w-full px-6 md:px-8 py-16 md:py-24">
-          <div className="w-full max-w-6xl mx-auto">
-            <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-5">
-              Conversations Beyond the Stage
-              <span className="text-secondary">.</span>
-            </h2>
-            <p className="text-dark/60 text-lg leading-relaxed max-w-3xl mb-10 md:mb-14">
-              Beyond the sessions, GCC Summit 2026 created opportunities for the
-              TalentiFi-X team to exchange perspectives with leaders across
-              technology, innovation, workforce transformation and the broader
-              GCC ecosystem.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {gccSummitGallery.map((photo) => (
-                <figure key={photo.src} className="flex flex-col gap-3">
-                  <div className="relative w-full aspect-4/3 rounded-[10px] overflow-hidden bg-grey-accent border border-gray-100">
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt}
-                      fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  {photo.caption && (
-                    <figcaption className="text-sm text-dark/50 leading-relaxed">
-                      {photo.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* 4. The GCC Talent Conversation Is Changing */}
       <section className="w-full px-6 md:px-8 py-16 md:py-24">

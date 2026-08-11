@@ -84,14 +84,69 @@ export type GalleryImage = {
    * identity has been confirmed by the TalentiFi-X team.
    */
   alt: string;
-  /** Optional visible caption, same identity rule as alt text. */
-  caption?: string;
+  /** Natural pixel size of the file. Reserves layout space so the carousel
+   *  does not shift while images load. Any aspect ratio is fine - the
+   *  carousel is fixed-height and derives each width automatically. */
+  width: number;
+  height: number;
 };
 
 /**
- * "Conversations Beyond the Stage" gallery.
- * Add 6–8 approved event photographs here and the gallery section on
- * /insights/talentifi-x-gcc-summit-2026 renders automatically. While this
- * array is empty the section is omitted rather than shown with placeholders.
+ * "Conversations Beyond the Stage" carousel on
+ * /insights/talentifi-x-gcc-summit-2026.
+ *
+ * To add a photo: drop the file into /public/gcc and append an entry below.
+ * Nothing else needs changing - the carousel adapts to any number of images,
+ * keeps a constant scroll speed and stays seamless. The whole section is
+ * omitted when this array is empty.
  */
-export const gccSummitGallery: GalleryImage[] = [];
+export const gccSummitGallery: GalleryImage[] = [
+  {
+    src: "/gcc/1.jpg",
+    width: 800,
+    height: 600,
+    alt: "Three members of the TalentiFi-X team in business attire at the GCC Summit 2026 sponsor backdrop in Bengaluru.",
+  },
+  {
+    src: "/gcc/2.jpg",
+    width: 1600,
+    height: 1200,
+    alt: "TalentiFi-X team members in front of the GCC Summit 2026 partner wall, which carries the TalentiFi-X logo alongside other sponsors.",
+  },
+  {
+    src: "/gcc/3.jpg",
+    width: 800,
+    height: 1066,
+    alt: "Two TalentiFi-X delegates wearing event lanyards beside the GCC Summit 2026 sponsor backdrop.",
+  },
+  {
+    src: "/gcc/4.jpg",
+    width: 800,
+    height: 1066,
+    alt: "Three TalentiFi-X delegates at the GCC Summit 2026 backdrop featuring the Government of Karnataka and Karnataka Digital Economy Mission logos.",
+  },
+  {
+    src: "/gcc/5.jpg",
+    width: 800,
+    height: 1066,
+    alt: "Two TalentiFi-X team members at an exhibitor stand on the GCC Summit 2026 floor.",
+  },
+  {
+    src: "/gcc/6.jpg",
+    width: 800,
+    height: 1066,
+    alt: "Two delegates in business attire in front of the GCC Summit 2026 sponsor wall.",
+  },
+  {
+    src: "/gcc/7.jpg",
+    width: 1200,
+    height: 1600,
+    alt: "TalentiFi-X team members on the GCC Summit 2026 exhibition floor in Bengaluru.",
+  },
+  {
+    src: "/gcc/8.jpg",
+    width: 1200,
+    height: 1600,
+    alt: "Four TalentiFi-X team members wearing exhibitor badges at the GCC Summit 2026 sponsor backdrop.",
+  },
+];

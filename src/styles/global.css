@@ -64,6 +64,28 @@
   --font-stack-text: "Stack Sans Text", "Inter", sans-serif;
 
   --image-primary-gradient: linear-gradient(90deg, rgba(0, 0, 255, 1) 0%, rgba(0, 0, 153, 1) 100%);
+
+  /* Duration is supplied per-instance via --marquee-duration so the scroll
+     speed stays constant however many images the track holds. */
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* The track renders an even number of identical copies, and every item
+       carries its own trailing margin, so each copy is exactly the same width
+       and shifting by half the track lands back on the starting frame. */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 body {
