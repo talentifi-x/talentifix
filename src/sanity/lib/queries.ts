@@ -14,11 +14,25 @@ export interface SanityPost {
 export interface SanityPostFull extends SanityPost {
   body: unknown[];
   faq: { question: string; answer: string }[];
+  /**
+   * The studio "Published" toggle. Deliberately NOT filtered out of the
+   * single-post query - the page needs to tell "hidden" (404) apart from
+   * "Sanity unreachable" (fall back to static data). `undefined` on posts
+   * created before the field existed, which counts as published.
+   */
+  published?: boolean;
 }
+
+/**
+ * Posts are visible unless the toggle is explicitly off. Using `!= false`
+ * rather than `== true` means the posts that predate the field stay live
+ * without needing a backfill.
+ */
+const VISIBLE = `_type == "post" && published != false`;
 
 export async function getAllSanityPosts(): Promise<SanityPost[]> {
   return client.fetch(
-    `*[_type == "post"] | order(publishedAt desc) {
+    `*[${VISIBLE}] | order(publishedAt desc) {
       title,
       "slug": slug.current,
       publishedAt,
@@ -32,7 +46,7 @@ export async function getAllSanityPosts(): Promise<SanityPost[]> {
 }
 
 export async function getAllSanityPostSlugs(): Promise<{ slug: string }[]> {
-  return client.fetch(`*[_type == "post"] { "slug": slug.current }`);
+  return client.fetch(`*[${VISIBLE}] { "slug": slug.current }`);
 }
 
 export async function getSanityPostBySlug(
@@ -40,6 +54,7 @@ export async function getSanityPostBySlug(
 ): Promise<SanityPostFull | null> {
   return client.fetch(
     `*[_type == "post" && slug.current == $slug][0] {
+      published,
       title,
       "slug": slug.current,
       publishedAt,

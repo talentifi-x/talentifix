@@ -36,6 +36,11 @@ const SITE_URL = (
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+  // Hidden in the studio: report it as missing rather than letting the static
+  // fallback below re-expose a post the editor deliberately took down.
+  if (sanityPost?.published === false) {
+    return { title: "Post Not Found", robots: { index: false, follow: false } };
+  }
   if (sanityPost) {
     return {
       title: sanityPost.title,
@@ -599,9 +604,15 @@ export default async function BlogPostPage({ params }: Props) {
 
   // Try Sanity first
   const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+
+  // The toggle is off: 404 outright. This must come BEFORE the static fallback,
+  // because two slugs exist in both Sanity and blogData - without this an
+  // unpublished post would simply render its static twin instead.
+  if (sanityPost?.published === false) notFound();
+
   if (sanityPost) return <SanityPostPage post={sanityPost} />;
 
-  // Fall back to static data
+  // No Sanity doc (or Sanity unreachable): fall back to static data
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
