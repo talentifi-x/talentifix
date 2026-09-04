@@ -6,6 +6,8 @@ const clients = [
   { name: "Equentis", logo: "/clients/Equentis.svg" },
   { name: "L&T Finance", logo: "/clients/L%26TFinance.jpg" },
   { name: "TATA Capital", logo: "/clients/TATACapital.jpg" },
+  { name: "Paytm", logo: "/clients/Paytm.svg" },
+  { name: "IBM", logo: "/clients/IBM.svg" },
 ];
 
 export const ClientsSection = () => {
@@ -15,7 +17,7 @@ export const ClientsSection = () => {
         Trusted Clients<span className="text-secondary">.</span>
       </h2>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 w-full max-w-300 font-notch">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full max-w-300 font-notch">
   {clients.map((client) => (
     <div
       key={client.name}
