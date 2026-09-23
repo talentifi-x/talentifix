@@ -8,8 +8,24 @@ import {
   Building2,
   Mail,
 } from "lucide-react";
-import { getAllSanityJobSlugs, getSanityJobBySlug } from "@/sanity/lib/queries";
+import {
+  getAllSanityJobSlugs,
+  getSanityJobBySlug,
+  type SanityJobFull,
+} from "@/sanity/lib/queries";
 import { ApplyButton } from "@/components/jobs/ApplyButton";
+import { JsonLd } from "@components/seo/JsonLd";
+import {
+  ORG_ID,
+  SITE_NAME,
+  SITE_URL,
+  buildDescription,
+  buildTitle,
+  isRemote,
+  jsonLdGraph,
+  toEmploymentTypes,
+  toJobLocation,
+} from "@lib/seo";
 
 export const revalidate = 60;
 
@@ -33,15 +49,92 @@ export async function generateMetadata({
   try {
     const job = await getSanityJobBySlug(slug);
     if (!job) return { title: "Role Not Found" };
+    // buildTitle appends the brand only when it fits, so "Careers" is used as the
+    // qualifier instead of a second "| TalentiFi-X".
+    const description = buildDescription(
+      job.metaDescription,
+      job.aboutRole ??
+        `Open role at ${SITE_NAME}: ${job.title}${job.location ? ` in ${job.location}` : ""}.`,
+    );
     return {
-      title: job.metaTitle ?? `${job.title} | TalentiFi-X Careers`,
-      description:
-        job.metaDescription ??
-        `Open role at TalentiFi-X: ${job.title}${job.location ? ` in ${job.location}` : ""}.`,
+      title: buildTitle(job.metaTitle, `${job.title} - Careers`),
+      description,
+      alternates: { canonical: `${SITE_URL}/jobs/${slug}` },
+      openGraph: {
+        title: job.metaTitle ?? `${job.title} - Careers`,
+        description,
+        type: "article",
+        url: `${SITE_URL}/jobs/${slug}`,
+      },
     };
   } catch {
     return { title: "Role Not Found" };
   }
+}
+
+/**
+ * JobPosting structured data - the entry ticket for Google Jobs.
+ *
+ * `validThrough` is deliberately omitted: inventing an expiry date would make
+ * Google drop live roles. Open postings simply stay live until removed from the CMS.
+ */
+function buildJobSchema(job: SanityJobFull, slug: string) {
+  const pageUrl = `${SITE_URL}/jobs/${slug}`;
+
+  // Google wants a substantive description; assemble one from the role's own copy.
+  const descriptionParts = [
+    job.aboutRole,
+    job.responsibilities?.length
+      ? `What you'll do: ${job.responsibilities.join(" ")}`
+      : null,
+    job.requirements?.length
+      ? `What we're looking for: ${job.requirements.join(" ")}`
+      : null,
+  ].filter(Boolean);
+
+  const employmentTypes = toEmploymentTypes(job.employmentType);
+  const location = toJobLocation(job.location);
+  const remote = isRemote(job.location, job.employmentType);
+
+  return jsonLdGraph(
+    {
+      "@type": "JobPosting",
+      "@id": `${pageUrl}#jobposting`,
+      title: job.title,
+      description:
+        descriptionParts.join(" ") || `Open role at ${SITE_NAME}: ${job.title}.`,
+      url: pageUrl,
+      ...(job.publishedAt ? { datePosted: job.publishedAt } : {}),
+      ...(employmentTypes ? { employmentType: employmentTypes } : {}),
+      ...(job.department ? { industry: job.department } : {}),
+      ...(job.experience ? { experienceRequirements: job.experience } : {}),
+      hiringOrganization: { "@id": ORG_ID },
+      ...(location ? { jobLocation: location } : {}),
+      ...(remote
+        ? {
+            jobLocationType: "TELECOMMUTE",
+            applicantLocationRequirements: {
+              "@type": "Country",
+              name: "India",
+            },
+          }
+        : {}),
+      directApply: true,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Careers",
+          item: `${SITE_URL}/jobs`,
+        },
+        { "@type": "ListItem", position: 2, name: job.title, item: pageUrl },
+      ],
+    },
+  );
 }
 
 export default async function JobPage({ params }: { params: Promise<Params> }) {
@@ -60,6 +153,7 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
 
   return (
     <div className="w-full bg-white min-h-screen">
+      <JsonLd data={buildJobSchema(job, slug)} />
       {/* Breadcrumb */}
       <div className="w-full px-6 md:px-14 pt-8 ">
         <div className="max-w-4xl mx-auto text-sm font-sans text-dark/50">
@@ -191,12 +285,12 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
           <div className="pt-8 border-t border-gray-100 text-center">
             <p className="text-dark/50 font-sans text-sm">
               TalentiFi-X · Human Led · AI Assisted ·{" "}
-              <a
-                href="https://talentifi-x.com"
+              <Link
+                href="/"
                 className="hover:text-primary transition-colors"
               >
-                talentifi-x.com
-              </a>
+                talentifix.com
+              </Link>
             </p>
           </div>
 

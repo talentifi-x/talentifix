@@ -14,6 +14,15 @@ export interface SanityPost {
 export interface SanityPostFull extends SanityPost {
   body: unknown[];
   faq: { question: string; answer: string }[];
+  updatedAt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+}
+
+/** Slug plus last-modified stamp, for accurate `<lastmod>` in the sitemap. */
+export interface SanitySitemapEntry {
+  slug: string;
+  updatedAt?: string;
 }
 
 export async function getAllSanityPosts(): Promise<SanityPost[]> {
@@ -35,6 +44,18 @@ export async function getAllSanityPostSlugs(): Promise<{ slug: string }[]> {
   return client.fetch(`*[_type == "post"] { "slug": slug.current }`);
 }
 
+/**
+ * Kept separate from `getAllSanityPostSlugs` because `generateStaticParams`
+ * rejects any key that is not a route param.
+ */
+export async function getSanityPostSitemapEntries(): Promise<
+  SanitySitemapEntry[]
+> {
+  return client.fetch(
+    `*[_type == "post"] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  );
+}
+
 export async function getSanityPostBySlug(
   slug: string,
 ): Promise<SanityPostFull | null> {
@@ -49,7 +70,10 @@ export async function getSanityPostBySlug(
       introduction,
       "image": mainImage.asset->url,
       body,
-      faq
+      faq,
+      metaTitle,
+      metaDescription,
+      "updatedAt": _updatedAt
     }`,
     { slug },
   );
@@ -77,6 +101,7 @@ export interface SanityJobFull extends SanityJob {
   whyJoinPoints?: string[];
   metaTitle?: string;
   metaDescription?: string;
+  updatedAt?: string;
 }
 
 export async function getAllSanityJobs(): Promise<SanityJob[]> {
@@ -100,6 +125,15 @@ export async function getAllSanityJobSlugs(): Promise<{ slug: string }[]> {
   return client.fetch(`*[_type == "job"] { "slug": slug.current }`);
 }
 
+/** Slug plus last-modified stamp, for accurate `<lastmod>` in the sitemap. */
+export async function getSanityJobSitemapEntries(): Promise<
+  SanitySitemapEntry[]
+> {
+  return client.fetch(
+    `*[_type == "job"] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  );
+}
+
 export async function getSanityJobBySlug(
   slug: string,
 ): Promise<SanityJobFull | null> {
@@ -121,6 +155,7 @@ export async function getSanityJobBySlug(
       whoYouAre,
       whyJoinIntro,
       whyJoinPoints,
+      "updatedAt": _updatedAt,
       metaTitle,
       metaDescription
     }`,

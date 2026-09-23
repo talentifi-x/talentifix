@@ -447,9 +447,9 @@ export const CandidateRegistrationForm = () => {
     <section className="w-full bg-[#F2F4F8] py-16 px-4 md:px-8 flex justify-center">
       <div className="w-full max-w-5xl flex flex-col gap-10">
         <div className="flex flex-col gap-3">
-          <h2 className="text-[40px] font-bold font-notch text-[#1E1E24]">
+          <h1 className="text-[40px] font-bold font-notch text-[#1E1E24]">
             Join Our Talent Network<span className="text-[#00DDE2]">.</span>
-          </h2>
+          </h1>
           <p className="text-lg text-[#1E1E24] opacity-70 font-medium max-w-3xl">
             We specialize in AI/ML and Cybersecurity roles. If that&apos;s you,
             let&apos;s connect.

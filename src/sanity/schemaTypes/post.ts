@@ -31,6 +31,23 @@ export const postType = defineType({
         preview: { select: { title: 'question' } },
       }],
     }),
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta Title (SEO)',
+      type: 'string',
+      description:
+        'Optional. Shown in search results instead of the headline. Keep under 60 characters - longer titles get truncated by Google. Leave blank to use the headline.',
+      validation: (Rule) => Rule.max(60).warning('Google truncates titles past ~60 characters.'),
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta Description (SEO)',
+      type: 'text',
+      rows: 2,
+      description:
+        'Optional. The snippet under the title in search results. Aim for 120-155 characters. Leave blank to use the introduction.',
+      validation: (Rule) => Rule.max(155).warning('Google truncates descriptions past ~155 characters.'),
+    }),
   ],
   preview: { select: { title: 'title', media: 'mainImage', subtitle: 'category' } },
 })

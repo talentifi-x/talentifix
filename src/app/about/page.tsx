@@ -8,7 +8,8 @@ import { Leadership } from "@components/about/Leadership";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us - AI-Led Staffing in India",
+  alternates: { canonical: "/about" },
   description:
     "Learn about TalentiFi-X - who we are, what we stand for, and why we're rebuilding staffing for the modern workforce.",
 };

@@ -89,9 +89,9 @@ export const ContactForm = () => {
       <div className="w-full max-w-4xl flex flex-col gap-10">
         {/* Header */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-[40px] font-bold font-notch text-[#1E1E24]">
+          <h1 className="text-[40px] font-bold font-notch text-[#1E1E24]">
             Connect With Us<span className="text-[#00DDE2]">.</span>
-          </h2>
+          </h1>
           <p className="text-lg text-[#1E1E24] opacity-60 font-medium max-w-2xl">
             Please share a few details about your requirement or area of interest, and a representative will connect with you.
           </p>

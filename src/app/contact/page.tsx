@@ -5,7 +5,8 @@ import { ContactForm } from "@components/contact/ContactForm";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us - Talk to Our Hiring Team",
+  alternates: { canonical: "/contact" },
   description:
     "Get in touch with TalentiFi-X for hiring, partnerships, or any questions.",
 };

@@ -12,6 +12,14 @@ import {
   getAllSanityPostSlugs,
   type SanityPostFull,
 } from "@/sanity/lib/queries";
+import { JsonLd } from "@components/seo/JsonLd";
+import {
+  ORG_ID,
+  SITE_URL,
+  buildDescription,
+  buildTitle,
+  jsonLdGraph,
+} from "@lib/seo";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -29,40 +37,44 @@ const toId = (str: string) =>
 
 export const revalidate = 60;
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.talentifix.com"
-).replace(/\/$/, "");
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
   if (sanityPost) {
+    const description = buildDescription(
+      sanityPost.metaDescription,
+      sanityPost.introduction,
+    );
     return {
-      title: sanityPost.title,
-      description: sanityPost.introduction?.slice(0, 160),
+      title: buildTitle(sanityPost.metaTitle, sanityPost.title),
+      description,
       alternates: {
         canonical: `${SITE_URL}/blog/${slug}`,
       },
       openGraph: {
-        title: sanityPost.title,
-        description: sanityPost.introduction?.slice(0, 160) ?? undefined,
+        title: sanityPost.metaTitle ?? sanityPost.title,
+        description,
         ...(sanityPost.image ? { images: [{ url: sanityPost.image }] } : {}),
         type: "article",
+        publishedTime: sanityPost.publishedAt,
+        modifiedTime: sanityPost.updatedAt ?? sanityPost.publishedAt,
+        ...(sanityPost.author ? { authors: [sanityPost.author] } : {}),
       },
     };
   }
   // Fallback to static blogPosts data when Sanity is unavailable
   const staticPost = blogPosts.find((p) => p.slug === slug);
   if (staticPost) {
+    const description = buildDescription(null, staticPost.introduction);
     return {
-      title: staticPost.title,
-      description: staticPost.introduction.slice(0, 160),
+      title: buildTitle(null, staticPost.title),
+      description,
       alternates: {
         canonical: `${SITE_URL}/blog/${slug}`,
       },
       openGraph: {
         title: staticPost.title,
-        description: staticPost.introduction.slice(0, 160),
+        description,
         type: "article",
       },
     };
@@ -340,6 +352,54 @@ function SectionContent({ section }: { section: BlogSection }) {
   );
 }
 
+// ─── Structured data ──────────────────────────────────────────────────────────
+
+/**
+ * BlogPosting for the article itself, plus FAQPage when the post carries FAQs.
+ *
+ * Note on FAQPage: Google restricted FAQ rich results to authoritative
+ * government and health sites in 2023, so this will not produce FAQ snippets in
+ * Google. It remains valid, is still consumed by Bing and by AI answer engines,
+ * and costs nothing to emit from data the CMS already holds.
+ */
+function buildPostSchema(post: SanityPostFull) {
+  const pageUrl = `${SITE_URL}/blog/${post.slug}`;
+  const nodes: unknown[] = [
+    {
+      "@type": "BlogPosting",
+      "@id": `${pageUrl}#article`,
+      headline: post.metaTitle ?? post.title,
+      description: buildDescription(post.metaDescription, post.introduction),
+      inLanguage: "en-IN",
+      mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+      url: pageUrl,
+      ...(post.image ? { image: post.image } : {}),
+      ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
+      dateModified: post.updatedAt ?? post.publishedAt,
+      author: post.author
+        ? { "@type": "Person", name: post.author }
+        : { "@id": ORG_ID },
+      publisher: { "@id": ORG_ID },
+      ...(post.category ? { articleSection: post.category } : {}),
+    },
+  ];
+
+  const faqs = (post.faq ?? []).filter((f) => f?.question && f?.answer);
+  if (faqs.length > 0) {
+    nodes.push({
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    });
+  }
+
+  return jsonLdGraph(...nodes);
+}
+
 // ─── Sanity post renderer ─────────────────────────────────────────────────────
 
 function SanityPostPage({ post }: { post: SanityPostFull }) {
@@ -487,6 +547,7 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
 
   return (
     <div className="w-full bg-[#F7F9FC] min-h-screen">
+      <JsonLd data={buildPostSchema(post)} />
       {/* Hero image */}
       <div className="w-full h-80 md:h-115 relative overflow-hidden">
         {post.image ? (

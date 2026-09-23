@@ -11,7 +11,8 @@ import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor"
 import TheNextStepSection from "@components/home/TheNextStepSection";
 
 export const metadata: Metadata = {
-  title: "Solutions",
+  title: "Staffing Solutions for AI & Tech Hiring",
+  alternates: { canonical: "/solutions" },
   description:
     "Explore TalentiFi-X staffing solutions: temporary staffing, permanent placement, contract-to-hire, and executive search - AI-assisted and human-led.",
 };

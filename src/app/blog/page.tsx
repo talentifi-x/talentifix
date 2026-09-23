@@ -3,8 +3,10 @@ import { getAllSanityPosts, type SanityPost } from "@/sanity/lib/queries";
 import BlogGrid from "./BlogGrid";
 
 export const metadata = {
-  title: "Blog",
-  description: "Insights on staffing, AI, and the future of hiring.",
+  title: "Hiring & Recruitment Insights",
+  description:
+    "Practical insights on AI-assisted hiring, talent pipelining and building better teams - from the TalentiFi-X staffing team in India.",
+  alternates: { canonical: "/blog" },
 };
 
 export const revalidate = 60;

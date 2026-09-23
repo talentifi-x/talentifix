@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { gccSummitGallery } from "@data/mediaData";
 import { GccCarousel } from "@components/insights/GccCarousel";
+import { JsonLd } from "@components/seo/JsonLd";
+import { ORG_ID, SITE_URL } from "@lib/seo";
 
 const SLUG = "/insights/talentifi-x-gcc-summit-2026";
 const BANNER = "/banner/gcc-summit-2026-bengaluru-banner.png";
@@ -15,10 +17,8 @@ const SEO_DESCRIPTION =
   "TalentiFi-X, Delegate Experience Sponsor at GCC Summit 2026 in Bengaluru, shares key themes on GCC talent, AI, strategic ownership, innovation and capability.";
 
 export const metadata: Metadata = {
-  title: {
-    absolute:
-      "TalentiFi-X at GCC Summit 2026 Bengaluru | GCC Talent & AI Insights",
-  },
+  // 41 chars - the previous title ran to 67 and was truncated in results.
+  title: { absolute: "TalentiFi-X at GCC Summit 2026, Bengaluru" },
   description: SEO_DESCRIPTION,
   alternates: { canonical: SLUG },
   openGraph: {
@@ -54,26 +54,18 @@ const themes = [
   },
 ];
 
+/**
+ * The Organization entity is declared once in the root layout; this page only
+ * references it by `@id` so the two never diverge into competing entities.
+ */
 function buildJsonLd(siteUrl: string) {
   const pageUrl = `${siteUrl}${SLUG}`;
   const bannerUrl = `${siteUrl}${BANNER}`;
-  const orgId = `${siteUrl}#organization`;
+  const orgId = ORG_ID;
 
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        "@id": orgId,
-        name: "TalentiFi-X",
-        url: siteUrl,
-        logo: `${siteUrl}/logos/logo.svg`,
-        sameAs: [
-          "https://www.linkedin.com/company/TalentiFi-X/",
-          "https://x.com/talentifi_x",
-          "https://www.instagram.com/talentifi_x",
-        ],
-      },
       {
         "@type": "Event",
         "@id": `${pageUrl}#event`,
@@ -123,18 +115,9 @@ function buildJsonLd(siteUrl: string) {
 }
 
 export default function GccSummit2026Page() {
-  const siteUrl = (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.talentifix.com"
-  ).replace(/\/$/, "");
-
   return (
     <div className="w-full bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildJsonLd(siteUrl)),
-        }}
-      />
+      <JsonLd data={buildJsonLd(SITE_URL)} />
 
       {/* 1. Hero */}
       <section className="w-full px-6 md:px-8 pt-14 pb-10 md:pt-20 md:pb-14">

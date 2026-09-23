@@ -18,7 +18,8 @@ import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
 
 export const metadata: Metadata = {
-  title: "Intelligent Hiring for the AI Age",
+  title: { absolute: "Intelligent Hiring for the AI Age | TalentiFi-X" },
+  alternates: { canonical: "/" },
   description:
     "TalentiFi-X delivers AI-assisted, human-led staffing for tech teams. Fewer resumes. Better hires. Staffing. Rebuilt.",
   openGraph: {

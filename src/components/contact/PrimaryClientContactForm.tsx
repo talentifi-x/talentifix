@@ -236,10 +236,10 @@ export const PrimaryClientContactForm = () => {
     <section className="w-full bg-[#F2F4F8] py-16 px-4 md:px-8 flex justify-center">
       <div className="w-full max-w-4xl flex flex-col gap-10">
         <div className="flex flex-col gap-4">
-          <h2 className="text-[40px] font-bold font-notch text-[#1E1E24]">
+          <h1 className="text-[40px] font-bold font-notch text-[#1E1E24]">
             Let&apos;s Discuss Your Hiring Needs
             <span className="text-[#00DDE2]">.</span>
-          </h2>
+          </h1>
           <p className="text-lg text-[#1E1E24] opacity-60 font-medium max-w-2xl">
             Low friction, fast response. Share a few details and we&apos;ll get
             back within 4 business hours - usually faster.

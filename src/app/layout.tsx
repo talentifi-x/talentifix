@@ -4,15 +4,15 @@ import Script from "next/script";
 import React from "react";
 
 import { ToastProvider } from "@providers/toast";
+import { JsonLd } from "@components/seo/JsonLd";
+import { SITE_URL, jsonLdGraph, organizationNode, websiteNode } from "@lib/seo";
 import "@styles/global.css";
 import "react-international-phone/style.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.talentifix.com",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "TalentiFi-X | Intelligent Staffing for the AI Age",
     template: "%s | TalentiFi-X",
@@ -59,6 +59,8 @@ export default async function RootLayout({
           )}
       </head>
       <body className={inter.className}>
+        {/* Sitewide brand identity - every other page references these by @id. */}
+        <JsonLd data={jsonLdGraph(organizationNode, websiteNode)} />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VDENLSNNWP"
           strategy="afterInteractive"

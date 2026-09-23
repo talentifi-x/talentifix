@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { CandidateRegistrationForm } from "@components/candidates/CandidateRegistrationForm";
 
 export const metadata: Metadata = {
-  title: "Join Our Network",
+  title: "Join Our Talent Network - AI & Cyber Roles",
+  alternates: { canonical: "/join-our-network" },
   description:
     "Are you an AI, ML, or cybersecurity professional in India? Join TalentiFi-X's talent network for your next opportunity.",
 };

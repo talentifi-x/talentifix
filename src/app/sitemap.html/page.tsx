@@ -4,10 +4,13 @@ import {
   getAllSanityJobSlugs,
 } from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
+import { SITE_URL } from "@lib/seo";
 
 export const metadata = {
   title: "Sitemap",
-  description: "Sitemap for TalentiFi-X.",
+  description:
+    "Browse every page on TalentiFi-X - solutions, open roles, insights and hiring resources.",
+  alternates: { canonical: "/sitemap.html" },
 };
 
 export const revalidate = 60;
@@ -27,9 +30,7 @@ const staticPaths = [
 ];
 
 export default async function SitemapHtmlPage() {
-  const baseUrl = (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://talentifix.com"
-  ).replace(/\/$/, "");
+  const baseUrl = SITE_URL;
 
   let blogSlugs: string[] = [];
   try {

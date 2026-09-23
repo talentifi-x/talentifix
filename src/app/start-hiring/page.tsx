@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { PrimaryClientContactForm } from "@components/contact/PrimaryClientContactForm";
 
 export const metadata: Metadata = {
-  title: "Start Hiring",
+  title: "Start Hiring - Request AI & Tech Talent",
+  alternates: { canonical: "/start-hiring" },
   description:
     "Ready to hire top AI, ML, and cybersecurity talent? Tell us about your role and we'll respond within 4 hours.",
 };
