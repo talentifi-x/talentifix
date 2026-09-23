@@ -1,0 +1,112 @@
+{
+  "$comment": "Hero image generation prompts for the four September 2026 blog posts. Style is derived from the four supplied reference images so the set reads as one visual system. Each entry maps to a Sanity post by slug; drop the generated file into the post's mainImage field.",
+  "version": "1.0",
+  "created": "2026-09-02",
+  "source_document": "Blogs/TX Content September 2026.docx",
+
+  "global": {
+    "aspect_ratio": "16:9",
+    "resolution": "1920x1080",
+    "output_format": "webp",
+    "render_style": "photorealistic 3D render fused with holographic HUD interface design, cinematic lighting, shallow depth of field, volumetric glow, subtle film grain",
+    "quality_terms": "ultra detailed, sharp focus on the human subject, clean composition, professional enterprise marketing visual, 8k"
+  },
+
+  "style_reference": {
+    "$comment": "The common DNA across all four reference images. Prepend or merge this into every prompt so the set stays consistent.",
+    "background": "deep navy to near-black gradient (#050A1E to #0A1435), faint wireframe city skyline along the lower third, scattered particle dots and soft bokeh",
+    "palette": {
+      "primary": "electric blue #0A84FF",
+      "secondary": "bright cyan #00E5FF",
+      "success_accent": "neon green #00FF9D",
+      "warning_accent": "amber orange #FF9F0A",
+      "tertiary_accent": "violet #A855F7",
+      "rule": "cool blues dominate; green marks the correct or verified path; orange or red marks the rejected or broken path"
+    },
+    "recurring_motifs": [
+      "glowing concentric circular platform beneath every human figure",
+      "floating translucent holographic UI panels with candidate profile cards, charts and checkmarks",
+      "thin light-trail connector lines linking nodes across the frame",
+      "business people in dark tailored suits, rim-lit in blue, often shot from behind or in three-quarter view",
+      "small profile-card icons with green ticks or red crosses",
+      "line graphs and bar charts rendered as glowing translucent overlays"
+    ],
+    "camera": "eye-level wide shot, slight perspective depth, subject centered or offset by the rule of thirds",
+    "mood": "premium, confident, enterprise-grade, futuristic but not sci-fi kitsch"
+  },
+
+  "negative_prompt": "cluttered, messy, low contrast, washed out, cartoon, anime, flat vector illustration, stock-photo office, plain white background, warm beige tones, lens flare overload, distorted faces, extra limbs, malformed hands, gibberish text, misspelled words, watermark, logo, signature, oversaturated neon, cyberpunk grunge, dystopian, horror",
+
+  "text_policy": {
+    "$comment": "The reference images carry short label text. Generative models render text unreliably, so treat any on-image wording as optional.",
+    "recommendation": "generate clean, then add label text in post-production using the site fonts (Stack Sans Notch for headings)",
+    "if_generating_text": "keep to two or three words per label, uppercase, wide letter-spacing"
+  },
+
+  "images": [
+    {
+      "id": 1,
+      "post_slug": "passive-candidate-recruitment-best-talent",
+      "post_title": "The Best Candidate May Never Apply",
+      "publish_date": "2026-09-01",
+      "category": "Talent Strategy",
+      "core_idea": "The applicant pool is only a sliver of the talent pool. The best person is employed elsewhere and is not applying.",
+      "closest_reference": "reference image 4 (funnel) inverted, plus the floating profile cards of reference image 1",
+      "composition": "A single lit funnel or spotlight cone on the left holds a small cluster of glowing applicant cards. Surrounding it, a vastly larger dark constellation of dimmed profile cards drifts through the frame, most unlit. A recruiter in a dark suit stands on a glowing circular platform, reaching toward one distant dimmed card that ignites cyan and green as it is discovered.",
+      "focal_point": "the single dim card igniting green under the recruiter's outstretched hand",
+      "optional_labels": ["APPLICANTS", "THE WIDER TALENT MARKET"],
+      "prompt": "Cinematic 3D render, deep navy to near-black gradient background with a faint blue wireframe city skyline along the lower third. On the left, a narrow cone of light holds a small cluster of brightly glowing holographic candidate profile cards, clearly finite and few. Spreading across the rest of the frame, a vast constellation of hundreds of dimmed, unlit profile cards floats in darkness, connected by faint thin light-trail lines. A business professional in a dark tailored suit stands in three-quarter view on a glowing concentric circular platform, rim-lit in electric blue, reaching toward one distant dim card that is igniting bright neon green with a soft bloom. Floating translucent HUD panels with line graphs and small checkmark icons hover at the edges. Electric blue and cyan dominate, neon green marks the discovered candidate. Particle dots and soft bokeh, volumetric glow, shallow depth of field, eye-level wide shot, premium enterprise marketing visual, ultra detailed, sharp focus, 8k, 16:9",
+      "negative_prompt_override": null
+    },
+    {
+      "id": 2,
+      "post_slug": "india-gcc-talent-capability-challenge",
+      "post_title": "India Has Won the GCC Location Argument. Can We Win the Talent Argument?",
+      "publish_date": "2026-09-02",
+      "category": "Global Hiring",
+      "core_idea": "India has won on location and scale. The next contest is capability, not headcount.",
+      "closest_reference": "reference image 2 (path of nodes) with the skyline emphasis of reference image 1",
+      "composition": "Left half shows a glowing wireframe map of India studded with bright GCC location pins and a dense Bengaluru-style skyline, clearly conquered territory. A luminous bridge of connector nodes arcs rightward toward a second, taller structure built of capability blocks: skill icons, leadership badges, verified checkmarks. A business leader in a dark suit stands centre on a circular platform, viewed from behind, facing the capability structure.",
+      "focal_point": "the arc transitioning from dense location pins into a taller capability tower",
+      "optional_labels": ["LOCATION", "CAPABILITY"],
+      "prompt": "Cinematic 3D render, deep navy to near-black gradient background. On the left, a glowing electric-blue wireframe map of India dotted with bright location pins and a dense futuristic Indian city skyline of illuminated towers, saturated and fully built out. A luminous arc of connected holographic nodes sweeps rightward and upward, transforming into a taller crystalline tower assembled from capability blocks: skill badges, leadership icons, verified green checkmarks, layered data panels. A business leader in a dark tailored suit stands centre frame on a glowing concentric circular platform, seen from behind, rim-lit in blue, facing the tower. Floating translucent HUD panels show ascending line graphs and bar charts. Electric blue and cyan dominate with neon green accents on the verified capability layer and a few amber highlights on the map pins. Faint particle dots, volumetric glow, shallow depth of field, eye-level wide shot, premium enterprise marketing visual, ultra detailed, sharp focus, 8k, 16:9",
+      "negative_prompt_override": "cluttered, messy, cartoon, flat vector, stock-photo office, plain white background, distorted faces, gibberish text, watermark, national flags, political symbols, religious imagery, tourist landmarks, Taj Mahal"
+    },
+    {
+      "id": 3,
+      "post_slug": "precision-hiring-future-of-recruitment",
+      "post_title": "The Future of Hiring Isn't More. It's More Precise.",
+      "publish_date": "2026-09-03",
+      "category": "Hiring Strategy",
+      "core_idea": "Volume is not the metric. A narrow, accurate shortlist beats a thousand applications.",
+      "closest_reference": "reference image 4 directly, tightened and made more surgical",
+      "composition": "Split composition. Left: a wide chaotic cascade of hundreds of pale applicant cards tumbling into a broad dim funnel, unfocused and noisy. Right: a precise beam of light resolving into just three brilliantly lit profile cards on a pedestal, each with a green verified tick. A recruiter in a dark suit stands between the two halves on a circular platform, one hand lowered toward the noise, the other raised toward the three.",
+      "focal_point": "the three brilliantly lit finalist cards on the right pedestal",
+      "optional_labels": ["1,000 APPLICATIONS", "3 RIGHT ONES"],
+      "prompt": "Cinematic 3D render, deep navy to near-black gradient background with faint wireframe city skyline. Split composition. On the left, a broad dim funnel swallowing a chaotic cascade of hundreds of pale, unfocused holographic applicant cards, visually noisy and blurred with motion. On the right, a single clean beam of cyan light resolving into exactly three brilliantly lit candidate profile cards raised on a glowing pedestal, each stamped with a neon green verified checkmark, crisp and sharply in focus. A business professional in a dark tailored suit stands centre on a glowing concentric circular platform between the two halves, rim-lit in blue, one hand lowered toward the chaotic side, the other raised toward the three finalists. Thin light-trail lines connect the two halves. Floating translucent HUD panels show a narrowing conversion graph. Electric blue and cyan dominate, neon green marks the three verified finalists, the left side desaturated and dim. Volumetric glow, strong depth of field separating sharp right from blurred left, eye-level wide shot, premium enterprise marketing visual, ultra detailed, 8k, 16:9",
+      "negative_prompt_override": null
+    },
+    {
+      "id": 4,
+      "post_slug": "return-of-trust-in-hiring",
+      "post_title": "The Return of Trust in Hiring",
+      "publish_date": "2026-09-04",
+      "category": "Hiring Trends",
+      "core_idea": "When every application looks polished, verified evidence becomes the real signal.",
+      "closest_reference": "reference image 3 (the interview table) with the verification iconography of reference image 1",
+      "composition": "A curved holographic table with concentric light rings. On one side, a candidate in a suit seated in three-quarter view. Above the table, two competing layers: an upper band of identical, glossy, suspiciously perfect CV cards rendered in flat pale amber, and beneath it a lower band of solid evidence tiles glowing green: a work-sample panel, a reference quote bubble, a skills assessment chart, a signed verification badge. A hiring manager sits opposite, back to camera.",
+      "focal_point": "the green verified evidence tiles cutting through the uniform amber CV layer",
+      "optional_labels": ["POLISH", "PROOF"],
+      "prompt": "Cinematic 3D render, deep navy to near-black gradient background with faint wireframe city skyline. A curved dark glass table with glowing concentric cyan light rings on its surface. A professional candidate in a dark tailored suit sits in three-quarter view on the far side, rim-lit in blue and calm. A hiring manager sits opposite in the foreground, seen from behind over the shoulder. Above the table float two distinct horizontal layers: an upper band of many identical glossy flawless CV cards in flat pale amber, uniform and indistinguishable, and below it a brighter band of solid evidence tiles glowing neon green, showing a work sample panel, a reference quotation bubble, a skills assessment chart and a signed verification badge with a tick. Thin light-trail lines connect the green evidence tiles down to the candidate. Floating translucent HUD panels with waveform and trend graphs frame the edges in blue and violet. Electric blue, cyan and violet dominate, neon green marks the verified evidence, amber marks the uniform surface polish. Volumetric glow, shallow depth of field, eye-level wide shot, premium enterprise marketing visual, ultra detailed, sharp focus, 8k, 16:9",
+      "negative_prompt_override": null
+    }
+  ],
+
+  "usage_notes": {
+    "consistency": "Generate all four in one session with the same model and seed family so lighting and palette match. If the model supports it, pass one of the four reference images as a style or image reference at 30-50 percent weight.",
+    "cropping": "The blog card crops to roughly 16:9 at 380x214 and the article hero to a wide band, so keep the human subject and focal point within the central 60 percent of the frame and away from the extreme edges.",
+    "current_state": "All four Sanity posts were uploaded without a mainImage, so they currently fall back to /blogs/b1.png. Add the generated files to the mainImage field on each post.",
+    "file_naming": "talentifix-blog-<post_slug>.webp",
+    "compression": "Export at 1920x1080 then compress to WebP under 250 KB; next/image handles responsive resizing from there."
+  }
+}

@@ -1,0 +1,69 @@
+name: Publish scheduled blogs
+
+# Flips `published: true` on the September 2026 posts at their scheduled time.
+#
+#   precision-hiring-future-of-recruitment   Sept 03, 05:00 IST  (Sept 02, 23:30 UTC)
+#   return-of-trust-in-hiring                Sept 04, 17:00 IST  (Sept 04, 11:30 UTC)
+#
+# The exact times live in scripts/publish-scheduled-posts.mjs, not here. The
+# cron only decides how often we CHECK; the script decides what is actually
+# due. That matters because GitHub's scheduled runs are best-effort and are
+# regularly delayed by 5 to 30 minutes under load, so pinning a single cron to
+# the exact publish minute would be unreliable. Checking every 15 minutes
+# across the relevant days means a delayed run still publishes shortly after
+# the intended moment rather than missing it entirely.
+#
+# The script is idempotent: nothing due means nothing happens, and an
+# already-published post is left alone.
+#
+# NOTE: GitHub only runs `schedule` triggers from the repository's DEFAULT
+# branch. This file must be on master for the cron to fire.
+
+on:
+  schedule:
+    # Every 15 minutes across 2-4 September (UTC), covering both windows.
+    - cron: "*/15 * 2-4 9 *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report what would happen without writing anything"
+        type: boolean
+        default: false
+      force:
+        description: "Ignore schedule times and publish everything now"
+        type: boolean
+        default: false
+
+# Never let two runs patch the same documents at once.
+concurrency:
+  group: publish-scheduled-blogs
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out the publisher script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/publish-scheduled-posts.mjs
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # No install step: the script uses global fetch and has no dependencies.
+      - name: Publish any posts that are due
+        env:
+          SANITY_API_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          FORCE: ${{ inputs.force }}
+        run: node scripts/publish-scheduled-posts.mjs
