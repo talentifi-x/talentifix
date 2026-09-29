@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   alternates: { canonical: "/privacy-policy" },
   description:
-    "Read TalentiFi-X's privacy policy - how we collect, use, and protect your personal information.",
+    "How TalentiFi-X collects, uses and protects the personal information of website visitors, including cookies, third-party services and your privacy rights.",
 };
 
 export default function PrivacyPolicyPage() {

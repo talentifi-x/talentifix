@@ -12,7 +12,8 @@
     "lint": "next lint",
     "refine": "refine",
     "studio": "echo 'Sanity studio removed - reinstall to use'",
-    "audit": "pnpm audit"
+    "audit": "pnpm audit",
+    "indexnow": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.3",
