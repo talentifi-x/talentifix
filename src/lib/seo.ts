@@ -26,6 +26,8 @@ export const BRAND_SUFFIX = ` | ${SITE_NAME}`;
 
 /** Google truncates titles past roughly this width in search results. */
 export const MAX_TITLE_LENGTH = 60;
+/** Bing flags titles over 70 characters. Below this, a headline is kept whole rather than clipped. */
+export const MAX_TITLE_HARD_LENGTH = 70;
 export const MAX_DESCRIPTION_LENGTH = 155;
 
 /** Stable identity for the Organization entity, shared by every page that emits it. */
@@ -35,14 +37,63 @@ export const WEBSITE_ID = `${SITE_URL}#website`;
 export const absoluteUrl = (path = "/"): string =>
   `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
-/** Trim to `limit`, preferring a word boundary over cutting mid-word. */
+/** Words that make a clipped title or description read as unfinished ("…About Hiring And"). */
+const DANGLING_WORDS = new Set([
+  "a", "an", "and", "as", "at", "but", "by", "for", "from", "how", "in", "into",
+  "of", "on", "or", "the", "to", "what", "why", "with", "&",
+]);
+
+/**
+ * Trim to `limit`, preferring a word boundary over cutting mid-word.
+ *
+ * Whitespace (including CMS line breaks) is collapsed first, and trailing
+ * connector words are dropped so the cut reads as a finished phrase.
+ */
 export function truncateAtWord(value: string, limit: number): string {
-  const text = value.trim();
+  const text = value.replace(/\s+/g, " ").trim();
   if (text.length <= limit) return text;
   const clipped = text.slice(0, limit);
   const lastSpace = clipped.lastIndexOf(" ");
   const cut = lastSpace > limit * 0.6 ? clipped.slice(0, lastSpace) : clipped;
-  return cut.replace(/[\s,;:.-]+$/, "");
+  const words = cut.replace(/[\s,;:.\-–—(]+$/, "").split(" ");
+  while (
+    words.length > 1 &&
+    DANGLING_WORDS.has(words[words.length - 1].toLowerCase().replace(/^[("“‘']+/, ""))
+  ) {
+    words.pop();
+  }
+  return words.join(" ").replace(/[\s,;:.\-–—(]+$/, "");
+}
+
+/** The longest leading clause (35+ characters) that ends at a natural break: a colon, dash, bracket, comma or sentence end. */
+function headlineBeforeBreak(text: string): string | null {
+  let best: string | null = null;
+  for (const match of text.matchAll(/(: | — | – | - | \(|\? |\. |, )/g)) {
+    const keepMark = match[0][0] === "?";
+    const head = text
+      .slice(0, (match.index ?? 0) + (keepMark ? 1 : 0))
+      .replace(/[\s,;:\-–—(]+$/, "");
+    if (head.length >= 35 && head.length <= MAX_TITLE_HARD_LENGTH) best = head;
+  }
+  return best;
+}
+
+/**
+ * Trim to `limit`, ending on a full sentence when one finishes late enough,
+ * otherwise on a word boundary with an ellipsis.
+ */
+export function truncateAtSentence(value: string, limit: number): string {
+  const text = value.replace(/\s+/g, " ").trim();
+  if (text.length <= limit) return text;
+  const clipped = text.slice(0, limit + 1);
+  const end = Math.max(
+    clipped.lastIndexOf(". "),
+    clipped.lastIndexOf("! "),
+    clipped.lastIndexOf("? "),
+  );
+  // A sentence that ends too early leaves a description Bing flags as too short.
+  if (end >= limit * 0.75) return clipped.slice(0, end + 1);
+  return `${truncateAtWord(text, limit - 1)}…`;
 }
 
 /**
@@ -57,9 +108,18 @@ export function buildTitle(
   preferred: string | null | undefined,
   fallback: string,
 ): { absolute: string } {
-  const base = (preferred?.trim() || fallback).trim();
+  const base = (preferred?.trim() || fallback).replace(/\s+/g, " ").trim();
   if (base.length + BRAND_SUFFIX.length <= MAX_TITLE_LENGTH) {
     return { absolute: `${base}${BRAND_SUFFIX}` };
+  }
+  // A whole headline that search engines may shorten beats one we clip mid-phrase.
+  if (base.length <= MAX_TITLE_HARD_LENGTH) return { absolute: base };
+  const head = headlineBeforeBreak(base);
+  if (head) {
+    return {
+      absolute:
+        head.length + BRAND_SUFFIX.length <= MAX_TITLE_LENGTH ? `${head}${BRAND_SUFFIX}` : head,
+    };
   }
   return { absolute: truncateAtWord(base, MAX_TITLE_LENGTH) };
 }
@@ -71,7 +131,7 @@ export function buildDescription(
 ): string | undefined {
   const base = (preferred?.trim() || fallback?.trim()) ?? "";
   if (!base) return undefined;
-  return truncateAtWord(base, MAX_DESCRIPTION_LENGTH);
+  return truncateAtSentence(base, MAX_DESCRIPTION_LENGTH);
 }
 
 /* ------------------------------------------------------------------ */

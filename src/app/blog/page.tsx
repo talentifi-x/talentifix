@@ -5,7 +5,7 @@ import BlogGrid from "./BlogGrid";
 export const metadata = {
   title: "Hiring & Recruitment Insights",
   description:
-    "Practical insights on AI-assisted hiring, talent pipelining and building better teams - from the TalentiFi-X staffing team in India.",
+    "Practical insights on AI-assisted hiring, GCC talent strategy, talent pipelining and candidate evaluation, from TalentiFi-X's specialist staffing team.",
   alternates: { canonical: "/blog" },
 };
 
