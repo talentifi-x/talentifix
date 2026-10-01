@@ -85,176 +85,171 @@ export const WhoSection = () => {
             </button>
           </div>
 
-          {/* Content Area */}
+          {/* Content Area: all three panels stay in the HTML (inactive ones hidden) so search
+              engines can read every tab, not just the one open on load. */}
           <div className="p-8 md:p-16 min-h-100 flex items-center">
-            {activeTab === "leaders" && (
-              <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                {/* Hexagon Image */}
-                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                  <div
-                    className="relative w-full h-full"
-                    style={{
-                      clipPath:
-                        "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                    }}
-                  >
-                    <Image
-                      src="/assets/figma/who-polygon.png"
-                      alt="Leaders"
-                      fill
-                      sizes="(max-width: 768px) 280px, 320px"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
-                {/* Text Content */}
-                <div className="flex flex-col gap-6 max-w-150">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Leaders<span className="text-secondary">.</span>
-                    </h3>
-                    <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                      Hiring roles that actually matter
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-4 mt-6">
-                    {/* Primary Button */}
-                    <Link
-                      href="/start-hiring"
-                      className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Hire Talent
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-
-                    {/* Secondary Button */}
-                    <Link
-                      href="/join-our-network"
-                      className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Build Your Career
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
+            <div hidden={activeTab !== "leaders"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
+              {/* Hexagon Image */}
+              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
+                <div
+                  className="relative w-full h-full"
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  }}
+                >
+                  <Image
+                    src="/assets/figma/who-polygon.png"
+                    alt="Leaders"
+                    fill
+                    sizes="(max-width: 768px) 280px, 320px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
-            )}
 
-            {activeTab === "teams" && (
-              <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                  <div
-                    className="relative w-full h-full"
-                    style={{
-                      clipPath:
-                        "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                    }}
-                  >
-                    <Image
-                      src="/assets/figma/who-polygon.png"
-                      alt="Teams"
-                      fill
-                      sizes="(max-width: 768px) 280px, 320px"
-                      className="object-cover"
-                    />
-                  </div>
+              {/* Text Content */}
+              <div className="flex flex-col gap-6 max-w-150">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
+                    Leaders<span className="text-secondary">.</span>
+                  </h3>
+                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
+                    Hiring roles that actually matter
+                  </p>
                 </div>
 
-                <div className="flex flex-col gap-6 max-w-150">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Teams<span className="text-secondary">.</span>
-                    </h3>
-                    <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                      Teams that can’t afford mis-hires
-                    </p>
-                  </div>
+                <div className="flex flex-wrap gap-4 mt-6">
+                  {/* Primary Button */}
+                  <Link
+                    href="/start-hiring"
+                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Hire Talent
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
 
-                  <div className="flex flex-wrap gap-4 mt-6">
-                    <Link
-                      href="/start-hiring"
-                      className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Hire Talent
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-
-                    <Link
-                      href="/join-our-network"
-                      className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Build Your Career
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
+                  {/* Secondary Button */}
+                  <Link
+                    href="/join-our-network"
+                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Build Your Career
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
                 </div>
               </div>
-            )}
+            </div>
 
-            {activeTab === "talent" && (
-              <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                  <div
-                    className="relative w-full h-full"
-                    style={{
-                      clipPath:
-                        "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                    }}
-                  >
-                    <Image
-                      src="/assets/figma/who-polygon.png"
-                      alt="Talent"
-                      fill
-                      sizes="(max-width: 768px) 280px, 320px"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-6 max-w-150">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                      Talent<span className="text-secondary">.</span>
-                    </h3>
-                    <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                      Talent seeking alignment, not randomness
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-4 mt-6">
-                    <Link
-                      href="/start-hiring"
-                      className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Hire Talent
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-
-                    <Link
-                      href="/join-our-network"
-                      className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                    >
-                      <span className="text-[18px] font-medium font-sans">
-                        Build Your Career
-                      </span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
+            <div hidden={activeTab !== "teams"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
+              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
+                <div
+                  className="relative w-full h-full"
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  }}
+                >
+                  <Image
+                    src="/assets/figma/who-polygon.png"
+                    alt="Teams"
+                    fill
+                    sizes="(max-width: 768px) 280px, 320px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
-            )}
+
+              <div className="flex flex-col gap-6 max-w-150">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
+                    Teams<span className="text-secondary">.</span>
+                  </h3>
+                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
+                    Teams that can’t afford mis-hires
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <Link
+                    href="/start-hiring"
+                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Hire Talent
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+
+                  <Link
+                    href="/join-our-network"
+                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Build Your Career
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div hidden={activeTab !== "talent"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
+              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
+                <div
+                  className="relative w-full h-full"
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  }}
+                >
+                  <Image
+                    src="/assets/figma/who-polygon.png"
+                    alt="Talent"
+                    fill
+                    sizes="(max-width: 768px) 280px, 320px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-6 max-w-150">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
+                    Talent<span className="text-secondary">.</span>
+                  </h3>
+                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
+                    Talent seeking alignment, not randomness
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <Link
+                    href="/start-hiring"
+                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Hire Talent
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+
+                  <Link
+                    href="/join-our-network"
+                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
+                  >
+                    <span className="text-[18px] font-medium font-sans">
+                      Build Your Career
+                    </span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

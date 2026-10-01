@@ -1,13 +1,14 @@
 import React from "react";
 import { Metadata } from "next";
 import { CandidateRegistrationForm } from "@components/candidates/CandidateRegistrationForm";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Join Our Talent Network - AI & Cyber Roles",
-  alternates: { canonical: "/join-our-network" },
   description:
     "Are you an AI, ML or cybersecurity professional in India? Join the TalentiFi-X talent network to be matched with specialist roles that fit your skills.",
-};
+  path: "/join-our-network",
+});
 
 export default function JoinOurNetworkPage() {
   return (

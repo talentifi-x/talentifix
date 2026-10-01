@@ -3,13 +3,14 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@components/contact/ContactForm";
 import TheNextStepSection from "@components/home/TheNextStepSection";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us - Talk to Our Hiring Team",
-  alternates: { canonical: "/contact" },
   description:
     "Contact TalentiFi-X to hire AI, ML and cybersecurity talent, build a GCC team or discuss a partnership. Offices in Bengaluru, India, and Houston, Texas.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -17,8 +18,8 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="w-full relative h-[300px] md:h-[400px] lg:h-[500px]">
         <Image
-          src="/assets/contact/hero.png"
-          alt="Contact Us"
+          src="/assets/contact/colleagues-reviewing-screen-contact.png"
+          alt="Two colleagues reviewing a screen together"
           fill
           className="object-cover"
           priority

@@ -23,6 +23,7 @@ import {
   buildTitle,
   isRemote,
   jsonLdGraph,
+  pageMetadata,
   toEmploymentTypes,
   toJobLocation,
 } from "@lib/seo";
@@ -56,17 +57,11 @@ export async function generateMetadata({
       job.aboutRole ??
         `Open role at ${SITE_NAME}: ${job.title}${job.location ? ` in ${job.location}` : ""}.`,
     );
-    return {
+    return pageMetadata({
       title: buildTitle(job.metaTitle, `${job.title} - Careers`),
       description,
-      alternates: { canonical: `${SITE_URL}/jobs/${slug}` },
-      openGraph: {
-        title: job.metaTitle ?? `${job.title} - Careers`,
-        description,
-        type: "article",
-        url: `${SITE_URL}/jobs/${slug}`,
-      },
-    };
+      path: `/jobs/${slug}`,
+    });
   } catch {
     return { title: "Role Not Found" };
   }

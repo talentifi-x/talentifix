@@ -6,13 +6,14 @@ import { WhatWeStandFor } from "@components/about/WhatWeStandFor";
 import { BuiltForToday } from "@components/about/BuiltForToday";
 import { Leadership } from "@components/about/Leadership";
 import TheNextStepSection from "@components/home/TheNextStepSection";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us: Human-Led, AI-Assisted Staffing",
-  alternates: { canonical: "/about" },
   description:
     "Why TalentiFi-X exists: AI-assisted screening plus human-led decisions, to make hiring faster, smarter and more reliable. Meet our leadership and approach.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

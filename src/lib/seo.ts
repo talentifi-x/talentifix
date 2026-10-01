@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 /**
  * Shared SEO primitives: canonical origin, title/description builders and
  * the structured-data nodes that describe the brand.
@@ -122,6 +124,69 @@ export function buildTitle(
     };
   }
   return { absolute: truncateAtWord(base, MAX_TITLE_LENGTH) };
+}
+
+/** The default share image (1200x630), drawn in code by app/opengraph-image.tsx. */
+export const DEFAULT_SHARE_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "TalentiFi-X: human-led, AI-assisted staffing for AI, ML, cybersecurity and GCC teams",
+};
+
+type ShareImage = { url: string; width?: number; height?: number; alt?: string };
+
+/**
+ * Complete metadata for one page: title, description, canonical and the share
+ * tags that WhatsApp, LinkedIn and X read (og:* and twitter:*).
+ *
+ * In Next.js a page that sets `openGraph` replaces the layout's openGraph object
+ * rather than merging with it, so pages that set only part of it lost the site
+ * name, URL or image. Every page goes through this helper so the set is always whole.
+ */
+export function pageMetadata(opts: {
+  title: string | { absolute: string };
+  description?: string;
+  path: string;
+  image?: ShareImage;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+}): Metadata {
+  const shareTitle =
+    typeof opts.title === "string" ? `${opts.title}${BRAND_SUFFIX}` : opts.title.absolute;
+  const images = [opts.image ?? DEFAULT_SHARE_IMAGE];
+  const shared = {
+    title: shareTitle,
+    description: opts.description,
+    url: opts.path,
+    siteName: SITE_NAME,
+    locale: "en_IN",
+    images,
+  };
+  return {
+    title: opts.title,
+    description: opts.description,
+    alternates: { canonical: opts.path },
+    openGraph:
+      opts.type === "article"
+        ? {
+            ...shared,
+            type: "article",
+            publishedTime: opts.publishedTime,
+            modifiedTime: opts.modifiedTime,
+            authors: opts.authors,
+          }
+        : { ...shared, type: "website" },
+    twitter: {
+      card: "summary_large_image",
+      site: "@talentifi_x",
+      title: shareTitle,
+      description: opts.description,
+      images,
+    },
+  };
 }
 
 /** Prefer an editor-authored description, else trim the fallback to a sane width. */

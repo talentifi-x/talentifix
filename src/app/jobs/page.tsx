@@ -1,13 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin, Briefcase, Clock } from "lucide-react";
 import { getAllSanityJobs, type SanityJob } from "@/sanity/lib/queries";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Careers: Open Roles at Our Bengaluru Office",
-  alternates: { canonical: "/jobs" },
   description:
     "Build the future of hiring with TalentiFi-X. See open roles in recruitment, staffing and business development at our Bengaluru office, and apply today.",
-};
+  path: "/jobs",
+});
 
 export const revalidate = 60;
 

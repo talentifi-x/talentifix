@@ -16,19 +16,14 @@ import TheNextStepSection from "@components/home/TheNextStepSection";
 import { ClientsSection } from "@components/home/ClientsSection";
 import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: { absolute: "AI, ML & Cybersecurity Staffing in India & US | TalentiFi-X" },
-  alternates: { canonical: "/" },
   description:
     "Human-led, AI-assisted staffing for AI, ML, cybersecurity and GCC teams across India and the US. Fewer resumes, better hires. Tell us the role you need.",
-  openGraph: {
-    title: "TalentiFi-X | Intelligent Hiring for the AI Age",
-    description:
-      "TalentiFi-X delivers AI-assisted, human-led staffing for tech teams. Fewer resumes. Better hires. Staffing. Rebuilt.",
-    type: "website",
-  },
-};
+  path: "/",
+});
 
 export default function Home() {
   return (

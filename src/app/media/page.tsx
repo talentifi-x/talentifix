@@ -3,20 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { pressItems } from "@data/mediaData";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Media & Industry Presence: GCC Summit 2026",
   description:
     "Where TalentiFi-X shows up across the talent and GCC ecosystem - industry participation, event highlights and perspectives on AI-assisted, human-led hiring.",
-  alternates: { canonical: "/media" },
-  openGraph: {
-    title: "Media & Industry Presence | TalentiFi-X",
-    description:
-      "Industry participation, event highlights and perspectives from TalentiFi-X across the talent and GCC ecosystem.",
-    type: "website",
-    url: "/media",
-  },
-};
+  path: "/media",
+});
 
 function PressThumb({ kicker, index }: { kicker: string; index: number }) {
   return (

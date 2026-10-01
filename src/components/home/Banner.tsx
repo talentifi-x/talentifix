@@ -36,7 +36,7 @@ export const Banner = () => {
           {/* Main 3D T Graphic Placeholder/Image */}
           <div className="relative w-[750px] h-[651px]  z-10">
             <Image
-              src="/banner-home/banner.webp"
+              src="/banner-home/talentifi-x-3d-logo-staffing-rebuilt.webp"
               alt="Staffing Rebuilt 3D Graphic"
               fill
               sizes="(max-width: 1024px) 100vw, 750px"

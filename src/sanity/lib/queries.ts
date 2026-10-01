@@ -49,7 +49,9 @@ export async function getAllSanityPosts(): Promise<SanityPost[]> {
       author,
       readTime,
       introduction,
-      "image": mainImage.asset->url
+      // Sanity serves an image under any readable name added after its URL, so the
+      // file name Google sees describes the post instead of the asset hash.
+      "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension
     }`,
   );
 }
@@ -83,7 +85,7 @@ export async function getSanityPostBySlug(
       author,
       readTime,
       introduction,
-      "image": mainImage.asset->url,
+      "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension,
       body,
       faq,
       metaTitle,
