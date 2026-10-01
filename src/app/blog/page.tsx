@@ -1,13 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getAllSanityPosts, type SanityPost } from "@/sanity/lib/queries";
 import BlogGrid from "./BlogGrid";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Hiring & Recruitment Insights for Tech Teams",
   description:
     "Practical insights on AI-assisted hiring, GCC talent strategy, talent pipelining and candidate evaluation, from TalentiFi-X's specialist staffing team.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+});
 
 export const revalidate = 60;
 
@@ -60,8 +62,8 @@ export default async function BlogPage() {
           {/* Image */}
           <div className="w-full lg:flex-1 flex justify-center">
             <Image
-              src="/assets/Solutions/hero-visual-blog.png"
-              alt="Blog Hero Visual"
+              src="/assets/Solutions/hiring-insights-isometric-blocks.png"
+              alt="Isometric illustration of connected data blocks"
               width={700}
               height={467}
               sizes="(max-width: 1024px) 100vw, 700px"

@@ -1,17 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   getAllSanityPostSlugs,
   getAllSanityJobSlugs,
 } from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
-import { SITE_URL } from "@lib/seo";
+import { SITE_URL, pageMetadata } from "@lib/seo";
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Sitemap: Every Page, Open Role and Article",
   description:
     "Browse every page of the TalentiFi-X website in one place: staffing solutions, open roles, hiring insights, articles, events and ways to get in touch.",
-  alternates: { canonical: "/sitemap.html" },
-};
+  path: "/sitemap.html",
+});
 
 export const revalidate = 60;
 

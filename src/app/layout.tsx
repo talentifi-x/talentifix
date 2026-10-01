@@ -19,9 +19,8 @@ export const metadata: Metadata = {
   },
   description:
     "TalentiFi-X rebuilds staffing for the AI age. Human-led, AI-assisted hiring for AI, ML, and cybersecurity talent across India. Staffing. Rebuilt.",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // Icons come from the file conventions in this folder: favicon.ico (16-48px),
+  // icon.png (192px) and apple-icon.png (180px), all square.
   openGraph: {
     siteName: "TalentiFi-X",
     type: "website",

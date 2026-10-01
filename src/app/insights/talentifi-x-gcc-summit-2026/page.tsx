@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { gccSummitGallery } from "@data/mediaData";
 import { GccCarousel } from "@components/insights/GccCarousel";
 import { JsonLd } from "@components/seo/JsonLd";
-import { ORG_ID, SITE_URL } from "@lib/seo";
+import { ORG_ID, SITE_URL, pageMetadata } from "@lib/seo";
 
 const SLUG = "/insights/talentifi-x-gcc-summit-2026";
 const BANNER = "/banner/gcc-summit-2026-bengaluru-banner.png";
@@ -16,20 +16,18 @@ const EVENT_DATE = "2026-07-15";
 const SEO_DESCRIPTION =
   "TalentiFi-X, Delegate Experience Sponsor at GCC Summit 2026 in Bengaluru, shares key themes on GCC talent, AI, strategic ownership, innovation and capability.";
 
-export const metadata: Metadata = {
-  // 58 chars: topic first, brand last, inside the 50-60 range search results show in full.
+export const metadata: Metadata = pageMetadata({
   title: { absolute: "GCC Summit 2026 Bengaluru: Key Talent Themes | TalentiFi-X" },
-  description: SEO_DESCRIPTION,
-  alternates: { canonical: SLUG },
-  openGraph: {
-    title:
-      "TalentiFi-X at GCC Summit 2026 Bengaluru | GCC Talent & AI Insights",
-    description: SEO_DESCRIPTION,
-    type: "article",
-    url: SLUG,
-    images: [{ url: BANNER, width: 1774, height: 887 }],
+  description:
+    SEO_DESCRIPTION,
+  path: SLUG,
+  image: {
+    url: "/banner/gcc-summit-2026-bengaluru-share.jpg",
+    width: 1200,
+    height: 630,
+    alt: "TalentiFi-X at GCC Summit 2026, Bengaluru",
   },
-};
+});
 
 const themes = [
   {

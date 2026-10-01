@@ -19,6 +19,7 @@ import {
   buildDescription,
   buildTitle,
   jsonLdGraph,
+  pageMetadata,
 } from "@lib/seo";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -50,39 +51,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       sanityPost.metaDescription,
       sanityPost.introduction,
     );
-    return {
+    return pageMetadata({
       title: buildTitle(sanityPost.metaTitle, sanityPost.title),
       description,
-      alternates: {
-        canonical: `${SITE_URL}/blog/${slug}`,
-      },
-      openGraph: {
-        title: sanityPost.metaTitle ?? sanityPost.title,
-        description,
-        ...(sanityPost.image ? { images: [{ url: sanityPost.image }] } : {}),
-        type: "article",
-        publishedTime: sanityPost.publishedAt,
-        modifiedTime: sanityPost.updatedAt ?? sanityPost.publishedAt,
-        ...(sanityPost.author ? { authors: [sanityPost.author] } : {}),
-      },
-    };
+      path: `/blog/${slug}`,
+      // Sanity crops the header image to the 1200x630 JPG that share previews expect.
+      image: sanityPost.image
+        ? {
+            url: `${sanityPost.image}?w=1200&h=630&fit=crop&fm=jpg&q=85`,
+            width: 1200,
+            height: 630,
+            alt: sanityPost.title,
+          }
+        : undefined,
+      type: "article",
+      publishedTime: sanityPost.publishedAt,
+      modifiedTime: sanityPost.updatedAt ?? sanityPost.publishedAt,
+      authors: sanityPost.author ? [sanityPost.author] : undefined,
+    });
   }
   // Fallback to static blogPosts data when Sanity is unavailable
   const staticPost = blogPosts.find((p) => p.slug === slug);
   if (staticPost) {
     const description = buildDescription(null, staticPost.introduction);
-    return {
+    return pageMetadata({
       title: buildTitle(null, staticPost.title),
       description,
-      alternates: {
-        canonical: `${SITE_URL}/blog/${slug}`,
-      },
-      openGraph: {
-        title: staticPost.title,
-        description,
-        type: "article",
-      },
-    };
+      path: `/blog/${slug}`,
+      type: "article",
+    });
   }
   return { title: "Post Not Found" };
 }

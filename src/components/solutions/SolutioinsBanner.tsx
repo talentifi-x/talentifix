@@ -25,8 +25,8 @@ export const SolutionsBanner = () => {
 
         <div className="w-full lg:flex-1 flex justify-center">
           <Image
-            src="/assets/Solutions/hero-visual.png"
-            alt="Hero Visual"
+            src="/assets/Solutions/staffing-solutions-isometric-blocks.png"
+            alt="Isometric illustration of connected blocks"
             width={600}
             height={400}
             sizes="(max-width: 1024px) 100vw, 600px"

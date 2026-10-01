@@ -9,13 +9,14 @@ import { SolutionsExecutiveSearch } from "../../components/solutions/SolutionsEx
 import { SolutionsIncludes } from "../../components/solutions/SolutionsIncludes";
 import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor";
 import TheNextStepSection from "@components/home/TheNextStepSection";
+import { pageMetadata } from "@lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Staffing Solutions for AI & Tech Hiring",
-  alternates: { canonical: "/solutions" },
   description:
     "Temporary staffing, permanent placement, contract-to-hire and executive search from TalentiFi-X: AI-assisted screening, human-led decisions, real results.",
-};
+  path: "/solutions",
+});
 
 const SolutionsDivider = () => {
   return (

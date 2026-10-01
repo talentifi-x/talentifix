@@ -9,8 +9,8 @@ export const RebuildSection = () => {
       <div className="absolute inset-0 z-0">
         {/* Desktop Image */}
         <Image
-          src="/banner-home/bg-rebuild.webp"
-          alt="Background"
+          src="/banner-home/talentifi-x-logo-data-streams-background.webp"
+          alt=""
           fill
           sizes="100vw"
           className="hidden md:block object-cover"
