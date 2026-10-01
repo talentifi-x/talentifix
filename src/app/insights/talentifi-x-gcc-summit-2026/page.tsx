@@ -17,8 +17,8 @@ const SEO_DESCRIPTION =
   "TalentiFi-X, Delegate Experience Sponsor at GCC Summit 2026 in Bengaluru, shares key themes on GCC talent, AI, strategic ownership, innovation and capability.";
 
 export const metadata: Metadata = {
-  // 41 chars - the previous title ran to 67 and was truncated in results.
-  title: { absolute: "TalentiFi-X at GCC Summit 2026, Bengaluru" },
+  // 58 chars: topic first, brand last, inside the 50-60 range search results show in full.
+  title: { absolute: "GCC Summit 2026 Bengaluru: Key Talent Themes | TalentiFi-X" },
   description: SEO_DESCRIPTION,
   alternates: { canonical: SLUG },
   openGraph: {

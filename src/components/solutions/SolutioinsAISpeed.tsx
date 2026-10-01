@@ -7,12 +7,12 @@ export const SolutionsAISpeed = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center flex-col justify-center text-center gap-16">
           <div className="flex-1">
-            <h3 className="text-[30px] md:text-[54px] font-notch font-bold text-dark mb-6 leading-tight">
+            <h2 className="text-[30px] md:text-[54px] font-notch font-bold text-dark mb-6 leading-tight">
               AI for speed<span className="text-secondary">.</span> Humans for
               judgement.
               <br />
               Results for you.
-            </h3>
+            </h2>
             <p className="text-[16px] md:text-[20px] text-dark leading-relaxed mb-2">
               Trust isn’t claimed. It’s engineered.
             </p>

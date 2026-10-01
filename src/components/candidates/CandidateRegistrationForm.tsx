@@ -478,7 +478,7 @@ export const CandidateRegistrationForm = () => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-10 w-full">
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">Basic Info</h3>
+            <h2 className="text-[22px] font-bold text-[#1E1E24]">Basic Info</h2>
 
             <div className="flex flex-col gap-2">
               <label
@@ -602,9 +602,9 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+            <h2 className="text-[22px] font-bold text-[#1E1E24]">
               Professional Profile
-            </h3>
+            </h2>
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
@@ -768,9 +768,9 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+            <h2 className="text-[22px] font-bold text-[#1E1E24]">
               Job Preferences
-            </h3>
+            </h2>
 
             <div className="flex flex-col gap-3">
               <p className="text-lg font-medium text-[#1E1E24]">
@@ -895,9 +895,9 @@ export const CandidateRegistrationForm = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h3 className="text-[22px] font-bold text-[#1E1E24]">
+            <h2 className="text-[22px] font-bold text-[#1E1E24]">
               Additional Info
-            </h3>
+            </h2>
 
             <div className="flex flex-col gap-2">
               <p className="text-lg font-medium text-[#1E1E24]">

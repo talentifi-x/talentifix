@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Staffing Solutions for AI & Tech Hiring",
   alternates: { canonical: "/solutions" },
   description:
-    "Explore TalentiFi-X staffing solutions: temporary staffing, permanent placement, contract-to-hire, and executive search - AI-assisted and human-led.",
+    "Temporary staffing, permanent placement, contract-to-hire and executive search from TalentiFi-X: AI-assisted screening, human-led decisions, real results.",
 };
 
 const SolutionsDivider = () => {

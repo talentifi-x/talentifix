@@ -27,9 +27,9 @@ export const SolutionsIncludes = () => {
       />
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14 py-22">
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-[32px] md:text-[48px] font-notch font-bold text-[#1E1E24] leading-tight">
+          <h2 className="text-[32px] md:text-[48px] font-notch font-bold text-[#1E1E24] leading-tight">
             What Every <span className="text-[#0000FF]">TalentiFi-X</span> Solutions Includes:
-          </h3>
+          </h2>
           <p className="mt-3 text-[12px] md:text-[18px] text-dark font-medium">
             No matter the engagement, you get:
           </p>

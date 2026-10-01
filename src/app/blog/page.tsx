@@ -3,7 +3,7 @@ import { getAllSanityPosts, type SanityPost } from "@/sanity/lib/queries";
 import BlogGrid from "./BlogGrid";
 
 export const metadata = {
-  title: "Hiring & Recruitment Insights",
+  title: "Hiring & Recruitment Insights for Tech Teams",
   description:
     "Practical insights on AI-assisted hiring, GCC talent strategy, talent pipelining and candidate evaluation, from TalentiFi-X's specialist staffing team.",
   alternates: { canonical: "/blog" },

@@ -52,9 +52,11 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <div className="bg-white rounded-[10px] p-5 border border-gray-100 shadow-sm">
-      <h3 className="font-notch font-bold text-dark text-sm uppercase tracking-widest mb-4 pb-3 border-b border-gray-100">
+      {/* A label, not a heading: it sits beside the article and would otherwise
+          appear before the post's H1 in the heading outline. */}
+      <p className="font-notch font-bold text-dark text-sm uppercase tracking-widest mb-4 pb-3 border-b border-gray-100">
         Contents
-      </h3>
+      </p>
       <nav className="flex flex-col gap-0.5">
         {items.map((item) => (
           <button

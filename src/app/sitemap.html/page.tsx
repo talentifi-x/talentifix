@@ -7,9 +7,9 @@ import { blogPosts } from "@data/blogData";
 import { SITE_URL } from "@lib/seo";
 
 export const metadata = {
-  title: "Sitemap",
+  title: "Sitemap: Every Page, Open Role and Article",
   description:
-    "Browse every page on TalentiFi-X - solutions, open roles, insights and hiring resources.",
+    "Browse every page of the TalentiFi-X website in one place: staffing solutions, open roles, hiring insights, articles, events and ways to get in touch.",
   alternates: { canonical: "/sitemap.html" },
 };
 
