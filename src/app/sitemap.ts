@@ -7,6 +7,12 @@ import { blogPosts } from "@data/blogData";
 import { SITE_URL } from "@lib/seo";
 
 /**
+ * Rebuild the sitemap at most once an hour. Without this it is generated only at
+ * deploy time, so posts published in Sanity never reach it until the next deploy.
+ */
+export const revalidate = 3600;
+
+/**
  * `lastModified` is set only where a real modification date exists (Sanity's
  * `_updatedAt`). Stamping every entry with the build time - which is what
  * `new Date()` did - tells Google the whole site changed on every deploy, and it
