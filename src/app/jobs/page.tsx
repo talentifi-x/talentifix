@@ -3,10 +3,10 @@ import { ArrowRight, MapPin, Briefcase, Clock } from "lucide-react";
 import { getAllSanityJobs, type SanityJob } from "@/sanity/lib/queries";
 
 export const metadata = {
-  title: "Careers - Open Roles in Bengaluru",
+  title: "Careers: Open Roles at Our Bengaluru Office",
   alternates: { canonical: "/jobs" },
   description:
-    "Join TalentiFi-X. Explore open roles across staffing, business development, and engineering.",
+    "Build the future of hiring with TalentiFi-X. See open roles in recruitment, staffing and business development at our Bengaluru office, and apply today.",
 };
 
 export const revalidate = 60;

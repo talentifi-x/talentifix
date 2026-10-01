@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Contact Us - Talk to Our Hiring Team",
   alternates: { canonical: "/contact" },
   description:
-    "Contact TalentiFi-X to hire AI, ML and cybersecurity talent, build a GCC team or discuss a partnership. Offices in Bengaluru, India and Houston, USA.",
+    "Contact TalentiFi-X to hire AI, ML and cybersecurity talent, build a GCC team or discuss a partnership. Offices in Bengaluru, India, and Houston, Texas.",
 };
 
 export default function ContactPage() {

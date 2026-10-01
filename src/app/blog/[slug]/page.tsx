@@ -423,6 +423,9 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
     children?: { text: string }[];
   };
   const bodyBlocks = (post.body ?? []) as RawBlock[];
+  // Some posts were written with H3 sections only. Rendered as-is they jump from
+  // the H1 straight to H3, so in those posts the H3s become the H2 chapters.
+  const hasH2 = bodyBlocks.some((b) => b._type === "block" && b.style === "h2");
   const tocItems = [
     ...bodyBlocks
       .filter(
@@ -431,7 +434,7 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
       .map((b) => ({
         title: b.children?.map((c) => c.text).join("") ?? "",
         id: toId(b.children?.map((c) => c.text).join("") ?? ""),
-        level: b.style === "h3" ? 2 : 1,
+        level: b.style === "h3" && hasH2 ? 2 : 1,
       })),
     ...(post.faq && post.faq.length > 0
       ? [{ title: "Frequently Asked Questions", id: "faq", level: 1 }]
@@ -455,13 +458,14 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
       h3: ({ value, children }) => {
         const text =
           (value as RawBlock).children?.map((c) => c.text).join("") ?? "";
+        const Heading = hasH2 ? "h3" : "h2";
         return (
-          <h3
+          <Heading
             id={toId(text)}
             className="text-[18px] md:text-[22px] font-notch font-bold text-dark mb-3 mt-8 scroll-mt-36"
           >
             {children}
-          </h3>
+          </Heading>
         );
       },
       normal: ({ children }) => (

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy: How We Use and Protect Data",
   alternates: { canonical: "/privacy-policy" },
   description:
     "How TalentiFi-X collects, uses and protects the personal information of website visitors, including cookies, third-party services and your privacy rights.",

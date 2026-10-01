@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Start Hiring - Request AI & Tech Talent",
   alternates: { canonical: "/start-hiring" },
   description:
-    "Ready to hire top AI, ML, and cybersecurity talent? Tell us about your role and we'll respond within 4 hours.",
+    "Tell us about the role you need to fill, from AI and ML engineers to cybersecurity specialists. Share a few details and we reply within 4 business hours.",
 };
 
 export default function StartHiringPage() {

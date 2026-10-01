@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Join Our Talent Network - AI & Cyber Roles",
   alternates: { canonical: "/join-our-network" },
   description:
-    "Are you an AI, ML, or cybersecurity professional in India? Join TalentiFi-X's talent network for your next opportunity.",
+    "Are you an AI, ML or cybersecurity professional in India? Join the TalentiFi-X talent network to be matched with specialist roles that fit your skills.",
 };
 
 export default function JoinOurNetworkPage() {

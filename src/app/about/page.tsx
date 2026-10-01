@@ -8,10 +8,10 @@ import { Leadership } from "@components/about/Leadership";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 
 export const metadata: Metadata = {
-  title: "About Us - AI-Led Staffing in India",
+  title: "About Us: Human-Led, AI-Assisted Staffing",
   alternates: { canonical: "/about" },
   description:
-    "Learn about TalentiFi-X - who we are, what we stand for, and why we're rebuilding staffing for the modern workforce.",
+    "Why TalentiFi-X exists: AI-assisted screening plus human-led decisions, to make hiring faster, smarter and more reliable. Meet our leadership and approach.",
 };
 
 export default function AboutPage() {

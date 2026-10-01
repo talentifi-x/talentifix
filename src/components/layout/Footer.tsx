@@ -79,10 +79,11 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-start gap-12 md:gap-8">
           {/* Column 1: Statement & Button */}
           <div className="flex flex-col gap-8 flex-1">
-            <h3 className="text-[32px] font-bold font-sans text-black leading-tight">
+            {/* Footer text uses <p>, not headings, so it never breaks a page's H1-H6 outline. */}
+            <p className="text-[32px] font-bold font-sans text-black leading-tight">
               Staffing isn’t about filling roles. <br />
               It’s about building what comes next.
-            </h3>
+            </p>
             <Link
               href="/start-hiring"
               className="w-fit px-6 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
@@ -97,9 +98,9 @@ export const Footer = () => {
 
           {/* Column 2: Navigate */}
           <div className="flex flex-col gap-6">
-            <h4 className="text-[24px] font-bold font-notch text-black">
+            <p className="text-[24px] font-bold font-notch text-black">
               Navigate
-            </h4>
+            </p>
             <nav className="flex flex-col gap-2">
               {[
                 { name: "Home", href: "/" },
@@ -126,9 +127,9 @@ export const Footer = () => {
 
           {/* Column 3: Connect With Us */}
           <div className="flex flex-col gap-6 flex-1">
-            <h4 className="text-[24px] font-bold font-notch text-black">
+            <p className="text-[24px] font-bold font-notch text-black">
               Connect With Us
-            </h4>
+            </p>
             <div className="flex items-center gap-4">
               <Link
                 href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"

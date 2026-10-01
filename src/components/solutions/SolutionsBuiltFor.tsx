@@ -58,9 +58,9 @@ export const SolutionsBuiltFor = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <h3 className="text-[34px] md:text-[54px] font-notch font-bold text-black leading-tight">
+        <h2 className="text-[34px] md:text-[54px] font-notch font-bold text-black leading-tight">
           Who These Solutions Are Built For:
-        </h3>
+        </h2>
 
         <div className="mt-16 w-full max-w-[1104px] grid grid-cols-1 md:grid-cols-2 gap-12">
           {cards.map((card) => (

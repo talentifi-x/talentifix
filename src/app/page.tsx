@@ -18,10 +18,10 @@ import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
 
 export const metadata: Metadata = {
-  title: { absolute: "Intelligent Hiring for the AI Age | TalentiFi-X" },
+  title: { absolute: "AI, ML & Cybersecurity Staffing in India & US | TalentiFi-X" },
   alternates: { canonical: "/" },
   description:
-    "TalentiFi-X delivers AI-assisted, human-led staffing for tech teams. Fewer resumes. Better hires. Staffing. Rebuilt.",
+    "Human-led, AI-assisted staffing for AI, ML, cybersecurity and GCC teams across India and the US. Fewer resumes, better hires. Tell us the role you need.",
   openGraph: {
     title: "TalentiFi-X | Intelligent Hiring for the AI Age",
     description:
