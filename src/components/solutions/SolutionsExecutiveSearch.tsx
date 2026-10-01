@@ -31,7 +31,7 @@ export const SolutionsExecutiveSearch = () => {
               <br className="hidden sm:block" />
               Than Speed<span className="text-secondary">.</span>
             </h3>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
+            <p className="text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
               Leadership hires aren’t about filling positions.
               <br />
               They’re about direction, trust, and impact.

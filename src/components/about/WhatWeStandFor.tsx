@@ -20,7 +20,6 @@ export const WhatWeStandFor = () => {
             sizes="100vw"
             className="object-cover object-center"
             aria-hidden="true"
-            priority={false}
           />
           <div className="absolute inset-0 bg-white/55" />
           <div className="absolute inset-0 bg-linear-to-b from-white/30 via-white/55 to-white/75" />

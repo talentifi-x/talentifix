@@ -32,7 +32,7 @@ export const SolutionsPermanentPlacement = () => {
               <br className="hidden sm:block" />
               Compounds Over Time<span className="text-primary">.</span>
             </h3>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
+            <p className="text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
               Permanent hires shape culture.
               <br />
               They influence performance long after onboarding.
@@ -100,7 +100,7 @@ export const SolutionsPermanentPlacement = () => {
                 <h4 className="font-notch font-bold text-[28px] sm:text-[32px] lg:text-[40px] leading-[1.3] text-dark lg:text-left text-center">
                   The Impact<span className="text-primary">.</span>
                 </h4>
-                <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-black text-center lg:text-left">
+                <p className="text-[16px] lg:text-[18px] leading-[1.3] text-black text-center lg:text-left">
                   This isn’t faster hiring. It’s smarter hiring.
                 </p>
               </div>

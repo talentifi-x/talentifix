@@ -45,11 +45,11 @@ export default function PrivacyPolicyPage() {
           <p className="text-gray-700 leading-relaxed mb-8">
             This privacy policy (&quot;Privacy Policy&quot;) applies to the
             website www.talentiFix.com and any other website owned or operated
-            by or for TalentiFi-X, LLC. (&quot;Talentifix&quot;) to which you
-            may link from this website (collectively, the &quot;Talentifix
+            by or for TalentiFi-X, LLC. (&quot;TalentiFi-X&quot;) to which you
+            may link from this website (collectively, the &quot;TalentiFi-X
             Sites&quot;), and informs you about the type of information that may
-            be collected and used by the Talentifix Sites. By visiting or using
-            any of the Talentifix Sites, you consent to all collection of
+            be collected and used by the TalentiFi-X Sites. By visiting or using
+            any of the TalentiFi-X Sites, you consent to all collection of
             personal information, personal data, and other information/data
             (&quot;Information&quot;), as well as the uses described in this
             Privacy Policy.
@@ -67,10 +67,10 @@ export default function PrivacyPolicyPage() {
                   A. Purpose
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Users can access certain features of the Talentifix Sites
+                  Users can access certain features of the TalentiFi-X Sites
                   without disclosing Information. Users may be required to
                   register for an account in order to access certain
-                  content/portions of the Talentifix Sites.
+                  content/portions of the TalentiFi-X Sites.
                 </p>
               </div>
 
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
                   B. Information Sought During Registration
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  The Talentifix Sites may ask you to enter, or may collect in
+                  The TalentiFi-X Sites may ask you to enter, or may collect in
                   other ways, Information including without limitation your
                   name, phone number, email address, geographic location, age or
                   age range, other demographic (personal) information/data, and
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
                   C. Information Sought During Website Sweepstakes or Contests
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  When the Talentifix Sites offer sweepstakes or contests,
+                  When the TalentiFi-X Sites offer sweepstakes or contests,
                   Information may be collected with the primary purpose of
                   notifying you if you win the sweepstakes or contest, but such
                   Information may be used for the other purposes described in
@@ -106,10 +106,10 @@ export default function PrivacyPolicyPage() {
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   Information concerning the computer hardware and software you
-                  are using when you visit the Talentifix Sites may be collected
+                  are using when you visit the TalentiFi-X Sites may be collected
                   automatically. This information may include: the IP address,
                   browser type, domain names, access times, and referring
-                  website addresses. Talentifix uses this information primarily
+                  website addresses. TalentiFi-X uses this information primarily
                   to maintain the quality of its service and to provide general
                   statistics about website visitors, but may use the information
                   for any other purpose described in this Privacy Policy.
@@ -121,13 +121,13 @@ export default function PrivacyPolicyPage() {
                   E. Storage and Transfer of Personally Identifiable Information
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Talentifix may store and process Information in the United
+                  TalentiFi-X may store and process Information in the United
                   States of America, India, or any other country in which
-                  Talentifix or its affiliates, subsidiaries, or agents-domestic
-                  or foreign-maintain facilities. By using the Talentifix Sites,
+                  TalentiFi-X or its affiliates, subsidiaries, or agents-domestic
+                  or foreign-maintain facilities. By using the TalentiFi-X Sites,
                   you consent to any such transfer of Information outside of the
                   country where you reside, where you are a citizen, and/or
-                  where you access the Talentifix Site(s).
+                  where you access the TalentiFi-X Site(s).
                 </p>
               </div>
             </div>
@@ -145,18 +145,18 @@ export default function PrivacyPolicyPage() {
                   A. General Use
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Talentifix collects and uses Information in part to operate
+                  TalentiFi-X collects and uses Information in part to operate
                   the web sites and provide its online and electronic services.
-                  The collection of certain Information enables Talentifix to
+                  The collection of certain Information enables TalentiFi-X to
                   send you any newsletter(s), mailings, offers or other matters
                   you may request. Certain information concerning your
                   geographical location may be used to provide regionalized
-                  information to Talentifix&apos;s customers or other third
+                  information to TalentiFi-X&apos;s customers or other third
                   parties. When you voluntarily enter a sweepstakes or contest,
-                  Talentifix may request your email address and other
+                  TalentiFi-X may request your email address and other
                   Information in order to contact you in the event you are a
                   winner of the sweepstakes or contest or for other uses.
-                  Talentifix reserves the right to share Information with its
+                  TalentiFi-X reserves the right to share Information with its
                   affiliates, subsidiaries and third parties for reasonable
                   business purposes without additional permission other than the
                   permission you have granted under the terms of this Privacy
@@ -169,13 +169,13 @@ export default function PrivacyPolicyPage() {
                   B. Service Providers
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Talentifix sometimes engages other persons/companies to
-                  provide services on Talentifix&apos;s behalf, such as sending
+                  TalentiFi-X sometimes engages other persons/companies to
+                  provide services on TalentiFi-X&apos;s behalf, such as sending
                   newsletters, providing customer service, and performing
-                  statistical analysis of Talentifix&apos;s services. Talentifix
+                  statistical analysis of TalentiFi-X&apos;s services. TalentiFi-X
                   will generally provide those entities only such Information as
-                  is needed to provide Talentifix with such services, and
-                  Talentifix will generally prohibit such entities from using
+                  is needed to provide TalentiFi-X with such services, and
+                  TalentiFi-X will generally prohibit such entities from using
                   such Information for other purposes, but in certain instances
                   may do so if commercially reasonable.
                 </p>
@@ -186,13 +186,13 @@ export default function PrivacyPolicyPage() {
                   C. Legal Disclosure
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Talentifix also reserves the right to disclose Information,
+                  TalentiFi-X also reserves the right to disclose Information,
                   without notice, if required to do so by law or in the good
                   faith belief that such action is necessary to: (a) comply with
                   the requirements of law, the orders of a courts or agencies,
                   and/or other legal process; (b) protect the rights or property
-                  of Talentifix or others; and/or (c) protect the personal
-                  safety of users any of the Talentifix Sites or other persons.
+                  of TalentiFi-X or others; and/or (c) protect the personal
+                  safety of users any of the TalentiFi-X Sites or other persons.
                 </p>
               </div>
 
@@ -201,11 +201,11 @@ export default function PrivacyPolicyPage() {
                   D. Third-Party Links
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  The Talentifix Sites sometimes provide hyper-links to third
-                  party sites. Talentifix encourages you to review the privacy
+                  The TalentiFi-X Sites sometimes provide hyper-links to third
+                  party sites. TalentiFi-X encourages you to review the privacy
                   statements of web sites you choose to visit via hyper-links on
-                  the Talentifix Sites so that you can understand how those web
-                  sites collect, use and share Information. Talentifix is not
+                  the TalentiFi-X Sites so that you can understand how those web
+                  sites collect, use and share Information. TalentiFi-X is not
                   responsible for the content, privacy policies, acts or
                   omissions of third-party web sites and their
                   owners/administrators.
@@ -217,11 +217,11 @@ export default function PrivacyPolicyPage() {
                   E. Email Communications
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  The Talentifix Sites sometimes provide links to send email
-                  messages to Talentifix Site administrators for your
+                  The TalentiFi-X Sites sometimes provide links to send email
+                  messages to TalentiFi-X Site administrators for your
                   convenience, in which case your e-mail address may be used to
                   reply to your inquiry or for other business purposes. For
-                  example, Talentifix may track the pages on the Talentifix
+                  example, TalentiFi-X may track the pages on the TalentiFi-X
                   Sites that you visit in part to determine which areas of the
                   site are the most popular or of interest to you. This
                   Information may be used to deliver customized content and
@@ -240,16 +240,16 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed">
-                Talentifix sometimes supplements the Information it receives
+                TalentiFi-X sometimes supplements the Information it receives
                 with Information from other sources. Such outside Information
                 includes such things as: (a) updated delivery and address
                 information, including from carriers or other third parties,
-                which Information enables Talentifix to correct its records and
+                which Information enables TalentiFi-X to correct its records and
                 deliver services or purchases, or future communication, more
                 easily; (b) account Information; (c) purchase or redemption
                 Information; (d) page-view Information, including from some
-                merchants with whom Talentifix operates co-branded businesses or
-                for which Talentifix provides technical, fulfillment,
+                merchants with whom TalentiFi-X operates co-branded businesses or
+                for which TalentiFi-X provides technical, fulfillment,
                 advertising, or other services; (e) search term and search
                 result Information from searches that may have been conducted
                 through Internet search engines/features; (f) search results and
@@ -269,15 +269,15 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed">
-                The Talentifix Sites may require you to use a password selected
+                The TalentiFi-X Sites may require you to use a password selected
                 by you. Passwords shall not be shared and must be kept
                 confidential. You are responsible for all activities that occur
                 through the use of your password, including unauthorized use,
-                and for promptly notifying Talentifix of any unauthorized use
-                and any other breach of security with respect to the Talentifix
-                Sites. Talentifix, in its sole and absolute discretion, may at
+                and for promptly notifying TalentiFi-X of any unauthorized use
+                and any other breach of security with respect to the TalentiFi-X
+                Sites. TalentiFi-X, in its sole and absolute discretion, may at
                 any time terminate or otherwise restrict access to and use of
-                the Talentifix Sites, including without limitation if Talentifix
+                the TalentiFi-X Sites, including without limitation if TalentiFi-X
                 should suspect unauthorized use of a password or any other
                 breach of security. If you share a computer with anyone, you
                 should always log out of the website before leaving it to
@@ -299,7 +299,7 @@ export default function PrivacyPolicyPage() {
                   A. About Cookies
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  The Talentifix Sites use cookies to help Talentifix make your
+                  The TalentiFi-X Sites use cookies to help TalentiFi-X make your
                   online experience more individualized. A cookie is a text file
                   that is placed in storage on your computer. Cookies cannot be
                   used to run programs or deliver viruses to your computer.
@@ -314,7 +314,7 @@ export default function PrivacyPolicyPage() {
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   Cookies are used for convenience and to save you time when you
-                  again visit the Talentifix Sites. The purpose of cookies is to
+                  again visit the TalentiFi-X Sites. The purpose of cookies is to
                   tell the web server that you have returned to a specific page,
                   so that, for example, when you visit the page again your
                   experience can be personalized. Most web browsers
@@ -334,8 +334,8 @@ export default function PrivacyPolicyPage() {
                   C. Remarketing
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Talentifix currently uses remarketing to market our sites
-                  across the web. Talentifix places a cookie on your computer
+                  TalentiFi-X currently uses remarketing to market our sites
+                  across the web. TalentiFi-X places a cookie on your computer
                   via the browser and third party software accesses these
                   cookies and may serve an ad to you through your browser for a
                   third party site. You may opt out of this ad service on
@@ -352,15 +352,15 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed">
-                Talentifix&apos;s website pages may contain electronic images
+                TalentiFi-X&apos;s website pages may contain electronic images
                 known as web beacons, also referred to as single-pixel gifs,
-                that permit Talentifix to count the number of users who have
+                that permit TalentiFi-X to count the number of users who have
                 visited those pages and allow collection of other website
                 statistics, such as the popularity of certain content,
                 verification of system and server integrity, etc. Web beacons
-                are not intended to give Talentifix access to your personal
+                are not intended to give TalentiFi-X access to your personal
                 Information, but instead to compile aggregated statistical data
-                concerning the use of the Talentifix Sites. Web beacons collect
+                concerning the use of the TalentiFi-X Sites. Web beacons collect
                 limited types of information which may include a cookie number,
                 the time and date of a page view, and a description of the page
                 on which the web beacon resides.
@@ -377,9 +377,9 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-700 leading-relaxed">
                 Any personally identifiable information or personally sensitive
                 data that you disclose through any blogs that may be hosted on
-                the Talentifix Sites may be collected and used by others. You
+                the TalentiFi-X Sites may be collected and used by others. You
                 should assume that any personal information you provide at any
-                blogs on the Talentifix Sites will become public.
+                blogs on the TalentiFi-X Sites will become public.
               </p>
             </div>
           </div>
@@ -392,9 +392,9 @@ export default function PrivacyPolicyPage() {
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed">
                 If you are under 18, you must have your parent or legal guardian
-                access and use the Talentifix Sites for you. If you want to
+                access and use the TalentiFi-X Sites for you. If you want to
                 purchase any goods or services that may be offered at a
-                Talentifix Site, such purchase(s) must be made by your parent or
+                TalentiFi-X Site, such purchase(s) must be made by your parent or
                 legal guardian on your behalf.
               </p>
             </div>
@@ -407,25 +407,25 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed">
-                The Talentifix Sites may contain errors or problems and are
-                provided &quot;as is.&quot; Talentifix disclaims all warranties,
-                expressed or implied, in connection with the Talentifix Sites,
+                The TalentiFi-X Sites may contain errors or problems and are
+                provided &quot;as is.&quot; TalentiFi-X disclaims all warranties,
+                expressed or implied, in connection with the TalentiFi-X Sites,
                 including the implied warranties of merchantability and fitness.
-                If a Talentifix Site fails to perform in accordance with the
-                representations made by Talentifix through its corporate
-                offices, Talentifix will use commercially reasonable efforts to
+                If a TalentiFi-X Site fails to perform in accordance with the
+                representations made by TalentiFi-X through its corporate
+                offices, TalentiFi-X will use commercially reasonable efforts to
                 correct the failure. It is expressly agreed that your exclusive
-                remedy, and Talentifix&apos;s aggregate liability, whether in
-                contract, tort or otherwise, in connection with the Talentifix
-                Sites shall not exceed one hundred dollars ($100.00). Talentifix
+                remedy, and TalentiFi-X&apos;s aggregate liability, whether in
+                contract, tort or otherwise, in connection with the TalentiFi-X
+                Sites shall not exceed one hundred dollars ($100.00). TalentiFi-X
                 shall in no event be responsible for any incidental,
                 consequential or punitive damages in connection with the
-                Talentifix Sites (including, but not limited to, lost profits,
+                TalentiFi-X Sites (including, but not limited to, lost profits,
                 business interruption, loss of business information or other
                 pecuniary loss) regardless of whether such liability is based on
                 breach of contract, tort (including negligence), strict
                 liability, breach of warranties, failure of essential purpose,
-                or otherwise, and even if Talentifix has been advised of the
+                or otherwise, and even if TalentiFi-X has been advised of the
                 possibility of such damages.
               </p>
             </div>
@@ -438,9 +438,9 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed mb-4">
-                Talentifix welcomes feedback regarding this Privacy Policy. If
-                at any time you believe that a Talentifix Site has not adhered
-                to this Privacy Policy, please contact Talentifix and we will
+                TalentiFi-X welcomes feedback regarding this Privacy Policy. If
+                at any time you believe that a TalentiFi-X Site has not adhered
+                to this Privacy Policy, please contact TalentiFi-X and we will
                 use all commercially reasonable efforts to promptly investigate
                 and correct any problems.
               </p>

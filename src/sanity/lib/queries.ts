@@ -14,7 +14,11 @@ export interface SanityPost {
 export interface SanityPostFull extends SanityPost {
   body: unknown[];
   faq: { question: string; answer: string }[];
-  updatedAt?: string;
+  /** Editor-set date of the last real content change; never Sanity's _updatedAt. */
+  lastUpdated?: string;
+  imageAlt?: string;
+  shareImage?: string | null;
+  noindex?: boolean;
   metaTitle?: string;
   metaDescription?: string;
   /**
@@ -63,12 +67,17 @@ export async function getAllSanityPostSlugs(): Promise<{ slug: string }[]> {
 /**
  * Kept separate from `getAllSanityPostSlugs` because `generateStaticParams`
  * rejects any key that is not a route param.
+ *
+ * `<lastmod>` is the editor-set content date, not `_updatedAt`: Sanity bumps
+ * `_updatedAt` on every save (a typo fix, an SEO field), and a lastmod that
+ * moves without real changes teaches Google to ignore it. Posts marked
+ * "Hide from Google" stay on the site but leave the sitemap.
  */
 export async function getSanityPostSitemapEntries(): Promise<
   SanitySitemapEntry[]
 > {
   return client.fetch(
-    `*[${VISIBLE}] { "slug": slug.current, "updatedAt": _updatedAt }`,
+    `*[${VISIBLE} && noindex != true] { "slug": slug.current, "updatedAt": coalesce(lastUpdated, publishedAt) }`,
   );
 }
 
@@ -86,11 +95,14 @@ export async function getSanityPostBySlug(
       readTime,
       introduction,
       "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension,
+      "imageAlt": mainImage.alt,
+      "shareImage": shareImage.asset->url,
+      noindex,
       body,
       faq,
       metaTitle,
       metaDescription,
-      "updatedAt": _updatedAt
+      lastUpdated
     }`,
     { slug },
   );
@@ -138,8 +150,15 @@ export async function getAllSanityJobs(): Promise<SanityJob[]> {
   );
 }
 
+/**
+ * Closed roles are left out of the static params and the sitemap, and their
+ * page returns 404, so Google drops the JobPosting instead of listing a dead job.
+ * `!= false` keeps roles that predate the toggle open.
+ */
+const OPEN_JOB = `_type == "job" && isOpen != false`;
+
 export async function getAllSanityJobSlugs(): Promise<{ slug: string }[]> {
-  return client.fetch(`*[_type == "job"] { "slug": slug.current }`);
+  return client.fetch(`*[${OPEN_JOB}] { "slug": slug.current }`);
 }
 
 /** Slug plus last-modified stamp, for accurate `<lastmod>` in the sitemap. */
@@ -147,7 +166,7 @@ export async function getSanityJobSitemapEntries(): Promise<
   SanitySitemapEntry[]
 > {
   return client.fetch(
-    `*[_type == "job"] { "slug": slug.current, "updatedAt": _updatedAt }`,
+    `*[${OPEN_JOB}] { "slug": slug.current, "updatedAt": _updatedAt }`,
   );
 }
 

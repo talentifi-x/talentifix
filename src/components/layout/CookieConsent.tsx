@@ -41,8 +41,10 @@ export function CookieConsent() {
 
   if (!isRendered) return null;
 
+  // Kept short on phones (buttons side by side) so it never covers a page's
+  // heading and main button.
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[60] px-4 pb-4 sm:px-6">
+    <div className="fixed inset-x-0 bottom-0 z-[60] px-3 pb-3 sm:px-6 sm:pb-4">
       <div
         role="region"
         aria-label="Cookie consent"
@@ -52,8 +54,8 @@ export function CookieConsent() {
           isOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
-        <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6">
-          <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6">
+          <div className="flex flex-col gap-0.5 sm:gap-1">
             <p className="text-sm font-bold text-[#1E1E24] sm:text-base">
               We use cookies to improve your experience.
             </p>
@@ -69,18 +71,18 @@ export function CookieConsent() {
             </p>
           </div>
 
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <div className="flex w-full flex-row gap-2 sm:w-auto sm:items-center sm:gap-3">
             <button
               type="button"
               onClick={() => persistAndClose("rejected")}
-              className="w-full rounded-[8px] border border-[#E5E7EB] bg-white px-5 py-3 text-sm font-bold text-gray-700 transition-colors hover:border-[#0000FF] hover:text-[#0000FF] sm:w-auto"
+              className="min-h-11 flex-1 rounded-[8px] border border-[#E5E7EB] bg-white px-5 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:border-[#0000FF] hover:text-[#0000FF] sm:flex-none sm:py-3"
             >
               Reject
             </button>
             <button
               type="button"
               onClick={() => persistAndClose("accepted")}
-              className="w-full rounded-[8px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:w-auto"
+              className="min-h-11 flex-1 rounded-[8px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:flex-none sm:py-3"
             >
               Accept
             </button>

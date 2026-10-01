@@ -204,9 +204,37 @@ export function buildDescription(
 /* ------------------------------------------------------------------ */
 
 /**
+ * The founder's own site declares him under this `@id`; reusing it tells search
+ * engines the person on /about and on chetanmangalwedhe.com is one entity.
+ */
+export const FOUNDER_ID = "https://www.chetanmangalwedhe.com/#person";
+
+export const founderNode = {
+  "@type": "Person",
+  "@id": FOUNDER_ID,
+  name: "Chetan Mangalwedhe",
+  alternateName: "Chet Mangalwedhe",
+  jobTitle: "Founder & CEO",
+  image: `${SITE_URL}/assets/about/leadership-chet.png`,
+  url: "https://www.chetanmangalwedhe.com",
+  sameAs: [
+    "https://www.chetanmangalwedhe.com",
+    "https://www.linkedin.com/in/chetan-mangalwedhe-chet-mann/",
+  ],
+  worksFor: { "@id": ORG_ID },
+  knowsAbout: ["Staffing", "Recruitment", "AI in hiring", "Global Capability Centres"],
+} as const;
+
+/** True when a CMS byline credits the founder rather than the team. */
+export const isFounderByline = (author?: string | null): boolean =>
+  /chetan|mangalwedhe/i.test(author ?? "");
+
+/**
  * `alternateName` lists the spellings people actually search for. The brand is
  * routinely confused with the unrelated "Talentify", so the variants we do own
  * are declared explicitly.
+ *
+ * Addresses mirror the two offices printed in the site footer.
  */
 export const organizationNode = {
   "@type": "Organization",
@@ -219,11 +247,49 @@ export const organizationNode = {
     url: `${SITE_URL}/logos/logo.png`,
   },
   description:
-    "TalentiFi-X delivers AI-assisted, human-led staffing for AI, ML and cybersecurity teams across India.",
+    "TalentiFi-X delivers AI-assisted, human-led staffing for AI, ML, cybersecurity and GCC teams across India and the US.",
+  founder: { "@type": "Person", "@id": FOUNDER_ID, name: founderNode.name },
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "26/19 Gandhi Bazar Main Road, Basavanagudi",
+      addressLocality: "Bengaluru",
+      addressRegion: "Karnataka",
+      postalCode: "560004",
+      addressCountry: "IN",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "13201 NW Freeway, Suite 800",
+      addressLocality: "Houston",
+      addressRegion: "TX",
+      postalCode: "77040",
+      addressCountry: "US",
+    },
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: "contact@talentifi-x.com",
+    url: `${SITE_URL}/start-hiring`,
+    areaServed: ["IN", "US"],
+    availableLanguage: "en",
+  },
+  areaServed: ["IN", "US"],
+  knowsAbout: [
+    "AI and ML hiring",
+    "Cybersecurity hiring",
+    "Global Capability Centre (GCC) hiring",
+    "Temporary staffing",
+    "Permanent placement",
+    "Contract-to-hire",
+    "Executive search",
+  ],
   sameAs: [
-    "https://www.linkedin.com/company/TalentiFi-X/",
+    "https://www.linkedin.com/company/talentifi-x/",
     "https://x.com/talentifi_x",
     "https://www.instagram.com/talentifi_x",
+    "https://www.youtube.com/@talentifi-x",
   ],
 } as const;
 
@@ -232,9 +298,21 @@ export const websiteNode = {
   "@id": WEBSITE_ID,
   url: `${SITE_URL}/`,
   name: SITE_NAME,
+  // Google reads WebSite.alternateName when choosing the site name shown in results.
+  alternateName: ["TalentiFiX", "Talentifix"],
   inLanguage: "en-IN",
   publisher: { "@id": ORG_ID },
 } as const;
+
+/**
+ * Article author: the founder as a linked Person, otherwise the company itself.
+ * A "Team" byline is not a person, so it is never emitted as one.
+ */
+export function articleAuthor(author?: string | null) {
+  return isFounderByline(author)
+    ? { "@type": "Person", "@id": FOUNDER_ID, name: founderNode.name, url: founderNode.url }
+    : { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: `${SITE_URL}/` };
+}
 
 /** Wrap nodes in a `@graph` document ready to serialise into a script tag. */
 export function jsonLdGraph(...nodes: unknown[]) {

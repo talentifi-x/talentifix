@@ -1,8 +1,7 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { FooterWordmark } from "./FooterWordmark";
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -36,6 +35,21 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const YoutubeIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+    <path d="m10 15 5-3-5-3z" />
+  </svg>
+);
+
 const XLogoIcon = ({ className }: { className?: string }) => {
   return (
     <svg
@@ -50,28 +64,8 @@ const XLogoIcon = ({ className }: { className?: string }) => {
   );
 };
 
+// A server component: only the zoom-aware wordmark (FooterWordmark) needs the browser.
 export const Footer = () => {
-  const [isZoomed, setIsZoomed] = useState(false);
-
-  useEffect(() => {
-    const checkZoom = () => {
-      // Heuristic: compare window.outerWidth (browser window) with innerWidth (viewport)
-      // When zooming in, innerWidth decreases, so the ratio increases.
-      // Threshold 1.02 accounts for minor rounding differences.
-      if (typeof window !== "undefined") {
-        const zoomLevel = window.outerWidth / window.innerWidth;
-        setIsZoomed(zoomLevel > 1.02);
-      }
-    };
-
-    // Check on mount
-    checkZoom();
-
-    // Check on resize
-    window.addEventListener("resize", checkZoom);
-    return () => window.removeEventListener("resize", checkZoom);
-  }, []);
-
   return (
     <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-20 relative z-10">
@@ -101,7 +95,7 @@ export const Footer = () => {
             <p className="text-[24px] font-bold font-notch text-black">
               Navigate
             </p>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col">
               {[
                 { name: "Home", href: "/" },
                 { name: "Solutions", href: "/solutions" },
@@ -112,7 +106,7 @@ export const Footer = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`text-[18px] font-medium hover:text-[#0000FF] transition-colors ${
+                  className={`flex items-center min-h-11 text-[18px] font-medium hover:text-[#0000FF] transition-colors ${
                     item.name === "Home" ? "text-[#0000FF]" : "text-gray-600"
                   }`}
                 >
@@ -135,17 +129,17 @@ export const Footer = () => {
                 href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="talentifi-X on Instagram"
-                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
+                aria-label="TalentiFi-X on Instagram"
+                className="p-2.5 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <InstagramIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
               <Link
-                href="https://www.linkedin.com/company/talentifi-X/"
+                href="https://www.linkedin.com/company/talentifi-x/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="talentifi-X on LinkedIn"
-                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
+                aria-label="TalentiFi-X on LinkedIn"
+                className="p-2.5 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <LinkedinIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
@@ -153,10 +147,19 @@ export const Footer = () => {
                 href="https://x.com/talentifi_x"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="talentifi-X on X"
-                className="p-2 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
+                aria-label="TalentiFi-X on X"
+                className="p-2.5 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
               >
                 <XLogoIcon className="w-6 h-6 text-[#0000FF]" />
+              </Link>
+              <Link
+                href="https://www.youtube.com/@talentifi-x"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TalentiFi-X on YouTube"
+                className="p-2.5 border border-[#E5E7EB] rounded-lg hover:border-[#0000FF] group transition-colors"
+              >
+                <YoutubeIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
             </div>
             <div className="flex flex-wrap gap-x-10 gap-y-4 text-gray-600">
@@ -186,22 +189,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      {/* Bottom Section: Big Text - Hidden when zoomed > 100% */}
-      {!isZoomed && (
-        <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
-          {/* Decorative wordmark - not a heading, so every page keeps a single H1 */}
-          <div className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-linear-to-r from-[#0000FF] to-secondary bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
-            Talentifi-X
-          </div>
-        </div>
-      )}
-
-      {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}
-      {!isZoomed && (
-        <div className="absolute bottom-0 left-0 w-full h-30 z-20 pointer-events-none">
-          <div className="absolute inset-0 bg-linear-to-t from-white via-white/80 to-transparent backdrop-blur-[1px]" />
-        </div>
-      )}
+      <FooterWordmark />
 
       {/* Fixed Gradient Overlay - Always at bottom of viewport */}
       <div className="fixed bottom-0 left-0 w-full h-15 z-40 pointer-events-none">
@@ -221,7 +209,7 @@ export const Footer = () => {
           <div className="flex items-center gap-8">
             <Link
               href="/privacy-policy"
-              className="hover:text-[#0000FF] transition-colors"
+              className="inline-flex items-center min-h-11 hover:text-[#0000FF] transition-colors"
             >
               Privacy Policy
             </Link>

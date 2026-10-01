@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { gccSummitGallery } from "@data/mediaData";
 import { GccCarousel } from "@components/insights/GccCarousel";
 import { JsonLd } from "@components/seo/JsonLd";
+import { Breadcrumbs } from "@components/seo/Breadcrumbs";
 import { ORG_ID, SITE_URL, pageMetadata } from "@lib/seo";
 
 const SLUG = "/insights/talentifi-x-gcc-summit-2026";
@@ -68,9 +69,11 @@ function buildJsonLd(siteUrl: string) {
         "@type": "Event",
         "@id": `${pageUrl}#event`,
         name: "GCC Summit 2026",
+        // The summit is over and was never bookable here. schema.org has no
+        // "completed" status, so no status is declared: the past end date is
+        // what tells search engines it has happened. Do not add EventScheduled back.
         startDate: EVENT_DATE,
         endDate: EVENT_DATE,
-        eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         image: bannerUrl,
         location: {
@@ -120,6 +123,13 @@ export default function GccSummit2026Page() {
       {/* 1. Hero */}
       <section className="w-full px-6 md:px-8 pt-14 pb-10 md:pt-20 md:pb-14">
         <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
+          <Breadcrumbs
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Media", href: "/media" },
+              { name: "GCC Summit 2026", href: SLUG },
+            ]}
+          />
           <span className="flex items-center gap-3 text-primary font-notch font-bold text-[11px] tracking-[0.28em] uppercase">
             <span
               aria-hidden="true"
@@ -154,7 +164,8 @@ export default function GccSummit2026Page() {
               height={887}
               sizes="(max-width: 1280px) 100vw, 1152px"
               className="w-full h-auto"
-              priority
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
         </div>

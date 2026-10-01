@@ -80,22 +80,22 @@ export function Header() {
           <span className="text-white text-sm font-medium">
             contact@TalentiFi-X.com
           </span>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 -mr-3">
             <Link
               href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TalentiFi-X on Instagram"
-              className="text-white hover:opacity-80"
+              className="text-white hover:opacity-80 inline-flex items-center justify-center w-11 h-11"
             >
               <InstagramIcon size={18} />
             </Link>
             <Link
-              href="https://www.linkedin.com/company/TalentiFi-X/"
+              href="https://www.linkedin.com/company/talentifi-x/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TalentiFi-X on LinkedIn"
-              className="text-white hover:opacity-80"
+              className="text-white hover:opacity-80 inline-flex items-center justify-center w-11 h-11"
             >
               <LinkedinIcon size={18} />
             </Link>
@@ -104,7 +104,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TalentiFi-X on X"
-              className="text-white hover:opacity-80"
+              className="text-white hover:opacity-80 inline-flex items-center justify-center w-11 h-11"
             >
               <XLogoIcon size={18} />
             </Link>
@@ -168,7 +168,7 @@ export function Header() {
           {/* Mobile/Tablet Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="lg:hidden p-2.5 rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}

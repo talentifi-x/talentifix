@@ -17,15 +17,44 @@ export const postType = defineType({
     }),
     defineField({ name: 'author', title: 'Author', type: 'string' }),
     defineField({ name: 'publishedAt', title: 'Published At', type: 'datetime', initialValue: () => new Date().toISOString() }),
+    defineField({
+      name: 'lastUpdated',
+      title: 'Last Updated',
+      type: 'datetime',
+      description:
+        'Set this ONLY when the article itself changes in a meaningful way (new section, revised advice, updated figures). It is shown to readers and sent to Google as the modified date. Leave it alone for typo, spelling or SEO-field edits.',
+    }),
     defineField({ name: 'category', title: 'Category', type: 'string' }),
     defineField({ name: 'readTime', title: 'Read Time', type: 'string', description: 'e.g. 5 min read' }),
     defineField({ name: 'introduction', title: 'Introduction', type: 'text', rows: 4 }),
-    defineField({ name: 'mainImage', title: 'Main Image', type: 'image', options: { hotspot: true } }),
+    defineField({
+      name: 'mainImage', title: 'Main Image', type: 'image', options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt', title: 'Alt Text', type: 'string',
+          description: 'Describe what the image shows, for screen readers and Google Images.',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
     defineField({
       name: 'body', title: 'Body', type: 'array',
       of: [
-        { type: 'block' },
-        { type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', title: 'Alt Text', type: 'string' }] },
+        {
+          type: 'block',
+          // The post title is the page's only H1, so body headings start at H2.
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading 2', value: 'h2' },
+            { title: 'Heading 3', value: 'h3' },
+            { title: 'Heading 4', value: 'h4' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+        },
+        {
+          type: 'image', options: { hotspot: true },
+          fields: [{ name: 'alt', title: 'Alt Text', type: 'string', validation: (Rule) => Rule.required() }],
+        },
       ],
     }),
     defineField({
@@ -55,6 +84,21 @@ export const postType = defineType({
       description:
         'Optional. The snippet under the title in search results. Aim for 120-155 characters. Leave blank to use the introduction.',
       validation: (Rule) => Rule.max(155).warning('Google truncates descriptions past ~155 characters.'),
+    }),
+    defineField({
+      name: 'shareImage',
+      title: 'Share Image (SEO)',
+      type: 'image',
+      description:
+        'Optional. The picture shown when the post is shared on LinkedIn, WhatsApp or X. Use 1200 x 630 pixels. Leave blank to use the main image.',
+    }),
+    defineField({
+      name: 'noindex',
+      title: 'Hide from Google',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'On = the post stays on the website but asks search engines not to list it, and it leaves the sitemap. Use for thin or duplicate posts. To remove a post entirely, use "Published" instead.',
     }),
   ],
   preview: {

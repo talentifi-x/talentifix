@@ -13,8 +13,9 @@ import { SITE_URL } from "@lib/seo";
 export const revalidate = 3600;
 
 /**
- * `lastModified` is set only where a real modification date exists (Sanity's
- * `_updatedAt`). Stamping every entry with the build time - which is what
+ * `lastModified` is set only where a real modification date exists (a post's
+ * editor-set "Last Updated" or publish date, a job's `_updatedAt`). Stamping
+ * every entry with the build time - which is what
  * `new Date()` did - tells Google the whole site changed on every deploy, and it
  * responds by ignoring the signal entirely. Omitting it is the honest default.
  */

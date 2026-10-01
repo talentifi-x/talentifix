@@ -9,6 +9,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { useToast } from "@providers/toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";

@@ -38,7 +38,7 @@ const OfferingCard = ({
       <div className="mt-auto pt-4 flex flex-col items-start gap-1">
         <Link
           href={href}
-          className="flex items-center gap-2 text-primary text-[22px] font-bold group"
+          className="flex items-center gap-2 min-h-11 text-primary text-[22px] font-bold group"
         >
           Know More
           <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />

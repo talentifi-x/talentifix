@@ -11,6 +11,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { useToast } from "@providers/toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -531,6 +532,8 @@ export const CandidateRegistrationForm = () => {
                   setFormData((prev) => ({ ...prev, phoneNumber: phone }))
                 }
                 inputClassName="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
+                style={{ "--react-international-phone-height": "58px" } as React.CSSProperties}
+                countrySelectorStyleProps={{ buttonStyle: { minWidth: 44 } }}
                 inputProps={{ id: "candidatePhone" }}
                 className="w-full"
                 placeholder="+91 98765 43210"
