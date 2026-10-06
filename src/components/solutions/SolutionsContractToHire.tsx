@@ -32,7 +32,7 @@ export const SolutionsContractToHire: React.FC = () => {
               <br className="hidden sm:block" />
               Commitment<span className="text-secondary">.</span>
             </h3>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
+            <p className="text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[560px]">
               Sometimes, the best way to know is to work together first.
               Contract-to-hire lets you evaluate talent in real conditions,
               without pressure.

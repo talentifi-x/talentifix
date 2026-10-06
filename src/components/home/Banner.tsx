@@ -41,7 +41,8 @@ export const Banner = () => {
               fill
               sizes="(max-width: 1024px) 100vw, 750px"
               className="object-contain"
-              priority
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
 

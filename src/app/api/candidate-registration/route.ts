@@ -495,7 +495,7 @@ export async function POST(req: NextRequest) {
     const replyInfo = await transporter.sendMail({
       from: `"${process.env.CONTACT_FROM_NAME}" <${process.env.CONTACT_FROM_EMAIL}>`,
       to: email,
-      subject: "Welcome to the Talentifix Network",
+      subject: "Welcome to the TalentiFi-X Network",
       attachments: [logoAttachment],
       html: `
         <!DOCTYPE html>

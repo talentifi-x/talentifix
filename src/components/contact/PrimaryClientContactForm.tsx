@@ -9,6 +9,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { useToast } from "@providers/toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -308,7 +309,7 @@ export const PrimaryClientContactForm = () => {
               className="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
             />
             <div className="flex items-center justify-between gap-4 flex-wrap">
-              <label className="flex items-center gap-2 text-sm text-[#1E1E24]/70">
+              <label className="flex items-center gap-2 min-h-11 text-sm text-[#1E1E24]/70">
                 <input
                   type="checkbox"
                   name="allowPersonalEmail"
@@ -360,6 +361,8 @@ export const PrimaryClientContactForm = () => {
                 setFormData((prev) => ({ ...prev, phoneNumber: phone }))
               }
               inputClassName="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
+                style={{ "--react-international-phone-height": "58px" } as React.CSSProperties}
+                countrySelectorStyleProps={{ buttonStyle: { minWidth: 44 } }}
               inputProps={{ id: "clientPhone" }}
               className="w-full"
               placeholder="+91 98765 43210"

@@ -27,6 +27,7 @@ import {
   toEmploymentTypes,
   toJobLocation,
 } from "@lib/seo";
+import { Breadcrumbs } from "@components/seo/Breadcrumbs";
 
 export const revalidate = 60;
 
@@ -47,24 +48,23 @@ export async function generateMetadata({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  try {
-    const job = await getSanityJobBySlug(slug);
-    if (!job) return { title: "Role Not Found" };
-    // buildTitle appends the brand only when it fits, so "Careers" is used as the
-    // qualifier instead of a second "| TalentiFi-X".
-    const description = buildDescription(
-      job.metaDescription,
-      job.aboutRole ??
-        `Open role at ${SITE_NAME}: ${job.title}${job.location ? ` in ${job.location}` : ""}.`,
-    );
-    return pageMetadata({
-      title: buildTitle(job.metaTitle, `${job.title} - Careers`),
-      description,
-      path: `/jobs/${slug}`,
-    });
-  } catch {
-    return { title: "Role Not Found" };
+  // Errors are not caught: a Sanity outage must not be cached as "Role Not Found".
+  const job = await getSanityJobBySlug(slug);
+  if (!job || job.isOpen === false) {
+    return { title: "Role Not Found", robots: { index: false, follow: true } };
   }
+  // buildTitle appends the brand only when it fits, so "Careers" is used as the
+  // qualifier instead of a second "| TalentiFi-X".
+  const description = buildDescription(
+    job.metaDescription,
+    job.aboutRole ??
+      `Open role at ${SITE_NAME}: ${job.title}${job.location ? ` in ${job.location}` : ""}.`,
+  );
+  return pageMetadata({
+    title: buildTitle(job.metaTitle, `${job.title} - Careers`),
+    description,
+    path: `/jobs/${slug}`,
+  });
 }
 
 /**
@@ -120,13 +120,14 @@ function buildJobSchema(job: SanityJobFull, slug: string) {
       "@type": "BreadcrumbList",
       "@id": `${pageUrl}#breadcrumb`,
       itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
         {
           "@type": "ListItem",
-          position: 1,
+          position: 2,
           name: "Careers",
           item: `${SITE_URL}/jobs`,
         },
-        { "@type": "ListItem", position: 2, name: job.title, item: pageUrl },
+        { "@type": "ListItem", position: 3, name: job.title, item: pageUrl },
       ],
     },
   );
@@ -135,38 +136,31 @@ function buildJobSchema(job: SanityJobFull, slug: string) {
 export default async function JobPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
 
-  let job;
-  try {
-    job = await getSanityJobBySlug(slug);
-  } catch {
-    job = null;
-  }
+  // A fetch error is left to throw: with ISR the last good copy stays online,
+  // whereas swallowing it would cache a 404 for a live role.
+  const job = await getSanityJobBySlug(slug);
 
-  if (!job) notFound();
+  // Closed roles 404 so Google drops their JobPosting (see getAllSanityJobSlugs).
+  if (!job || job.isOpen === false) notFound();
 
   const applyEmail = job.applyEmail ?? "careers@talentifi-x.com";
 
   return (
     <div className="w-full bg-white min-h-screen">
       <JsonLd data={buildJobSchema(job, slug)} />
-      {/* Breadcrumb */}
-      <div className="w-full px-6 md:px-14 pt-8 ">
-        <div className="max-w-4xl mx-auto text-sm font-sans text-dark/50">
-          <Link href="/jobs" className="hover:text-primary transition-colors">
-            Careers
-          </Link>
-          <span className="mx-2">→</span>
-          <Link href="/jobs" className="hover:text-primary transition-colors">
-            Open Roles
-          </Link>
-          <span className="mx-2">→</span>
-          <span className="text-dark/80">{job.title}</span>
-        </div>
-      </div>
 
       {/* Hero */}
       <section className="w-full px-6 md:px-14 pt-10 pb-16">
         <div className="max-w-7xl mx-auto flex flex-col gap-6 ">
+          {/* Schema is already in the page's JSON-LD graph, so the visible path only. */}
+          <Breadcrumbs
+            withSchema={false}
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Careers", href: "/jobs" },
+              { name: job.title, href: `/jobs/${slug}` },
+            ]}
+          />
           {job.badge && (
             <span className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit">
               {job.badge}

@@ -1,15 +1,36 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import React from "react";
+import { preconnect } from "react-dom";
 
 import { ToastProvider } from "@providers/toast";
 import { JsonLd } from "@components/seo/JsonLd";
 import { SITE_URL, jsonLdGraph, organizationNode, websiteNode } from "@lib/seo";
+// react-international-phone/style.css is imported by the three forms that use the
+// phone field, so it no longer loads on every page.
 import "@styles/global.css";
-import "react-international-phone/style.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+/**
+ * Headline font, self-hosted as WOFF2 (about 30 KB a weight, down from 78 KB TTF)
+ * with long-lived caching and a size-matched fallback while it loads. Only the
+ * weights the site uses are listed; extra-bold text renders with Bold, as before.
+ * Not preloaded, so it never competes with the hero image for bandwidth.
+ */
+const stackSansNotch = localFont({
+  src: [
+    { path: "../fonts/StackSansNotch-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/StackSansNotch-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/StackSansNotch-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/StackSansNotch-Bold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-stack-sans-notch",
+  display: "swap",
+  preload: false,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,6 +51,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@talentifi_x",
   },
+  // Search Console ownership. Bing is verified by public/BingSiteAuth.xml; the
+  // meta tag below is only emitted if that env var is ever set.
+  verification: {
+    google: "3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ",
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION } }
+      : {}),
+  },
 };
 
 import { Header } from "@components/layout/Header";
@@ -43,20 +72,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Open the Google Analytics connections early (Lighthouse's only preconnect
+  // candidate on 29 Sep 2026). React renders these as <link rel="preconnect"> in <head>.
+  preconnect("https://www.googletagmanager.com");
+  preconnect("https://www.google-analytics.com");
+
   return (
-    <html lang="en">
-      <head>
-          <meta
-            name="google-site-verification"
-            content="3azo_OyDlmZcAfe6yTtHcD8uSPP-0t_YKq7RORI58XQ"
-          />
-          {process.env.NEXT_PUBLIC_BING_VERIFICATION && (
-            <meta
-              name="msvalidate.01"
-              content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
-            />
-          )}
-      </head>
+    <html lang="en" className={stackSansNotch.variable}>
       <body className={inter.className}>
         {/* Sitewide brand identity - every other page references these by @id. */}
         <JsonLd data={jsonLdGraph(organizationNode, websiteNode)} />

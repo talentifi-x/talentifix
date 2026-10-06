@@ -18,7 +18,8 @@ export const AboutBanner = () => {
           sizes="100vw"
           className="object-cover"
           aria-hidden="true"
-          priority
+          fetchPriority="high"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-white/45" />
         <div className="absolute inset-0 bg-linear-to-r from-primary/10 via-white/25 to-secondary/10" />

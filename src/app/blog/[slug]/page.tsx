@@ -10,14 +10,21 @@ import { blogPosts, BlogSection } from "@data/blogData";
 import {
   getSanityPostBySlug,
   getAllSanityPostSlugs,
+  getAllSanityPosts,
+  type SanityPost,
   type SanityPostFull,
 } from "@/sanity/lib/queries";
+import { Breadcrumbs } from "@components/seo/Breadcrumbs";
+import { relatedPosts } from "@lib/blogTopics";
 import { JsonLd } from "@components/seo/JsonLd";
 import {
   ORG_ID,
   SITE_URL,
+  articleAuthor,
   buildDescription,
   buildTitle,
+  founderNode,
+  isFounderByline,
   jsonLdGraph,
   pageMetadata,
 } from "@lib/seo";
@@ -27,6 +34,24 @@ import {
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+/**
+ * Fetch the post, letting a Sanity outage surface as an error rather than a 404:
+ * with ISR an error keeps the last good copy online, whereas a 404 would be
+ * cached and served for a live post. Only posts that also exist in the static
+ * data may fall back to it.
+ */
+async function loadSanityPost(slug: string): Promise<SanityPostFull | null> {
+  try {
+    return await getSanityPostBySlug(slug);
+  } catch (error) {
+    if (blogPosts.some((p) => p.slug === slug)) return null;
+    throw error;
+  }
+}
+
+/** The date readers and Google see as "updated": only an editor-set one counts. */
+const modifiedDate = (post: SanityPostFull) => post.lastUpdated ?? post.publishedAt;
 
 const toId = (str: string) =>
   str
@@ -40,7 +65,7 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+  const sanityPost = await loadSanityPost(slug);
   // Hidden in the studio: report it as missing rather than letting the static
   // fallback below re-expose a post the editor deliberately took down.
   if (sanityPost?.published === false) {
@@ -51,24 +76,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       sanityPost.metaDescription,
       sanityPost.introduction,
     );
-    return pageMetadata({
+    // An editor-chosen share image wins; otherwise the header image. Sanity crops
+    // either to the 1200x630 JPG that share previews expect.
+    const shareSource = sanityPost.shareImage ?? sanityPost.image;
+    const metadata = pageMetadata({
       title: buildTitle(sanityPost.metaTitle, sanityPost.title),
       description,
       path: `/blog/${slug}`,
-      // Sanity crops the header image to the 1200x630 JPG that share previews expect.
-      image: sanityPost.image
+      image: shareSource
         ? {
-            url: `${sanityPost.image}?w=1200&h=630&fit=crop&fm=jpg&q=85`,
+            url: `${shareSource}?w=1200&h=630&fit=crop&fm=jpg&q=85`,
             width: 1200,
             height: 630,
-            alt: sanityPost.title,
+            alt: sanityPost.imageAlt ?? sanityPost.title,
           }
         : undefined,
       type: "article",
       publishedTime: sanityPost.publishedAt,
-      modifiedTime: sanityPost.updatedAt ?? sanityPost.publishedAt,
+      modifiedTime: modifiedDate(sanityPost),
       authors: sanityPost.author ? [sanityPost.author] : undefined,
     });
+    // "Hide from Google" in the studio: the post stays readable but unlisted.
+    return sanityPost.noindex
+      ? { ...metadata, robots: { index: false, follow: true } }
+      : metadata;
   }
   // Fallback to static blogPosts data when Sanity is unavailable
   const staticPost = blogPosts.find((p) => p.slug === slug);
@@ -377,14 +408,15 @@ function buildPostSchema(post: SanityPostFull) {
       url: pageUrl,
       ...(post.image ? { image: post.image } : {}),
       ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
-      dateModified: post.updatedAt ?? post.publishedAt,
-      author: post.author
-        ? { "@type": "Person", name: post.author }
-        : { "@id": ORG_ID },
+      dateModified: modifiedDate(post),
+      author: articleAuthor(post.author),
       publisher: { "@id": ORG_ID },
       ...(post.category ? { articleSection: post.category } : {}),
     },
   ];
+
+  // The founder's full Person entity, so the author reference resolves on this page.
+  if (isFounderByline(post.author)) nodes.push(founderNode);
 
   const faqs = (post.faq ?? []).filter((f) => f?.question && f?.answer);
   if (faqs.length > 0) {
@@ -404,14 +436,21 @@ function buildPostSchema(post: SanityPostFull) {
 
 // ─── Sanity post renderer ─────────────────────────────────────────────────────
 
-function SanityPostPage({ post }: { post: SanityPostFull }) {
-  const date = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : "";
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+function SanityPostPage({ post, related }: { post: SanityPostFull; related: SanityPost[] }) {
+  const date = post.publishedAt ? formatDate(post.publishedAt) : "";
+  // Shown only when an editor recorded a real update after publication.
+  const updated =
+    post.lastUpdated &&
+    (!post.publishedAt || formatDate(post.lastUpdated) !== formatDate(post.publishedAt))
+      ? formatDate(post.lastUpdated)
+      : null;
 
   // Build TOC by scanning body for h2 blocks
   type RawBlock = {
@@ -559,11 +598,12 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
         {post.image ? (
           <Image
             src={post.image}
-            alt={post.title}
+            alt={post.imageAlt ?? post.title}
             fill
             sizes="100vw"
             className="object-cover"
-            priority
+            fetchPriority="high"
+            loading="eager"
           />
         ) : (
           <div className="w-full h-full bg-primary/10" />
@@ -596,8 +636,24 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
           {/* Article */}
           <article className="flex-1 min-w-0">
             <header className="mb-10">
+              <Breadcrumbs
+                className="mb-5"
+                items={[
+                  { name: "Home", href: "/" },
+                  { name: "Blog", href: "/blog" },
+                  { name: post.title, href: `/blog/${post.slug}` },
+                ]}
+              />
               <div className="flex items-center gap-4 text-dark/40 text-xs font-sans mb-4">
-                <span>{date}</span>
+                {date && (
+                  <time dateTime={post.publishedAt}>Published {date}</time>
+                )}
+                {updated && (
+                  <>
+                    <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
+                    <time dateTime={post.lastUpdated}>Last updated {updated}</time>
+                  </>
+                )}
                 {post.readTime && (
                   <>
                     <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
@@ -610,7 +666,14 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
               </div>
               {post.author && (
                 <div className="text-dark/60 font-sans text-[15px] mb-5">
-                  Author: <span className="font-semibold text-dark">{post.author}</span>
+                  Author:{" "}
+                  {isFounderByline(post.author) ? (
+                    <Link href="/about" className="font-semibold text-dark hover:text-primary underline-offset-2 hover:underline">
+                      {post.author}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold text-dark">{post.author}</span>
+                  )}
                 </div>
               )}
               <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
@@ -652,6 +715,45 @@ function SanityPostPage({ post }: { post: SanityPostFull }) {
                 <FaqSection faqs={post.faq} />
               </section>
             )}
+
+            {/* Every post links to the matching service page and to related posts. */}
+            <section className="mt-14 rounded-[10px] border border-primary/20 bg-primary/5 p-6 md:p-8">
+              <h2 className="text-[20px] md:text-[24px] font-notch font-bold text-dark mb-3">
+                How TalentiFi-X can help
+              </h2>
+              <p className="text-dark/70 font-sans text-base leading-relaxed mb-5">
+                We hire AI, ML, cybersecurity and GCC talent across India and the US: human-led
+                and AI-assisted, with a shortlist of a few well-matched candidates instead of a pile of CVs.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/solutions" className="px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity">
+                  Explore our staffing solutions
+                </Link>
+                <Link href="/start-hiring" className="px-6 py-3 border border-primary text-primary rounded-sm font-sans font-medium hover:bg-primary/5 transition-colors">
+                  Start hiring
+                </Link>
+              </div>
+            </section>
+
+            {related.length > 0 && (
+              <section className="mt-14">
+                <h2 className="text-[20px] md:text-[26px] font-notch font-bold text-dark mb-5 pb-3 border-b border-gray-200">
+                  Related articles
+                </h2>
+                <ul className="grid gap-4 md:grid-cols-3">
+                  {related.map((r) => (
+                    <li key={r.slug} className="rounded-[10px] border border-gray-100 p-5 shadow-sm hover:border-primary/40 transition-colors">
+                      <h3 className="font-notch font-bold text-dark text-[17px] leading-snug mb-2">
+                        <Link href={`/blog/${r.slug}`} className="hover:text-primary transition-colors">
+                          {r.title}
+                        </Link>
+                      </h3>
+                      {r.category && <p className="text-dark/50 font-sans text-xs uppercase tracking-wide">{r.category}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </article>
         </div>
       </div>
@@ -665,14 +767,17 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
 
   // Try Sanity first
-  const sanityPost = await getSanityPostBySlug(slug).catch(() => null);
+  const sanityPost = await loadSanityPost(slug);
 
   // The toggle is off: 404 outright. This must come BEFORE the static fallback,
   // because two slugs exist in both Sanity and blogData - without this an
   // unpublished post would simply render its static twin instead.
   if (sanityPost?.published === false) notFound();
 
-  if (sanityPost) return <SanityPostPage post={sanityPost} />;
+  if (sanityPost) {
+    const all = await getAllSanityPosts().catch(() => [] as SanityPost[]);
+    return <SanityPostPage post={sanityPost} related={relatedPosts(sanityPost, all)} />;
+  }
 
   // No Sanity doc (or Sanity unreachable): fall back to static data
   const post = blogPosts.find((p) => p.slug === slug);
@@ -697,7 +802,8 @@ export default async function BlogPostPage({ params }: Props) {
           fill
           sizes="100vw"
           className="object-cover"
-          priority
+          fetchPriority="high"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-linear-to-b from-dark/20 via-dark/10 to-[#F7F9FC]" />
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6">
@@ -741,7 +847,14 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
               {post.author && (
                 <div className="text-dark/60 font-sans text-[15px] mb-5">
-                  Author: <span className="font-semibold text-dark">{post.author}</span>
+                  Author:{" "}
+                  {isFounderByline(post.author) ? (
+                    <Link href="/about" className="font-semibold text-dark hover:text-primary underline-offset-2 hover:underline">
+                      {post.author}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold text-dark">{post.author}</span>
+                  )}
                 </div>
               )}
               <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">

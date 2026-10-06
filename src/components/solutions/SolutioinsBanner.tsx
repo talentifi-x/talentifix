@@ -31,7 +31,8 @@ export const SolutionsBanner = () => {
             height={400}
             sizes="(max-width: 1024px) 100vw, 600px"
             className="w-full max-w-140 h-auto"
-            priority
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
       </div>

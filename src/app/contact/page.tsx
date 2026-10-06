@@ -22,7 +22,8 @@ export default function ContactPage() {
           alt="Two colleagues reviewing a screen together"
           fill
           className="object-cover"
-          priority
+          fetchPriority="high"
+          loading="eager"
         />
       </section>
 

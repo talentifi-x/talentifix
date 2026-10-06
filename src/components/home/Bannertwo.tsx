@@ -9,7 +9,8 @@ export const Bannertwo = () => {
           alt="ISO Certifications"
           width={1920}
           height={250}
-          priority
+          // Sits below the hero: it loads normally so it never competes with the hero image.
+          sizes="(max-width: 1280px) 100vw, 1216px"
           className="w-full h-auto"
         />
       </div>

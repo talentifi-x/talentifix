@@ -6,7 +6,8 @@ import { WhatWeStandFor } from "@components/about/WhatWeStandFor";
 import { BuiltForToday } from "@components/about/BuiltForToday";
 import { Leadership } from "@components/about/Leadership";
 import TheNextStepSection from "@components/home/TheNextStepSection";
-import { pageMetadata } from "@lib/seo";
+import { JsonLd } from "@components/seo/JsonLd";
+import { SITE_URL, founderNode, jsonLdGraph, pageMetadata } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Us: Human-Led, AI-Assisted Staffing",
@@ -18,6 +19,17 @@ export const metadata: Metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <main className="w-full bg-white">
+      {/* The founder shown in the Leadership section, as a Person entity. */}
+      <JsonLd
+        data={jsonLdGraph({
+          "@type": "AboutPage",
+          "@id": `${SITE_URL}/about#webpage`,
+          url: `${SITE_URL}/about`,
+          name: "About TalentiFi-X",
+          about: { "@id": founderNode.worksFor["@id"] },
+          mentions: { "@id": founderNode["@id"] },
+        }, founderNode)}
+      />
       <AboutBanner />
       <OurApproach />
       <WhatWeStandFor />

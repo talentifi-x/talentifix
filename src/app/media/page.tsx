@@ -80,7 +80,8 @@ export default function MediaPage() {
                 height={887}
                 sizes="(max-width: 1024px) 100vw, 700px"
                 className="w-full h-auto rounded-sm"
-                priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
 

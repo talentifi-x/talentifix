@@ -68,7 +68,8 @@ export default async function BlogPage() {
               height={467}
               sizes="(max-width: 1024px) 100vw, 700px"
               className="w-full max-w-165 h-auto"
-              priority
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
         </div>

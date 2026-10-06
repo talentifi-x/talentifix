@@ -44,7 +44,7 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
             <button
               key={cat}
               onClick={() => handleFilter(cat)}
-              className={`flex-shrink-0 flex items-center gap-2 px-5 py-2 rounded-sm text-sm font-bold font-notch uppercase tracking-wider border transition-colors whitespace-nowrap ${
+              className={`flex-shrink-0 flex items-center gap-2 px-5 py-2 min-h-11 rounded-sm text-sm font-bold font-notch uppercase tracking-wider border transition-colors whitespace-nowrap ${
                 active === cat
                   ? "bg-primary text-white border-primary"
                   : "bg-white text-dark/60 border-gray-200 hover:border-primary hover:text-primary"
@@ -121,7 +121,7 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
                 </p>
               )}
 
-              <p className="text-dark/60 font-sans text-sm leading-relaxed line-clamp-3 flex-1">
+              <p className="text-dark/60 font-sans text-base md:text-sm leading-relaxed line-clamp-3 flex-1">
                 {post.introduction}
               </p>
 

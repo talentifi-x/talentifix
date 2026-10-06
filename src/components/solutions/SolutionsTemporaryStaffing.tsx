@@ -28,7 +28,7 @@ export const SolutionsTemporaryStaffing = () => {
               When Speed Matters -<br />
               and Quality Can’t Slip<span className="text-primary">.</span>
             </h3>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[540px]">
+            <p className="text-[16px] lg:text-[18px] leading-[1.3] text-dark text-center lg:text-left max-w-[540px]">
               Some roles are urgent. Projects can’t wait.
               Demand spikes without warning. Temporary staffing
               <br />
