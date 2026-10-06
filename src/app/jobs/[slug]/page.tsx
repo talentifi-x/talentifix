@@ -256,7 +256,7 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
             </p>
             <a
               href={`mailto:${applyEmail}?subject=${encodeURIComponent(`Application: ${job.title}`)}`}
-              className="inline-flex items-center gap-2 text-primary font-bold font-notch text-base mt-4"
+              className="inline-flex min-h-11 items-center gap-2 text-primary font-bold font-notch text-base mt-2"
             >
               <Mail className="w-5 h-5" />
               {applyEmail}
@@ -286,7 +286,7 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
           {/* Back to roles */}
           <Link
             href="/jobs"
-            className="inline-flex items-center gap-2 text-dark/60 hover:text-primary font-sans text-sm transition-colors w-fit"
+            className="inline-flex min-h-11 items-center gap-2 text-dark/60 hover:text-primary font-sans text-sm transition-colors w-fit"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to open roles

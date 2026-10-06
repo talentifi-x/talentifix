@@ -74,12 +74,13 @@ export default async function SitemapHtmlPage() {
           Explore all pages and blog posts on TalentiFi-X.
         </p>
         <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 md:p-8">
-          <ul className="space-y-3">
+          {/* Long addresses wrap on small phones, and each link is 44 px tall to tap. */}
+          <ul className="space-y-1">
             {urls.map((item) => (
               <li key={item.url}>
                 <Link
                   href={item.path}
-                  className="text-primary hover:underline"
+                  className="inline-block min-h-11 py-2.5 break-all text-primary hover:underline"
                 >
                   {item.url}
                 </Link>

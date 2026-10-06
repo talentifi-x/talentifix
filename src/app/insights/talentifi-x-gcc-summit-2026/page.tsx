@@ -250,31 +250,32 @@ export default function GccSummit2026Page() {
           </span>
 
           {/* Contextual internal links */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 border-t border-gray-100 text-sm">
+          {/* Links are 44 px tall to tap on phones; the row gap shrinks to match. */}
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 pt-6 border-t border-gray-100 text-sm">
             <span className="font-notch font-bold uppercase tracking-[0.18em] text-dark/40 text-[11px]">
               Explore more
             </span>
             <Link
               href="/solutions"
-              className="text-primary font-medium hover:underline"
+              className="inline-flex min-h-11 items-center text-primary font-medium hover:underline"
             >
               Our staffing solutions
             </Link>
             <Link
               href="/about"
-              className="text-primary font-medium hover:underline"
+              className="inline-flex min-h-11 items-center text-primary font-medium hover:underline"
             >
               About TalentiFi-X
             </Link>
             <Link
               href="/blog"
-              className="text-primary font-medium hover:underline"
+              className="inline-flex min-h-11 items-center text-primary font-medium hover:underline"
             >
               Insights on AI-assisted hiring
             </Link>
             <Link
               href="/media"
-              className="text-primary font-medium hover:underline"
+              className="inline-flex min-h-11 items-center text-primary font-medium hover:underline"
             >
               Media &amp; industry presence
             </Link>

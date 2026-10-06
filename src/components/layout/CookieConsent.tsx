@@ -41,10 +41,10 @@ export function CookieConsent() {
 
   if (!isRendered) return null;
 
-  // Kept short on phones (buttons side by side) so it never covers a page's
-  // heading and main button.
+  // On phones it is one row (short text beside the buttons, about 80 px tall) so
+  // it never covers a page's heading and main button; larger screens show the full text.
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[60] px-3 pb-3 sm:px-6 sm:pb-4">
+    <div className="fixed inset-x-0 bottom-0 z-[60] px-2 pb-2 sm:px-6 sm:pb-4">
       <div
         role="region"
         aria-label="Cookie consent"
@@ -54,13 +54,17 @@ export function CookieConsent() {
           isOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
-        <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6">
-          <div className="flex flex-col gap-0.5 sm:gap-1">
-            <p className="text-sm font-bold text-[#1E1E24] sm:text-base">
+        <div className="flex flex-row items-center gap-3 p-2.5 sm:justify-between sm:gap-6 sm:p-6">
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:gap-1">
+            <p className="hidden text-base font-bold text-[#1E1E24] sm:block">
               We use cookies to improve your experience.
             </p>
-            <p className="text-xs text-gray-600 sm:text-sm">
-              You can accept or reject non-essential cookies. See our{" "}
+            <p className="text-xs leading-4 text-gray-600 sm:text-sm sm:leading-5">
+              <span className="sm:hidden">We use optional cookies.</span>
+              <span className="hidden sm:inline">
+                You can accept or reject non-essential cookies.
+              </span>{" "}
+              See our{" "}
               <Link
                 href="/privacy-policy"
                 className="font-semibold text-[#0000FF] hover:underline"
@@ -71,18 +75,18 @@ export function CookieConsent() {
             </p>
           </div>
 
-          <div className="flex w-full flex-row gap-2 sm:w-auto sm:items-center sm:gap-3">
+          <div className="flex flex-none flex-row items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => persistAndClose("rejected")}
-              className="min-h-11 flex-1 rounded-[8px] border border-[#E5E7EB] bg-white px-5 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:border-[#0000FF] hover:text-[#0000FF] sm:flex-none sm:py-3"
+              className="min-h-11 rounded-[8px] border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:border-[#0000FF] hover:text-[#0000FF] sm:px-5 sm:py-3"
             >
               Reject
             </button>
             <button
               type="button"
               onClick={() => persistAndClose("accepted")}
-              className="min-h-11 flex-1 rounded-[8px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:flex-none sm:py-3"
+              className="min-h-11 rounded-[8px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] px-4 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:px-5 sm:py-3"
             >
               Accept
             </button>

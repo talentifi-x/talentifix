@@ -20,19 +20,22 @@ export function Breadcrumbs({
 }) {
   return (
     <>
+      {/* One line: the current page's name is cut short with an ellipsis. Links get a
+          44 px tap height (the WCAG target size for touch). */}
       <nav aria-label="Breadcrumb" className={`text-sm font-sans text-dark/60 ${className}`}>
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <ol className="flex items-center gap-x-1.5">
           {items.map((crumb, i) => {
             const last = i === items.length - 1;
             return (
-              <li key={crumb.href} className="flex items-center gap-2 min-w-0">
+              <li key={crumb.href} className={`flex items-center gap-1.5 ${last ? "min-w-0" : "shrink-0"}`}>
                 {i > 0 && <span aria-hidden="true">›</span>}
                 {last ? (
-                  <span aria-current="page" className="text-dark/80 truncate max-w-[60vw] md:max-w-md">
+                  // min-w-0 lets the name shrink, so a long title never widens the page.
+                  <span aria-current="page" className="min-w-0 text-dark/80 truncate md:max-w-md">
                     {crumb.name}
                   </span>
                 ) : (
-                  <Link href={crumb.href} className="hover:text-primary transition-colors">
+                  <Link href={crumb.href} className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-primary transition-colors">
                     {crumb.name}
                   </Link>
                 )}

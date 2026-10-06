@@ -593,8 +593,9 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
   return (
     <div className="w-full bg-[#F7F9FC] min-h-screen">
       <JsonLd data={buildPostSchema(post)} />
-      {/* Hero image */}
-      <div className="w-full h-80 md:h-115 relative overflow-hidden">
+      {/* Hero image: shorter on phones so the post title is on the first screen,
+          above the cookie banner. */}
+      <div className="w-full h-40 sm:h-80 md:h-115 relative overflow-hidden">
         {post.image ? (
           <Image
             src={post.image}
@@ -613,11 +614,11 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
-        {/* Back link */}
-        <div className="pt-8 pb-4">
+        {/* Back link (44 px tall to tap; the padding keeps the old spacing on desktop) */}
+        <div className="pt-2 md:pt-5 md:pb-1">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
+            className="inline-flex min-h-11 items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -633,11 +634,12 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
             </aside>
           )}
 
-          {/* Article */}
-          <article className="flex-1 min-w-0">
+          {/* Article. w-full: on phones the column is otherwise as wide as its content,
+              and the one-line breadcrumb would push the page wider than the screen. */}
+          <article className="w-full flex-1 min-w-0">
             <header className="mb-10">
               <Breadcrumbs
-                className="mb-5"
+                className="mb-3"
                 items={[
                   { name: "Home", href: "/" },
                   { name: "Blog", href: "/blog" },
@@ -676,7 +678,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                   )}
                 </div>
               )}
-              <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
+              <h1 className="text-[28px] sm:text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
                 {post.title}
               </h1>
               <div className="w-14 h-1 bg-primary rounded-full mb-6" />
@@ -741,14 +743,18 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                   Related articles
                 </h2>
                 <ul className="grid gap-4 md:grid-cols-3">
+                  {/* The whole card is the link, so it is easy to tap on a phone. */}
                   {related.map((r) => (
-                    <li key={r.slug} className="rounded-[10px] border border-gray-100 p-5 shadow-sm hover:border-primary/40 transition-colors">
-                      <h3 className="font-notch font-bold text-dark text-[17px] leading-snug mb-2">
-                        <Link href={`/blog/${r.slug}`} className="hover:text-primary transition-colors">
+                    <li key={r.slug}>
+                      <Link
+                        href={`/blog/${r.slug}`}
+                        className="group block h-full rounded-[10px] border border-gray-100 p-5 shadow-sm hover:border-primary/40 transition-colors"
+                      >
+                        <h3 className="font-notch font-bold text-dark text-[17px] leading-snug mb-2 group-hover:text-primary transition-colors">
                           {r.title}
-                        </Link>
-                      </h3>
-                      {r.category && <p className="text-dark/50 font-sans text-xs uppercase tracking-wide">{r.category}</p>}
+                        </h3>
+                        {r.category && <p className="text-dark/50 font-sans text-xs uppercase tracking-wide">{r.category}</p>}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -794,8 +800,8 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="w-full bg-[#F7F9FC] min-h-screen">
-      {/* ── Hero image ── */}
-      <div className="w-full h-80 md:h-115 relative overflow-hidden">
+      {/* ── Hero image (shorter on phones, as on the Sanity page) ── */}
+      <div className="w-full h-40 sm:h-80 md:h-115 relative overflow-hidden">
         <Image
           src={post.image}
           alt={post.title}
@@ -816,10 +822,10 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
         {/* Back link */}
-        <div className="pt-8 pb-4">
+        <div className="pt-2 md:pt-5 md:pb-1">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
+            className="inline-flex min-h-11 items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider font-notch hover:opacity-75 transition-opacity"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -857,7 +863,7 @@ export default async function BlogPostPage({ params }: Props) {
                   )}
                 </div>
               )}
-              <h1 className="text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
+              <h1 className="text-[28px] sm:text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
                 {post.title}
               </h1>
               <div className="w-14 h-1 bg-primary rounded-full mb-6" />

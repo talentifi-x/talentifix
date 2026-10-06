@@ -49,6 +49,20 @@ const nextConfig = {
       // Addresses people guess for the careers and blog pages.
       { source: "/careers", destination: "/jobs", permanent: true },
       { source: "/blogs", destination: "/blog", permanent: true },
+      // Duplicate posts merged on 6 Oct 2026, so two pages no longer compete for one search.
+      // The old static copy (removed from blogData) of the Sanity post with the longer slug:
+      {
+        source: "/blog/why-traditional-staffing-is-broken-in-the-age-of-ai",
+        destination: "/blog/why-traditional-staffing-is-broken-in-the-age-of-ai-and-what-comes-next",
+        permanent: true,
+      },
+      // Published under an AI title with the quality-of-hire article's text; the AI article is its match.
+      // Switch this post off in Sanity when this ships, so it leaves the sitemap and related lists.
+      {
+        source: "/blog/ai-in-hiring-2026-what-works-what-doesn-t-and-what-most-companies-miss",
+        destination: "/blog/ai-in-hiring-what-s-real-what-s-hype-and-what-your-competitors-already-know",
+        permanent: true,
+      },
       ...renamedImages.map(([source, destination]) => ({
         source,
         destination,
