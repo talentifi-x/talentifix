@@ -6,8 +6,9 @@ export const Banner = () => {
   return (
     <section className="w-full pt-12 pb-24 px-6 md:px-8 bg-[#F7F9FC]">
       <div className=" max-w-7xl mx-auto flex flex-col-reverse lg:flex-row lg:items-center items-start justify-between lg:gap-12 relative overflow-hidden">
-        {/* Left Content */}
-        <div className="flex flex-col gap-8  lg:mt-0 -mt-20 z-10">
+        {/* Left Content. On phones the graphic above is shorter and the heading no
+            longer overlaps it, so the heading and "Hire Smarter" sit above the cookie banner. */}
+        <div className="flex flex-col gap-8 mt-4 sm:-mt-20 lg:mt-0 z-10">
           <h1 className="text-[50px] md:text-[80px] leading-none font-bold text-dark font-notch tracking-tight">
             Staffing<span className="text-secondary">.</span> <br />
             Rebuilt<span className="text-secondary">.</span>
@@ -32,9 +33,9 @@ export const Banner = () => {
         </div>
 
         {/* Right Content - 3D Graphic */}
-        <div className="relative w-full lg:w-[600px]  h-[500px] flex items-end lg:items-center justify-center">
-          {/* Main 3D T Graphic Placeholder/Image */}
-          <div className="relative w-[750px] h-[651px]  z-10">
+        <div className="relative w-full lg:w-[600px] h-[260px] sm:h-[500px] flex items-end lg:items-center justify-center">
+          {/* Main 3D T Graphic: fitted to the shorter box on phones */}
+          <div className="relative w-full h-full sm:w-[750px] sm:h-[651px] z-10">
             <Image
               src="/banner-home/talentifi-x-3d-logo-staffing-rebuilt.webp"
               alt="Staffing Rebuilt 3D Graphic"
