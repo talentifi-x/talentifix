@@ -6,6 +6,8 @@ import { Clock, Tag, ArrowLeft } from "lucide-react";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { FaqSection } from "@components/blog/FaqSection";
 import { TableOfContents } from "@components/blog/TableOfContents";
+import { PostTable, type PostTableValue } from "@components/blog/PostTable";
+import { ExpertInsight, FOUNDER_PROFILE_PATH } from "@components/blog/ExpertInsight";
 import { blogPosts, BlogSection } from "@data/blogData";
 import {
   getSanityPostBySlug,
@@ -18,6 +20,7 @@ import { Breadcrumbs } from "@components/seo/Breadcrumbs";
 import { relatedPosts } from "@lib/blogTopics";
 import { JsonLd } from "@components/seo/JsonLd";
 import {
+  FOUNDER_ID,
   ORG_ID,
   SITE_URL,
   articleAuthor,
@@ -390,13 +393,17 @@ function SectionContent({ section }: { section: BlogSection }) {
 /**
  * BlogPosting for the article itself, plus FAQPage when the post carries FAQs.
  *
- * Note on FAQPage: Google restricted FAQ rich results to authoritative
- * government and health sites in 2023, so this will not produce FAQ snippets in
- * Google. It remains valid, is still consumed by Bing and by AI answer engines,
- * and costs nothing to emit from data the CMS already holds.
+ * Note on FAQPage: Google stopped showing FAQ rich results altogether on
+ * 7 May 2026, so this earns nothing in Google Search. It is still valid
+ * schema.org, it mirrors questions and answers that are visible on the page (so
+ * it breaks no Google guideline), and Bing and AI answer engines still read it.
+ *
+ * When the founder's insights are shown, he is named as a contributor, which
+ * ties the article to the same Person entity as /about and his own site.
  */
 function buildPostSchema(post: SanityPostFull) {
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
+  const founderContributes = Boolean(post.founderInsights) && !isFounderByline(post.author);
   const nodes: unknown[] = [
     {
       "@type": "BlogPosting",
@@ -410,13 +417,16 @@ function buildPostSchema(post: SanityPostFull) {
       ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
       dateModified: modifiedDate(post),
       author: articleAuthor(post.author),
+      ...(founderContributes
+        ? { contributor: { "@type": "Person", "@id": FOUNDER_ID, name: founderNode.name } }
+        : {}),
       publisher: { "@id": ORG_ID },
       ...(post.category ? { articleSection: post.category } : {}),
     },
   ];
 
-  // The founder's full Person entity, so the author reference resolves on this page.
-  if (isFounderByline(post.author)) nodes.push(founderNode);
+  // The founder's full Person entity, so the author or contributor reference resolves on this page.
+  if (isFounderByline(post.author) || founderContributes) nodes.push(founderNode);
 
   const faqs = (post.faq ?? []).filter((f) => f?.question && f?.answer);
   if (faqs.length > 0) {
@@ -587,6 +597,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
             />
           </div>
         ) : null,
+      table: ({ value }: { value: PostTableValue }) => <PostTable value={value} />,
     },
   };
 
@@ -676,6 +687,18 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                   ) : (
                     <span className="font-semibold text-dark">{post.author}</span>
                   )}
+                  {post.founderInsights && !isFounderByline(post.author) && (
+                    <>
+                      {" "}· With insights from{" "}
+                      <Link
+                        href={FOUNDER_PROFILE_PATH}
+                        className="font-semibold text-dark hover:text-primary underline-offset-2 hover:underline"
+                      >
+                        Chetan Mangalwedhe
+                      </Link>
+                      , Founder
+                    </>
+                  )}
                 </div>
               )}
               <h1 className="text-[28px] sm:text-[32px] md:text-[50px] font-notch font-bold text-dark leading-tight mb-5">
@@ -717,6 +740,8 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                 <FaqSection faqs={post.faq} />
               </section>
             )}
+
+            {post.founderInsights && !isFounderByline(post.author) && <ExpertInsight />}
 
             {/* Every post links to the matching service page and to related posts. */}
             <section className="mt-14 rounded-[10px] border border-primary/20 bg-primary/5 p-6 md:p-8">

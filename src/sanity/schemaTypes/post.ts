@@ -16,6 +16,14 @@ export const postType = defineType({
         'Off = hidden from the website entirely: the post disappears from /blog, its own URL returns 404, and it drops out of the sitemap. It stays here in Sanity, fully editable. On = live as normal.',
     }),
     defineField({ name: 'author', title: 'Author', type: 'string' }),
+    defineField({
+      name: 'founderInsights',
+      title: 'Show founder insights',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'On = the post shows "With insights from Chetan Mangalwedhe" under the author and an expert card, linked to his profile, after the FAQ. Use it when the article draws on his views. Keep the Author field for whoever wrote it.',
+    }),
     defineField({ name: 'publishedAt', title: 'Published At', type: 'datetime', initialValue: () => new Date().toISOString() }),
     defineField({
       name: 'lastUpdated',
@@ -54,6 +62,37 @@ export const postType = defineType({
         {
           type: 'image', options: { hotspot: true },
           fields: [{ name: 'alt', title: 'Alt Text', type: 'string', validation: (Rule) => Rule.required() }],
+        },
+        {
+          type: 'object',
+          name: 'table',
+          title: 'Table',
+          fields: [
+            defineField({
+              name: 'rows',
+              title: 'Rows',
+              type: 'array',
+              description: 'The first row is the header. In the other rows, the first cell is the row label.',
+              of: [{
+                type: 'object',
+                name: 'tableRow',
+                title: 'Row',
+                fields: [defineField({ name: 'cells', title: 'Cells', type: 'array', of: [{ type: 'string' }] })],
+                preview: {
+                  select: { cells: 'cells' },
+                  prepare: ({ cells }) => ({ title: (cells ?? []).join(' | ') }),
+                },
+              }],
+              validation: (Rule) => Rule.min(2).error('A table needs a header row and at least one row.'),
+            }),
+          ],
+          preview: {
+            select: { rows: 'rows' },
+            prepare: ({ rows }) => ({
+              title: `Table: ${(rows?.[0]?.cells ?? []).join(' | ') || 'empty'}`,
+              subtitle: `${Math.max((rows?.length ?? 1) - 1, 0)} rows`,
+            }),
+          },
         },
       ],
     }),

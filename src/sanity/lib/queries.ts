@@ -21,6 +21,8 @@ export interface SanityPostFull extends SanityPost {
   noindex?: boolean;
   metaTitle?: string;
   metaDescription?: string;
+  /** Shows the founder's "with insights from" line and expert card. */
+  founderInsights?: boolean;
   /**
    * The studio "Published" toggle. Deliberately NOT filtered out of the
    * single-post query - the page needs to tell "hidden" (404) apart from
@@ -92,6 +94,7 @@ export async function getSanityPostBySlug(
       publishedAt,
       category,
       author,
+      founderInsights,
       readTime,
       introduction,
       "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension,

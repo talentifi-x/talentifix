@@ -6,6 +6,7 @@ import { SolutionsTemporaryStaffing } from "../../components/solutions/Solutions
 import { SolutionsPermanentPlacement } from "../../components/solutions/SolutionsPermanentPlacement";
 import { SolutionsContractToHire } from "../../components/solutions/SolutionsContractToHire";
 import { SolutionsExecutiveSearch } from "../../components/solutions/SolutionsExecutiveSearch";
+import { SolutionsGuide } from "../../components/solutions/SolutionsGuide";
 import { SolutionsIncludes } from "../../components/solutions/SolutionsIncludes";
 import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor";
 import TheNextStepSection from "@components/home/TheNextStepSection";
@@ -40,6 +41,7 @@ export default function Solutions() {
       <SolutionsContractToHire />
       <SolutionsDivider />
       <SolutionsExecutiveSearch />
+      <SolutionsGuide />
       <SolutionsIncludes />
       <SolutionsBuiltFor />
       <TheNextStepSection />

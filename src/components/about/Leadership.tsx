@@ -3,7 +3,8 @@ import Image from "next/image";
 
 export const Leadership = () => {
   return (
-    <section className="relative w-full bg-white px-4 sm:px-6 md:px-14 pt-16 sm:pt-20 md:pt-22 overflow-hidden lg:-mb-[120px]">
+    // id: blog expert cards link here as the founder's on-site profile.
+    <section id="leadership" className="relative w-full bg-white px-4 sm:px-6 md:px-14 pt-16 sm:pt-20 md:pt-22 overflow-hidden lg:-mb-[120px] scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="pointer-events-none absolute left-1/2 top-[83px] hidden md:block h-[737px] w-[533px] -translate-x-[410px] opacity-20">
           <Image
