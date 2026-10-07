@@ -1,13 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
+// width: share of the card the logo may span; wide wordmarks get more room.
 const clients = [
-  { name: "Clix Capital", logo: "/clients/ClixCapital.jpg" },
-  { name: "Equentis", logo: "/clients/Equentis.svg" },
-  { name: "L&T Finance", logo: "/clients/L%26TFinance.jpg" },
-  { name: "TATA Capital", logo: "/clients/TATACapital.jpg" },
-  { name: "Paytm", logo: "/clients/Paytm.svg" },
-  { name: "IBM", logo: "/clients/IBM.svg" },
+  { name: "Clix Capital", logo: "/clients/ClixCapital.png", width: "w-[62%]" },
+  { name: "Equentis", logo: "/clients/Equentis.svg", width: "w-[90%]" },
+  { name: "L&T Finance", logo: "/clients/LTFinance.webp", width: "w-[90%]" },
+  { name: "TATA Capital", logo: "/clients/TATACapital.png", width: "w-[90%]" },
+  { name: "Paytm", logo: "/clients/Paytm.svg", width: "w-[70%]" },
+  { name: "IBM", logo: "/clients/IBM.svg", width: "w-[70%]" },
+  { name: "Rupeek", logo: "/clients/Rupeek.svg", width: "w-[90%]" },
+  { name: "AlgoShack", logo: "/clients/AlgoShack.webp", width: "w-[90%]" },
 ];
 
 export const ClientsSection = () => {
@@ -17,21 +20,23 @@ export const ClientsSection = () => {
         Trusted Clients<span className="text-secondary">.</span>
       </h2>
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full max-w-300 font-notch">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 w-full max-w-300 font-notch">
   {clients.map((client) => (
     <div
       key={client.name}
       className="bg-white shadow-lg rounded-[10px] border-b-6 border-primary p-6 flex items-center justify-center transform hover:-translate-y-1 transition-transform duration-300"
     >
-      <div className="relative w-[70%] aspect-[3/2]">
-        <Image
-          src={client.logo}
-          alt={`${client.name} logo`}
-          fill
-          unoptimized
-          sizes="(max-width: 1024px) 45vw, 22vw"
-          className="object-contain"
-        />
+      <div className="w-full aspect-15/7 flex items-center justify-center">
+        <div className={`relative h-full ${client.width}`}>
+          <Image
+            src={client.logo}
+            alt={`${client.name} logo`}
+            fill
+            unoptimized
+            sizes="(max-width: 1024px) 45vw, 22vw"
+            className="object-contain"
+          />
+        </div>
       </div>
     </div>
   ))}
