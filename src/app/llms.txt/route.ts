@@ -1,12 +1,15 @@
 import { getAllSanityPosts } from "@/sanity/lib/queries";
-import { SITE_URL, truncateAtSentence } from "@lib/seo";
+import { CDN_CACHE_CONTROL, SITE_URL, truncateAtSentence } from "@lib/seo";
 
 /**
  * /llms.txt: a plain-text map of the site for AI assistants (llmstxt.org).
  * Optional - Google says it does not use it - but it is cheap, and it is built
  * from the same CMS data as the sitemap so it never goes stale.
+ *
+ * Rendered per request and cached by Vercel's CDN, like /sitemap.xml: see the
+ * note there on why `revalidate` is not used.
  */
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const PAGES: [path: string, name: string, summary: string][] = [
   ["/solutions", "Staffing solutions", "Temporary staffing, permanent placement, contract-to-hire and executive search."],
@@ -47,6 +50,9 @@ export async function GET() {
   ].join("\n");
 
   return new Response(text, {
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": CDN_CACHE_CONTROL,
+    },
   });
 }

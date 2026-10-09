@@ -14,14 +14,14 @@ export function PostTable({ value }: { value: PostTableValue }) {
 
   return (
     <div className="my-6 overflow-x-auto rounded-lg border border-gray-200 bg-white">
-      <table className="w-full border-collapse text-left font-sans text-[15px] md:text-base">
+      <table className="w-full border-collapse text-left font-sans text-sm sm:text-[15px] md:text-base hyphens-auto">
         <thead className="bg-primary/5">
           <tr>
             {header.map((cell, i) => (
               <th
                 key={i}
                 scope="col"
-                className="px-4 py-3 font-notch font-bold text-dark align-bottom"
+                className="px-3 sm:px-4 py-3 font-notch font-bold text-dark align-bottom"
               >
                 {cell}
               </th>
@@ -36,12 +36,12 @@ export function PostTable({ value }: { value: PostTableValue }) {
                   <th
                     key={i}
                     scope="row"
-                    className="px-4 py-3 font-semibold text-dark align-top md:whitespace-nowrap"
+                    className="px-3 sm:px-4 py-3 font-semibold text-dark align-top md:whitespace-nowrap"
                   >
                     {cell}
                   </th>
                 ) : (
-                  <td key={i} className="px-4 py-3 text-dark/70 leading-relaxed align-top">
+                  <td key={i} className="px-3 sm:px-4 py-3 text-dark/70 leading-relaxed align-top">
                     {cell}
                   </td>
                 ),

@@ -32,6 +32,13 @@ export const MAX_TITLE_LENGTH = 60;
 export const MAX_TITLE_HARD_LENGTH = 70;
 export const MAX_DESCRIPTION_LENGTH = 155;
 
+/**
+ * For machine-read files built from the CMS (/sitemap.xml, /llms.txt): Vercel's
+ * CDN keeps a copy for 15 minutes, then serves it stale while one request
+ * rebuilds it, so a publish appears within about 15 minutes.
+ */
+export const CDN_CACHE_CONTROL = "public, s-maxage=900, stale-while-revalidate=86400";
+
 /** Stable identity for the Organization entity, shared by every page that emits it. */
 export const ORG_ID = `${SITE_URL}#organization`;
 export const WEBSITE_ID = `${SITE_URL}#website`;

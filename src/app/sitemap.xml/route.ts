@@ -3,18 +3,20 @@ import {
   getSanityJobSitemapEntries,
 } from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
-import { SITE_URL } from "@lib/seo";
+import { CDN_CACHE_CONTROL, SITE_URL } from "@lib/seo";
 
 /**
- * Rebuild the sitemap at most once an hour, so posts published in Sanity reach it
- * without a deploy.
+ * Rendered per request and cached by Vercel's CDN for 15 minutes (see
+ * CDN_CACHE_CONTROL), so posts published in Sanity reach the sitemap without a
+ * deploy.
  *
- * This is a plain route handler on purpose, like /llms.txt. A metadata `sitemap.ts`
- * with `revalidate` is published to Vercel as a static file with the revalidate
- * dropped, so the live sitemap only changed on deploy (seen on 6 Oct 2026: still the
- * build copy 85 minutes later, while /llms.txt with the same setting refreshed).
+ * Neither ISR route works here. A metadata `sitemap.ts` with `revalidate` was
+ * published as a static file (6 Oct 2026). This route handler with
+ * `revalidate = 3600` then stayed the build copy too: on 9 Oct it was 41 hours
+ * old, and even `revalidatePath("/sitemap.xml")` from the publish webhook did not
+ * refresh it. /llms.txt behaved the same way.
  */
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 type Entry = { url: string; lastModified?: string; priority: number };
 
@@ -89,5 +91,10 @@ export async function GET() {
       `<url>\n<loc>${escapeXml(url)}</loc>\n${lastModified ? `<lastmod>${lastModified}</lastmod>\n` : ""}<priority>${priority}</priority>\n</url>`,
   );
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`;
-  return new Response(xml, { headers: { "Content-Type": "application/xml; charset=utf-8" } });
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": CDN_CACHE_CONTROL,
+    },
+  });
 }
