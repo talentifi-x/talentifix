@@ -117,9 +117,11 @@ export function Header() {
         <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
+            {/* No fixed height: a 200px-tall box overflowed the 80px nav and its
+                invisible lower half swallowed taps on the sticky blog filter bar. */}
             <Link
               href="/"
-              className="w-50 h-50 flex items-center justify-center"
+              className="w-50 flex items-center justify-center"
             >
               <Image
                 src="/logos/logo.svg"

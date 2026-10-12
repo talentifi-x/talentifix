@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock, Tag } from "lucide-react";
+import { CategoryScroller, type CategoryOption } from "@components/blog/CategoryScroller";
+import { BlogSearch } from "@components/blog/BlogSearch";
 
 type Post = {
   slug: string;
@@ -16,66 +18,85 @@ type Post = {
   image: string;
 };
 
+/** Filter value for "every topic", kept apart from topic names so it can never clash with one. */
+const ALL = "__all__";
+
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export default function BlogGrid({ posts }: { posts: Post[] }) {
-  const categories = ["All", ...Array.from(new Set(posts.map((p) => p.category)))];
-  const [active, setActive] = useState("All");
-  const [fading, setFading] = useState(false);
-  const [displayed, setDisplayed] = useState<Post[]>(posts);
+  const [active, setActive] = useState(ALL);
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  const countFor = (cat: string) =>
-    cat === "All" ? posts.length : posts.filter((p) => p.category === cat).length;
+  // Topics in order of their newest post, each with its article count.
+  const categories = useMemo<CategoryOption[]>(() => {
+    const counts = new Map<string, number>();
+    for (const post of posts) counts.set(post.category, (counts.get(post.category) ?? 0) + 1);
+    return [
+      { value: ALL, label: "All", count: posts.length },
+      ...Array.from(counts, ([name, count]) => ({ value: name, label: name, count })),
+    ];
+  }, [posts]);
 
-  function handleFilter(cat: string) {
-    if (cat === active) return;
-    setFading(true);
-    setTimeout(() => {
-      setDisplayed(cat === "All" ? posts : posts.filter((p) => p.category === cat));
-      setActive(cat);
-      setFading(false);
-    }, 150);
-  }
+  const displayed = useMemo(
+    () => (active === ALL ? posts : posts.filter((post) => post.category === active)),
+    [active, posts],
+  );
+
+  /**
+   * Brings the top of the grid up under the sticky filter bar when the reader
+   * has scrolled past it, so a shorter list never leaves them looking at the
+   * footer. `force` (from search) also scrolls down to a grid that is still
+   * below the fold.
+   */
+  const revealGrid = (force: boolean) => {
+    const grid = gridRef.current;
+    const bar = toolbarRef.current;
+    if (!grid || !bar) return;
+    const barBottom = (parseFloat(getComputedStyle(bar).top) || 0) + bar.offsetHeight;
+    const gridTop = grid.getBoundingClientRect().top;
+    const hiddenBehindBar = gridTop < barBottom;
+    const belowFold = gridTop > window.innerHeight * 0.5;
+    if (!hiddenBehindBar && !(force && belowFold)) return;
+    window.scrollTo({
+      top: window.scrollY + gridTop - barBottom,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+  };
+
+  const selectCategory = (value: string, force = false) => {
+    setActive(value);
+    // After React has rendered the filtered grid.
+    requestAnimationFrame(() => revealGrid(force));
+  };
 
   return (
     <section className="w-full pb-24">
-      {/* Sticky filter strip */}
-      <div className="sticky top-[120px] z-10 bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleFilter(cat)}
-              className={`flex-shrink-0 flex items-center gap-2 px-5 py-2 min-h-11 rounded-sm text-sm font-bold font-notch uppercase tracking-wider border transition-colors whitespace-nowrap ${
-                active === cat
-                  ? "bg-primary text-white border-primary"
-                  : "bg-white text-dark/60 border-gray-200 hover:border-primary hover:text-primary"
-              }`}
-            >
-              {cat}
-              <span
-                className={`text-xs font-sans font-normal px-1.5 py-0.5 rounded-full transition-colors ${
-                  active === cat
-                    ? "bg-white/20 text-white"
-                    : "bg-gray-100 text-dark/50"
-                }`}
-              >
-                {countFor(cat)}
-              </span>
-            </button>
-          ))}
+      {/* Sticky filter bar: search first, then topics that scroll sideways. top = header height (40px top bar + 80px nav). */}
+      <div ref={toolbarRef} className="sticky top-[120px] z-20 bg-white border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 pt-2.5 pb-1.5 flex items-start gap-3 sm:gap-4">
+          <div className="pt-1">
+            <BlogSearch posts={posts} onSelectCategory={(value) => selectCategory(value, true)} />
+          </div>
+          <CategoryScroller
+            className="flex-1 min-w-0"
+            categories={categories}
+            active={active}
+            onSelect={(value) => selectCategory(value)}
+          />
         </div>
       </div>
 
-      {/* Grid */}
+      {/* Grid. Re-keyed per topic so the new set fades in. */}
       <div
-        className={`max-w-7xl mx-auto px-6 md:px-8 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-150 ${
-          fading ? "opacity-0" : "opacity-100"
-        }`}
+        key={active}
+        ref={gridRef}
+        className="max-w-7xl mx-auto px-6 md:px-8 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 motion-safe:animate-fade-in"
       >
         {displayed.length === 0 && (
           <div className="col-span-full py-24 text-center">
-            <p className="text-dark/50 font-sans text-lg">
-              No posts in this category yet.
-            </p>
+            <div className="text-dark/70 font-sans text-lg">No articles yet. Please check back soon.</div>
           </div>
         )}
         {displayed.map((post) => (

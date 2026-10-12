@@ -53,7 +53,7 @@ export default async function BlogPage() {
               <br />
               Ideas<span className="text-secondary">.</span>
             </h1>
-            <p className="text-dark/60 font-sans text-lg md:text-2xl max-w-xl leading-relaxed mt-2 mx-auto lg:mx-0">
+            <p className="text-dark/70 font-sans text-lg md:text-2xl max-w-xl leading-relaxed mt-2 mx-auto lg:mx-0">
               Perspectives on staffing, AI, and building the workforce of
               tomorrow.
             </p>
