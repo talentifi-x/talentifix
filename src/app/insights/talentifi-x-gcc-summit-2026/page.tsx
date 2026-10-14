@@ -15,7 +15,7 @@ const BANNER = "/banner/gcc-summit-2026-bengaluru-banner.png";
 const EVENT_DATE = "2026-07-15";
 
 const SEO_DESCRIPTION =
-  "TalentiFi-X, Delegate Experience Sponsor at GCC Summit 2026 in Bengaluru, shares key themes on GCC talent, AI, strategic ownership, innovation and capability.";
+  "TalentiFi-X, Delegate Experience Sponsor at GCC Summit 2026 in Bengaluru, on the key themes: GCC talent, AI, strategic ownership and capability.";
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "GCC Summit 2026 Bengaluru: Key Talent Themes | TalentiFi-X" },

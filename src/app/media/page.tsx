@@ -8,7 +8,7 @@ import { pageMetadata } from "@lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Media & Industry Presence: GCC Summit 2026",
   description:
-    "Where TalentiFi-X shows up across the talent and GCC ecosystem - industry participation, event highlights and perspectives on AI-assisted, human-led hiring.",
+    "Where TalentiFi-X shows up across the talent and GCC ecosystem: industry events, highlights and views on AI-assisted, human-led hiring.",
   path: "/media",
 });
 
