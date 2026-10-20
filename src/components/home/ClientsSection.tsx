@@ -11,6 +11,10 @@ const clients = [
   { name: "IBM", logo: "/clients/IBM.svg", width: "w-[70%]" },
   { name: "Rupeek", logo: "/clients/Rupeek.svg", width: "w-[90%]" },
   { name: "AlgoShack", logo: "/clients/AlgoShack.webp", width: "w-[90%]" },
+  { name: "AU Small Finance Bank", logo: "/clients/AUBank.svg", width: "w-[72%]" },
+  { name: "Dvara KGFS", logo: "/clients/DvaraKGFS.png", width: "w-[70%]" },
+  { name: "Raksha Technologies", logo: "/clients/Raksha.svg", width: "w-[80%]" },
+  { name: "FundsIndia", logo: "/clients/FundsIndia.svg", width: "w-[90%]" },
 ];
 
 export const ClientsSection = () => {
