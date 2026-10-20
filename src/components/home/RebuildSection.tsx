@@ -4,26 +4,55 @@ import { BrainCircuit, Lightbulb } from "lucide-react";
 
 export const RebuildSection = () => {
   return (
-    <section className="w-full relative lg:py-32 py-10 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+    <section className="w-full relative lg:py-32 py-10 overflow-hidden bg-white">
+      {/*
+        The 3D logo and the blue/red data streams are baked into the background
+        image (1536x1024), not rendered as elements - the centre column below is
+        a deliberately empty placeholder. So the art only lines up with the
+        content while the two are roughly the same width.
+
+        Full-bleed `object-cover` broke that on wide screens: covering a
+        viewport-width box with a 1.5-aspect image zooms it 1.07x at 1440px but
+        1.67x at 2560px and 2.5x at 3840px, while the cards stay pinned to
+        max-w-7xl (1280px). The baked-in logo grew while the cards did not.
+
+        Capping the art at 1920px freezes the zoom at 1.25x beyond that, so
+        every screen wider than 1920px renders the same composition that
+        already looks correct at ~1920px. Behaviour at or below 1920px is
+        unchanged.
+      */}
+      <div className="absolute inset-0 z-0 mx-auto w-full max-w-[1920px]">
         {/* Desktop Image */}
         <Image
           src="/banner-home/talentifi-x-logo-data-streams-background.webp"
           alt=""
           fill
-          sizes="100vw"
+          sizes="(max-width: 1920px) 100vw, 1920px"
           className="hidden md:block object-cover"
           quality={100}
         />
         {/* Mobile Image */}
         <Image
           src="/banner-home/mobile-rebuild.webp"
-          alt="Background Mobile"
+          alt=""
           fill
           sizes="100vw"
           className="block md:hidden object-cover"
           quality={100}
+        />
+        {/*
+          Past the cap the art no longer reaches the viewport edge. Its own
+          edges are saturated mid-band colours (#326EAE left, #EFD5DC right),
+          so a hard stop against the white section would seam. These dissolve
+          it instead, and are inert at or below the cap.
+        */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-linear-to-r from-white to-transparent min-[1921px]:block min-[2400px]:w-44"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-linear-to-l from-white to-transparent min-[1921px]:block min-[2400px]:w-44"
         />
       </div>
 
@@ -31,7 +60,7 @@ export const RebuildSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center">
         {/* Header */}
         <div className="text-center lg:translate-y-[-50%]">
-          <h2 className="text-[50px] lg:text-[54px] font-notch font-bold text-dark mb-4">
+          <h2 className="text-[50px] lg:text-[54px] font-notch font-bold text-dark mb-6">
             The Rebuild<span className="text-secondary">.</span>
           </h2>
           <p className="text-[20px] lg:text-[24px] text-dark leading-relaxed">
@@ -72,7 +101,7 @@ export const RebuildSection = () => {
           </div>
 
           {/* Center Column: Logo Placeholder (Assuming logo is part of bg or needs to be added) */}
-          <div className="flex justify-center items-center h-[300px]">
+          <div className="flex justify-center items-center h-[300px] lg:h-[460px]">
             {/* If there is a separate 3D logo asset, it goes here. 
                  For now, we'll assume the central space is for the graphic. 
                  If the graphic is NOT in the bg, we might need a placeholder. 
