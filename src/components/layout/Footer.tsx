@@ -82,7 +82,7 @@ export const Footer = () => {
               href="/start-hiring"
               className="w-fit px-6 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
             >
-              Know More
+              Start Hiring
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
