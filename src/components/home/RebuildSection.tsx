@@ -31,15 +31,6 @@ export const RebuildSection = () => {
           className="hidden md:block object-cover"
           quality={100}
         />
-        {/* Mobile Image */}
-        <Image
-          src="/banner-home/mobile-rebuild.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="block md:hidden object-cover"
-          quality={100}
-        />
         {/*
           Past the cap the art no longer reaches the viewport edge. Its own
           edges are saturated mid-band colours (#326EAE left, #EFD5DC right),
@@ -108,9 +99,27 @@ export const RebuildSection = () => {
                  I'll add a placeholder div that is transparent if the user has the image in BG, 
                  or ready for an image tag. 
              */}
-            <div className="w-[200px] h-[200px] relative">
-              {/* Placeholder for 3D TF Logo if not in BG */}
+            {/*
+              On phones the art lives here, inside the spacer, rather than in
+              the full-bleed layer above. Covering a ~320x1580 section crops to
+              the middle ~30% of this 2:3 image and scales the baked-in logo to
+              ~430px, which collided with the card above. Anchoring it to the
+              spacer makes the position deterministic at every width, because
+              the spacer IS the gap between the two cards - the grid's gap-8
+              guarantees the margin on both sides.
+            */}
+            <div className="relative w-full h-full md:hidden overflow-hidden rounded-[10px]">
+              <Image
+                src="/banner-home/mobile-rebuild.webp"
+                alt=""
+                fill
+                sizes="100vw"
+                className="object-cover"
+                quality={100}
+              />
             </div>
+            {/* Desktop keeps the logo in the full-bleed background layer. */}
+            <div className="hidden md:block w-[200px] h-[200px] relative" />
           </div>
 
           {/* Right Column: Humans */}
