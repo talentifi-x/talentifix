@@ -92,7 +92,7 @@ export const RebuildSection = () => {
           </div>
 
           {/* Center Column: Logo Placeholder (Assuming logo is part of bg or needs to be added) */}
-          <div className="flex justify-center items-center h-[300px] lg:h-[460px]">
+          <div className="flex justify-center items-center md:h-[300px] lg:h-[460px]">
             {/* If there is a separate 3D logo asset, it goes here. 
                  For now, we'll assume the central space is for the graphic. 
                  If the graphic is NOT in the bg, we might need a placeholder. 
@@ -101,20 +101,29 @@ export const RebuildSection = () => {
              */}
             {/*
               On phones the art lives here, inside the spacer, rather than in
-              the full-bleed layer above. Covering a ~320x1580 section crops to
-              the middle ~30% of this 2:3 image and scales the baked-in logo to
-              ~430px, which collided with the card above. Anchoring it to the
-              spacer makes the position deterministic at every width, because
-              the spacer IS the gap between the two cards - the grid's gap-8
-              guarantees the margin on both sides.
+              the full-bleed layer above: the spacer IS the gap between the two
+              cards, so the grid's gap-8 guarantees the margin above and below.
+
+              w-screen breaks it out of the container padding so it reaches
+              both viewport edges (the section's overflow-hidden clips the
+              bleed), and the box holds a fixed 5:3 ratio. A fixed pixel height
+              could not: covering 320x300 shows 42% of this 2:3 image while
+              covering 756x300 shows only 26%, so the baked-in logo swung from
+              a sixth of the frame to filling it edge to edge. A constant ratio
+              renders one composition at every phone width, with the logo
+              always 65% of the box height.
+
+              That logo is centred at 50.78% x 45.05% of the source, so the
+              default 50% object-position hangs it above the middle. 42% puts
+              its centre within 2px of the box centre at every width.
             */}
-            <div className="relative w-full h-full md:hidden overflow-hidden rounded-[10px]">
+            <div className="relative w-screen shrink-0 aspect-[5/3] md:hidden overflow-hidden">
               <Image
                 src="/banner-home/mobile-rebuild.webp"
                 alt=""
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover object-[50%_42%]"
                 quality={100}
               />
             </div>
