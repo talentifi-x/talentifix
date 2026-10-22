@@ -14,6 +14,7 @@ import WhereWeSpecializeSection from "@components/home/WhereWeSpecializeSection"
 import TheOriginSection from "@components/home/TheOriginSection";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 import { ClientsSection } from "@components/home/ClientsSection";
+import { MediaSection } from "@components/home/MediaSection";
 import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
 import { pageMetadata } from "@lib/seo";
@@ -33,6 +34,7 @@ export default function Home() {
       <Bannerthree />
       <StorySection />
       <ClientsSection />
+      <MediaSection />
       <StatsSection />
       <StatementSection />
       <RebuildSection />
