@@ -2,38 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { pressItems } from "@data/mediaData";
+import { pressCoverage, publicationLogos } from "@data/mediaData";
 import { pageMetadata } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Media & Industry Presence: GCC Summit 2026",
+  title: "Press Coverage & Industry Presence",
   description:
-    "Where TalentiFi-X shows up across the talent and GCC ecosystem: industry events, highlights and views on AI-assisted, human-led hiring.",
+    "TalentiFi-X in the press: articles and interviews with founder Chetan Mangalwedhe in Business Standard, Hindustan Times, NDTV, India Today and more.",
   path: "/media",
 });
-
-function PressThumb({ kicker, index }: { kicker: string; index: number }) {
-  return (
-    <div className="relative w-full aspect-16/9 overflow-hidden bg-grey-accent border-b border-gray-100">
-      <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-white to-secondary/15" />
-      <span
-        aria-hidden="true"
-        className="absolute -bottom-8 right-1 text-[130px] leading-none font-notch font-bold text-primary/10 select-none"
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="relative h-full flex flex-col justify-center gap-3 px-6">
-        <span className="text-[10px] font-notch font-bold uppercase tracking-[0.22em] text-primary">
-          GCC Summit 2026 &middot; Bengaluru
-        </span>
-        <span className="block text-[20px] md:text-[22px] font-notch font-bold text-dark leading-snug max-w-[85%]">
-          {kicker}
-        </span>
-        <span className="w-12 h-[3px] rounded-full bg-linear-to-r from-primary to-secondary" />
-      </div>
-    </div>
-  );
-}
 
 export default function MediaPage() {
   return (
@@ -55,7 +32,7 @@ export default function MediaPage() {
           </h1>
 
           <p className="text-dark/60 text-lg md:text-xl leading-relaxed max-w-2xl">
-            Industry participation, event highlights and perspectives from the
+            Press coverage, industry participation and perspectives from the
             TalentiFi-X team on talent, AI and the next generation of Global
             Capability Centers.
           </p>
@@ -114,64 +91,73 @@ export default function MediaPage() {
         </div>
       </section>
 
-      {/* Press grid */}
+      {/* Press and perspectives: media coverage plus our own LinkedIn posts, by date */}
       <section className="w-full px-6 md:px-8 pb-20 md:pb-28">
         <div className="w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-3 mb-8">
             <h2 className="text-[26px] md:text-[34px] font-notch font-bold text-dark leading-tight">
-              From the TalentiFi-X feed<span className="text-secondary">.</span>
+              Press &amp; Perspectives<span className="text-secondary">.</span>
             </h2>
-            <p className="text-dark/60 text-base md:text-lg leading-relaxed max-w-2xl">
-              A selection of where the ideas have shown up. Each card opens the
-              original post on LinkedIn.
+            <p className="text-dark/70 text-base md:text-lg leading-relaxed max-w-2xl">
+              Articles by and interviews with founder Chetan Mangalwedhe, stories that
+              draw on his view of hiring, AI and the job market, and our own notes from
+              GCC Summit 2026. Each card opens the original piece.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pressItems.map((item, index) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col bg-white rounded-[10px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
-              >
-                <PressThumb kicker={item.kicker} index={index} />
-
-                <div className="flex flex-col flex-1 gap-4 p-6">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-[10px] font-notch font-bold uppercase tracking-[0.18em] text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-sm">
-                      {item.tag}
-                    </span>
-                    <span className="text-[10px] font-notch font-bold uppercase tracking-[0.18em] text-dark/40">
-                      {item.source}
-                    </span>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pressCoverage.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col bg-white rounded-[10px] overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
+                >
+                  <div className="relative w-full aspect-16/9 overflow-hidden bg-grey-accent border-b border-gray-100">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      className="object-cover motion-safe:group-hover:scale-[1.03] transition-transform duration-500"
+                    />
                   </div>
-
-                  <h3 className="text-[18px] font-notch font-bold text-dark leading-snug group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-dark/60 text-sm leading-relaxed flex-1">
-                    {item.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between gap-3 mt-auto pt-4 border-t border-gray-100">
-                    <span className="flex items-center gap-2 text-primary font-notch font-bold text-[11px] uppercase tracking-[0.18em]">
-                      {item.cta}
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </span>
-                    <time
-                      dateTime={item.dateTime}
-                      className="text-[11px] text-dark/40 shrink-0"
-                    >
-                      {item.date}
-                    </time>
+                  <div className="flex flex-1 flex-col gap-4 p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      {publicationLogos[item.publication] ? (
+                        <Image
+                          src={publicationLogos[item.publication].src}
+                          alt={item.publication}
+                          width={publicationLogos[item.publication].width}
+                          height={publicationLogos[item.publication].height}
+                          unoptimized
+                          className="h-7 w-auto max-w-37.5 object-contain object-left"
+                        />
+                      ) : (
+                        <span className="font-notch font-bold text-dark text-[17px]">{item.publication}</span>
+                      )}
+                      <span className="shrink-0 text-[10px] font-notch font-bold uppercase tracking-[0.18em] text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-sm">
+                        {item.type}
+                      </span>
+                    </div>
+                    <h3 className="flex-1 text-[17px] font-notch font-bold text-dark leading-snug group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <div className="flex items-center justify-between gap-3 pt-4 border-t border-gray-100">
+                      <span className="flex items-center gap-2 text-primary font-notch font-bold text-[11px] uppercase tracking-[0.18em]">
+                        {item.cta ?? `Read on ${item.publication}`}
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </span>
+                      <time dateTime={item.dateTime} className="text-[11px] text-dark/70 shrink-0">
+                        {item.date}
+                      </time>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
