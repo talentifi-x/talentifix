@@ -56,7 +56,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       # No install step: the script uses global fetch and has no dependencies.
       - name: Publish any posts that are due
