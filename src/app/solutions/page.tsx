@@ -7,6 +7,7 @@ import { SolutionsPermanentPlacement } from "../../components/solutions/Solution
 import { SolutionsContractToHire } from "../../components/solutions/SolutionsContractToHire";
 import { SolutionsExecutiveSearch } from "../../components/solutions/SolutionsExecutiveSearch";
 import { SolutionsGuide } from "../../components/solutions/SolutionsGuide";
+import { SolutionsTalent } from "../../components/solutions/SolutionsTalent";
 import { SolutionsIncludes } from "../../components/solutions/SolutionsIncludes";
 import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor";
 import TheNextStepSection from "@components/home/TheNextStepSection";
@@ -34,6 +35,7 @@ export default function Solutions() {
     <div className="w-full">
       <SolutionsBanner />
       <SolutionsAISpeed />
+      <SolutionsTalent />
       <SolutionsTemporaryStaffing />
       <SolutionsDivider />
       <SolutionsPermanentPlacement />

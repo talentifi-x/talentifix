@@ -3,6 +3,7 @@ import {
   getSanityJobSitemapEntries,
 } from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
+import { livePages } from "@data/content";
 import { CDN_CACHE_CONTROL, SITE_URL } from "@lib/seo";
 
 /**
@@ -45,6 +46,13 @@ async function sitemapEntries(): Promise<Entry[]> {
     { url: `${baseUrl}/sitemap.html`, priority: 0.2 },
   ];
 
+  // Content pages carry a real "updated" date, so it is a truthful lastmod.
+  const contentRoutes: Entry[] = livePages().map((page) => ({
+    url: `${baseUrl}${page.path}`,
+    lastModified: new Date(`${page.updated}T00:00:00Z`).toISOString(),
+    priority: page.kind === "hub" ? 0.7 : 0.8,
+  }));
+
   let blogRoutes: Entry[];
   try {
     const entries = await getSanityPostSitemapEntries();
@@ -79,7 +87,7 @@ async function sitemapEntries(): Promise<Entry[]> {
     jobRoutes = [];
   }
 
-  return [...staticRoutes, ...blogRoutes, ...jobRoutes];
+  return [...staticRoutes, ...contentRoutes, ...blogRoutes, ...jobRoutes];
 }
 
 const escapeXml = (s: string) =>

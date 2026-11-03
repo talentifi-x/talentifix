@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { FooterWordmark } from "./FooterWordmark";
+import { livePages } from "@data/content";
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -119,7 +120,32 @@ export const Footer = () => {
           {/* Divider */}
           <div className="hidden md:block w-px self-stretch bg-gray-300" />
 
-          {/* Column 3: Connect With Us */}
+          {/* Column 3: Technology talent (live content pages) */}
+          {livePages("talent").length > 0 && (
+            <>
+              <div className="flex flex-col gap-6">
+                <p className="text-[24px] font-bold font-notch text-black">
+                  Technology Talent
+                </p>
+                <nav aria-label="Technology talent" className="flex flex-col">
+                  {livePages("talent").map((page) => (
+                    <Link
+                      key={page.path}
+                      href={page.path}
+                      className="flex items-center min-h-11 text-[18px] font-medium text-gray-600 hover:text-[#0000FF] transition-colors"
+                    >
+                      {page.navLabel}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block w-px self-stretch bg-gray-300" />
+            </>
+          )}
+
+          {/* Column 4: Connect With Us */}
           <div className="flex flex-col gap-6 flex-1">
             <p className="text-[24px] font-bold font-notch text-black">
               Connect With Us

@@ -5,6 +5,7 @@ import {
   getAllSanityJobSlugs,
 } from "@/sanity/lib/queries";
 import { blogPosts } from "@data/blogData";
+import { livePages } from "@data/content";
 import { SITE_URL, pageMetadata } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -20,6 +21,7 @@ const staticPaths = [
   "/",
   "/about",
   "/solutions",
+  ...livePages().map((page) => page.path),
   "/blog",
   "/jobs",
   "/contact",

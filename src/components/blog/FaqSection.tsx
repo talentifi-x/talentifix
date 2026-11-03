@@ -39,7 +39,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
                 className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-notch font-bold transition-colors duration-200 ${
                   isOpen
                     ? "bg-primary text-white"
-                    : "bg-gray-100 text-dark/40 group-hover:bg-primary/10 group-hover:text-primary"
+                    : "bg-gray-100 text-dark/70 group-hover:bg-primary/10 group-hover:text-primary"
                 }`}
               >
                 {String(index + 1).padStart(2, "0")}

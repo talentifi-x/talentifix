@@ -1,5 +1,6 @@
 import { getAllSanityPosts } from "@/sanity/lib/queries";
 import { CDN_CACHE_CONTROL, SITE_URL, truncateAtSentence } from "@lib/seo";
+import { livePages, type PageKind } from "@data/content";
 
 /**
  * /llms.txt: a plain-text map of the site for AI assistants (llmstxt.org).
@@ -21,6 +22,15 @@ const PAGES: [path: string, name: string, summary: string][] = [
   ["/contact", "Contact", "Offices in Bengaluru, India, and Houston, Texas."],
 ];
 
+/** Live content pages, grouped by section of the site. */
+const CONTENT_SECTIONS: [heading: string, kinds: PageKind[]][] = [
+  ["Technology talent", ["talent"]],
+  ["Hiring solutions", ["solution"]],
+  ["Markets", ["market"]],
+  ["Hiring challenges", ["challenge"]],
+  ["Hiring Intelligence", ["hub", "comparison", "guide", "definition"]],
+];
+
 export async function GET() {
   const posts = await getAllSanityPosts().catch(() => []);
   const link = (path: string, name: string, summary?: string) =>
@@ -36,6 +46,10 @@ export async function GET() {
     link("/", "Home", "What TalentiFi-X does and who it serves."),
     ...PAGES.map(([path, name, summary]) => link(path, name, summary)),
     "",
+    ...CONTENT_SECTIONS.flatMap(([heading, kinds]) => {
+      const pages = livePages().filter((page) => kinds.includes(page.kind));
+      return pages.length ? [`## ${heading}`, "", ...pages.map((page) => link(page.path, page.h1, page.summary)), ""] : [];
+    }),
     "## Articles",
     "",
     ...posts
