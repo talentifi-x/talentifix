@@ -23,7 +23,7 @@ export function Breadcrumbs({
       {/* One line: the current page's name is cut short with an ellipsis. Links get a
           44 px tap height (the WCAG target size for touch). */}
       <nav aria-label="Breadcrumb" className={`text-sm font-sans text-dark/70 ${className}`}>
-        <ol className="flex items-center gap-x-1.5">
+        <ol className={`flex items-center gap-x-1.5 ${items.length > 3 ? "flex-wrap" : ""}`}>
           {items.map((crumb, i) => {
             const last = i === items.length - 1;
             return (

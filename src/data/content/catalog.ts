@@ -24,7 +24,7 @@ export const CATALOG: CatalogEntry[] = [
   { id: "hub-talent", kind: "hub", path: "/talent", navLabel: "Technology talent" },
   { id: "hub-challenges", kind: "hub", path: "/hiring-challenges", navLabel: "Hiring challenges" },
   { id: "hub-intelligence", kind: "hub", path: "/hiring-intelligence", navLabel: "Hiring Intelligence" },
-  { id: "hub-compare", kind: "hub", path: "/hiring-intelligence/compare", navLabel: "Hiring model comparisons", parent: "hub-intelligence" },
+  { id: "hub-compare", kind: "hub", path: "/hiring-intelligence/compare", navLabel: "Comparisons", parent: "hub-intelligence" },
 
   // Talent specialisms
   { id: "talent-ai-ml", kind: "talent", path: "/talent/ai-machine-learning-talent", navLabel: "AI & Machine Learning", parent: "hub-talent" },

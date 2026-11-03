@@ -224,6 +224,10 @@ export function validateContentPages(pages: ContentPage[]): { errors: string[]; 
         }
         if (block.type === "pageLinks")
           block.ids.forEach((id) => catalog.has(id) || err(`pageLinks id "${id}" is not in catalog.ts`));
+        if (block.type === "cards")
+          for (const card of block.items)
+            if (card.href && !(catalogPaths.has(card.href.split("#")[0]) || STATIC_ROUTES.includes(card.href) || /^\/blog\/[a-z0-9-]+$/.test(card.href)))
+              err(`card "${card.title}" links to unknown path ${card.href}`);
       }
     }
 
@@ -240,7 +244,8 @@ export function validateContentPages(pages: ContentPage[]): { errors: string[]; 
       const nonAscii = text.match(/[^\x00-\x7F]/g);
       if (nonAscii) err(`${where}: non-ASCII characters ${JSON.stringify([...new Set(nonAscii)].join(""))} in "${text.slice(0, 80)}"`);
       if (/\S - \S/.test(text) || / -- /.test(text)) err(`${where}: spaced hyphen used as a dash in "${text.slice(0, 80)}"`);
-      for (const match of text.match(BRAND) ?? []) if (match !== "TalentiFi-X") err(`${where}: brand written "${match}"`);
+      // Brand spelling applies to the words people read, not to URLs such as /insights/talentifi-x-...
+      for (const match of text.replace(LINK, "$1").match(BRAND) ?? []) if (match !== "TalentiFi-X") err(`${where}: brand written "${match}"`);
       const uk = text.match(UK_SPELLING);
       if (uk) err(`${where}: British spelling "${uk[0]}"`);
       const lower = text.toLowerCase();
