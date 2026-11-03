@@ -64,9 +64,17 @@ export type Block =
   /** Hub pages: cards for published blog posts, by slug. */
   | { type: "postLinks"; slugs: string[] };
 
+/** A photo in /public, shown with next/image. Alt text describes what it shows. */
+export interface ContentImage {
+  src: string;
+  alt: string;
+}
+
 export interface Section {
   /** Rendered as the section's h2. */
   heading: string;
+  /** Optional photo shown beside the section's opening text. */
+  image?: ContentImage;
   /** Anchor id; defaults to a slug of the heading. */
   id?: string;
   blocks: Block[];
@@ -117,6 +125,8 @@ export interface ContentPage {
   intro: string[];
   /** Brand line shown under the hero copy, e.g. "Human Led. AI Assisted." */
   tagline?: string;
+  /** Optional photo beside the hero copy. */
+  heroImage?: ContentImage;
   sections: Section[];
   faqs: Faq[];
   cta: { heading: string; text: string; button: string };

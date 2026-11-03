@@ -210,6 +210,17 @@ export function validateContentPages(pages: ContentPage[]): { errors: string[]; 
       if (words(faq.answer).length > 120) warn(`long FAQ answer (${words(faq.answer).length} words): "${faq.question}"`);
     }
 
+    const images = [
+      ...(page.heroImage ? [{ where: "heroImage", image: page.heroImage }] : []),
+      ...page.sections.flatMap((section) => (section.image ? [{ where: `section "${section.heading}" image`, image: section.image }] : [])),
+    ];
+    for (const { where, image } of images) {
+      if (!image.src.startsWith("/") || !/\.(webp|avif|jpg|jpeg|png)$/.test(image.src)) err(`${where}: src "${image.src}" must be a /public path to an image`);
+      if (image.alt.length < 20 || image.alt.length > 160) err(`${where}: alt text is ${image.alt.length} chars (20-160)`);
+      // eslint-disable-next-line no-control-regex
+      if (/[^ -]/.test(image.alt)) err(`${where}: alt text has non-ASCII characters`);
+    }
+
     const headings = new Set<string>();
     for (const section of page.sections) {
       const key = section.heading.toLowerCase();

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Check, HelpCircle, Plus, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, HelpCircle, Plus, X } from "lucide-react";
 import { resolveHref, visiblePageById, type ContentPage } from "@data/content";
 import type { Block, Card } from "@data/content/types";
 import type { PostSummary } from "@lib/contentPage";
 import { RichText } from "./RichText";
+import { cardIcon } from "./cardIcon";
 
 export const cardTitle = "font-notch font-bold text-dark text-[18px] leading-snug";
 export const cardText = "mt-2 text-dark/70 text-[15px] leading-relaxed";
@@ -14,16 +15,17 @@ function Label({ children }: { children: React.ReactNode }) {
   return <p className="mb-4 font-notch font-bold text-dark text-[15px] sm:text-base">{children}</p>;
 }
 
-function CardItem({ card, index }: { card: Card; index: number }) {
+function CardItem({ card }: { card: Card }) {
   // A card linking to a page that is not live falls back like inline links do.
   const href = card.href ? resolveHref(card.href) : null;
+  const Icon = cardIcon(card.title);
   const body = (
     <>
       <span className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-linear-to-r from-primary to-secondary opacity-80" aria-hidden="true" />
-      <span className="font-notch font-bold text-primary/30 text-sm tracking-widest" aria-hidden="true">
-        {String(index + 1).padStart(2, "0")}
+      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.07] text-primary ring-1 ring-primary/10" aria-hidden="true">
+        <Icon className="h-5 w-5" strokeWidth={1.8} />
       </span>
-      <h3 className={`${cardTitle} mt-2 ${href ? "group-hover:text-primary transition-colors" : ""}`}>{card.title}</h3>
+      <h3 className={`${cardTitle} mt-4 ${href ? "group-hover:text-primary transition-colors" : ""}`}>{card.title}</h3>
       {card.text && (
         <p className={cardText}>
           <RichText text={card.text} />
@@ -103,15 +105,33 @@ export function LinkCards({
   );
 }
 
-/** Paragraphs, set in the reading column. */
+/** Past this many characters, a run of paragraphs shows its first one and folds the rest. */
+const FOLD_AFTER = 600;
+
+/**
+ * Paragraphs, set in the reading column. A long run keeps its first paragraph
+ * visible and folds the rest behind "Read more"; the text stays in the HTML.
+ */
 export function Paragraphs({ items, lead = false }: { items: string[]; lead?: boolean }) {
+  const style = lead ? "text-dark/80 text-[18px] leading-[1.7]" : bodyText;
+  const paragraph = (text: string) => (
+    <p key={text.slice(0, 48)} className={style}>
+      <RichText text={text} />
+    </p>
+  );
+  const fold = items.length > 1 && items.join(" ").length > FOLD_AFTER;
+  if (!fold) return <div className="space-y-5">{items.map(paragraph)}</div>;
   return (
     <div className="space-y-5">
-      {items.map((text) => (
-        <p key={text.slice(0, 48)} className={lead ? "text-dark/80 text-[18px] leading-[1.7]" : bodyText}>
-          <RichText text={text} />
-        </p>
-      ))}
+      {paragraph(items[0])}
+      <details className="group/more">
+        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1.5 text-primary font-semibold text-[15px] [&::-webkit-details-marker]:hidden">
+          <span className="group-open/more:hidden">Read more</span>
+          <span className="hidden group-open/more:inline">Show less</span>
+          <ChevronDown className="h-4 w-4 transition-transform group-open/more:rotate-180" aria-hidden="true" />
+        </summary>
+        <div className="mt-3 space-y-5">{items.slice(1).map(paragraph)}</div>
+      </details>
     </div>
   );
 }
@@ -221,8 +241,8 @@ export function ContentBlock({ block, posts }: { block: Block; posts: Record<str
       const three = block.columns !== 2 && short && block.items.length >= 3;
       return (
         <div className={`grid grid-cols-1 gap-4 sm:grid-cols-2 ${three ? "lg:grid-cols-3" : ""}`}>
-          {block.items.map((card, i) => (
-            <CardItem key={card.title} card={card} index={i} />
+          {block.items.map((card) => (
+            <CardItem key={card.title} card={card} />
           ))}
         </div>
       );

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Breadcrumbs } from "@components/seo/Breadcrumbs";
@@ -91,34 +92,59 @@ function SectionView({
   id,
   tinted,
   posts,
+  flip = false,
 }: {
   section: Section;
   index: number;
   id: string;
   tinted: boolean;
   posts: Record<string, PostSummary>;
+  /** Puts the section image on the left, so images alternate down the page. */
+  flip?: boolean;
 }) {
   const [first, ...others] = section.blocks;
   const lead = first?.type === "paragraphs" ? first : null;
   const blocks = groupBlocks(lead ? others : section.blocks);
+  const heading = (
+    <>
+      <p className="font-notch font-bold text-primary text-sm tracking-[0.2em]" aria-hidden="true">
+        {pad(index + 1)}
+      </p>
+      <h2 className="mt-3 font-notch font-bold text-dark text-[29px] sm:text-[36px] lg:text-[40px] leading-[1.12] text-balance">
+        <TwoTone text={section.heading} />
+      </h2>
+    </>
+  );
   return (
     <section id={id} className={`w-full px-6 md:px-8 py-16 lg:py-24 scroll-mt-36 ${tinted ? "bg-grey-accent/60" : "bg-white"}`}>
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-14">
-          <div className={lead ? "lg:col-span-5" : "lg:col-span-10"}>
-            <p className="font-notch font-bold text-primary text-sm tracking-[0.2em]" aria-hidden="true">
-              {pad(index + 1)}
-            </p>
-            <h2 className="mt-3 font-notch font-bold text-dark text-[29px] sm:text-[36px] lg:text-[40px] leading-[1.12]">
-              <TwoTone text={section.heading} />
-            </h2>
+        {section.image ? (
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+            <div className={`lg:col-span-6 ${flip ? "lg:order-2" : ""}`}>
+              {heading}
+              {lead && (
+                <div className="mt-6">
+                  <Paragraphs items={lead.items} lead />
+                </div>
+              )}
+            </div>
+            <figure
+              className={`relative aspect-[4/3] overflow-hidden rounded-3xl bg-grey-accent shadow-[0_30px_60px_-30px_rgba(0,0,153,0.45)] lg:col-span-6 ${flip ? "lg:order-1" : ""}`}
+            >
+              <Image src={section.image.src} alt={section.image.alt} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+              <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20" aria-hidden="true" />
+            </figure>
           </div>
+        ) : (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-14">
+          <div className={lead ? "lg:col-span-5" : "lg:col-span-10"}>{heading}</div>
           {lead && (
             <div className="lg:col-span-7 lg:pt-10">
               <Paragraphs items={lead.items} lead />
             </div>
           )}
         </div>
+        )}
         {blocks.length > 0 && (
           <div className="mt-10 lg:mt-12 flex flex-col gap-10">
             {blocks.map((block, j) =>
@@ -196,12 +222,16 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
       >
         <div className="max-w-6xl mx-auto">
           <Breadcrumbs items={crumbs} withSchema={false} className="mb-3" />
-          <div className={`grid grid-cols-1 gap-10 ${commercial ? "lg:grid-cols-12 lg:gap-12 lg:items-center" : ""}`}>
-            <div className={commercial ? "lg:col-span-8" : "max-w-4xl"}>
+          <div
+            className={`grid grid-cols-1 gap-10 ${
+              page.heroImage ? "lg:grid-cols-12 lg:gap-12 lg:items-stretch" : commercial ? "lg:grid-cols-12 lg:gap-12 lg:items-center" : ""
+            }`}
+          >
+            <div className={page.heroImage ? "lg:col-span-7 lg:self-center" : commercial ? "lg:col-span-8" : "max-w-4xl"}>
               <span className="inline-block text-primary font-notch font-bold text-xs tracking-[0.18em] uppercase border border-primary/25 px-3.5 py-1.5 rounded-full bg-white/70">
                 {page.eyebrow}
               </span>
-              <h1 className={`mt-4 font-notch font-bold text-dark leading-[1.08] ${h1Size}`}>
+              <h1 className={`mt-4 font-notch font-bold text-dark leading-[1.08] text-balance ${h1Size}`}>
                 <TwoTone text={page.h1} />
               </h1>
               {page.lead && <p className="mt-4 text-dark text-[18px] sm:text-[20px] font-semibold leading-snug max-w-3xl">{page.lead}</p>}
@@ -227,7 +257,34 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
               </div>
               {!commercial && <p className="mt-5 text-dark/55 text-[13px]">Updated {formatDate(page.updated)}</p>}
             </div>
-            {commercial && (
+            {page.heroImage && (
+              <div className="relative lg:col-span-5">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-grey-accent shadow-[0_30px_70px_-30px_rgba(0,0,153,0.5)] lg:aspect-auto lg:h-full lg:min-h-[380px]">
+                  <Image src={page.heroImage.src} alt={page.heroImage.alt} fill priority sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
+                  <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20" aria-hidden="true" />
+                </div>
+                {commercial && (
+                  <aside
+                    aria-label="At a glance"
+                    className="relative z-10 -mt-12 mx-4 rounded-2xl border border-white/70 bg-white/95 p-5 shadow-[0_24px_60px_-24px_rgba(0,0,153,0.45)] backdrop-blur sm:mx-8 lg:absolute lg:bottom-6 lg:-left-10 lg:mx-0 lg:mt-0 lg:w-[290px]"
+                  >
+                    <p className="font-notch font-bold text-dark text-[15px]">At a glance</p>
+                    <ul className="mt-3 flex flex-col gap-2.5">
+                      {AT_A_GLANCE.map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-dark/80 text-[13px] leading-snug">
+                          <span className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+                            <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden="true" />
+                          </span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 border-t border-gray-100 pt-2.5 text-dark/55 text-[11px]">Updated {formatDate(page.updated)}</p>
+                  </aside>
+                )}
+              </div>
+            )}
+            {commercial && !page.heroImage && (
               <aside
                 aria-label="At a glance"
                 className="relative lg:col-span-4 overflow-hidden rounded-2xl border border-gray-200/80 bg-white/90 p-6 shadow-[0_24px_60px_-28px_rgba(0,0,255,0.35)]"
@@ -319,7 +376,15 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* Sections */}
       {page.sections.map((section, i) => (
-        <SectionView key={sectionIds[i]} section={section} index={i} id={sectionIds[i]} tinted={i % 2 === 0} posts={posts} />
+        <SectionView
+          key={sectionIds[i]}
+          section={section}
+          index={i}
+          id={sectionIds[i]}
+          tinted={i % 2 === 0}
+          posts={posts}
+          flip={page.sections.slice(0, i).filter((s) => s.image).length % 2 === 1}
+        />
       ))}
 
       {/* Sources */}

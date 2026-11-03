@@ -94,6 +94,12 @@ for (const file of pageFiles) {
 
 const { errors, warnings } = validateContentPages(pages);
 
+// Every image the copy points at must exist in /public.
+for (const page of pages)
+  for (const image of [page.heroImage, ...page.sections.map((s) => s.image)].filter(Boolean))
+    if (!fs.existsSync(path.join(root, "public", image.src)))
+      errors.push(`${page.id}: image ${image.src} is not in /public`);
+
 // Related blog posts must exist on the live site.
 if (!offline) {
   try {

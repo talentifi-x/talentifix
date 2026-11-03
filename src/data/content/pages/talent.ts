@@ -46,6 +46,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "TalentiFi-X helps organizations identify and hire AI and machine learning professionals across that evolving landscape.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/ai-machine-learning-talent/hero.webp", alt: "AI engineer's desk with machine learning training charts and a neural network diagram on screen" },
     sections: [
       {
         heading: "The AI Talent Problem Has Changed",
@@ -208,6 +209,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From AI Experimentation to AI Execution",
+        image: { src: "/talent/ai-machine-learning-talent/ai-execution.webp", alt: "Engineers mapping an AI system from data to model, deployment and monitoring on a glass whiteboard" },
         blocks: [
           {
             type: "paragraphs",
@@ -315,6 +317,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Why AI Hiring Needs a Human Layer",
+        image: { src: "/talent/ai-machine-learning-talent/human-layer.webp", alt: "Recruiter reviewing a candidate's AI project architecture with them during an interview" },
         blocks: [
           {
             type: "paragraphs",
@@ -501,9 +504,11 @@ export const TALENT_PAGES: ContentPage[] = [
       "But: \"Can this person build, reason, ship and operate software in the environment our business actually runs in?\" TalentiFi-X helps organizations identify software engineering talent around that question.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/software-engineering-talent/hero.webp", alt: "Software engineer's workstation with code and a system architecture diagram on two monitors" },
     sections: [
       {
         heading: "Software Engineering Has Changed. Hiring Needs To Catch Up.",
+        image: { src: "/talent/software-engineering-talent/engineering-changed.webp", alt: "Engineering team collaborating over laptops with code and cloud architecture sketches" },
         blocks: [
           {
             type: "paragraphs",
@@ -767,6 +772,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From Code to Production",
+        image: { src: "/talent/software-engineering-talent/code-to-production.webp", alt: "Deployment pipeline with build, test and release stages on an office screen and a laptop" },
         blocks: [
           {
             type: "paragraphs",
@@ -1061,6 +1067,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "TalentiFi-X helps organizations identify professionals across data engineering, analytics, data science, business intelligence and emerging AI-driven data capabilities.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/data-analytics-talent/hero.webp", alt: "Data analyst reviewing analytics dashboards on a monitor and a tablet" },
     sections: [
       {
         heading: "The Data Team Is Changing",
@@ -1103,6 +1110,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From Reporting to Decision Intelligence",
+        image: { src: "/talent/data-analytics-talent/decision-intelligence.webp", alt: "Team discussing a highlighted forecast trend on a laptop beside printed charts" },
         blocks: [
           {
             type: "paragraphs",
@@ -1313,6 +1321,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Data Engineering Is Becoming a Strategic Capability",
+        image: { src: "/talent/data-analytics-talent/data-engineering.webp", alt: "Data pipeline diagram flowing from several sources into a data warehouse on a monitor" },
         blocks: [
           {
             type: "paragraphs",
@@ -1621,6 +1630,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "Today, organizations may need cloud engineers, DevOps engineers, platform engineers, SREs, cloud architects, DevSecOps specialists and professionals who understand the economics of running technology at scale. TalentiFi-X helps organizations identify talent across this evolving cloud and infrastructure ecosystem.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/cloud-devops-talent/hero.webp", alt: "Platform engineer's desk with a cloud infrastructure topology on an ultrawide monitor" },
     sections: [
       {
         heading: "Cloud Hiring Has Changed",
@@ -1656,6 +1666,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From DevOps to Platform Engineering",
+        image: { src: "/talent/cloud-devops-talent/platform-engineering.webp", alt: "Engineers arranging a self-service platform diagram beside a build, test and deploy pipeline" },
         blocks: [
           {
             type: "paragraphs",
@@ -1859,6 +1870,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Reliability Is Becoming a Business Capability",
+        image: { src: "/talent/cloud-devops-talent/reliability.webp", alt: "Operations room with uptime and latency dashboards watched by a site reliability engineer" },
         blocks: [
           {
             type: "paragraphs",
@@ -2301,6 +2313,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "TalentiFi-X helps organizations identify cybersecurity professionals across this increasingly interconnected landscape.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/cybersecurity-talent/hero.webp", alt: "Security operations desk with a network threat map and alert timelines on several monitors" },
     sections: [
       {
         heading: "Cybersecurity Has Become an Ecosystem",
@@ -2505,6 +2518,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Cloud Has Changed the Security Job",
+        image: { src: "/talent/cybersecurity-talent/cloud-security.webp", alt: "Laptop showing cloud identity and access paths beside a hardware security key and phone sign-in" },
         blocks: [
           {
             type: "paragraphs",
@@ -2622,6 +2636,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "The Security Professional Needs to Understand the Business",
+        image: { src: "/talent/cybersecurity-talent/security-business.webp", alt: "Security leader presenting a risk heat map to executives in a boardroom" },
         blocks: [
           {
             type: "paragraphs",
@@ -2899,6 +2914,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "TalentiFi-X helps organizations identify ERP and SAP professionals across functional, technical, architecture, implementation and transformation requirements.",
     ],
     tagline: "Human Led. AI Assisted.",
+    heroImage: { src: "/talent/erp-sap-talent/hero.webp", alt: "Consultant reviewing an ERP dashboard and a business process diagram on a tablet" },
     sections: [
       {
         heading: "SAP Hiring Is Changing With the ERP Landscape",
@@ -2941,6 +2957,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From ERP Implementation to Business Transformation",
+        image: { src: "/talent/erp-sap-talent/business-transformation.webp", alt: "Business process map of sticky notes on a workshop wall during an ERP transformation" },
         blocks: [
           {
             type: "paragraphs",
@@ -3117,6 +3134,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "S/4HANA Has Changed the Talent Conversation",
+        image: { src: "/talent/erp-sap-talent/s4hana.webp", alt: "Supply chain, warehouse and finance dashboards on monitors during an SAP S/4HANA migration" },
         blocks: [
           {
             type: "paragraphs",
