@@ -459,8 +459,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "define-fde",
     ],
     relatedPosts: [
+      "one-job-title-five-different-roles-technical-hiring",
       "how-to-choose-it-staffing-agency-usa",
-      "contract-staffing-india-guide",
       "too-many-job-applications-hiring-challenges",
     ],
     service: {
@@ -2866,9 +2866,9 @@ export const TALENT_PAGES: ContentPage[] = [
       "solution-gcc",
     ],
     relatedPosts: [
+      "one-job-title-five-different-roles-technical-hiring",
       "how-to-choose-it-staffing-agency-usa",
       "too-many-job-applications-hiring-challenges",
-      "contract-staffing-india-guide",
     ],
     service: {
       serviceType: "Cybersecurity staffing",
