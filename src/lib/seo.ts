@@ -143,6 +143,20 @@ export const DEFAULT_SHARE_IMAGE = {
 
 type ShareImage = { url: string; width?: number; height?: number; alt?: string };
 
+export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
+
+/**
+ * A page's own share image, drawn by the opengraph-image.tsx file in its route
+ * folder (see @lib/shareImage). It must be passed to `pageMetadata({ image })`:
+ * Next.js ignores a segment's image file when the page's metadata lists images,
+ * and pageMetadata always does.
+ */
+export const pageShareImage = (path: string, alt: string): ShareImage => ({
+  url: `${path.replace(/\/$/, "")}/opengraph-image`,
+  ...SHARE_IMAGE_SIZE,
+  alt,
+});
+
 /**
  * Complete metadata for one page: title, description, canonical and the share
  * tags that WhatsApp, LinkedIn and X read (og:* and twitter:*).

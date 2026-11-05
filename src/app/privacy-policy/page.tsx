@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="w-full bg-white flex flex-col items-center">
+    <div className="w-full bg-white flex flex-col items-center">
       {/* Hero Section */}
       <section className="w-full bg-linear-to-r from-[#0000FF] to-blue py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -928,6 +928,6 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

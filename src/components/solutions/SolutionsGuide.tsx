@@ -1,7 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-/** Points buyers comparing agencies to the guide that answers that question. */
+/**
+ * Points buyers comparing agencies to the guides that answer that question: the
+ * agency checklist and the contract staffing guide for India (the page Google
+ * already shows for "contract staffing in india").
+ */
 export const SolutionsGuide = () => {
   return (
     <section className="w-full bg-white">
@@ -16,12 +20,20 @@ export const SolutionsGuide = () => {
               screens candidates to how it prices contract, contract-to-hire and direct hire roles.
             </p>
           </div>
-          <Link
-            href="/blog/how-to-choose-it-staffing-agency-usa"
-            className="shrink-0 inline-flex min-h-11 items-center px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity"
-          >
-            How to choose an IT staffing agency
-          </Link>
+          <div className="shrink-0 flex flex-col gap-3">
+            <Link
+              href="/blog/how-to-choose-it-staffing-agency-usa"
+              className="inline-flex min-h-11 items-center justify-center px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity"
+            >
+              How to choose an IT staffing agency
+            </Link>
+            <Link
+              href="/blog/contract-staffing-india-guide"
+              className="inline-flex min-h-11 items-center justify-center px-6 py-3 border border-primary text-primary rounded-sm font-sans font-medium hover:bg-primary/5 transition-colors"
+            >
+              Contract staffing in India: the guide
+            </Link>
+          </div>
         </div>
       </div>
     </section>

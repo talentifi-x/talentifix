@@ -68,6 +68,44 @@ export const jobType = defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
+      name: "validThrough",
+      title: "Applications Close",
+      type: "datetime",
+      description:
+        "Optional. Only set this if the role has a real closing date: it is shown on the job page and sent to Google Jobs, which drops the listing after that date. Leave blank for roles open until filled.",
+    }),
+    defineField({
+      name: "salary",
+      title: "Salary Range",
+      type: "object",
+      description:
+        "Optional. Shown on the job page and sent to Google Jobs, which recommends pay details and displays them in its listing. Fill the minimum (and the maximum for a range), the currency and the period.",
+      fields: [
+        defineField({ name: "min", title: "Minimum", type: "number", validation: (Rule) => Rule.min(0) }),
+        defineField({ name: "max", title: "Maximum", type: "number", validation: (Rule) => Rule.min(0) }),
+        defineField({
+          name: "currency",
+          title: "Currency",
+          type: "string",
+          options: { list: ["INR", "USD"] },
+          initialValue: "INR",
+        }),
+        defineField({
+          name: "unit",
+          title: "Per",
+          type: "string",
+          options: {
+            list: [
+              { title: "Year", value: "YEAR" },
+              { title: "Month", value: "MONTH" },
+              { title: "Hour", value: "HOUR" },
+            ],
+          },
+          initialValue: "YEAR",
+        }),
+      ],
+    }),
+    defineField({
       name: "aboutRole",
       title: "About the Role",
       type: "text",

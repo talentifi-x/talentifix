@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin, Briefcase, Clock } from "lucide-react";
 import { getAllSanityJobs, type SanityJob } from "@/sanity/lib/queries";
-import { pageMetadata } from "@lib/seo";
+import { pageMetadata, pageShareImage } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Careers: Open Roles at Our Bengaluru Office",
   description:
     "Build the future of hiring with TalentiFi-X. See open roles in recruitment, staffing and business development at our Bengaluru office, and apply today.",
   path: "/jobs",
+  image: pageShareImage("/jobs", "Careers at TalentiFi-X: open roles at our Bengaluru office"),
 });
 
 export const revalidate = 60;
@@ -28,12 +29,13 @@ export default async function JobsPage() {
       {/* Hero */}
       <section className="w-full px-6 md:px-14 py-20 lg:py-28 relative overflow-hidden bg-white">
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-6 text-center">
-          <span className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto">
-            Careers
-          </span>
-          <h1 className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[110px] leading-none font-bold text-dark font-notch tracking-tight">
-            Open Roles<span className="text-secondary">.</span>
+          {/* The label is the H1 (what people search for); the slogan below is styling only. */}
+          <h1 className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto">
+            Careers at TalentiFi-X
           </h1>
+          <p className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[110px] leading-none font-bold text-dark font-notch tracking-tight">
+            Open Roles<span className="text-secondary">.</span>
+          </p>
           <p className="text-dark/60 font-sans text-lg md:text-2xl max-w-2xl leading-relaxed mt-2 mx-auto">
             Build the future of hiring with us. Human Led · AI Assisted.
           </p>

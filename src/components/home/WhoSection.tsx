@@ -43,7 +43,7 @@ export const WhoSection = () => {
             <button
               onClick={() => setActiveTab("leaders")}
               className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "leaders" ? "text-black" : "text-[#A0A0A0]"
+                activeTab === "leaders" ? "text-black" : "text-[#707070]"
               }`}
             >
               <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">
@@ -58,7 +58,7 @@ export const WhoSection = () => {
             <button
               onClick={() => setActiveTab("teams")}
               className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "teams" ? "text-black" : "text-[#A0A0A0]"
+                activeTab === "teams" ? "text-black" : "text-[#707070]"
               }`}
             >
               <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">
@@ -73,7 +73,7 @@ export const WhoSection = () => {
             <button
               onClick={() => setActiveTab("talent")}
               className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "talent" ? "text-black" : "text-[#A0A0A0]"
+                activeTab === "talent" ? "text-black" : "text-[#707070]"
               }`}
             >
               <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">

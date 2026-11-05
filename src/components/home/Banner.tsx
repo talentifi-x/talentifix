@@ -10,10 +10,16 @@ export const Banner = () => {
             the bottom-left card, so the old sm:-mt-20 would pull this text into
             it; the gap it used to close is part of that band. */}
         <div className="flex flex-col gap-8 mt-4 lg:mt-0 z-10">
-          <h1 className="text-[50px] md:text-[80px] leading-none font-bold text-dark font-notch tracking-tight">
-            Staffing<span className="text-secondary">.</span> <br />
-            Rebuilt<span className="text-secondary">.</span>
-          </h1>
+          {/* The H1 carries the search phrase; the slogan stays the visual headline. */}
+          <div className="flex flex-col gap-4">
+            <h1 className="text-primary font-notch font-bold text-sm md:text-base tracking-[0.18em] uppercase">
+              AI, ML &amp; cybersecurity staffing in India and the US
+            </h1>
+            <p className="text-[50px] md:text-[80px] leading-none font-bold text-dark font-notch tracking-tight">
+              Staffing<span className="text-secondary">.</span> <br />
+              Rebuilt<span className="text-secondary">.</span>
+            </p>
+          </div>
 
           <div className="flex flex-col  gap-4 mt-4">
             <Link
@@ -96,6 +102,8 @@ export const Banner = () => {
               fill
               sizes="(max-width: 1023px) 380px, 600px"
               className="object-contain"
+              // The page's LCP element: preload puts it in <head> so it downloads with the HTML.
+              preload
               fetchPriority="high"
               loading="eager"
             />

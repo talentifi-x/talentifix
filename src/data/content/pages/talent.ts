@@ -15,7 +15,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "AI & Machine Learning",
     summary: "AI engineers, ML and LLM engineers, MLOps, data science, AI product and AI leadership talent, hired for capability rather than keywords.",
-    title: "AI Staffing & Machine Learning Recruitment",
+    title: "AI Staffing & Machine Learning Recruitment, USA & India",
     description: "Hire AI and machine learning talent for production, GenAI, data and emerging tech roles. TalentiFi-X combines human judgment with AI-assisted search.",
     primaryKeyword: "AI staffing",
     keywords: [
@@ -37,8 +37,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "AI staffing agency USA",
       "AI staffing agency India",
     ],
-    eyebrow: "AI & ML staffing",
-    h1: "AI & Machine Learning Talent",
+    eyebrow: "Technology talent",
+    h1: "AI & Machine Learning Staffing in the USA and India",
     lead: "AI Is Moving Into Production. Your Talent Strategy Has to Move With It.",
     intro: [
       "AI hiring is no longer limited to data scientists and machine learning researchers.",
@@ -461,7 +461,7 @@ export const TALENT_PAGES: ContentPage[] = [
     relatedPosts: [
       "one-job-title-five-different-roles-technical-hiring",
       "how-to-choose-it-staffing-agency-usa",
-      "too-many-job-applications-hiring-challenges",
+      "bengaluru-tech-talent-evaluation-us-companies-india",
     ],
     service: {
       serviceType: "AI and machine learning staffing",
@@ -476,7 +476,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Software Engineering",
     summary: "Backend, frontend, full-stack, mobile, platform and AI-enabled software engineers, architects and engineering leaders.",
-    title: "Software Engineering Staffing and Recruitment",
+    title: "Software Engineering Staffing & Recruitment, USA & India",
     description: "Software engineering staffing for product, enterprise, cloud and AI-enabled development, with human-led, AI-assisted hiring in the USA and India.",
     primaryKeyword: "software engineering staffing",
     keywords: [
@@ -494,8 +494,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "software development staffing",
       "technical talent acquisition",
     ],
-    eyebrow: "Software engineering staffing",
-    h1: "Software Engineering Talent for the Products, Platforms and Systems You're Building",
+    eyebrow: "Technology talent",
+    h1: "Software Engineering Staffing in the USA and India",
     lead: "Software Is Being Rewritten. The Engineers Building It Are Changing Too.",
     intro: [
       "Software engineering used to be easier to define. Frontend. Backend. Full stack. Mobile. Today, the boundaries are less clear.",
@@ -1011,7 +1011,11 @@ export const TALENT_PAGES: ContentPage[] = [
       "challenge-gcc-scale",
       "hub-compare",
     ],
-    relatedPosts: ["how-to-choose-it-staffing-agency-usa", "too-many-job-applications-hiring-challenges"],
+    relatedPosts: [
+      "bengaluru-tech-talent-evaluation-us-companies-india",
+      "how-to-choose-it-staffing-agency-usa",
+      "too-many-job-applications-hiring-challenges",
+    ],
     sources: [
       {
         title: "The results of the 2026 Developer Survey are here",
@@ -1039,7 +1043,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Data & Analytics",
     summary: "Data analysts, BI developers, analytics and data engineers, data scientists, data architects and data leaders.",
-    title: "Data & Analytics Staffing and Recruitment",
+    title: "Data & Analytics Staffing and Recruitment, USA & India",
     description: "Data and analytics staffing for data engineering, analytics, data science and AI-driven decisions, with technology hiring across the USA and India.",
     primaryKeyword: "data and analytics staffing",
     keywords: [
@@ -1058,8 +1062,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "data staffing agency USA",
       "data staffing agency India",
     ],
-    eyebrow: "Data & analytics staffing",
-    h1: "Data & Analytics Talent for Better Decisions, Better Products and Better Business",
+    eyebrow: "Technology talent",
+    h1: "Data & Analytics Staffing in the USA and India",
     lead: "Data Has Never Been More Valuable. But Data Alone Doesn't Create Value.",
     intro: [
       "Companies have more data than ever. Customer data. Product data. Financial data. Operational data. Market data. Behavioral data. And increasingly, AI systems depend on good data to work effectively. Yet having more data does not automatically create better decisions.",
@@ -1580,7 +1584,7 @@ export const TALENT_PAGES: ContentPage[] = [
     relatedPosts: [
       "how-to-choose-it-staffing-agency-usa",
       "contract-staffing-india-guide",
-      "too-many-job-applications-hiring-challenges",
+      "india-us-talent-bridge-2026-global-hiring",
     ],
     sources: [
       {
@@ -1602,7 +1606,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Cloud & DevOps",
     summary: "Cloud, DevOps, platform engineering, SRE, DevSecOps, cloud security and FinOps talent for modern infrastructure.",
-    title: "Cloud & DevOps Staffing and Recruitment",
+    title: "Cloud & DevOps Staffing and Recruitment, USA & India",
     description: "Cloud and DevOps staffing for platform engineering, SRE and cloud infrastructure teams. TalentiFi-X supports cloud hiring across the USA and India.",
     primaryKeyword: "cloud and DevOps staffing",
     keywords: [
@@ -1621,8 +1625,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "cloud staffing agency India",
       "cloud infrastructure staffing",
     ],
-    eyebrow: "Cloud & DevOps staffing",
-    h1: "Cloud & DevOps Talent for Modern, Scalable Technology",
+    eyebrow: "Technology talent",
+    h1: "Cloud & DevOps Staffing in the USA and India",
     lead: "The Cloud Is No Longer the Destination. It's the Operating Environment.",
     intro: [
       "Cloud adoption has changed the way organizations build and operate technology. But moving workloads to AWS, Azure or Google Cloud is only the beginning.",
@@ -2252,7 +2256,7 @@ export const TALENT_PAGES: ContentPage[] = [
     ],
     relatedPosts: [
       "how-to-choose-it-staffing-agency-usa",
-      "too-many-job-applications-hiring-challenges",
+      "india-us-talent-bridge-2026-global-hiring",
       "contract-staffing-india-guide",
     ],
     sources: [
@@ -2287,7 +2291,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Cybersecurity",
     summary: "Security engineering, cloud and application security, SOC, IAM, incident response, GRC and security leadership talent.",
-    title: "Cybersecurity Staffing and Recruitment",
+    title: "Cybersecurity Staffing and Recruitment, USA & India",
     description: "Cybersecurity staffing across security engineering, cloud and application security, IAM, SOC, GRC and security leadership in the USA and India.",
     primaryKeyword: "cybersecurity staffing",
     keywords: [
@@ -2304,8 +2308,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "information security staffing",
       "information security recruitment",
     ],
-    eyebrow: "Cybersecurity staffing",
-    h1: "Cybersecurity Talent for a Threat Landscape That Keeps Changing",
+    eyebrow: "Technology talent",
+    h1: "Cybersecurity Staffing in the USA and India",
     lead: "Security Is No Longer a Technology Function Sitting Beside the Business.",
     intro: [
       "As organizations become more digital, the boundary between technology and security becomes harder to separate. Applications are business infrastructure. Cloud environments are business infrastructure. Identity systems are business infrastructure. Data is business infrastructure. AI is becoming business infrastructure.",
@@ -2868,7 +2872,7 @@ export const TALENT_PAGES: ContentPage[] = [
     relatedPosts: [
       "one-job-title-five-different-roles-technical-hiring",
       "how-to-choose-it-staffing-agency-usa",
-      "too-many-job-applications-hiring-challenges",
+      "cost-of-hiring-delay-60-days-impact",
     ],
     service: {
       serviceType: "Cybersecurity staffing",
@@ -2883,7 +2887,7 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "ERP & SAP",
     summary: "SAP S/4HANA, functional and technical SAP consultants, integration and architecture specialists, and ERP transformation leaders.",
-    title: "ERP & SAP Staffing and Recruitment",
+    title: "ERP & SAP Staffing and Recruitment, USA & India",
     description: "ERP and SAP staffing for SAP S/4HANA, implementation, integration, functional and technical roles. TalentiFi-X supports ERP hiring in the USA and India.",
     primaryKeyword: "ERP and SAP staffing",
     keywords: [
@@ -2905,8 +2909,8 @@ export const TALENT_PAGES: ContentPage[] = [
       "SAP technical staffing",
       "SAP functional staffing",
     ],
-    eyebrow: "ERP & SAP staffing",
-    h1: "ERP & SAP Talent for Enterprise Transformation",
+    eyebrow: "Technology talent",
+    h1: "ERP & SAP Staffing in the USA and India",
     lead: "ERP Is Not Just Software. It Is How the Business Runs.",
     intro: [
       "An ERP system sits much closer to the business than many technology platforms. Finance runs through it. Procurement runs through it. Supply chains depend on it. Manufacturing may depend on it. Human capital processes connect to it. Customer and operational data can flow through it. Which means an ERP transformation is rarely just a technology implementation.",

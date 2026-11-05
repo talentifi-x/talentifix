@@ -134,6 +134,17 @@ export interface SanityJobFull extends SanityJob {
   metaTitle?: string;
   metaDescription?: string;
   updatedAt?: string;
+  /** Real closing date only; never inferred. */
+  validThrough?: string;
+  salary?: JobSalary;
+}
+
+export interface JobSalary {
+  min?: number;
+  max?: number;
+  currency?: string;
+  /** schema.org unitText: YEAR, MONTH or HOUR. */
+  unit?: string;
 }
 
 export async function getAllSanityJobs(): Promise<SanityJob[]> {
@@ -196,7 +207,9 @@ export async function getSanityJobBySlug(
       whyJoinPoints,
       "updatedAt": _updatedAt,
       metaTitle,
-      metaDescription
+      metaDescription,
+      validThrough,
+      salary
     }`,
     { slug },
   );

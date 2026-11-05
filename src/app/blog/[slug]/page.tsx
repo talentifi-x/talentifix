@@ -18,6 +18,7 @@ import {
 } from "@/sanity/lib/queries";
 import { Breadcrumbs } from "@components/seo/Breadcrumbs";
 import { relatedPosts } from "@lib/blogTopics";
+import { talentLinksForPost } from "@lib/postTalent";
 import { JsonLd } from "@components/seo/JsonLd";
 import {
   FOUNDER_ID,
@@ -455,6 +456,7 @@ const formatDate = (iso: string) =>
 
 function SanityPostPage({ post, related }: { post: SanityPostFull; related: SanityPost[] }) {
   const date = post.publishedAt ? formatDate(post.publishedAt) : "";
+  const talent = talentLinksForPost(post);
   // Shown only when an editor recorded a real update after publication.
   const updated =
     post.lastUpdated &&
@@ -614,6 +616,9 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
             fill
             sizes="100vw"
             className="object-cover"
+            // The cover is the post's LCP element (4.5 s on Lighthouse mobile,
+            // 5 Nov 2026); preload starts it with the HTML instead of after it.
+            preload
             fetchPriority="high"
             loading="eager"
           />
@@ -657,7 +662,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                   { name: post.title, href: `/blog/${post.slug}` },
                 ]}
               />
-              <div className="flex items-center gap-4 text-dark/40 text-xs font-sans mb-4">
+              <div className="flex items-center gap-4 text-dark/70 text-xs font-sans mb-4">
                 {date && (
                   <time dateTime={post.publishedAt}>Published {date}</time>
                 )}
@@ -678,7 +683,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                 )}
               </div>
               {post.author && (
-                <div className="text-dark/60 font-sans text-[15px] mb-5">
+                <div className="text-dark/70 font-sans text-[15px] mb-5">
                   Author:{" "}
                   {isFounderByline(post.author) ? (
                     <Link href="/about" className="font-semibold text-dark hover:text-primary underline-offset-2 hover:underline">
@@ -743,19 +748,44 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
 
             {post.founderInsights && !isFounderByline(post.author) && <ExpertInsight />}
 
-            {/* Every post links to the matching service page and to related posts. */}
+            {/* Every post links to the specialist talent pages (the matching one
+                first) and to related posts, from inside the article. */}
             <section className="mt-14 rounded-[10px] border border-primary/20 bg-primary/5 p-6 md:p-8">
               <h2 className="text-[20px] md:text-[24px] font-notch font-bold text-dark mb-3">
                 How TalentiFi-X can help
               </h2>
-              <p className="text-dark/70 font-sans text-base leading-relaxed mb-5">
+              <p className="text-dark/70 font-sans text-base leading-relaxed mb-4">
                 We hire AI, ML, cybersecurity and GCC talent across India and the US: human-led
                 and AI-assisted, with a shortlist of a few well-matched candidates instead of a pile of CVs.
               </p>
+              {talent.pages.length > 0 && (
+                <ul className="flex flex-wrap gap-2 mb-6" aria-label="Specialist talent we hire">
+                  {talent.pages.map((page) => (
+                    <li key={page.id}>
+                      <Link
+                        href={page.path}
+                        className={`inline-flex min-h-11 items-center rounded-full border px-4 py-2 font-sans text-sm font-medium transition-colors ${
+                          page === talent.match
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-primary/20 bg-white text-dark/80 hover:border-primary/50 hover:text-primary"
+                        }`}
+                      >
+                        {page.navLabel} talent
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className="flex flex-wrap gap-3">
-                <Link href="/solutions" className="px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity">
-                  Explore our staffing solutions
-                </Link>
+                {talent.match ? (
+                  <Link href={talent.match.path} className="px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity">
+                    Hire {talent.match.navLabel} talent
+                  </Link>
+                ) : (
+                  <Link href="/solutions" className="px-6 py-3 bg-primary text-white rounded-sm font-sans font-medium hover:opacity-90 transition-opacity">
+                    Explore our staffing solutions
+                  </Link>
+                )}
                 <Link href="/start-hiring" className="px-6 py-3 border border-primary text-primary rounded-sm font-sans font-medium hover:bg-primary/5 transition-colors">
                   Start hiring
                 </Link>
@@ -778,7 +808,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                         <h3 className="font-notch font-bold text-dark text-[17px] leading-snug mb-2 group-hover:text-primary transition-colors">
                           {r.title}
                         </h3>
-                        {r.category && <p className="text-dark/50 font-sans text-xs uppercase tracking-wide">{r.category}</p>}
+                        {r.category && <p className="text-dark/70 font-sans text-xs uppercase tracking-wide">{r.category}</p>}
                       </Link>
                     </li>
                   ))}
@@ -868,7 +898,7 @@ export default async function BlogPostPage({ params }: Props) {
           <article className="flex-1 min-w-0">
             {/* Title + meta */}
             <header className="mb-10">
-              <div className="flex items-center gap-4 text-dark/40 text-xs font-sans mb-4">
+              <div className="flex items-center gap-4 text-dark/70 text-xs font-sans mb-4">
                 <span>{post.date}</span>
                 <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
                 <span className="flex items-center gap-1.5">
@@ -877,7 +907,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </span>
               </div>
               {post.author && (
-                <div className="text-dark/60 font-sans text-[15px] mb-5">
+                <div className="text-dark/70 font-sans text-[15px] mb-5">
                   Author:{" "}
                   {isFounderByline(post.author) ? (
                     <Link href="/about" className="font-semibold text-dark hover:text-primary underline-offset-2 hover:underline">

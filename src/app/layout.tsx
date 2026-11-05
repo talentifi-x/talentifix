@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import React from "react";
-import { preconnect } from "react-dom";
 
 import { ToastProvider } from "@providers/toast";
 import { JsonLd } from "@components/seo/JsonLd";
@@ -72,21 +71,27 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Open the Google Analytics connections early (Lighthouse's only preconnect
-  // candidate on 29 Sep 2026). React renders these as <link rel="preconnect"> in <head>.
-  preconnect("https://www.googletagmanager.com");
-  preconnect("https://www.google-analytics.com");
-
   return (
     <html lang="en" className={stackSansNotch.variable}>
       <body className={inter.className}>
         {/* Sitewide brand identity - every other page references these by @id. */}
         <JsonLd data={jsonLdGraph(organizationNode, websiteNode)} />
+        {/*
+          Analytics load after the page has finished loading (lazyOnload), not
+          straight after hydration. The gtag library is ~177 KB and Clarity ~28 KB
+          plus ~180 ms of script work on a phone; loaded earlier they competed with
+          the hero image (SEO audit, 5 Nov 2026). In a local A/B Lighthouse test
+          this lowered blocking time and steadied LCP; it is one part of the
+          mobile speed work, not the whole fix. The trade-off: a visitor who
+          leaves before the page finishes loading is not counted. The early
+          preconnects to Google were removed with this change, since nothing
+          on the critical path uses those origins any more.
+        */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VDENLSNNWP"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -95,7 +100,7 @@ export default async function RootLayout({
           `}
         </Script>
         {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
+          <Script id="microsoft-clarity" strategy="lazyOnload">
             {`
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

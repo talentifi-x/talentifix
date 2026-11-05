@@ -40,7 +40,7 @@ export function ExpertInsight() {
               {founderNode.name}
             </Link>
           </p>
-          <p className="font-sans text-dark/60 text-sm mt-1">Founder, TalentiFi-X</p>
+          <p className="font-sans text-dark/70 text-sm mt-1">Founder, TalentiFi-X</p>
           <p className="font-sans text-dark/70 text-base leading-relaxed mt-3">
             With nearly three decades across staffing, IT services and enterprise technology,
             Chetan has led large-scale talent and technology initiatives for Fortune 500

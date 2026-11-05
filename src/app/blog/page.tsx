@@ -45,14 +45,15 @@ export default async function BlogPage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
           {/* Text */}
           <div className="w-full lg:flex-1 flex flex-col gap-6 text-center lg:text-left">
-            <span className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto lg:mx-0">
-              Our Blog
-            </span>
-            <h1 className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[110px] leading-none font-bold text-dark font-notch tracking-tight">
+            {/* The label is the H1 (the search phrase); the slogan below is styling only. */}
+            <h1 className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto lg:mx-0">
+              Hiring &amp; recruitment insights
+            </h1>
+            <p className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[110px] leading-none font-bold text-dark font-notch tracking-tight">
               Insights<span className="text-secondary">.</span>
               <br />
               Ideas<span className="text-secondary">.</span>
-            </h1>
+            </p>
             <p className="text-dark/70 font-sans text-lg md:text-2xl max-w-xl leading-relaxed mt-2 mx-auto lg:mx-0">
               Perspectives on staffing, AI, and building the workforce of
               tomorrow.

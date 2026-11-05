@@ -9,13 +9,21 @@ export type PostSummary = { slug: string; title: string; introduction?: string }
 const ARTICLE_KINDS = new Set<ContentPage["kind"]>(["comparison", "guide", "definition"]);
 const SERVICE_KINDS = new Set<ContentPage["kind"]>(["talent", "solution", "market"]);
 
-export function contentMetadata(page: ContentPage): Metadata {
+/**
+ * `image`: the page's own share image, for routes that have an opengraph-image
+ * file (e.g. /talent/[slug]); without it the site default is used.
+ */
+export function contentMetadata(
+  page: ContentPage,
+  opts: { image?: Parameters<typeof pageMetadata>[0]["image"] } = {},
+): Metadata {
   const article = ARTICLE_KINDS.has(page.kind);
   return {
     ...pageMetadata({
       title: buildTitle(page.title, page.h1),
       description: page.description,
       path: page.path,
+      image: opts.image,
       type: article ? "article" : "website",
       publishedTime: article ? page.published : undefined,
       modifiedTime: article ? page.updated : undefined,

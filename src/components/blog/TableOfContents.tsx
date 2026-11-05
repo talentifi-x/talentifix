@@ -66,7 +66,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
             className={`flex min-h-11 lg:min-h-0 items-center text-left text-sm leading-snug py-1.5 px-2 rounded-md transition-colors w-full ${
               activeId === item.id
                 ? "bg-primary/8 text-primary font-semibold"
-                : "text-dark/50 hover:text-dark hover:bg-gray-50"
+                : "text-dark/70 hover:text-dark hover:bg-gray-50"
             } ${item.level === 2 ? "pl-5" : item.level === 3 ? "pl-8" : ""}`}
           >
             {item.title}

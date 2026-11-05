@@ -8,11 +8,15 @@ export const SolutionsBanner = () => {
     <section className="relative w-full bg-white px-6 md:px-14 py-6 lg:py-20">
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
         <div className="w-full lg:flex-1 text-center lg:text-left">
-          <h1 className="text-[36px] sm:text-[48px] lg:text-[60px] font-notch font-bold text-black mb-6 leading-tight">
-            Not Just Roles. Responsibility.
+          {/* The H1 carries the search phrase; the slogan below is the visual headline. */}
+          <h1 className="mb-4 text-primary font-notch font-bold text-sm sm:text-base tracking-[0.18em] uppercase">
+            Staffing solutions: contract, permanent &amp; executive search
           </h1>
+          <p className="text-[36px] sm:text-[48px] lg:text-[60px] font-notch font-bold text-black mb-6 leading-tight">
+            Not Just Roles. Responsibility.
+          </p>
           <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-black leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-            Hiring ins’t about filling sets. It’s about trusting someone with
+            Hiring isn’t about filling seats. It’s about trusting someone with
             your team, your culture, and your momentum.
           </p>
           <Link

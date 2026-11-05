@@ -7,10 +7,13 @@ import {
   Clock,
   Building2,
   Mail,
+  Wallet,
+  CalendarClock,
 } from "lucide-react";
 import {
   getAllSanityJobSlugs,
   getSanityJobBySlug,
+  type JobSalary,
   type SanityJobFull,
 } from "@/sanity/lib/queries";
 import { ApplyButton } from "@/components/jobs/ApplyButton";
@@ -67,11 +70,36 @@ export async function generateMetadata({
   });
 }
 
+const PERIOD: Record<string, string> = { YEAR: "a year", MONTH: "a month", HOUR: "an hour" };
+
+/** A salary that can be shown and marked up: a minimum and a currency at least. */
+function usableSalary(salary: JobSalary | undefined) {
+  if (!salary?.min || !salary.currency) return undefined;
+  const max = salary.max && salary.max > salary.min ? salary.max : undefined;
+  return { min: salary.min, max, currency: salary.currency, unit: salary.unit ?? "YEAR" };
+}
+
+/** "₹12,00,000 - ₹18,00,000 a year", in the currency's own number format. */
+function formatSalary(salary: NonNullable<ReturnType<typeof usableSalary>>) {
+  const money = new Intl.NumberFormat(salary.currency === "INR" ? "en-IN" : "en-US", {
+    style: "currency",
+    currency: salary.currency,
+    maximumFractionDigits: 0,
+  });
+  const range = salary.max ? `${money.format(salary.min)} - ${money.format(salary.max)}` : money.format(salary.min);
+  return `${range} ${PERIOD[salary.unit] ?? ""}`.trim();
+}
+
+const formatDay = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
+
 /**
  * JobPosting structured data - the entry ticket for Google Jobs.
  *
- * `validThrough` is deliberately omitted: inventing an expiry date would make
- * Google drop live roles. Open postings simply stay live until removed from the CMS.
+ * `validThrough` and `baseSalary` are sent only when an editor has filled them
+ * in Sanity, and both are also shown on the page (Google requires the markup to
+ * match what the posting displays). An expiry date is never inferred: a guessed
+ * date would make Google drop a live role.
  */
 function buildJobSchema(job: SanityJobFull, slug: string) {
   const pageUrl = `${SITE_URL}/jobs/${slug}`;
@@ -90,6 +118,7 @@ function buildJobSchema(job: SanityJobFull, slug: string) {
   const employmentTypes = toEmploymentTypes(job.employmentType);
   const location = toJobLocation(job.location);
   const remote = isRemote(job.location, job.employmentType);
+  const salary = usableSalary(job.salary);
 
   return jsonLdGraph(
     {
@@ -100,6 +129,20 @@ function buildJobSchema(job: SanityJobFull, slug: string) {
         descriptionParts.join(" ") || `Open role at ${SITE_NAME}: ${job.title}.`,
       url: pageUrl,
       ...(job.publishedAt ? { datePosted: job.publishedAt } : {}),
+      ...(job.validThrough ? { validThrough: job.validThrough } : {}),
+      ...(salary
+        ? {
+            baseSalary: {
+              "@type": "MonetaryAmount",
+              currency: salary.currency,
+              value: {
+                "@type": "QuantitativeValue",
+                ...(salary.max ? { minValue: salary.min, maxValue: salary.max } : { value: salary.min }),
+                unitText: salary.unit,
+              },
+            },
+          }
+        : {}),
       ...(employmentTypes ? { employmentType: employmentTypes } : {}),
       ...(job.department ? { industry: job.department } : {}),
       ...(job.experience ? { experienceRequirements: job.experience } : {}),
@@ -144,6 +187,7 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
   if (!job || job.isOpen === false) notFound();
 
   const applyEmail = job.applyEmail ?? "careers@talentifi-x.com";
+  const salary = usableSalary(job.salary);
 
   return (
     <div className="w-full bg-white min-h-screen">
@@ -196,6 +240,18 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
               <span className="flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-primary" />
                 {job.department}
+              </span>
+            )}
+            {salary && (
+              <span className="flex items-center gap-2">
+                <Wallet className="w-4 h-4 text-primary" aria-hidden="true" />
+                {formatSalary(salary)}
+              </span>
+            )}
+            {job.validThrough && (
+              <span className="flex items-center gap-2">
+                <CalendarClock className="w-4 h-4 text-primary" aria-hidden="true" />
+                Applications close {formatDay(job.validThrough)}
               </span>
             )}
           </div>

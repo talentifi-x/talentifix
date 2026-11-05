@@ -260,7 +260,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
             {page.heroImage && (
               <div className="relative lg:col-span-5">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-grey-accent shadow-[0_30px_70px_-30px_rgba(0,0,153,0.5)] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[380px] 2xl:min-h-[420px]">
-                  <Image src={page.heroImage.src} alt={page.heroImage.alt} fill priority sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
+                  <Image src={page.heroImage.src} alt={page.heroImage.alt} fill preload fetchPriority="high" loading="eager" sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
                   <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20" aria-hidden="true" />
                 </div>
                 {commercial && (

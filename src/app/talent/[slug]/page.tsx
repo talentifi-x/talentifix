@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { slugsUnder, visiblePageByPath } from "@data/content";
 import { ContentPageView } from "@components/content/ContentPageView";
 import { contentMetadata, postsForPage } from "@lib/contentPage";
+import { pageShareImage } from "@lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,7 +17,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = visiblePageByPath(`/talent/${(await params).slug}`);
-  return page ? contentMetadata(page) : {};
+  // Each talent page has its own share image (./opengraph-image.tsx).
+  return page ? contentMetadata(page, { image: pageShareImage(page.path, page.h1) }) : {};
 }
 
 export default async function TalentPage({ params }: Props) {

@@ -57,10 +57,14 @@ export const AboutBanner = () => {
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <h1 className="text-[30px] sm:text-[40px] md:text-[52px] font-notch font-bold text-dark leading-tight">
+                {/* The H1 names the page; the slogan below is the visual headline. */}
+                <h1 className="mb-3 text-primary font-notch font-bold text-sm md:text-base tracking-[0.18em] uppercase">
+                  About TalentiFi-X
+                </h1>
+                <p className="text-[30px] sm:text-[40px] md:text-[52px] font-notch font-bold text-dark leading-tight">
                   Built for <span className="text-primary">Modern Hiring</span>
                   <span className="text-secondary">.</span>
-                </h1>
+                </p>
                 <p className="mt-2 text-[12px] sm:text-[14px] md:text-[16px] font-medium text-dark max-w-3xl">
                   TalentiFi-X was created to fix what traditional staffing
                   hasn&apos;t kept up with.

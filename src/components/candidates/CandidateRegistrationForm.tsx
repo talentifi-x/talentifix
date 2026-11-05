@@ -598,7 +598,7 @@ export const CandidateRegistrationForm = () => {
                 placeholder="linkedin.com/in/yourprofile"
                 className="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
               />
-              <p className="text-sm text-[#1E1E24]/60">
+              <p className="text-sm text-[#1E1E24]/75">
                 Helps us validate your background faster.
               </p>
             </div>
@@ -728,7 +728,7 @@ export const CandidateRegistrationForm = () => {
                 placeholder="E.g., PyTorch, Computer Vision, NLP, AWS SageMaker..."
                 className="w-full bg-[#F2F4F8] border border-[#1E1E24] rounded-[5px] p-4 text-[#1E1E24] placeholder:text-[#1E1E24]/20 focus:outline-none focus:ring-1 focus:ring-[#0000FF]"
               />
-              <p className="text-sm text-[#1E1E24]/60">Separate with commas</p>
+              <p className="text-sm text-[#1E1E24]/75">Separate with commas</p>
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 w-full">
@@ -947,7 +947,7 @@ export const CandidateRegistrationForm = () => {
                     <p className="text-[#1E1E24] font-bold">
                       Drag and drop or click to upload
                     </p>
-                    <p className="text-sm text-[#1E1E24]/60">
+                    <p className="text-sm text-[#1E1E24]/75">
                       Accepted: PDF, DOC, DOCX • Max size: 5MB
                     </p>
                     {resumeName && (
@@ -1106,7 +1106,7 @@ export const CandidateRegistrationForm = () => {
                 </>
               )}
             </button>
-            <p className="text-sm text-[#1E1E24]/60 max-w-3xl">
+            <p className="text-sm text-[#1E1E24]/75 max-w-3xl">
               We review every profile personally and will reach out if we have
               relevant opportunities. Usually within 48 hours.
             </p>

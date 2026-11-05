@@ -28,7 +28,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function Home() {
   return (
-    <main className="w-full flex flex-col items-center bg-white">
+    <div className="w-full flex flex-col items-center bg-white">
       <Banner />
       <Bannertwo />
       <Bannerthree />
@@ -47,6 +47,6 @@ export default function Home() {
       <WhereWeSpecializeSection />
       <TheOriginSection />
       <TheNextStepSection />
-    </main>
+    </div>
   );
 }

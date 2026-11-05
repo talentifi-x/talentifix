@@ -123,7 +123,7 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
 
             {/* Content */}
             <div className="flex flex-col flex-1 gap-4 p-6">
-              <div className="flex items-center gap-4 text-dark/40 text-xs font-sans">
+              <div className="flex items-center gap-4 text-dark/70 text-xs font-sans">
                 <span>{post.date}</span>
                 <span className="w-1 h-1 rounded-full bg-dark/30 inline-block" />
                 <span className="flex items-center gap-1">

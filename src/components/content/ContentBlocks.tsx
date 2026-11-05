@@ -253,9 +253,13 @@ export function ContentBlock({ block, posts }: { block: Block; posts: Record<str
         <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {block.items.map((step, i) => (
             <li key={step.title} className="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-6">
-              <span className="absolute -right-2 -top-4 font-notch font-bold text-[88px] leading-none text-primary/[0.06]" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              {/* Decorative watermark, drawn as CSS content so it is not text that
+                  contrast checks (and screen readers) treat as content. */}
+              <span
+                data-n={String(i + 1).padStart(2, "0")}
+                className="absolute -right-2 -top-4 font-notch font-bold text-[88px] leading-none text-primary/[0.06] before:content-[attr(data-n)]"
+                aria-hidden="true"
+              />
               <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white font-notch font-bold text-sm">
                 {i + 1}
               </span>

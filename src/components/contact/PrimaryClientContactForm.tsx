@@ -241,7 +241,7 @@ export const PrimaryClientContactForm = () => {
             Let&apos;s Discuss Your Hiring Needs
             <span className="text-[#00DDE2]">.</span>
           </h1>
-          <p className="text-lg text-[#1E1E24] opacity-60 font-medium max-w-2xl">
+          <p className="text-lg text-[#1E1E24] opacity-75 font-medium max-w-2xl">
             Low friction, fast response. Share a few details and we&apos;ll get
             back within 4 business hours - usually faster.
           </p>
@@ -484,7 +484,7 @@ export const PrimaryClientContactForm = () => {
                 </>
               )}
             </button>
-            <p className="text-sm text-[#1E1E24]/60">
+            <p className="text-sm text-[#1E1E24]/75">
               We&apos;ll respond within 4 hours during business hours. Usually
               faster.
             </p>

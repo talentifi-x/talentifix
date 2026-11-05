@@ -11,13 +11,14 @@ import { SolutionsTalent } from "../../components/solutions/SolutionsTalent";
 import { SolutionsIncludes } from "../../components/solutions/SolutionsIncludes";
 import { SolutionsBuiltFor } from "../../components/solutions/SolutionsBuiltFor";
 import TheNextStepSection from "@components/home/TheNextStepSection";
-import { pageMetadata } from "@lib/seo";
+import { pageMetadata, pageShareImage } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Staffing Solutions for AI & Tech Hiring",
   description:
     "Temporary staffing, permanent placement, contract-to-hire and executive search from TalentiFi-X: AI-assisted screening, human-led decisions, real results.",
   path: "/solutions",
+  image: pageShareImage("/solutions", "TalentiFi-X staffing solutions: contract, contract-to-hire, permanent placement and executive search"),
 });
 
 const SolutionsDivider = () => {
