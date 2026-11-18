@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PAGE_MODIFIED } from "./pageDates";
 
 /**
  * Shared SEO primitives: canonical origin, title/description builders and
@@ -45,6 +46,20 @@ export const WEBSITE_ID = `${SITE_URL}#website`;
 
 export const absoluteUrl = (path = "/"): string =>
   `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+
+/** Non-article pages keep their own schema type and their real editorial date. */
+export function webPageNode(path: string, name: string, type = "WebPage") {
+  const url = path === "/" ? SITE_URL : absoluteUrl(path);
+  return {
+    "@type": type,
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    ...(PAGE_MODIFIED[path] ? { dateModified: PAGE_MODIFIED[path] } : {}),
+  };
+}
 
 /** Words that make a clipped title or description read as unfinished ("…About Hiring And"). */
 const DANGLING_WORDS = new Set([

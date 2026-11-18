@@ -257,7 +257,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                 </Link>
                 {page.tagline && <span className="ml-1 font-notch font-bold text-primary text-[15px]">{page.tagline}</span>}
               </div>
-              {!commercial && <p className="mt-5 text-dark/55 text-[13px]">Updated {formatDate(page.updated)}</p>}
+              {!commercial && <p className="mt-5 text-dark/55 text-[13px]">Updated <time dateTime={page.updated}>{formatDate(page.updated)}</time></p>}
             </div>
             {page.heroImage && (
               <div className="relative lg:col-span-5">
@@ -281,7 +281,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                         </li>
                       ))}
                     </ul>
-                    <p className="mt-3 border-t border-gray-100 pt-2.5 text-dark/60 text-[12px]">Updated {formatDate(page.updated)}</p>
+                    <p className="mt-3 border-t border-gray-100 pt-2.5 text-dark/60 text-[12px]">Updated <time dateTime={page.updated}>{formatDate(page.updated)}</time></p>
                   </aside>
                 )}
               </div>
@@ -303,7 +303,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 border-t border-gray-100 pt-4 text-dark/55 text-[12px]">Updated {formatDate(page.updated)}</p>
+                <p className="mt-5 border-t border-gray-100 pt-4 text-dark/55 text-[12px]">Updated <time dateTime={page.updated}>{formatDate(page.updated)}</time></p>
               </aside>
             )}
           </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { PageQuestions } from "@components/content/PageQuestions";
 import { ContactForm } from "@components/contact/ContactForm";
 import TheNextStepSection from "@components/home/TheNextStepSection";
 import { JsonLd } from "@components/seo/JsonLd";
@@ -8,10 +10,10 @@ import {
   ORG_ID,
   SITE_NAME,
   SITE_URL,
-  WEBSITE_ID,
   jsonLdGraph,
   organizationNode,
   pageMetadata,
+  webPageNode,
 } from "@lib/seo";
 
 const PAGE_URL = `${SITE_URL}/contact`;
@@ -28,12 +30,7 @@ const BENGALURU_OFFICE_ID = `${PAGE_URL}#bengaluru-office`;
  */
 const contactSchema = jsonLdGraph(
   {
-    "@type": "ContactPage",
-    "@id": `${PAGE_URL}#webpage`,
-    url: PAGE_URL,
-    name: `Contact ${SITE_NAME}`,
-    isPartOf: { "@id": WEBSITE_ID },
-    about: { "@id": ORG_ID },
+    ...webPageNode("/contact", `Contact ${SITE_NAME}`, "ContactPage"),
     mainEntity: { "@id": BENGALURU_OFFICE_ID },
   },
   {
@@ -78,6 +75,29 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </div>
+
+      <PageQuestions
+        title="Contact and hiring questions"
+        updatedPath="/contact"
+        items={[
+          {
+            question: "How do I contact TalentiFi-X about hiring?",
+            answer: <>Use the form above or email <a href={`mailto:${organizationNode.contactPoint.email}`}>{organizationNode.contactPoint.email}</a> to discuss a hiring requirement, a broader workforce plan or a partnership. Tell us which company you represent and the best way to reach you. If you already have a role brief, our <Link href="/start-hiring">Start Hiring form</Link> provides a dedicated route for employer requirements. You can explore the <Link href="/solutions">staffing models</Link> before choosing an engagement.</>,
+          },
+          {
+            question: "What information should I include in a hiring enquiry?",
+            answer: <>Include the role title, essential skills, seniority, work location and preferred start date. A budget range, expected project duration and remote, hybrid or onsite requirements help explain the scope. Describe the work the person will own and the team they will join, as well as any interview stages already planned. If the brief is still developing, share the business problem you need the hire to solve.</>,
+          },
+          {
+            question: "Can I discuss hiring in both India and the USA?",
+            answer: <>Yes. TalentiFi-X supports technology hiring in India and the USA, with offices listed in Bengaluru and Houston. Specify the country and city where the person will work, the team they will support and any time-zone overlap required. You can discuss contract staffing, contract-to-hire, permanent placement or executive search. The appropriate approach and engagement terms depend on the particular role and hiring location.</>,
+          },
+          {
+            question: "Where should candidates send their profiles?",
+            answer: <>Technology professionals can <Link href="/join-our-network">join our talent network</Link> with their experience, skills, preferences and CV. For a specific advertised vacancy, visit <Link href="/jobs">open roles</Link> and follow that role’s application instructions. The employer enquiry form is intended for hiring and business conversations. Review our <Link href="/privacy-policy">privacy policy</Link> before sharing personal information, and use the application route that matches your purpose.</>,
+          },
+        ]}
+      />
 
       {/* Next Step Section */}
       <div className="w-full px-4 lg:mb-20 flex justify-center">

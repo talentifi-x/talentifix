@@ -7,11 +7,13 @@ import { GccCarousel } from "@components/insights/GccCarousel";
 import { JsonLd } from "@components/seo/JsonLd";
 import { Breadcrumbs } from "@components/seo/Breadcrumbs";
 import { ORG_ID, SITE_URL, pageMetadata } from "@lib/seo";
+import { PAGE_MODIFIED } from "@lib/pageDates";
+import { PageUpdated } from "@components/content/PageUpdated";
 
 const SLUG = "/insights/talentifi-x-gcc-summit-2026";
 const BANNER = "/banner/gcc-summit-2026-bengaluru-banner.png";
 
-/** GCC Summit 2026 took place on this date; used for the Event and Article entities. */
+/** The event date is not evidence of when this article was published. */
 const EVENT_DATE = "2026-07-15";
 
 const SEO_DESCRIPTION =
@@ -22,6 +24,8 @@ export const metadata: Metadata = pageMetadata({
   description:
     SEO_DESCRIPTION,
   path: SLUG,
+  type: "article",
+  modifiedTime: PAGE_MODIFIED[SLUG],
   image: {
     url: "/banner/gcc-summit-2026-bengaluru-share.jpg",
     width: 1200,
@@ -95,8 +99,7 @@ function buildJsonLd(siteUrl: string) {
         description: SEO_DESCRIPTION,
         image: bannerUrl,
         inLanguage: "en-IN",
-        datePublished: EVENT_DATE,
-        dateModified: EVENT_DATE,
+        dateModified: PAGE_MODIFIED[SLUG],
         mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
         author: { "@id": orgId },
         publisher: { "@id": orgId },
@@ -153,6 +156,7 @@ export default function GccSummit2026Page() {
             TalentiFi-X was part of the conversations examining what comes next
             for talent, technology, leadership, ownership and innovation.
           </p>
+          <PageUpdated path={SLUG} />
         </div>
 
         <div className="w-full max-w-6xl mx-auto mt-10 md:mt-14">
@@ -198,9 +202,15 @@ export default function GccSummit2026Page() {
       <section className="w-full bg-grey-accent px-6 md:px-8 py-16 md:py-24">
         <div className="w-full max-w-6xl mx-auto">
           <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-10 md:mb-14">
-            What We Heard at GCC Summit 2026
-            <span className="text-secondary">.</span>
+            What were the key talent themes at GCC Summit 2026?
           </h2>
+
+          <p className="mb-8 max-w-4xl text-dark/70 text-lg leading-relaxed">
+            The themes we took from the summit were capability beyond cost,
+            ownership beyond execution, AI working alongside human judgment,
+            and talent as a foundation for business strategy. The four summaries
+            below explain what those themes mean for GCC hiring.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {themes.map((theme) => (
@@ -227,13 +237,14 @@ export default function GccSummit2026Page() {
       <section className="w-full px-6 md:px-8 py-16 md:py-24">
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
           <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight">
-            The GCC Talent Conversation Is Changing
-            <span className="text-secondary">.</span>
+            How do these themes change GCC hiring decisions?
           </h2>
 
           <p className="text-dark/70 text-lg md:text-xl leading-relaxed">
-            As GCCs move from execution centers to strategic capability hubs,
-            the talent mandate changes with them.
+            GCC hiring briefs need to describe the decisions, systems and
+            business outcomes a person will own, alongside the technical skills
+            required. Candidate evaluation should examine domain knowledge,
+            judgment and adaptability in that context.
           </p>
           <p className="text-dark/70 text-lg md:text-xl leading-relaxed">
             The question is no longer only how quickly organizations can hire.

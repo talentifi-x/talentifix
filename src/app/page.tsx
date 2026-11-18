@@ -17,7 +17,10 @@ import { ClientsSection } from "@components/home/ClientsSection";
 import { MediaSection } from "@components/home/MediaSection";
 import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
-import { pageMetadata } from "@lib/seo";
+import Link from "next/link";
+import { PageQuestions } from "@components/content/PageQuestions";
+import { JsonLd } from "@components/seo/JsonLd";
+import { jsonLdGraph, pageMetadata, webPageNode } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "AI, ML & Cybersecurity Staffing in India & US | TalentiFi-X" },
@@ -29,6 +32,7 @@ export const metadata: Metadata = pageMetadata({
 export default function Home() {
   return (
     <div className="w-full flex flex-col items-center bg-white">
+      <JsonLd data={jsonLdGraph(webPageNode("/", "AI, ML & Cybersecurity Staffing in India & US"))} />
       <Banner />
       <Bannertwo />
       <Bannerthree />
@@ -46,6 +50,16 @@ export default function Home() {
       <HowItWorksSection />
       <WhereWeSpecializeSection />
       <TheOriginSection />
+      <PageQuestions
+        title="Staffing questions employers ask"
+        updatedPath="/"
+        items={[
+          { question: "What roles does TalentiFi-X help employers hire?", answer: <>We support hiring across AI and machine learning, software engineering, data and analytics, cloud and DevOps, cybersecurity, and ERP and SAP. Explore our <Link href="/talent/ai-machine-learning-talent">AI and machine learning staffing</Link> or the other talent specialisms to define the skills and responsibilities your role needs.</> },
+          { question: "Can you support hiring in India and the USA?", answer: <>Yes. TalentiFi-X supports technology hiring in India and the USA. Share the work location, working arrangement, required experience and preferred start date so our team can discuss the specific requirement and available engagement options.</> },
+          { question: "Which staffing models can we discuss?", answer: <>Our <Link href="/solutions">staffing solutions</Link> cover temporary and contract staffing, contract-to-hire, permanent placement and executive search. The suitable model depends on project duration, ongoing ownership and whether you plan to convert a contract engagement into a permanent role.</> },
+          { question: "How do we start a hiring conversation?", answer: <>Use <Link href="/start-hiring">Start Hiring</Link> to share your requirement. Include the role, core skills, location, budget range and timeline. If you are exploring a broader talent need or partnership, use the <Link href="/contact">contact page</Link>.</> },
+        ]}
+      />
       <TheNextStepSection />
     </div>
   );

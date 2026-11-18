@@ -27,7 +27,7 @@ export const OurApproach = () => {
         <div className="mx-auto w-full max-w-5xl rounded-[12px] bg-white  px-6 sm:px-10 md:px-14 py-12 sm:py-14">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-[34px] sm:text-[44px] md:text-[54px] font-notch font-bold text-dark leading-tight">
-              Our Approach<span className="text-secondary">.</span>
+              How does our hiring approach work?
             </h2>
 
             <p className="mt-4 text-[16px] sm:text-[18px] md:text-[22px] font-medium text-dark/80 max-w-4xl leading-relaxed">

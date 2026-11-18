@@ -5,6 +5,7 @@ import {
 import { blogPosts } from "@data/blogData";
 import { livePages } from "@data/content";
 import { CDN_CACHE_CONTROL, SITE_URL } from "@lib/seo";
+import { PAGE_MODIFIED } from "@lib/pageDates";
 
 /**
  * Rendered per request and cached by Vercel's CDN for 15 minutes (see
@@ -87,7 +88,11 @@ async function sitemapEntries(): Promise<Entry[]> {
     jobRoutes = [];
   }
 
-  return [...staticRoutes, ...contentRoutes, ...blogRoutes, ...jobRoutes];
+  const datedStaticRoutes = staticRoutes.map((entry) => {
+    const path = entry.url.slice(baseUrl.length) || "/";
+    return PAGE_MODIFIED[path] ? { ...entry, lastModified: PAGE_MODIFIED[path] } : entry;
+  });
+  return [...datedStaticRoutes, ...contentRoutes, ...blogRoutes, ...jobRoutes];
 }
 
 const escapeXml = (s: string) =>

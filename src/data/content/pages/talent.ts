@@ -529,9 +529,10 @@ export const TALENT_PAGES: ContentPage[] = [
     heroImage: { src: "/talent/software-engineering-talent/hero.webp", alt: "Software engineer working with application code and a system architecture diagram on two monitors" },
     sections: [
       {
-        heading: "Hiring Software Engineering Talent for Your Delivery Model",
+        heading: "Which hiring model fits your software engineering team?",
         id: "software-engineering-hiring-options",
         blocks: [
+          { type: "paragraphs", items: ["Use contract staffing for a defined delivery period, contract-to-hire when you want an agreed evaluation period before a permanent appointment, and permanent recruitment for sustained engineering ownership. The choice depends on the work, expected duration and responsibilities of the role."] },
           { type: "cards", columns: 3, items: [
             { title: "Contract software engineers", text: "Define the backlog, stack, delivery milestones and code ownership for a product release, migration or temporary capacity gap.", href: "/solutions#temporary-staffing" },
             { title: "Contract-to-hire engineers", text: "Set evaluation criteria for code quality, debugging, collaboration and delivery before considering a permanent appointment.", href: "/solutions#contract-to-hire" },
@@ -3003,9 +3004,10 @@ export const TALENT_PAGES: ContentPage[] = [
     heroImage: { src: "/talent/erp-sap-talent/hero.webp", alt: "ERP consultant reviewing business dashboards and a process diagram on a tablet" },
     sections: [
       {
-        heading: "ERP and SAP Staffing by Project Stage",
+        heading: "When should you hire contract or permanent SAP consultants?",
         id: "erp-sap-hiring-options",
         blocks: [
+          { type: "paragraphs", items: ["Contract SAP consultants can support a defined implementation, migration or integration stage. Permanent ERP hires are appropriate when the business needs continuing ownership of applications, processes and support beyond the project. Specify the module, platform version and deliverables before choosing the engagement model."] },
           { type: "cards", columns: 3, items: [
             { title: "Contract SAP consultants", text: "Specify the module, project stage and deliverables for implementation, migration, testing or integration work. Include the business process and existing landscape.", href: "/solutions#temporary-staffing" },
             { title: "Permanent ERP recruitment", text: "Hire for continuing ownership of enterprise applications, functional processes, technical integration and the support needed after a project goes live.", href: "/solutions#permanent-placement" },

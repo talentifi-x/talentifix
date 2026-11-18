@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { readableDate } from "@lib/pageDates";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -216,6 +217,12 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
             <span className="text-secondary">.</span>
           </h1>
 
+          {job.publishedAt && Number.isFinite(Date.parse(job.publishedAt)) && (
+            <p className="text-sm text-dark/60">
+              Posted <time dateTime={job.publishedAt}>{readableDate(job.publishedAt)}</time>
+            </p>
+          )}
+
           {/* Quick info strip */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-dark/70 font-sans text-base border-y border-gray-100 py-5">
             {job.location && (
@@ -305,10 +312,11 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
           )}
 
           {/* Apply footer */}
-          <Block title="Apply for This Role">
+          <Block title="How do I apply for this role?">
             <p className="text-dark/70 font-sans text-lg leading-relaxed">
-              Send your updated CV and a brief note on why this role is the
-              right fit for you.
+              Use the application button below or email your updated CV and a
+              brief note on why this role is the right fit for you to the address
+              shown here.
             </p>
             <a
               href={`mailto:${applyEmail}?subject=${encodeURIComponent(`Application: ${job.title}`)}`}
@@ -364,7 +372,7 @@ function Block({
     <div className="flex flex-col gap-4">
       <h2 className="text-[24px] md:text-[32px] font-bold font-notch text-dark leading-tight">
         {title}
-        <span className="text-secondary">.</span>
+        {!/[.?!]$/.test(title) && <span className="text-secondary">.</span>}
       </h2>
       <div className="flex flex-col">{children}</div>
     </div>
