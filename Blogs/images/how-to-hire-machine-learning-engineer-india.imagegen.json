@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: photorealistic-natural\nAsset type: editorial cover for TalentiFi-X blog, 'How to Hire a Machine Learning Engineer in India: A Practical Guide for 2026'.\nPrimary request: Create an original polished workplace photograph illustrating a practical machine learning hiring assessment, with a wide horizontal composition suitable for a 1920 by 880 blog banner and a centered 1200 by 630 social crop.\nScene: a modern Bengaluru technology office with softly blurred windows and greenery in the background. At a clean desk, an Indian software professional and a recruiter review machine learning evaluation charts on an open laptop alongside a printed interview scorecard and a pen. The laptop shows plausible simple line charts and a small model evaluation matrix; the paper shows a neat rubric with rows and rating circles. No legible words are needed. Focus on the screen, scorecard and natural hands rather than recognizable faces; show upper torsos at the outer edges. Put all essential objects within the central two thirds of the composition so the image crops well.\nStyle: credible editorial business photography, natural daylight, realistic materials and anatomy, shallow depth of field, professional and calm, navy and light blue clothing with neutral white and warm wood surfaces, subtle teal screen accents. It is a conceptual illustration, not a photograph of actual company staff or clients.\nConstraints: no headline or typography overlay, no logos, no watermarks, no flags, no fake recognizable software UI, no glowing brains, no robots, no sci-fi holograms, no exaggerated network graphics. Image must feel human and specific to assessing ML engineering skills. Opaque background.",
+  "source": "exec-8ac77733-3eb7-497a-97f8-8a828b18a335.png",
+  "assets": [
+    {
+      "file": "how-to-hire-machine-learning-engineer-india.webp",
+      "width": 1920,
+      "height": 880
+    },
+    {
+      "file": "how-to-hire-machine-learning-engineer-india-social.webp",
+      "width": 1200,
+      "height": 630
+    }
+  ],
+  "alt": "Two professionals reviewing machine learning evaluation charts on a laptop beside a printed interview scorecard",
+  "note": "AI-generated conceptual illustration, not actual company employees or clients."
+}
