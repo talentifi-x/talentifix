@@ -8,7 +8,7 @@ export const Solutionsection = () => {
       <div className="absolute inset-0 z-0 bg-white">
         <Image
           src="/banner-home/solution.webp"
-          alt="Solution Background"
+          alt=""
           fill
           sizes="100vw"
           className="object-cover opacity-10 "
@@ -40,7 +40,7 @@ export const Solutionsection = () => {
             <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none">
               <Image
                 src="/assets/figma/solution-card-line.svg"
-                alt="Line"
+                alt=""
                 width={350}
                 height={312}
                 className="w-full h-auto opacity-100"
@@ -68,7 +68,7 @@ export const Solutionsection = () => {
             <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none">
               <Image
                 src="/assets/figma/solution-card-line.svg"
-                alt="Line"
+                alt=""
                 width={350}
                 height={312}
                 className="w-full h-auto opacity-100"
@@ -96,7 +96,7 @@ export const Solutionsection = () => {
             <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none">
               <Image
                 src="/assets/figma/solution-card-line.svg"
-                alt="Line"
+                alt=""
                 width={350}
                 height={312}
                 className="w-full h-auto opacity-100"

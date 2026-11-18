@@ -35,7 +35,8 @@ export default async function BlogPage() {
       : "",
     readTime: p.readTime ?? "5 min read",
     introduction: p.introduction,
-    image: p.image ?? "/blogs/b1.png",
+    image: p.image,
+    imageAlt: p.imageAlt?.trim() ?? "",
   }));
 
   return (

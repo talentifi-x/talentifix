@@ -69,7 +69,7 @@ export const RebuildSection = () => {
               <div className="">
                 <Image
                   src="/icons/cloud.svg"
-                  alt="AI Icon"
+                  alt=""
                   width={60}
                   height={60}
                 />
@@ -137,7 +137,7 @@ export const RebuildSection = () => {
               <div className="">
                 <Image
                   src="/icons/inspire.svg"
-                  alt="Human Icon"
+                  alt=""
                   width={60}
                   height={60}
                 />

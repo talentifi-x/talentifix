@@ -8,7 +8,7 @@ export const HumanLeadSection = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/figma/human-bg.png"
-          alt="Human Background"
+          alt=""
           fill
           sizes="100vw"
           className="object-cover opacity-10"
@@ -20,7 +20,7 @@ export const HumanLeadSection = () => {
       <div className="absolute left-[-192px] top-[219px] w-[598px] h-[563px] opacity-30 z-0 pointer-events-none">
         <Image
           src="/assets/figma/human-group-2.svg"
-          alt="Decoration Left"
+          alt=""
           fill
           sizes="(max-width: 768px) 0px, 598px"
           className="object-contain"
@@ -29,7 +29,7 @@ export const HumanLeadSection = () => {
       <div className="absolute right-[-100px] top-[91px] w-[448px] h-[422px] opacity-75 z-0 pointer-events-none">
         <Image
           src="/assets/figma/human-group-3.svg"
-          alt="Decoration Right"
+          alt=""
           fill
           sizes="448px"
           className="object-contain"
@@ -52,7 +52,7 @@ export const HumanLeadSection = () => {
             <div className="relative w-23.5 h-23.5">
               <Image
                 src="/assets/figma/human-card-1.png"
-                alt="AI Icon"
+                alt=""
                 fill
                 sizes="94px"
                 className="object-contain"
@@ -77,7 +77,7 @@ export const HumanLeadSection = () => {
             <div className="relative w-23.5 h-23.5">
               <Image
                 src="/assets/figma/human-card-2.png"
-                alt="Ethics Icon"
+                alt=""
                 fill
                 sizes="94px"
                 className="object-contain"

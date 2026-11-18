@@ -6,7 +6,7 @@ export const Bannertwo = () => {
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
         <Image
           src="/banner/ISO Strip - Transparent.png"
-          alt="ISO Certifications"
+          alt="ISO/IEC 27001:2022 certified. Your data. Our responsibility."
           width={1920}
           height={250}
           // Sits below the hero: it loads normally so it never competes with the hero image.

@@ -23,7 +23,7 @@ export const StorySection = () => {
           <div className="relative w-full lg:w-1/2 xl:w-[710px] h-[300px] lg:h-[500px] overflow-hidden ">
             <Image
               src="/assets/figma/story-image.png"
-              alt="The Story Begins"
+              alt="A role opens. The clock starts. Days turn into weeks. Resumes pile up. Teams stretch thin. Hiring becomes waiting. Waiting becomes settling."
               fill
               sizes="(max-width: 1024px) 100vw, 710px"
               className="object-contain"
@@ -37,7 +37,7 @@ export const StorySection = () => {
           <div className="absolute inset-0 z-0">
             <Image
               src="/assets/figma/story-card-bg.png"
-              alt="Background Pattern"
+              alt=""
               fill
               sizes="100vw"
               className="object-cover opacity-10"

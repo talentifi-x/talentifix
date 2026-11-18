@@ -14,9 +14,9 @@ import TheNextStepSection from "@components/home/TheNextStepSection";
 import { pageMetadata, pageShareImage } from "@lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Staffing Solutions for AI & Tech Hiring",
+  title: "Contract & Permanent Staffing in India & USA",
   description:
-    "Temporary staffing, permanent placement, contract-to-hire and executive search from TalentiFi-X: AI-assisted screening, human-led decisions, real results.",
+    "Contract staffing, permanent recruitment and contract-to-hire for technology teams in India and the USA. Explore hiring models with TalentiFi-X.",
   path: "/solutions",
   image: pageShareImage("/solutions", "TalentiFi-X staffing solutions: contract, contract-to-hire, permanent placement and executive search"),
 });

@@ -63,7 +63,7 @@ const HowItWorksSection = () => {
                     <div className="relative w-[120px] h-[120px]">
                       <Image
                         src={step.icon}
-                        alt={step.title}
+                        alt=""
                         fill
                         sizes="120px"
                         className="object-contain"
@@ -102,7 +102,7 @@ const HowItWorksSection = () => {
                 <div className="relative w-[104px] h-[104px]">
                   <Image
                     src={step.icon}
-                    alt={step.title}
+                    alt=""
                     fill
                     sizes="104px"
                     className="object-contain"
@@ -141,7 +141,7 @@ const HowItWorksSection = () => {
               <div className="relative w-[120px] h-[120px]">
                 <Image
                   src={step.icon}
-                  alt={step.title}
+                  alt=""
                   fill
                   sizes="120px"
                   className="object-contain"

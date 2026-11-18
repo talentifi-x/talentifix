@@ -9,7 +9,7 @@ const TheNextStepSection = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/banner-home/Next.webp"
-          alt="The Next Step Background"
+          alt=""
           fill
           sizes="100vw"
           className="object-cover object-top"

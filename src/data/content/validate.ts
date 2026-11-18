@@ -112,6 +112,7 @@ function fields(page: ContentPage): Field[] {
     ...plain("summary", page.summary),
     ...plain("title", page.title),
     ...plain("description", page.description),
+    ...(page.topics ?? []).flatMap((topic) => plain("topic", topic)),
     ...plain("eyebrow", page.eyebrow),
     ...plain("h1", page.h1),
     ...plain("lead", page.lead),

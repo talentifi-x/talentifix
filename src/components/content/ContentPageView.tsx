@@ -9,6 +9,7 @@ import type { Block, Section } from "@data/content/types";
 import { contentJsonLd, relatedGroups, type PostSummary } from "@lib/contentPage";
 import { ContentBlock, FlowPanel, LinkCards, Paragraphs } from "./ContentBlocks";
 import { RichText } from "./RichText";
+import { TopicTags } from "./TopicTags";
 
 const COMMERCIAL = new Set<ContentPage["kind"]>(["talent", "solution", "market"]);
 
@@ -235,6 +236,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                 <TwoTone text={page.h1} />
               </h1>
               {page.lead && <p className="mt-4 text-dark text-[18px] sm:text-[20px] font-semibold leading-snug max-w-3xl">{page.lead}</p>}
+              {page.topics && <TopicTags tags={page.topics} />}
               {hero && (
                 <p className="mt-3 text-dark/70 text-[16px] sm:text-[17px] leading-relaxed max-w-3xl">
                   <RichText text={hero} />

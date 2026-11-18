@@ -61,6 +61,7 @@ export interface BlogPost {
   type: string;
   author?: string;
   image: string;
+  imageAlt: string;
   date: string;
   readTime: string;
   introduction: string;
@@ -79,6 +80,8 @@ export const blogPosts: BlogPost[] = [
     category: "AI & Staffing",
     type: "blog_post",
     image: "/blogs/b2.png",
+    imageAlt:
+      "Illustration of CVs passing through an AI processor before recruiters interview candidates",
     date: "March 9, 2026",
     readTime: "6 min read",
     tagline: "Staffing. Rebuilt.",
@@ -226,6 +229,8 @@ export const blogPosts: BlogPost[] = [
     category: "Modern Staffing",
     type: "blog_post",
     image: "/blogs/b3.png",
+    imageAlt:
+      "Overwhelmed hiring manager surrounded by resumes, beside a recruiter reviewing a small shortlist",
     date: "March 9, 2026",
     readTime: "6 min read",
     tagline: "Staffing. Rebuilt.",

@@ -17,7 +17,8 @@ import {
   type SanityPostFull,
 } from "@/sanity/lib/queries";
 import { Breadcrumbs } from "@components/seo/Breadcrumbs";
-import { relatedPosts } from "@lib/blogTopics";
+import { relatedPosts, postTags } from "@lib/blogTopics";
+import { TopicTags } from "@components/content/TopicTags";
 import { talentLinksForPost } from "@lib/postTalent";
 import { JsonLd } from "@components/seo/JsonLd";
 import {
@@ -92,13 +93,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url: `${shareSource}?w=1200&h=630&fit=crop&fm=jpg&q=85`,
             width: 1200,
             height: 630,
-            alt: sanityPost.imageAlt ?? sanityPost.title,
+            // A custom share image may differ from the article's cover.
+            alt: (sanityPost.shareImage
+              ? sanityPost.shareImageAlt?.trim()
+              : sanityPost.imageAlt?.trim()) || undefined,
           }
         : undefined,
       type: "article",
       publishedTime: sanityPost.publishedAt,
       modifiedTime: modifiedDate(sanityPost),
       authors: sanityPost.author ? [sanityPost.author] : undefined,
+      tags: postTags(sanityPost),
     });
     // "Hide from Google" in the studio: the post stays readable but unlisted.
     return sanityPost.noindex
@@ -114,6 +119,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       path: `/blog/${slug}`,
       type: "article",
+      image: { url: staticPost.image, alt: staticPost.imageAlt },
+      tags: postTags(staticPost),
     });
   }
   return { title: "Post Not Found" };
@@ -423,6 +430,7 @@ function buildPostSchema(post: SanityPostFull) {
         : {}),
       publisher: { "@id": ORG_ID },
       ...(post.category ? { articleSection: post.category } : {}),
+      ...(postTags(post).length ? { keywords: postTags(post) } : {}),
     },
   ];
 
@@ -592,7 +600,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
           <div className="relative my-8 rounded-lg overflow-hidden aspect-video">
             <Image
               src={value.asset.url}
-              alt={value.alt ?? ""}
+              alt={value.alt?.trim() ?? ""}
               fill
               sizes="(max-width: 1024px) 100vw, 896px"
               className="object-cover"
@@ -612,7 +620,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
         {post.image ? (
           <Image
             src={post.image}
-            alt={post.imageAlt ?? post.title}
+            alt={post.imageAlt?.trim() ?? ""}
             fill
             sizes="100vw"
             className="object-cover"
@@ -715,6 +723,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
                   {post.introduction}
                 </p>
               )}
+              <TopicTags tags={postTags(post)} />
             </header>
 
             {/* Mobile TOC */}
@@ -859,7 +868,7 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="w-full h-40 sm:h-80 md:h-115 relative overflow-hidden">
         <Image
           src={post.image}
-          alt={post.title}
+          alt={post.imageAlt}
           fill
           sizes="100vw"
           className="object-cover"
@@ -925,6 +934,7 @@ export default async function BlogPostPage({ params }: Props) {
               <p className="text-dark/70 font-sans text-base md:text-lg leading-relaxed">
                 {post.introduction}
               </p>
+              <TopicTags tags={postTags(post)} />
             </header>
 
             {/* Mobile TOC (shown only on small screens) */}

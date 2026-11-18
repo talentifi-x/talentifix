@@ -23,7 +23,7 @@ export const SolutionsAISpeed = () => {
             </div>
             <Image
               src="/Solutions/ai-banner.webp"
-              alt="AI Visual"
+              alt="AI-assisted recruitment illustration with a blue digital network meeting orange shapes representing human judgment"
               width={1200}
               height={700}
               // sizes="(max-width: 768px) 100vw, 1150px"

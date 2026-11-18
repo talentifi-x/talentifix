@@ -18,7 +18,7 @@ const WhereWeSpecializeSection = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/figma/specialize-bg.png"
-          alt="Background"
+          alt=""
           fill
           sizes="100vw"
           className="object-cover opacity-20"

@@ -15,9 +15,10 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "AI & Machine Learning",
     summary: "AI engineers, ML and LLM engineers, MLOps, data science, AI product and AI leadership talent, hired for capability rather than keywords.",
-    title: "AI Staffing & Machine Learning Recruitment, USA & India",
-    description: "Hire AI and machine learning talent for production, GenAI, data and emerging tech roles. TalentiFi-X combines human judgment with AI-assisted search.",
-    primaryKeyword: "AI staffing",
+    title: "AI & Machine Learning Staffing in USA & India",
+    description: "Hire AI and machine learning engineers in India and the USA. Explore contract, contract-to-hire and permanent staffing with TalentiFi-X.",
+    primaryKeyword: "machine learning staffing",
+    topics: ["Machine learning staffing", "AI recruitment", "MLOps engineers", "Contract-to-hire"],
     keywords: [
       "AI staffing agency",
       "AI recruitment",
@@ -36,18 +37,37 @@ export const TALENT_PAGES: ContentPage[] = [
       "AI talent acquisition",
       "AI staffing agency USA",
       "AI staffing agency India",
+      "ai and machine learning staffing",
+      "machine learning temp staffing",
+      "ML software engineer staffing",
+      "contract-to-hire machine learning engineer staffing USA",
+      "AI ML recruitment agency India",
     ],
     eyebrow: "Technology talent",
     h1: "AI & Machine Learning Staffing in the USA and India",
     lead: "AI Is Moving Into Production. Your Talent Strategy Has to Move With It.",
     intro: [
+      "TalentiFi-X helps employers hire machine learning talent and AI engineers in India and the USA. Explore contract, contract-to-hire and permanent staffing for production ML, GenAI and MLOps roles.",
       "AI hiring is no longer limited to data scientists and machine learning researchers.",
       "Organizations are building AI into products, workflows, customer experiences, software platforms, security systems, operations and decision-making. That requires a broader kind of technology talent: people who can build AI, deploy it, integrate it, govern it and make it useful in the real world.",
       "TalentiFi-X helps organizations identify and hire AI and machine learning professionals across that evolving landscape.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/ai-machine-learning-talent/hero.webp", alt: "AI engineer's desk with machine learning training charts and a neural network diagram on screen" },
+    heroImage: { src: "/talent/ai-machine-learning-talent/hero.webp", alt: "Machine learning engineer reviewing model training charts and neural network diagrams at a workstation" },
     sections: [
+      {
+        heading: "Machine Learning Contract and Contract-to-Hire Staffing",
+        id: "machine-learning-staffing-options",
+        blocks: [
+          { type: "paragraphs", items: ["The hiring model should match the work the engineer will own. A defined model deployment, an evaluation period before a permanent hire and an ongoing ML platform role need different briefs."] },
+          { type: "cards", columns: 3, items: [
+            { title: "Contract and temporary staffing", text: "For machine learning temp staffing, define the project duration, data access and deliverables: model evaluation, deployment, monitoring or an MLOps backlog.", href: "/solutions#temporary-staffing" },
+            { title: "Contract-to-hire", text: "Agree on the evaluation period and conversion terms before the engagement. Assess production ownership, collaboration and technical judgment against the role's responsibilities.", href: "/solutions#contract-to-hire" },
+            { title: "Permanent ML engineering hires", text: "Use permanent recruitment for sustained responsibility for models, data pipelines and production systems. Distinguish research capability from ML software engineering experience.", href: "/solutions#permanent-placement" },
+          ] },
+          { type: "paragraphs", items: ["For machine learning recruitment in India, include the work location, notice period, compensation range and team context in the brief. For contract-to-hire machine learning engineer staffing in the USA, also confirm engagement eligibility, work authorization requirements and conversion expectations. Availability and terms are confirmed for the specific role."] },
+        ],
+      },
       {
         heading: "The AI Talent Problem Has Changed",
         blocks: [
@@ -209,7 +229,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From AI Experimentation to AI Execution",
-        image: { src: "/talent/ai-machine-learning-talent/ai-execution.webp", alt: "Engineers mapping an AI system from data to model, deployment and monitoring on a glass whiteboard" },
+        image: { src: "/talent/ai-machine-learning-talent/ai-execution.webp", alt: "AI and MLOps engineers mapping data, model deployment and monitoring on a glass whiteboard" },
         blocks: [
           {
             type: "paragraphs",
@@ -317,7 +337,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Why AI Hiring Needs a Human Layer",
-        image: { src: "/talent/ai-machine-learning-talent/human-layer.webp", alt: "Recruiter reviewing a candidate's AI project architecture with them during an interview" },
+        image: { src: "/talent/ai-machine-learning-talent/human-layer.webp", alt: "Machine learning staffing interview with a recruiter and candidate reviewing an AI architecture diagram" },
         blocks: [
           {
             type: "paragraphs",
@@ -467,7 +487,7 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "AI and machine learning staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
   {
     id: "talent-software",
@@ -477,8 +497,9 @@ export const TALENT_PAGES: ContentPage[] = [
     navLabel: "Software Engineering",
     summary: "Backend, frontend, full-stack, mobile, platform and AI-enabled software engineers, architects and engineering leaders.",
     title: "Software Engineering Staffing & Recruitment, USA & India",
-    description: "Software engineering staffing for product, enterprise, cloud and AI-enabled development, with human-led, AI-assisted hiring in the USA and India.",
+    description: "Find software engineering talent in India and the USA for backend, frontend and full-stack roles, with contract and permanent staffing from TalentiFi-X.",
     primaryKeyword: "software engineering staffing",
+    topics: ["Software engineering talent", "Backend engineers", "Full-stack developers", "Contract staffing"],
     keywords: [
       "software engineering recruitment",
       "software engineering talent",
@@ -498,17 +519,30 @@ export const TALENT_PAGES: ContentPage[] = [
     h1: "Software Engineering Staffing in the USA and India",
     lead: "Software Is Being Rewritten. The Engineers Building It Are Changing Too.",
     intro: [
+      "TalentiFi-X provides software engineering staffing in India and the USA for backend, frontend, full-stack and mobile roles. Match contract, contract-to-hire or permanent recruitment to the systems your team needs to build and operate.",
       "Software engineering used to be easier to define. Frontend. Backend. Full stack. Mobile. Today, the boundaries are less clear.",
       "Engineers are building AI-enabled products, working with cloud-native architectures, designing APIs and distributed systems, using coding agents, managing increasingly complex platforms and taking greater responsibility for what happens after code is written. The result is a different hiring question.",
       "Not simply: \"Can this person code?\"",
       "But: \"Can this person build, reason, ship and operate software in the environment our business actually runs in?\" TalentiFi-X helps organizations identify software engineering talent around that question.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/software-engineering-talent/hero.webp", alt: "Software engineer's workstation with code and a system architecture diagram on two monitors" },
+    heroImage: { src: "/talent/software-engineering-talent/hero.webp", alt: "Software engineer working with application code and a system architecture diagram on two monitors" },
     sections: [
       {
+        heading: "Hiring Software Engineering Talent for Your Delivery Model",
+        id: "software-engineering-hiring-options",
+        blocks: [
+          { type: "cards", columns: 3, items: [
+            { title: "Contract software engineers", text: "Define the backlog, stack, delivery milestones and code ownership for a product release, migration or temporary capacity gap.", href: "/solutions#temporary-staffing" },
+            { title: "Contract-to-hire engineers", text: "Set evaluation criteria for code quality, debugging, collaboration and delivery before considering a permanent appointment.", href: "/solutions#contract-to-hire" },
+            { title: "Permanent engineering recruitment", text: "Hire for lasting ownership of architecture, product development and production support, with the seniority and system experience the team needs.", href: "/solutions#permanent-placement" },
+          ] },
+          { type: "paragraphs", items: ["For software engineering recruitment in India or the USA, share the work location, time-zone overlap, compensation range and expected start date. Specify whether you need an individual engineer or several roles with different responsibilities; staffing availability and engagement terms are confirmed against that brief."] },
+        ],
+      },
+      {
         heading: "Software Engineering Has Changed. Hiring Needs To Catch Up.",
-        image: { src: "/talent/software-engineering-talent/engineering-changed.webp", alt: "Engineering team collaborating over laptops with code and cloud architecture sketches" },
+        image: { src: "/talent/software-engineering-talent/engineering-changed.webp", alt: "Software engineering team reviewing application code and cloud architecture across laptops and sketches" },
         blocks: [
           {
             type: "paragraphs",
@@ -772,7 +806,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From Code to Production",
-        image: { src: "/talent/software-engineering-talent/code-to-production.webp", alt: "Deployment pipeline with build, test and release stages on an office screen and a laptop" },
+        image: { src: "/talent/software-engineering-talent/code-to-production.webp", alt: "Software engineer reviewing a deployment pipeline and production dashboards on a laptop and office screen" },
         blocks: [
           {
             type: "paragraphs",
@@ -1034,7 +1068,7 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "Software engineering staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
   {
     id: "talent-data",
@@ -1043,9 +1077,10 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Data & Analytics",
     summary: "Data analysts, BI developers, analytics and data engineers, data scientists, data architects and data leaders.",
-    title: "Data & Analytics Staffing and Recruitment, USA & India",
-    description: "Data and analytics staffing for data engineering, analytics, data science and AI-driven decisions, with technology hiring across the USA and India.",
+    title: "Data Engineering & Analytics Staffing, USA & India",
+    description: "Hire data engineers, analysts and data scientists in India and the USA. Explore contract and permanent data and analytics staffing with TalentiFi-X.",
     primaryKeyword: "data and analytics staffing",
+    topics: ["Data engineering recruitment", "Analytics staffing", "Data scientists", "Business intelligence"],
     keywords: [
       "data analytics staffing",
       "data analytics recruitment",
@@ -1063,16 +1098,29 @@ export const TALENT_PAGES: ContentPage[] = [
       "data staffing agency India",
     ],
     eyebrow: "Technology talent",
-    h1: "Data & Analytics Staffing in the USA and India",
+    h1: "Data Engineering & Analytics Staffing in the USA and India",
     lead: "Data Has Never Been More Valuable. But Data Alone Doesn't Create Value.",
     intro: [
+      "TalentiFi-X supports data engineering recruitment and analytics staffing in India and the USA. Hire data engineers, analysts, BI specialists and data scientists for contract projects or permanent team responsibilities.",
       "Companies have more data than ever. Customer data. Product data. Financial data. Operational data. Market data. Behavioral data. And increasingly, AI systems depend on good data to work effectively. Yet having more data does not automatically create better decisions.",
       "The real advantage comes from people who can turn data into something useful: a clearer answer, a better decision, a stronger product, a more efficient operation or a new business opportunity. That is where modern data and analytics talent matters.",
       "TalentiFi-X helps organizations identify professionals across data engineering, analytics, data science, business intelligence and emerging AI-driven data capabilities.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/data-analytics-talent/hero.webp", alt: "Data analyst reviewing analytics dashboards on a monitor and a tablet" },
+    heroImage: { src: "/talent/data-analytics-talent/hero.webp", alt: "Data analytics professional comparing business intelligence dashboards on a monitor and tablet" },
     sections: [
+      {
+        heading: "Data Engineering Recruitment and Analytics Hiring Options",
+        id: "data-analytics-hiring-options",
+        blocks: [
+          { type: "cards", columns: 3, items: [
+            { title: "Contract data engineers", text: "Scope pipeline development, a warehouse migration or data quality work around sources, platform requirements, ownership and acceptance criteria.", href: "/solutions#temporary-staffing" },
+            { title: "Permanent analytics talent", text: "Define the decisions analysts or BI specialists will support, the stakeholders they will work with and the metrics they will own.", href: "/solutions#permanent-placement" },
+            { title: "Contract-to-hire data roles", text: "Evaluate data modeling, problem-solving and communication in the actual team environment, with conversion criteria agreed before the engagement.", href: "/solutions#contract-to-hire" },
+          ] },
+          { type: "paragraphs", items: ["An India or US hiring brief should distinguish data engineering from analytics and data science. Include the platform, data maturity, location, time-zone overlap and engagement model so candidates can be evaluated against the work rather than a broad data job title."] },
+        ],
+      },
       {
         heading: "The Data Team Is Changing",
         blocks: [
@@ -1114,7 +1162,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From Reporting to Decision Intelligence",
-        image: { src: "/talent/data-analytics-talent/decision-intelligence.webp", alt: "Team discussing a highlighted forecast trend on a laptop beside printed charts" },
+        image: { src: "/talent/data-analytics-talent/decision-intelligence.webp", alt: "Data analytics team discussing a forecast on a laptop beside printed business charts" },
         blocks: [
           {
             type: "paragraphs",
@@ -1325,7 +1373,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Data Engineering Is Becoming a Strategic Capability",
-        image: { src: "/talent/data-analytics-talent/data-engineering.webp", alt: "Data pipeline diagram flowing from several sources into a data warehouse on a monitor" },
+        image: { src: "/talent/data-analytics-talent/data-engineering.webp", alt: "Data engineering workstation showing pipelines connecting source systems to a data warehouse" },
         blocks: [
           {
             type: "paragraphs",
@@ -1597,7 +1645,7 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "Data and analytics staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
   {
     id: "talent-cloud",
@@ -1606,9 +1654,10 @@ export const TALENT_PAGES: ContentPage[] = [
     status: "live",
     navLabel: "Cloud & DevOps",
     summary: "Cloud, DevOps, platform engineering, SRE, DevSecOps, cloud security and FinOps talent for modern infrastructure.",
-    title: "Cloud & DevOps Staffing and Recruitment, USA & India",
-    description: "Cloud and DevOps staffing for platform engineering, SRE and cloud infrastructure teams. TalentiFi-X supports cloud hiring across the USA and India.",
+    title: "Cloud & DevOps Staffing in USA & India",
+    description: "Hire cloud architects, DevOps engineers and SREs in India and the USA. Explore contract-to-hire, contract and permanent staffing with TalentiFi-X.",
     primaryKeyword: "cloud and DevOps staffing",
+    topics: ["DevOps staffing", "Cloud architects", "Site reliability engineers", "Contract-to-hire"],
     keywords: [
       "cloud staffing",
       "DevOps staffing",
@@ -1624,18 +1673,35 @@ export const TALENT_PAGES: ContentPage[] = [
       "cloud staffing agency USA",
       "cloud staffing agency India",
       "cloud infrastructure staffing",
+      "contract-to-hire staffing for senior cloud architects and DevOps leaders",
+      "cloud and DevOps talent hiring USA",
+      "DevOps recruitment agency India",
     ],
     eyebrow: "Technology talent",
     h1: "Cloud & DevOps Staffing in the USA and India",
     lead: "The Cloud Is No Longer the Destination. It's the Operating Environment.",
     intro: [
+      "TalentiFi-X supports cloud and DevOps staffing in India and the USA, including cloud architects, DevOps engineers, platform engineers and SREs. Explore contract, contract-to-hire and permanent recruitment for your infrastructure team.",
       "Cloud adoption has changed the way organizations build and operate technology. But moving workloads to AWS, Azure or Google Cloud is only the beginning.",
       "Modern technology organizations increasingly need infrastructure that is: scalable, automated, observable, secure and resilient. That is why the cloud talent conversation has moved beyond traditional infrastructure roles.",
       "Today, organizations may need cloud engineers, DevOps engineers, platform engineers, SREs, cloud architects, DevSecOps specialists and professionals who understand the economics of running technology at scale. TalentiFi-X helps organizations identify talent across this evolving cloud and infrastructure ecosystem.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/cloud-devops-talent/hero.webp", alt: "Platform engineer's desk with a cloud infrastructure topology on an ultrawide monitor" },
+    heroImage: { src: "/talent/cloud-devops-talent/hero.webp", alt: "Cloud engineer reviewing an infrastructure topology and monitoring dashboards at a workstation" },
     sections: [
+      {
+        heading: "Contract-to-Hire Staffing for Senior Cloud Architects and DevOps Leaders",
+        id: "cloud-devops-contract-to-hire",
+        blocks: [
+          { type: "paragraphs", items: ["Contract-to-hire lets an employer evaluate a senior cloud or DevOps professional in the team before a possible permanent appointment. Define the responsibilities, evaluation period and conversion terms at the start; the permanent role is not automatic."] },
+          { type: "cards", columns: 3, items: [
+            { title: "Cloud architect evaluation", text: "Look for architecture decisions that fit migration needs, security controls, resilience and operating cost, with clear explanations of the tradeoffs." },
+            { title: "DevOps leadership evaluation", text: "Assess CI/CD ownership, infrastructure as code, incident learning and collaboration with developers. Tool familiarity alone does not demonstrate leadership." },
+            { title: "SRE and platform evaluation", text: "Agree on reliability objectives, incident responsibilities and the developer experience the platform should provide. Evaluate ownership and documentation as well as delivery." },
+          ] },
+          { type: "paragraphs", items: ["For cloud and DevOps talent hiring in the USA or India, confirm work location, time-zone coverage, on-call expectations and engagement requirements. Compare [contract-to-hire](/solutions#contract-to-hire) with [contract staffing](/solutions#temporary-staffing) for a defined migration and [permanent recruitment](/solutions#permanent-placement) for continuing infrastructure ownership."] },
+        ],
+      },
       {
         heading: "Cloud Hiring Has Changed",
         blocks: [
@@ -1670,7 +1736,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From DevOps to Platform Engineering",
-        image: { src: "/talent/cloud-devops-talent/platform-engineering.webp", alt: "Engineers arranging a self-service platform diagram beside a build, test and deploy pipeline" },
+        image: { src: "/talent/cloud-devops-talent/platform-engineering.webp", alt: "DevOps and platform engineers planning a self-service cloud platform and deployment pipeline" },
         blocks: [
           {
             type: "paragraphs",
@@ -1874,7 +1940,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Reliability Is Becoming a Business Capability",
-        image: { src: "/talent/cloud-devops-talent/reliability.webp", alt: "Operations room with uptime and latency dashboards watched by a site reliability engineer" },
+        image: { src: "/talent/cloud-devops-talent/reliability.webp", alt: "Site reliability engineer monitoring service uptime, latency and infrastructure dashboards" },
         blocks: [
           {
             type: "paragraphs",
@@ -2282,7 +2348,7 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "Cloud and DevOps staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
   {
     id: "talent-cyber",
@@ -2292,8 +2358,9 @@ export const TALENT_PAGES: ContentPage[] = [
     navLabel: "Cybersecurity",
     summary: "Security engineering, cloud and application security, SOC, IAM, incident response, GRC and security leadership talent.",
     title: "Cybersecurity Staffing and Recruitment, USA & India",
-    description: "Cybersecurity staffing across security engineering, cloud and application security, IAM, SOC, GRC and security leadership in the USA and India.",
+    description: "Hire cybersecurity talent in India and the USA for SOC, cloud security, IAM and GRC roles. Explore contract and permanent staffing with TalentiFi-X.",
     primaryKeyword: "cybersecurity staffing",
+    topics: ["Cybersecurity recruitment", "Cloud security engineers", "SOC analysts", "Identity and access management"],
     keywords: [
       "cybersecurity recruitment",
       "cybersecurity talent",
@@ -2312,13 +2379,26 @@ export const TALENT_PAGES: ContentPage[] = [
     h1: "Cybersecurity Staffing in the USA and India",
     lead: "Security Is No Longer a Technology Function Sitting Beside the Business.",
     intro: [
+      "TalentiFi-X supports cybersecurity recruitment in India and the USA for security engineers, SOC analysts, cloud security, IAM and GRC roles. Discuss contract or permanent staffing around the risks and systems your team must protect.",
       "As organizations become more digital, the boundary between technology and security becomes harder to separate. Applications are business infrastructure. Cloud environments are business infrastructure. Identity systems are business infrastructure. Data is business infrastructure. AI is becoming business infrastructure.",
       "And every new layer creates another security consideration. That changes the talent requirement. Cybersecurity teams today need people who can prevent attacks, detect threats, secure applications and infrastructure, manage identities, respond to incidents and help organizations understand and manage risk.",
       "TalentiFi-X helps organizations identify cybersecurity professionals across this increasingly interconnected landscape.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/cybersecurity-talent/hero.webp", alt: "Security operations desk with a network threat map and alert timelines on several monitors" },
+    heroImage: { src: "/talent/cybersecurity-talent/hero.webp", alt: "Cybersecurity analyst monitoring network threats and security alerts across several screens" },
     sections: [
+      {
+        heading: "Cybersecurity Recruitment for Projects and Permanent Teams",
+        id: "cybersecurity-hiring-options",
+        blocks: [
+          { type: "cards", columns: 3, items: [
+            { title: "Contract security specialists", text: "Define the scope for cloud security, IAM or a GRC initiative, including access boundaries, deliverables and collaboration with the existing security team.", href: "/solutions#temporary-staffing" },
+            { title: "Permanent cybersecurity hires", text: "Hire for ongoing security engineering, SOC responsibilities and risk ownership. Match the role to the environment and escalation responsibilities.", href: "/solutions#permanent-placement" },
+            { title: "Security leadership search", text: "Clarify the business risks, stakeholder relationships and technical responsibilities a security leader must own, beyond the certifications on a resume.", href: "/solutions#executive-search" },
+          ] },
+          { type: "paragraphs", items: ["For cybersecurity hiring in India and the USA, identify the work location, shift coverage, required experience and any role-specific access requirements. These details help distinguish a cloud security engineer from a SOC analyst or a governance specialist."] },
+        ],
+      },
       {
         heading: "Cybersecurity Has Become an Ecosystem",
         blocks: [
@@ -2522,7 +2602,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "Cloud Has Changed the Security Job",
-        image: { src: "/talent/cybersecurity-talent/cloud-security.webp", alt: "Laptop showing cloud identity and access paths beside a hardware security key and phone sign-in" },
+        image: { src: "/talent/cybersecurity-talent/cloud-security.webp", alt: "Cloud security and identity access diagram on a laptop beside a hardware security key and phone sign-in" },
         blocks: [
           {
             type: "paragraphs",
@@ -2640,7 +2720,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "The Security Professional Needs to Understand the Business",
-        image: { src: "/talent/cybersecurity-talent/security-business.webp", alt: "Security leader presenting a risk heat map to executives in a boardroom" },
+        image: { src: "/talent/cybersecurity-talent/security-business.webp", alt: "Cybersecurity leader reviewing risk heat maps with an executive team" },
         blocks: [
           {
             type: "paragraphs",
@@ -2878,7 +2958,7 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "Cybersecurity staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
   {
     id: "talent-erp",
@@ -2888,8 +2968,9 @@ export const TALENT_PAGES: ContentPage[] = [
     navLabel: "ERP & SAP",
     summary: "SAP S/4HANA, functional and technical SAP consultants, integration and architecture specialists, and ERP transformation leaders.",
     title: "ERP & SAP Staffing and Recruitment, USA & India",
-    description: "ERP and SAP staffing for SAP S/4HANA, implementation, integration, functional and technical roles. TalentiFi-X supports ERP hiring in the USA and India.",
+    description: "Hire ERP and SAP consultants in India and the USA for S/4HANA, integration and implementation. Explore contract and permanent staffing with TalentiFi-X.",
     primaryKeyword: "ERP and SAP staffing",
+    topics: ["SAP staffing", "ERP recruitment", "SAP S/4HANA", "Functional and technical consultants"],
     keywords: [
       "ERP staffing",
       "SAP staffing",
@@ -2913,13 +2994,26 @@ export const TALENT_PAGES: ContentPage[] = [
     h1: "ERP & SAP Staffing in the USA and India",
     lead: "ERP Is Not Just Software. It Is How the Business Runs.",
     intro: [
+      "TalentiFi-X supports ERP and SAP staffing in India and the USA for functional consultants, technical specialists, architects and program leaders. Discuss contract or permanent hiring for implementation, integration and S/4HANA work.",
       "An ERP system sits much closer to the business than many technology platforms. Finance runs through it. Procurement runs through it. Supply chains depend on it. Manufacturing may depend on it. Human capital processes connect to it. Customer and operational data can flow through it. Which means an ERP transformation is rarely just a technology implementation.",
       "It is a business transformation supported by technology. And that makes ERP talent different. The right professional needs to understand not only the platform, but the business process the platform is enabling.",
       "TalentiFi-X helps organizations identify ERP and SAP professionals across functional, technical, architecture, implementation and transformation requirements.",
     ],
     tagline: "Human Led. AI Assisted.",
-    heroImage: { src: "/talent/erp-sap-talent/hero.webp", alt: "Consultant reviewing an ERP dashboard and a business process diagram on a tablet" },
+    heroImage: { src: "/talent/erp-sap-talent/hero.webp", alt: "ERP consultant reviewing business dashboards and a process diagram on a tablet" },
     sections: [
+      {
+        heading: "ERP and SAP Staffing by Project Stage",
+        id: "erp-sap-hiring-options",
+        blocks: [
+          { type: "cards", columns: 3, items: [
+            { title: "Contract SAP consultants", text: "Specify the module, project stage and deliverables for implementation, migration, testing or integration work. Include the business process and existing landscape.", href: "/solutions#temporary-staffing" },
+            { title: "Permanent ERP recruitment", text: "Hire for continuing ownership of enterprise applications, functional processes, technical integration and the support needed after a project goes live.", href: "/solutions#permanent-placement" },
+            { title: "ERP program leadership", text: "Define transformation scope, decision authority and stakeholder responsibilities when recruiting an architect, program leader or enterprise applications head.", href: "/solutions#executive-search" },
+          ] },
+          { type: "paragraphs", items: ["For SAP recruitment in India or the USA, share the platform version, modules, industry context, work location and project timeline. Separate functional consulting, technical development and program leadership requirements before choosing an engagement model."] },
+        ],
+      },
       {
         heading: "SAP Hiring Is Changing With the ERP Landscape",
         blocks: [
@@ -2961,7 +3055,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "From ERP Implementation to Business Transformation",
-        image: { src: "/talent/erp-sap-talent/business-transformation.webp", alt: "Business process map of sticky notes on a workshop wall during an ERP transformation" },
+        image: { src: "/talent/erp-sap-talent/business-transformation.webp", alt: "ERP consultants mapping business processes with linked sticky notes during a transformation workshop" },
         blocks: [
           {
             type: "paragraphs",
@@ -3138,7 +3232,7 @@ export const TALENT_PAGES: ContentPage[] = [
       },
       {
         heading: "S/4HANA Has Changed the Talent Conversation",
-        image: { src: "/talent/erp-sap-talent/s4hana.webp", alt: "Supply chain, warehouse and finance dashboards on monitors during an SAP S/4HANA migration" },
+        image: { src: "/talent/erp-sap-talent/s4hana.webp", alt: "ERP consultant reviewing supply chain, warehouse and finance dashboards across three monitors" },
         blocks: [
           {
             type: "paragraphs",
@@ -3491,6 +3585,6 @@ export const TALENT_PAGES: ContentPage[] = [
       serviceType: "ERP and SAP staffing",
       areaServed: ["United States", "India"],
     },
-    updated: "2026-11-03",
+    updated: "2026-11-18",
   },
 ];

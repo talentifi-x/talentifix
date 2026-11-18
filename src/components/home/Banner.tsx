@@ -98,7 +98,7 @@ export const Banner = () => {
           <div className="relative w-full aspect-3000/2604 lg:absolute lg:inset-[11%] lg:w-auto lg:aspect-auto">
             <Image
               src="/banner-home/talentifi-x-3d-logo-staffing-rebuilt.webp"
-              alt="Staffing Rebuilt 3D Graphic"
+              alt="TalentiFi-X emblem in blue and turquoise glass"
               fill
               sizes="(max-width: 1023px) 380px, 600px"
               className="object-contain"

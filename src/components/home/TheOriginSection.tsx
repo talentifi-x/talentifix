@@ -8,7 +8,7 @@ const TheOriginSection = () => {
       <div className="absolute -right-25 -bottom-25 md:right-25 md:bottom-12.5 w-127.75 h-157.5 opacity-10 pointer-events-none blur-md">
         <Image
           src="/assets/figma/origin-favicon.svg"
-          alt="Decoration"
+          alt=""
           width={511}
           height={630}
         />
@@ -21,7 +21,7 @@ const TheOriginSection = () => {
           <div className="absolute -top-12 -left-12 md:-left-24 w-40 h-32 md:w-65 md:h-50 opacity-10 md:opacity-90 pointer-events-none block">
             <Image
               src="/assets/figma/origin-quote.svg"
-              alt="Quote"
+              alt=""
               width={261}
               height={198}
             />
@@ -51,7 +51,7 @@ const TheOriginSection = () => {
             {/* Assuming origin-timeline.svg is the line/dots graphic */}
             <Image
               src="/assets/figma/origin-timeline.svg"
-              alt="Timeline"
+              alt=""
               width={840}
               height={28}
               className="w-full max-w-[840px]"

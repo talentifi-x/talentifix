@@ -20,7 +20,7 @@ const OfferingCard = ({
         <div className="relative flex items-center justify-center">
           <Image
             src={icon}
-            alt={title}
+            alt=""
             width={60}
             height={60}
             className="object-contain "
@@ -56,7 +56,7 @@ export const FormalOfferingSection = () => {
       <div className="absolute -right-12.5 -top-14.5 w-68 h-83.75 pointer-events-none opacity-20">
         <Image
           src="/assets/figma/formal-favicon.svg"
-          alt="Favicon Background"
+          alt=""
           fill
           sizes="272px"
           className="object-contain"

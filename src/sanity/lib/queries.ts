@@ -9,6 +9,8 @@ export interface SanityPost {
   readTime: string;
   introduction: string;
   image: string | null;
+  imageAlt?: string | null;
+  tags?: string[] | null;
 }
 
 export interface SanityPostFull extends SanityPost {
@@ -16,8 +18,8 @@ export interface SanityPostFull extends SanityPost {
   faq: { question: string; answer: string }[];
   /** Editor-set date of the last real content change; never Sanity's _updatedAt. */
   lastUpdated?: string;
-  imageAlt?: string;
   shareImage?: string | null;
+  shareImageAlt?: string | null;
   noindex?: boolean;
   metaTitle?: string;
   metaDescription?: string;
@@ -53,11 +55,13 @@ export async function getAllSanityPosts(): Promise<SanityPost[]> {
       publishedAt,
       category,
       author,
+      tags,
       readTime,
       introduction,
       // Sanity serves an image under any readable name added after its URL, so the
       // file name Google sees describes the post instead of the asset hash.
-      "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension
+      "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension,
+      "imageAlt": mainImage.alt
     }`,
   );
 }
@@ -95,13 +99,18 @@ export async function getSanityPostBySlug(
       category,
       author,
       founderInsights,
+      tags,
       readTime,
       introduction,
       "image": mainImage.asset->url + "/" + slug.current + "." + mainImage.asset->extension,
       "imageAlt": mainImage.alt,
       "shareImage": shareImage.asset->url,
+      "shareImageAlt": shareImage.alt,
       noindex,
-      body,
+      "body": body[] {
+        ...,
+        _type == "image" => { "asset": asset->{url} }
+      },
       faq,
       metaTitle,
       metaDescription,

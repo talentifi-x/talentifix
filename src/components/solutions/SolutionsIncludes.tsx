@@ -20,7 +20,7 @@ export const SolutionsIncludes = () => {
     <section className="relative w-full bg-white overflow-hidden">
       <Image
         src="/assets/Solutions/perm-placement-bg.png"
-        alt="Background pattern"
+        alt=""
         fill
         sizes="100vw"
         className="object-cover object-center opacity-10"
@@ -78,7 +78,7 @@ export const SolutionsIncludes = () => {
       </div>
 
       <div className="pointer-events-none absolute right-36 bottom-2 hidden md:block opacity-20">
-        <Image src="/assets/Solutions/cube-2.png" alt="Cube decoration" width={220} height={220} />
+        <Image src="/assets/Solutions/cube-2.png" alt="" width={220} height={220} />
       </div>
     </section>
   );

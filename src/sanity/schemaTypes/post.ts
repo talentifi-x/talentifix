@@ -33,6 +33,13 @@ export const postType = defineType({
         'Set this ONLY when the article itself changes in a meaningful way (new section, revised advice, updated figures). It is shown to readers and sent to Google as the modified date. Leave it alone for typo, spelling or SEO-field edits.',
     }),
     defineField({ name: 'category', title: 'Category', type: 'string' }),
+    defineField({
+      name: 'tags', title: 'Topics', type: 'array',
+      of: [{ type: 'string' }],
+      options: { layout: 'tags' },
+      description: 'Up to four subjects actually covered by the article. Shown to readers and used in article metadata. Leave empty to use the existing topic labels; these are not a meta-keywords ranking shortcut.',
+      validation: (Rule) => Rule.max(4).unique(),
+    }),
     defineField({ name: 'readTime', title: 'Read Time', type: 'string', description: 'e.g. 5 min read' }),
     defineField({ name: 'introduction', title: 'Introduction', type: 'text', rows: 4 }),
     defineField({
@@ -40,7 +47,7 @@ export const postType = defineType({
       fields: [
         defineField({
           name: 'alt', title: 'Alt Text', type: 'string',
-          description: 'Describe what the image shows, for screen readers and Google Images.',
+          description: 'Describe the visible scene and its relevance to the article. Use a target topic or role phrase only when it accurately describes the image. Include important image text not repeated nearby. Do not replace the description with a headline or keyword list.',
           validation: (Rule) => Rule.required(),
         }),
       ],
@@ -61,7 +68,11 @@ export const postType = defineType({
         },
         {
           type: 'image', options: { hotspot: true },
-          fields: [{ name: 'alt', title: 'Alt Text', type: 'string', validation: (Rule) => Rule.required() }],
+          fields: [{
+            name: 'alt', title: 'Alt Text', type: 'string',
+            description: 'Describe what this image communicates in this section. For charts or diagrams, explain the takeaway in the article as well. Do not reuse the article headline.',
+            validation: (Rule) => Rule.required(),
+          }],
         },
         {
           type: 'object',
@@ -128,6 +139,11 @@ export const postType = defineType({
       name: 'shareImage',
       title: 'Share Image (SEO)',
       type: 'image',
+      fields: [defineField({
+        name: 'alt', title: 'Alt Text', type: 'string',
+        description: 'Describe this share image. It may show something different from the main article image.',
+        validation: (Rule) => Rule.required(),
+      })],
       description:
         'Optional. The picture shown when the post is shared on LinkedIn, WhatsApp or X. Use 1200 x 630 pixels. Leave blank to use the main image.',
     }),

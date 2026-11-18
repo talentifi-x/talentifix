@@ -16,7 +16,7 @@ export const WhoSection = () => {
       <div className="absolute -left-28 -top-9.75 w-86.75 h-107 pointer-events-none opacity-100">
         <Image
           src="/icons/who.svg"
-          alt="Favicon Background"
+          alt=""
           fill
           sizes="347px"
           className="object-contain"
@@ -100,7 +100,7 @@ export const WhoSection = () => {
                 >
                   <Image
                     src="/assets/figma/who-polygon.png"
-                    alt="Leaders"
+                    alt="Professional adjusting a suit jacket in an office atrium"
                     fill
                     sizes="(max-width: 768px) 280px, 320px"
                     className="object-cover"
@@ -156,7 +156,7 @@ export const WhoSection = () => {
                 >
                   <Image
                     src="/assets/figma/who-polygon.png"
-                    alt="Teams"
+                    alt="Professional adjusting a suit jacket in an office atrium"
                     fill
                     sizes="(max-width: 768px) 280px, 320px"
                     className="object-cover"
@@ -209,7 +209,7 @@ export const WhoSection = () => {
                 >
                   <Image
                     src="/assets/figma/who-polygon.png"
-                    alt="Talent"
+                    alt="Professional adjusting a suit jacket in an office atrium"
                     fill
                     sizes="(max-width: 768px) 280px, 320px"
                     className="object-cover"

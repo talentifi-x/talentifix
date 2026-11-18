@@ -174,6 +174,7 @@ export function pageMetadata(opts: {
   publishedTime?: string;
   modifiedTime?: string;
   authors?: string[];
+  tags?: string[];
 }): Metadata {
   const shareTitle =
     typeof opts.title === "string" ? `${opts.title}${BRAND_SUFFIX}` : opts.title.absolute;
@@ -198,6 +199,7 @@ export function pageMetadata(opts: {
             publishedTime: opts.publishedTime,
             modifiedTime: opts.modifiedTime,
             authors: opts.authors,
+            ...(opts.tags?.length ? { tags: opts.tags } : {}),
           }
         : { ...shared, type: "website" },
     twitter: {

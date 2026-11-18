@@ -74,6 +74,8 @@ export function contentJsonLd(page: ContentPage, crumbs: Crumb[]) {
       name: page.h1,
       description: page.description,
       inLanguage: "en",
+      // Describe the same subjects as the visible tags; no hidden keyword lists.
+      ...(page.topics?.length ? { keywords: page.topics } : {}),
       isPartOf: { "@id": WEBSITE_ID },
       breadcrumb: { "@id": `${url}#breadcrumb` },
       dateModified: page.updated,

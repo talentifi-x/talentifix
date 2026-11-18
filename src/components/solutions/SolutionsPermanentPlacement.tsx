@@ -10,7 +10,7 @@ export const SolutionsPermanentPlacement = () => {
     >
       <Image
         src="/assets/Solutions/perm-placement-bg.svg"
-        alt="The permanent placement background"
+        alt=""
         width={1769}
         height={819}
         aria-hidden="true"

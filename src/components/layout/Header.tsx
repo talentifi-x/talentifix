@@ -125,7 +125,7 @@ export function Header() {
             >
               <Image
                 src="/logos/logo.svg"
-                alt="TalentiFi-X Logo"
+                alt="TalentiFi-X home"
                 width={200}
                 height={200}
                 style={{ width: "auto", height: "auto" }}

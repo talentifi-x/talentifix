@@ -117,6 +117,8 @@ export interface ContentPage {
   primaryKeyword: string;
   /** Secondary and topic keywords the copy covers (planning aid, not emitted as a meta tag). */
   keywords: string[];
+  /** A short set of visible subject tags, also used as WebPage keywords. */
+  topics?: string[];
   eyebrow: string;
   h1: string;
   /** Hero subheading. */

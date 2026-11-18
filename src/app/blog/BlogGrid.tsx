@@ -15,7 +15,8 @@ type Post = {
   date: string;
   readTime: string;
   introduction: string | undefined;
-  image: string;
+  image: string | null;
+  imageAlt: string;
 };
 
 /** Filter value for "every topic", kept apart from topic names so it can never clash with one. */
@@ -107,13 +108,15 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
           >
             {/* Thumbnail */}
             <div className="relative w-full h-55 overflow-hidden bg-gray-100">
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              {post.image && (
+                <Image
+                  src={post.image}
+                  alt={post.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
               {/* Category badge */}
               <span className="absolute top-4 left-4 bg-primary text-white text-xs font-bold font-notch uppercase tracking-wider px-3 py-1 rounded-sm flex items-center gap-1.5">
                 <Tag className="w-3 h-3" />

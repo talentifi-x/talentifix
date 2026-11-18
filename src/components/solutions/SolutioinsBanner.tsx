@@ -10,7 +10,7 @@ export const SolutionsBanner = () => {
         <div className="w-full lg:flex-1 text-center lg:text-left">
           {/* The H1 carries the search phrase; the slogan below is the visual headline. */}
           <h1 className="mb-4 text-primary font-notch font-bold text-sm sm:text-base tracking-[0.18em] uppercase">
-            Staffing solutions: contract, permanent &amp; executive search
+            Contract and permanent staffing in India and the USA
           </h1>
           <p className="text-[36px] sm:text-[48px] lg:text-[60px] font-notch font-bold text-black mb-6 leading-tight">
             Not Just Roles. Responsibility.
