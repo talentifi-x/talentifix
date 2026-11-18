@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   X as CloseIcon,
@@ -47,6 +47,17 @@ const XLogoIcon = ({
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const updateHeight = () => document.documentElement.style.setProperty("--site-header-height", `${header.getBoundingClientRect().height}px`);
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -73,7 +84,7 @@ export function Header() {
   };
 
   return (
-    <div className="w-full flex flex-col font-sans sticky top-0 z-100">
+    <div ref={headerRef} data-site-header className="w-full flex flex-col font-sans sticky top-0 z-100">
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-blue">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between h-10">

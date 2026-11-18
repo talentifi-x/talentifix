@@ -56,6 +56,7 @@
 
   &::-webkit-scrollbar {
     height: 6px;
+    width: 6px;
   }
   &::-webkit-scrollbar-track {
     background: var(--color-grey-accent);
@@ -100,6 +101,11 @@
 body {
   margin: 0px;
   background: white;
+}
+
+/* Native heading links should also clear the sticky site navigation. */
+.blog-article :is(h2[id], h3[id], section[id]) {
+  scroll-margin-top: calc(var(--site-header-height, 7.5rem) + 1.5rem);
 }
 
 p {

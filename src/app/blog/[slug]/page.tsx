@@ -653,14 +653,14 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
         <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
           {/* Sticky TOC */}
           {tocItems.length > 0 && (
-            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky top-8">
+            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
               <TableOfContents items={tocItems} />
             </aside>
           )}
 
           {/* Article. w-full: on phones the column is otherwise as wide as its content,
               and the one-line breadcrumb would push the page wider than the screen. */}
-          <article className="w-full flex-1 min-w-0">
+          <article className="blog-article w-full flex-1 min-w-0">
             <header className="mb-10">
               <Breadcrumbs
                 className="mb-3"
@@ -729,7 +729,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
             {/* Mobile TOC */}
             {tocItems.length > 0 && (
               <div className="lg:hidden mb-10">
-                <TableOfContents items={tocItems} />
+                <TableOfContents items={tocItems} variant="inline" />
               </div>
             )}
 
@@ -899,12 +899,12 @@ export default async function BlogPostPage({ params }: Props) {
         {/* ── Two-column layout ── */}
         <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
           {/* ── LEFT: Sticky Table of Contents ── */}
-          <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky top-8">
+          <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
             <TableOfContents items={tocItems} />
           </aside>
 
           {/* ── RIGHT: Article ── */}
-          <article className="flex-1 min-w-0">
+          <article className="blog-article w-full flex-1 min-w-0">
             {/* Title + meta */}
             <header className="mb-10">
               <div className="flex items-center gap-4 text-dark/70 text-xs font-sans mb-4">
@@ -939,7 +939,7 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Mobile TOC (shown only on small screens) */}
             <div className="lg:hidden mb-10">
-              <TableOfContents items={tocItems} />
+              <TableOfContents items={tocItems} variant="inline" />
             </div>
 
             {/* ── Sections ── */}
