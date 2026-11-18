@@ -479,6 +479,7 @@ export const TALENT_PAGES: ContentPage[] = [
       "define-fde",
     ],
     relatedPosts: [
+      "how-to-hire-machine-learning-engineer-india",
       "one-job-title-five-different-roles-technical-hiring",
       "how-to-choose-it-staffing-agency-usa",
       "bengaluru-tech-talent-evaluation-us-companies-india",
