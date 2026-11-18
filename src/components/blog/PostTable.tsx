@@ -13,43 +13,56 @@ export function PostTable({ value }: { value: PostTableValue }) {
   const [header, ...body] = rows;
 
   return (
-    <div className="my-6 overflow-x-auto rounded-lg border border-gray-200 bg-white">
-      <table className="w-full border-collapse text-left font-sans text-sm sm:text-[15px] md:text-base hyphens-auto">
-        <thead className="bg-primary/5">
-          <tr>
-            {header.map((cell, i) => (
-              <th
-                key={i}
-                scope="col"
-                className="px-3 sm:px-4 py-3 font-notch font-bold text-dark align-bottom"
-              >
-                {cell}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {body.map((row, r) => (
-            <tr key={r} className="border-t border-gray-200">
-              {row.map((cell, i) =>
-                i === 0 ? (
-                  <th
-                    key={i}
-                    scope="row"
-                    className="px-3 sm:px-4 py-3 font-semibold text-dark align-top md:whitespace-nowrap"
-                  >
-                    {cell}
-                  </th>
-                ) : (
-                  <td key={i} className="px-3 sm:px-4 py-3 text-dark/70 leading-relaxed align-top">
-                    {cell}
-                  </td>
-                ),
-              )}
+    <div className="my-6">
+      {header.length >= 3 && (
+        <p className="mb-2 text-xs text-dark/60 sm:hidden">Scroll horizontally to see all columns.</p>
+      )}
+      <div
+        className="overflow-x-auto rounded-lg border border-gray-200 bg-white focus-visible:outline-2 focus-visible:outline-primary"
+        role="region"
+        aria-label={`Table: ${header.join(", ")}`}
+        tabIndex={0}
+      >
+        <table
+          className="w-full border-collapse text-left font-sans text-sm sm:text-[15px] md:text-base hyphens-auto"
+          style={header.length >= 3 ? { minWidth: `${header.length * 10}rem` } : undefined}
+        >
+          <thead className="bg-primary/5">
+            <tr>
+              {header.map((cell, i) => (
+                <th
+                  key={i}
+                  scope="col"
+                  className="px-3 sm:px-4 py-3 font-notch font-bold text-dark align-bottom"
+                >
+                  {cell}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {body.map((row, r) => (
+              <tr key={r} className="border-t border-gray-200">
+                {row.map((cell, i) =>
+                  i === 0 ? (
+                    <th
+                      key={i}
+                      scope="row"
+                      className="px-3 sm:px-4 py-3 font-semibold text-dark align-top md:whitespace-nowrap"
+                    >
+                      {cell}
+                    </th>
+                  ) : (
+                    <td key={i} className="px-3 sm:px-4 py-3 text-dark/70 leading-relaxed align-top">
+                      {cell}
+                    </td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
