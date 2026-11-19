@@ -57,6 +57,16 @@ import {
  * ("security", "cloud").
  */
 const RULES: [RegExp, LucideIcon][] = [
+  [/non-functional|performance|load testing|stress testing/i, Gauge],
+  [/structural|unit testing/i, Blocks],
+  [/manual testing|human expertise/i, Users],
+  [/automated testing|regression/i, Repeat],
+  [/exploratory|smoke|sanity/i, Bug],
+  [/accessibility/i, UserCheck],
+  [/usability/i, Eye],
+  [/compatibility|web applications/i, Monitor],
+  [/end-to-end|execution/i, Workflow],
+  [/\buat\b|full-spectrum/i, CircleCheck],
   [/\?$/, Compass],
   [/business problem/i, Target],
   [/forward deployed/i, Rocket],

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { BlogFaq } from "@data/blogData";
 
@@ -9,6 +9,7 @@ interface FaqSectionProps {
 }
 
 export function FaqSection({ faqs }: FaqSectionProps) {
+  const id = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) =>
@@ -30,9 +31,12 @@ export function FaqSection({ faqs }: FaqSectionProps) {
             } bg-white`}
           >
             <button
+              type="button"
+              id={`${id}-question-${index}`}
               onClick={() => toggle(index)}
               className="w-full px-5 py-4 text-left flex items-center gap-4 group"
               aria-expanded={isOpen}
+              aria-controls={`${id}-answer-${index}`}
             >
               {/* Number badge */}
               <span
@@ -56,6 +60,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
 
               {/* Chevron */}
               <ChevronDown
+                aria-hidden="true"
                 className={`shrink-0 w-5 h-5 transition-all duration-300 ${
                   isOpen
                     ? "rotate-180 text-primary"
@@ -66,6 +71,11 @@ export function FaqSection({ faqs }: FaqSectionProps) {
 
             {/* Animated answer panel */}
             <div
+              id={`${id}-answer-${index}`}
+              role="region"
+              aria-labelledby={`${id}-question-${index}`}
+              aria-hidden={!isOpen}
+              inert={!isOpen}
               className={`grid transition-all duration-300 ease-in-out ${
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
               }`}

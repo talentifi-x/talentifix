@@ -250,7 +250,7 @@ export function ContentBlock({ block, posts }: { block: Block; posts: Record<str
 
     case "steps":
       return (
-        <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className={`grid grid-cols-1 gap-4 sm:grid-cols-2 ${block.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {block.items.map((step, i) => (
             <li key={step.title} className="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-6">
               {/* Decorative watermark, drawn as CSS content so it is not text that

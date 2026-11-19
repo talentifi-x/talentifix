@@ -20,6 +20,7 @@ export interface CatalogEntry {
 const SOLUTIONS = { name: "Solutions", href: "/solutions" };
 
 export const CATALOG: CatalogEntry[] = [
+  { id: "service-software-testing-qa", kind: "solution", path: "/services/software-testing-qa", navLabel: "Software Testing & QA", parent: SOLUTIONS },
   // Hubs
   { id: "hub-talent", kind: "hub", path: "/talent", navLabel: "Technology talent" },
   { id: "hub-challenges", kind: "hub", path: "/hiring-challenges", navLabel: "Hiring challenges" },

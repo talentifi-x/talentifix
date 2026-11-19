@@ -88,9 +88,12 @@ export function Header() {
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-blue">
         <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between h-10">
-          <span className="text-white text-sm font-medium">
+          <a
+            href="mailto:contact@TalentiFi-X.com"
+            className="inline-flex h-10 items-center text-white text-sm font-medium underline-offset-4 hover:underline focus-visible:underline"
+          >
             contact@TalentiFi-X.com
-          </span>
+          </a>
           <div className="flex items-center gap-1 -mr-3">
             <Link
               href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"

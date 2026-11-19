@@ -10,6 +10,7 @@ import { contentJsonLd, relatedGroups, type PostSummary } from "@lib/contentPage
 import { ContentBlock, FlowPanel, LinkCards, Paragraphs } from "./ContentBlocks";
 import { RichText } from "./RichText";
 import { TopicTags } from "./TopicTags";
+import { CriteriaSection } from "./CriteriaSection";
 
 const COMMERCIAL = new Set<ContentPage["kind"]>(["talent", "solution", "market"]);
 
@@ -103,6 +104,7 @@ function SectionView({
   /** Puts the section image on the left, so images alternate down the page. */
   flip?: boolean;
 }) {
+  if (section.layout === "criteria") return <CriteriaSection id={id} section={section} />;
   const [first, ...others] = section.blocks;
   const lead = first?.type === "paragraphs" ? first : null;
   const blocks = groupBlocks(lead ? others : section.blocks);
@@ -189,6 +191,9 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
     ...relatedPosts.map((post) => ({ href: `/blog/${post.slug}`, title: post.title, text: post.introduction, tag: "Article" })),
   ];
   const commercial = COMMERCIAL.has(page.kind);
+  const atAGlance = page.atAGlance ?? AT_A_GLANCE;
+  const primaryAction = page.primaryAction ?? { href: "/start-hiring", label: "Start hiring" };
+  const secondaryAction = page.secondaryAction ?? { href: "/contact", label: "Talk to our team" };
   const sectionIds = page.sections.map((section) => section.id ?? slug(section.heading));
   const { hero, rest } = splitIntro(page.intro);
   const showToc = page.sections.length >= 5;
@@ -244,16 +249,16 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
               )}
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/start-hiring"
+                  href={primaryAction.href}
                   className="inline-flex min-h-11 items-center gap-2 px-6 py-3 bg-primary text-white rounded-sm font-sans font-semibold hover:opacity-90 transition-opacity"
                 >
-                  Start hiring <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  {primaryAction.label} <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
                 </Link>
                 <Link
-                  href="/contact"
+                  href={secondaryAction.href}
                   className="inline-flex min-h-11 items-center px-6 py-3 border border-primary text-primary rounded-sm font-sans font-semibold bg-white/70 hover:bg-primary/5 transition-colors"
                 >
-                  Talk to our team
+                  {secondaryAction.label}
                 </Link>
                 {page.tagline && <span className="ml-1 font-notch font-bold text-primary text-[15px]">{page.tagline}</span>}
               </div>
@@ -272,7 +277,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                   >
                     <p className="font-notch font-bold text-dark text-[15px]">At a glance</p>
                     <ul className="mt-3 flex flex-col gap-2.5">
-                      {AT_A_GLANCE.map((item) => (
+                      {atAGlance.map((item) => (
                         <li key={item} className="flex items-start gap-2.5 text-dark/80 text-[13px] leading-snug">
                           <span className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                             <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden="true" />
@@ -294,7 +299,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                 <span className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary to-secondary" aria-hidden="true" />
                 <p className="font-notch font-bold text-dark text-[17px]">At a glance</p>
                 <ul className="mt-4 flex flex-col gap-3">
-                  {[page.summary, ...AT_A_GLANCE].map((item) => (
+                  {[page.summary, ...atAGlance].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-dark/80 text-[14px] leading-relaxed">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                         <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
@@ -339,7 +344,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                     {page.sections.map((section, i) => (
                       <li key={sectionIds[i]}>
                         <a href={`#${sectionIds[i]}`} className="flex min-h-11 items-baseline gap-3 py-1.5 text-[15px] text-dark/75 hover:text-primary">
-                          <span className="font-notch font-bold text-primary/50 text-xs tracking-widest">{pad(i + 1)}</span>
+                          <span className="font-notch font-bold text-primary text-xs tracking-widest">{pad(i + 1)}</span>
                           <span>{section.heading}</span>
                         </a>
                       </li>
@@ -355,7 +360,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                           href={`#${sectionIds[i]}`}
                           className="group flex min-h-10 items-baseline gap-3 py-1.5 text-[15px] text-dark/75 hover:text-primary transition-colors"
                         >
-                          <span className="font-notch font-bold text-primary/50 text-xs tracking-widest group-hover:text-primary">{pad(i + 1)}</span>
+                          <span className="font-notch font-bold text-primary text-xs tracking-widest">{pad(i + 1)}</span>
                           <span>{section.heading}</span>
                         </a>
                       </li>
@@ -363,7 +368,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                     {page.faqs.length > 0 && (
                       <li>
                         <a href="#faq" className="group flex min-h-10 items-baseline gap-3 py-1.5 text-[15px] text-dark/75 hover:text-primary transition-colors">
-                          <span className="font-notch font-bold text-primary/50 text-xs tracking-widest group-hover:text-primary">FAQ</span>
+                          <span className="font-notch font-bold text-primary text-xs tracking-widest">FAQ</span>
                           <span>Frequently asked questions</span>
                         </a>
                       </li>
@@ -456,7 +461,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
       {page.faqs.length > 0 && (
         <section id="faq" className="w-full bg-white px-6 md:px-8 py-16 lg:py-24 scroll-mt-36">
           <div className="max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-4 lg:sticky lg:top-[calc(var(--site-header-height,7.5rem)+1.5rem)] lg:self-start">
               <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[34px] xl:text-[40px] leading-[1.12]">
                 <TwoTone text="Frequently asked questions" />
               </h2>
@@ -487,10 +492,10 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
             </div>
             <div className="lg:col-span-4 flex flex-col items-start gap-3 lg:items-end">
               <Link
-                href="/start-hiring"
+                href={page.cta.href ?? "/start-hiring"}
                 className="inline-flex min-h-12 items-center gap-2 px-6 py-3 bg-white text-primary rounded-sm font-sans font-semibold hover:bg-white/90 transition-colors"
               >
-                {page.cta.button} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                {page.cta.button} <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
               </Link>
               <Link href="/solutions" className="inline-flex min-h-11 items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
                 All staffing solutions <ArrowRight className="w-4 h-4" aria-hidden="true" />

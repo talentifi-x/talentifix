@@ -25,7 +25,7 @@ const PAGES: [path: string, name: string, summary: string][] = [
 /** Live content pages, grouped by section of the site. */
 const CONTENT_SECTIONS: [heading: string, kinds: PageKind[]][] = [
   ["Technology talent", ["talent"]],
-  ["Hiring solutions", ["solution"]],
+  ["Services and hiring solutions", ["solution"]],
   ["Markets", ["market"]],
   ["Hiring challenges", ["challenge"]],
   ["Hiring Intelligence", ["hub", "comparison", "guide", "definition"]],

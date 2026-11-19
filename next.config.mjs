@@ -33,6 +33,8 @@ const renamedImages = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep audit/production builds separate from a running development server.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   output: "standalone",
   outputFileTracingRoot: __dirname,
   images: {

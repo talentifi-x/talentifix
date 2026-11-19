@@ -38,7 +38,8 @@ export const MAX_DESCRIPTION_LENGTH = 155;
  * CDN keeps a copy for 15 minutes, then serves it stale while one request
  * rebuilds it, so a publish appears within about 15 minutes.
  */
-export const CDN_CACHE_CONTROL = "public, s-maxage=900, stale-while-revalidate=86400";
+export const CDN_CACHE_CONTROL =
+  "public, s-maxage=900, stale-while-revalidate=86400";
 
 /** Stable identity for the Organization entity, shared by every page that emits it. */
 export const ORG_ID = `${SITE_URL}#organization`;
@@ -63,8 +64,27 @@ export function webPageNode(path: string, name: string, type = "WebPage") {
 
 /** Words that make a clipped title or description read as unfinished ("…About Hiring And"). */
 const DANGLING_WORDS = new Set([
-  "a", "an", "and", "as", "at", "but", "by", "for", "from", "how", "in", "into",
-  "of", "on", "or", "the", "to", "what", "why", "with", "&",
+  "a",
+  "an",
+  "and",
+  "as",
+  "at",
+  "but",
+  "by",
+  "for",
+  "from",
+  "how",
+  "in",
+  "into",
+  "of",
+  "on",
+  "or",
+  "the",
+  "to",
+  "what",
+  "why",
+  "with",
+  "&",
 ]);
 
 /**
@@ -79,24 +99,26 @@ export function truncateAtWord(value: string, limit: number): string {
   const clipped = text.slice(0, limit);
   const lastSpace = clipped.lastIndexOf(" ");
   const cut = lastSpace > limit * 0.6 ? clipped.slice(0, lastSpace) : clipped;
-  const words = cut.replace(/[\s,;:.\-–—(]+$/, "").split(" ");
+  const words = cut.replace(/[\s,;:.\-–(]+$/, "").split(" ");
   while (
     words.length > 1 &&
-    DANGLING_WORDS.has(words[words.length - 1].toLowerCase().replace(/^[("“‘']+/, ""))
+    DANGLING_WORDS.has(
+      words[words.length - 1].toLowerCase().replace(/^[("“‘']+/, ""),
+    )
   ) {
     words.pop();
   }
-  return words.join(" ").replace(/[\s,;:.\-–—(]+$/, "");
+  return words.join(" ").replace(/[\s,;:.\-–(]+$/, "");
 }
 
 /** The longest leading clause (35+ characters) that ends at a natural break: a colon, dash, bracket, comma or sentence end. */
 function headlineBeforeBreak(text: string): string | null {
   let best: string | null = null;
-  for (const match of text.matchAll(/(: | — | – | - | \(|\? |\. |, )/g)) {
+  for (const match of text.matchAll(/(: | - | – | - | \(|\? |\. |, )/g)) {
     const keepMark = match[0][0] === "?";
     const head = text
       .slice(0, (match.index ?? 0) + (keepMark ? 1 : 0))
-      .replace(/[\s,;:\-–—(]+$/, "");
+      .replace(/[\s,;:\-–(]+$/, "");
     if (head.length >= 35 && head.length <= MAX_TITLE_HARD_LENGTH) best = head;
   }
   return best;
@@ -142,7 +164,9 @@ export function buildTitle(
   if (head) {
     return {
       absolute:
-        head.length + BRAND_SUFFIX.length <= MAX_TITLE_LENGTH ? `${head}${BRAND_SUFFIX}` : head,
+        head.length + BRAND_SUFFIX.length <= MAX_TITLE_LENGTH
+          ? `${head}${BRAND_SUFFIX}`
+          : head,
     };
   }
   return { absolute: truncateAtWord(base, MAX_TITLE_LENGTH) };
@@ -156,7 +180,12 @@ export const DEFAULT_SHARE_IMAGE = {
   alt: "TalentiFi-X: human-led, AI-assisted staffing for AI, ML, cybersecurity and GCC teams",
 };
 
-type ShareImage = { url: string; width?: number; height?: number; alt?: string };
+type ShareImage = {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+};
 
 export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
 
@@ -192,7 +221,9 @@ export function pageMetadata(opts: {
   tags?: string[];
 }): Metadata {
   const shareTitle =
-    typeof opts.title === "string" ? `${opts.title}${BRAND_SUFFIX}` : opts.title.absolute;
+    typeof opts.title === "string"
+      ? `${opts.title}${BRAND_SUFFIX}`
+      : opts.title.absolute;
   const images = [opts.image ?? DEFAULT_SHARE_IMAGE];
   const shared = {
     title: shareTitle,
@@ -260,7 +291,12 @@ export const founderNode = {
     "https://www.linkedin.com/in/chetan-mangalwedhe-chet-mann/",
   ],
   worksFor: { "@id": ORG_ID },
-  knowsAbout: ["Staffing", "Recruitment", "AI in hiring", "Global Capability Centres"],
+  knowsAbout: [
+    "Staffing",
+    "Recruitment",
+    "AI in hiring",
+    "Global Capability Centres",
+  ],
 } as const;
 
 /** True when a CMS byline credits the founder rather than the team. */
@@ -348,8 +384,18 @@ export const websiteNode = {
  */
 export function articleAuthor(author?: string | null) {
   return isFounderByline(author)
-    ? { "@type": "Person", "@id": FOUNDER_ID, name: founderNode.name, url: founderNode.url }
-    : { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: `${SITE_URL}/` };
+    ? {
+        "@type": "Person",
+        "@id": FOUNDER_ID,
+        name: founderNode.name,
+        url: founderNode.url,
+      }
+    : {
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: SITE_NAME,
+        url: `${SITE_URL}/`,
+      };
 }
 
 /** Wrap nodes in a `@graph` document ready to serialise into a script tag. */
@@ -418,7 +464,8 @@ export function toJobLocation(location?: string) {
 
   const placeParts = parts.filter((_, i) => i !== countryIndex);
   const locality = placeParts[0] ?? parts[0];
-  const region = placeParts.length > 1 ? placeParts[placeParts.length - 1] : undefined;
+  const region =
+    placeParts.length > 1 ? placeParts[placeParts.length - 1] : undefined;
 
   return {
     "@type": "Place",

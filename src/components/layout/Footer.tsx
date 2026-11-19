@@ -67,39 +67,40 @@ const XLogoIcon = ({ className }: { className?: string }) => {
 
 // A server component: only the zoom-aware wordmark (FooterWordmark) needs the browser.
 export const Footer = () => {
+  const talentPages = livePages("talent");
+
   return (
-    <footer className="w-full bg-white pt-20 pb-0 flex flex-col items-center relative overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-20 relative z-10">
-        {/* Top Section: 3 Columns */}
-        <div className="flex flex-col md:flex-row items-start gap-12 md:gap-8">
-          {/* Column 1: Statement & Button */}
-          <div className="flex flex-col gap-8 flex-1">
+    <footer className="w-full bg-white pt-12 sm:pt-16 xl:pt-20 flex flex-col items-center relative overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+        <div className={`grid gap-x-6 gap-y-8 sm:grid-cols-2 xl:gap-x-8 ${
+          talentPages.length > 0
+            ? "md:grid-cols-[1fr_1.15fr_1.45fr] xl:grid-cols-[1.25fr_0.85fr_1fr_1.35fr]"
+            : "xl:grid-cols-3"
+        }`}>
+          <div className="flex min-w-0 flex-col items-start gap-5 border-b border-gray-200 pb-8 sm:col-span-full sm:flex-row sm:items-center sm:justify-between xl:col-span-1 xl:flex-col xl:items-start xl:justify-start xl:gap-8 xl:border-0 xl:pb-0">
             {/* Footer text uses <p>, not headings, so it never breaks a page's H1-H6 outline. */}
-            <p className="text-[32px] font-bold font-sans text-black leading-tight">
+            <p className="text-[28px] lg:text-[32px] font-bold font-sans text-black leading-tight text-balance">
               Staffing isn’t about filling roles. <br />
               It’s about building what comes next.
             </p>
             <Link
               href="/start-hiring"
-              className="w-fit px-6 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
+              className="w-fit shrink-0 px-6 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] font-bold text-sm tracking-wider flex items-center gap-2 hover:bg-[#0000FF] hover:text-white transition-colors uppercase"
             >
               Start Hiring
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Divider (Mobile only or spacing) */}
-          <div className="hidden md:block w-px self-stretch bg-gray-300" />
-
-          {/* Column 2: Navigate */}
-          <div className="flex flex-col gap-6">
-            <p className="text-[24px] font-bold font-notch text-black">
+          <div className="flex min-w-0 flex-col gap-3 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+            <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
               Navigate
             </p>
-            <nav className="flex flex-col">
+            <nav aria-label="Footer navigation" className="flex flex-col">
               {[
                 { name: "Home", href: "/" },
                 { name: "Solutions", href: "/solutions" },
+                { name: "Software Testing & QA", href: "/services/software-testing-qa" },
                 { name: "Blog", href: "/blog" },
                 { name: "Media", href: "/media" },
                 { name: "Contact", href: "/contact" },
@@ -117,40 +118,30 @@ export const Footer = () => {
             </nav>
           </div>
 
-          {/* Divider */}
-          <div className="hidden md:block w-px self-stretch bg-gray-300" />
-
-          {/* Column 3: Technology talent (live content pages) */}
-          {livePages("talent").length > 0 && (
-            <>
-              <div className="flex flex-col gap-6">
-                <p className="text-[24px] font-bold font-notch text-black">
-                  Technology Talent
-                </p>
-                <nav aria-label="Technology talent" className="flex flex-col">
-                  {livePages("talent").map((page) => (
-                    <Link
-                      key={page.path}
-                      href={page.path}
-                      className="flex items-center min-h-11 text-[18px] font-medium text-gray-600 hover:text-[#0000FF] transition-colors"
-                    >
-                      {page.navLabel}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-
-              {/* Divider */}
-              <div className="hidden md:block w-px self-stretch bg-gray-300" />
-            </>
+          {talentPages.length > 0 && (
+            <div className="flex min-w-0 flex-col gap-3 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+              <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
+                Technology Talent
+              </p>
+              <nav aria-label="Technology talent" className="flex flex-col">
+                {talentPages.map((page) => (
+                  <Link
+                    key={page.path}
+                    href={page.path}
+                    className="flex items-center min-h-11 text-[18px] font-medium text-gray-600 hover:text-[#0000FF] transition-colors"
+                  >
+                    {page.navLabel}
+                  </Link>
+                ))}
+              </nav>
+            </div>
           )}
 
-          {/* Column 4: Connect With Us */}
-          <div className="flex flex-col gap-6 flex-1">
-            <p className="text-[24px] font-bold font-notch text-black">
+          <div className="flex min-w-0 flex-col gap-4 sm:col-span-full md:col-span-1 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+            <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
               Connect With Us
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="https://www.instagram.com/talentifi_x?igsh=Y2pncWRvazgzM2kz"
                 target="_blank"
@@ -188,7 +179,7 @@ export const Footer = () => {
                 <YoutubeIcon className="w-6 h-6 text-[#0000FF]" />
               </Link>
             </div>
-            <div className="flex flex-wrap gap-x-10 gap-y-4 text-gray-600">
+            <div className="grid gap-x-6 gap-y-4 text-gray-600 sm:grid-cols-2 md:grid-cols-1">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#0000FF] mt-0.5 shrink-0" />
                 <span className="text-[#0000FF] font-bold text-sm mt-0.5 shrink-0">
@@ -230,8 +221,8 @@ export const Footer = () => {
       </div>
 
       {/* Footer Links - Part of the footer, scrolls with it */}
-      <div className="relative z-50 w-full flex flex-col justify-end pb-8 px-4">
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-0 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
+      <div className="relative z-50 w-full pb-8">
+        <div className="max-w-7xl mx-auto w-full px-6 md:pl-8 md:pr-24 2xl:pr-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
           <div className="flex items-center gap-8">
             <Link
               href="/privacy-policy"

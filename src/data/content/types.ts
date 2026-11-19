@@ -70,15 +70,25 @@ export interface ContentImage {
   alt: string;
 }
 
-export interface Section {
+interface SectionBase {
   /** Rendered as the section's h2. */
   heading: string;
   /** Optional photo shown beside the section's opening text. */
   image?: ContentImage;
   /** Anchor id; defaults to a slug of the heading. */
   id?: string;
-  blocks: Block[];
 }
+
+export type Section = SectionBase & (
+  | { layout?: "standard"; blocks: Block[] }
+  | {
+      layout: "criteria";
+      blocks: [
+        { type: "paragraphs"; items: string[] },
+        { type: "criteria"; items: { title: string; text: string }[] },
+      ];
+    }
+);
 
 export interface Faq {
   question: string;
@@ -129,9 +139,14 @@ export interface ContentPage {
   tagline?: string;
   /** Optional photo beside the hero copy. */
   heroImage?: ContentImage;
+  /** Service-specific hero links; hiring pages keep the default actions. */
+  primaryAction?: { href: string; label: string };
+  secondaryAction?: { href: string; label: string };
+  /** Override the staffing facts when a page describes a different service. */
+  atAGlance?: string[];
   sections: Section[];
   faqs: Faq[];
-  cta: { heading: string; text: string; button: string };
+  cta: { heading: string; text: string; button: string; href?: string };
   /** Ids of related content pages; links appear only for live pages. */
   related: string[];
   /** Related blog posts by slug; unpublished posts are skipped. */

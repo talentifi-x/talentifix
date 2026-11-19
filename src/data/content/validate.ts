@@ -1,5 +1,5 @@
 import { CATALOG, STATIC_ROUTES } from "./catalog";
-import type { Block, ContentPage } from "./types";
+import type { ContentPage, Section } from "./types";
 
 /**
  * Checks the copy rules in `types.ts` plus SEO limits and link integrity.
@@ -79,7 +79,7 @@ const MIN_WORDS: Record<ContentPage["kind"], number> = {
 
 type Field = { where: string; text: string; links: boolean };
 
-function blockStrings(block: Block): string[] {
+function blockStrings(block: Section["blocks"][number]): string[] {
   switch (block.type) {
     case "paragraphs":
       return block.items;
@@ -89,6 +89,7 @@ function blockStrings(block: Block): string[] {
     case "cards":
       return block.items.flatMap((card) => [card.title, card.text, card.itemsLabel ?? "", ...(card.items ?? [])]);
     case "steps":
+    case "criteria":
       return block.items.flatMap((step) => [step.title, step.text]);
     case "flow":
       return [block.label ?? "", ...block.items];
@@ -118,6 +119,9 @@ function fields(page: ContentPage): Field[] {
     ...plain("lead", page.lead),
     ...page.intro.map((text, i) => ({ where: `intro[${i}]`, text, links: true })),
     ...plain("tagline", page.tagline),
+    ...plain("primaryAction.label", page.primaryAction?.label),
+    ...plain("secondaryAction.label", page.secondaryAction?.label),
+    ...(page.atAGlance ?? []).flatMap((item) => plain("atAGlance", item)),
     ...page.sections.flatMap((section) => [
       { where: `section "${section.heading}"`, text: section.heading, links: false },
       ...section.blocks.flatMap((block) =>

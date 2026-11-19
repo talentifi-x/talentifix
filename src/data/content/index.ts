@@ -1,5 +1,6 @@
 import { CATALOG } from "./catalog";
 import { TALENT_PAGES } from "./pages/talent";
+import { QA_SERVICE_PAGES } from "./pages/softwareTesting";
 import type { ContentPage, PageKind } from "./types";
 import { validateContentPages } from "./validate";
 
@@ -9,7 +10,7 @@ export type { ContentPage, PageKind } from "./types";
  * Every content page with copy. Pages listed in `catalog.ts` but missing here
  * simply do not exist yet: links to them fall back or disappear.
  */
-export const CONTENT_PAGES: ContentPage[] = [...TALENT_PAGES];
+export const CONTENT_PAGES: ContentPage[] = [...TALENT_PAGES, ...QA_SERVICE_PAGES];
 
 /** Drafts render only for review builds (SHOW_DRAFT_PAGES=1), never in production. */
 const SHOW_DRAFTS = process.env.SHOW_DRAFT_PAGES === "1";
