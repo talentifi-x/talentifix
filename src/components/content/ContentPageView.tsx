@@ -13,6 +13,7 @@ import { TopicTags } from "./TopicTags";
 import { CriteriaSection } from "./CriteriaSection";
 
 const COMMERCIAL = new Set<ContentPage["kind"]>(["talent", "solution", "market"]);
+const STICKY_SIDEBAR = "lg:sticky lg:top-[calc(var(--site-header-height,7.5rem)+1.5rem)] lg:self-start";
 
 /** Facts the whole site already states; shown beside the hero of service pages. */
 const AT_A_GLANCE = [
@@ -320,7 +321,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
         <section className="w-full border-y border-gray-100 bg-white px-6 md:px-8 py-14 lg:py-16">
           <div className={`max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 gap-10 ${rest.length > 0 && showToc ? "lg:grid-cols-12 lg:gap-14" : ""}`}>
             {rest.length > 0 && (
-              <div className={showToc ? "lg:col-span-7" : "max-w-3xl"}>
+              <div className={showToc ? `lg:col-span-7 ${STICKY_SIDEBAR}` : "max-w-3xl"}>
                 <span className="block h-1 w-12 rounded-full bg-secondary" aria-hidden="true" />
                 <div className="mt-6 space-y-5">
                   {rest.map((paragraph) => (
@@ -461,7 +462,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
       {page.faqs.length > 0 && (
         <section id="faq" className="w-full bg-white px-6 md:px-8 py-16 lg:py-24 scroll-mt-36">
           <div className="max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-4 lg:sticky lg:top-[calc(var(--site-header-height,7.5rem)+1.5rem)] lg:self-start">
+            <div className={`lg:col-span-4 ${STICKY_SIDEBAR}`}>
               <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[34px] xl:text-[40px] leading-[1.12]">
                 <TwoTone text="Frequently asked questions" />
               </h2>
