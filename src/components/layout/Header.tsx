@@ -164,11 +164,15 @@ export function Header() {
             <Link href="/jobs" className={getLinkClasses("/jobs")}>
               Careers
             </Link>
-            <Link href="/contact" className={getLinkClasses("/contact")}>
-              Contact
-            </Link>
             <Link href="/media" className={getLinkClasses("/media")}>
               Media
+            </Link>
+            <Link
+              href="/services/software-testing-qa"
+              className={getLinkClasses("/services/software-testing-qa")}
+              aria-current={isActive("/services/software-testing-qa") ? "page" : undefined}
+            >
+              Beyond Staffing
             </Link>
           </div>
 
@@ -186,6 +190,8 @@ export function Header() {
             onClick={toggleMobileMenu}
             className="lg:hidden p-2.5 rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMobileMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
           </button>
@@ -193,7 +199,7 @@ export function Header() {
 
         {/* Mobile/Tablet Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50">
+          <div id="mobile-navigation" className="lg:hidden absolute top-full left-0 right-0 max-h-[calc(100dvh-var(--site-header-height,7.5rem))] overflow-y-auto overscroll-contain bg-white shadow-lg z-50">
             <div className="flex flex-col p-6 space-y-6">
               <Link
                 href="/"
@@ -231,18 +237,19 @@ export function Header() {
                 Careers
               </Link>
               <Link
-                href="/contact"
-                className={getMobileLinkClasses("/contact")}
-                onClick={closeMobileMenu}
-              >
-                Contact
-              </Link>
-              <Link
                 href="/media"
                 className={getMobileLinkClasses("/media")}
                 onClick={closeMobileMenu}
               >
                 Media
+              </Link>
+              <Link
+                href="/services/software-testing-qa"
+                className={getMobileLinkClasses("/services/software-testing-qa")}
+                aria-current={isActive("/services/software-testing-qa") ? "page" : undefined}
+                onClick={closeMobileMenu}
+              >
+                Beyond Staffing
               </Link>
               <Link
                 href="/start-hiring"
