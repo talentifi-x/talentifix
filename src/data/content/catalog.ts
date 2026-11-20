@@ -21,6 +21,9 @@ const SOLUTIONS = { name: "Solutions", href: "/solutions" };
 
 export const CATALOG: CatalogEntry[] = [
   { id: "service-software-testing-qa", kind: "solution", path: "/services/software-testing-qa", navLabel: "Software Testing & QA", parent: SOLUTIONS },
+  { id: "service-fintech-cybersecurity", kind: "solution", path: "/services/fintech-cybersecurity-staffing", navLabel: "Fintech Cybersecurity Staffing", parent: SOLUTIONS },
+  { id: "service-automation-testing", kind: "solution", path: "/services/automation-testing-qa-staffing", navLabel: "Automation Testing Staffing", parent: SOLUTIONS },
+  { id: "service-offshore-engineering", kind: "solution", path: "/services/offshore-software-engineering-teams", navLabel: "Offshore Engineering Teams", parent: SOLUTIONS },
   // Hubs
   { id: "hub-talent", kind: "hub", path: "/talent", navLabel: "Technology talent" },
   { id: "hub-challenges", kind: "hub", path: "/hiring-challenges", navLabel: "Hiring challenges" },
@@ -29,6 +32,8 @@ export const CATALOG: CatalogEntry[] = [
 
   // Talent specialisms
   { id: "talent-ai-ml", kind: "talent", path: "/talent/ai-machine-learning-talent", navLabel: "AI & Machine Learning", parent: "hub-talent" },
+  { id: "talent-data-engineering", kind: "talent", path: "/talent/data-engineering-cloud-analytics", navLabel: "Data Engineering", parent: "hub-talent" },
+  { id: "talent-generative-ai-llm-usa", kind: "talent", path: "/talent/generative-ai-llm-talent-usa", navLabel: "Generative AI & LLM", parent: "hub-talent" },
   { id: "talent-software", kind: "talent", path: "/talent/software-engineering-talent", navLabel: "Software Engineering", parent: "hub-talent" },
   { id: "talent-data", kind: "talent", path: "/talent/data-analytics-talent", navLabel: "Data & Analytics", parent: "hub-talent" },
   { id: "talent-cloud", kind: "talent", path: "/talent/cloud-devops-talent", navLabel: "Cloud & DevOps", parent: "hub-talent" },

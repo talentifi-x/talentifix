@@ -304,7 +304,11 @@ export const QA_SERVICE_PAGES: ContentPage[] = [
       button: "Discuss Your QA Requirement",
       href: "/contact",
     },
-    related: [],
+    related: [
+      "service-automation-testing",
+      "talent-software",
+      "service-offshore-engineering",
+    ],
     relatedPosts: [],
     service: { serviceType: "Software Testing and Quality Assurance", areaServed: ["India", "United States"] },
     updated: "2026-11-19",

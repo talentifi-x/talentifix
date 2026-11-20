@@ -464,6 +464,8 @@ export const TALENT_PAGES: ContentPage[] = [
       button: "Discuss Your AI Talent Requirement",
     },
     related: [
+      "talent-generative-ai-llm-usa",
+      "talent-data-engineering",
       "talent-software",
       "talent-data",
       "talent-cloud",
@@ -1029,6 +1031,8 @@ export const TALENT_PAGES: ContentPage[] = [
       button: "Discuss Your Software Engineering Requirement",
     },
     related: [
+      "service-offshore-engineering",
+      "service-automation-testing",
       "talent-ai-ml",
       "talent-data",
       "talent-cloud",
@@ -1618,6 +1622,7 @@ export const TALENT_PAGES: ContentPage[] = [
       button: "Discuss Your Data & Analytics Requirement",
     },
     related: [
+      "talent-data-engineering",
       "talent-ai-ml",
       "talent-software",
       "talent-cloud",
@@ -2309,6 +2314,7 @@ export const TALENT_PAGES: ContentPage[] = [
       button: "Discuss Your Cloud & DevOps Requirement",
     },
     related: [
+      "talent-data-engineering",
       "talent-ai-ml",
       "talent-software",
       "talent-data",
@@ -2938,6 +2944,7 @@ export const TALENT_PAGES: ContentPage[] = [
       button: "Discuss Your Cybersecurity Requirement",
     },
     related: [
+      "service-fintech-cybersecurity",
       "talent-ai-ml",
       "talent-software",
       "talent-data",
