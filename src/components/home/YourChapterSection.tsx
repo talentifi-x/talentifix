@@ -4,11 +4,11 @@ import { Check } from "lucide-react";
 
 const YourChapterSection = () => {
   return (
-    <section className="relative w-full lg:py-24 py-12 px-4 md:px-4 overflow-hidden bg-white">
+    <section className="relative w-full lg:py-24 py-16 px-6 md:px-8 overflow-hidden bg-white">
       {/* Decorative Background - Bottom Left Glow */}
       <div className="absolute -left-50 bottom-0 w-150 h-150 bg-blue-100/50 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-24 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col gap-12 lg:gap-20 relative z-10">
         {/* Main Header */}
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="lg:text-[54px] text-[48px] font-bold font-notch text-black leading-tight">
@@ -21,21 +21,15 @@ const YourChapterSection = () => {
         </div>
 
         {/* Content Section */}
-        <div className="flex flex-col lg:flex-row items-stretch justify-between gap-2 lg:gap-0">
-          {/* Left Column: Text */}
-          <div className="flex-1 border border-[#E5E7EB] rounded-[5px] p-8 lg:p-12 relative bg-white/50 backdrop-blur-sm border-l-primary border-t-primary border-b-primary lg:border-r-transparent border-r-primary">
-            {/* Gradient Border Overlay for Left Side if needed, but border-l works well. 
-                 The image shows a thin blue line on the left. 
-                 Let's stick to a clean border-l-[#0000FF] or gradient. 
-                 The provided image shows a gradient fade on the left line? 
-                 "linear-gradient(to bottom, #0000FF 0%, #FFFFFF 100%)" was in the previous code.
-                 Let's keep the gradient left border effect.
-             */}
-            <div className="absolute top-0 left-0 bottom-0 w-px bg-linear-to-b from-[#0000FF] to-transparent" />
+        <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8">
+          {/* Left Column: Text. One even card with a blue accent down its left
+              edge, matching the rounded image card beside it. */}
+          <div className="flex-1 rounded-[10px] border border-[#E5E7EB] p-8 lg:p-12 relative overflow-hidden bg-white/70 backdrop-blur-sm shadow-[0_12px_32px_-18px_rgba(15,23,42,0.22)]">
+            <div className="absolute top-0 left-0 bottom-0 w-1 bg-linear-to-b from-[#0000FF] via-[#0000FF]/60 to-secondary" />
 
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-4">
-                <h3 className="text-[48px] font-bold font-notch text-black leading-[1.1]">
+                <h3 className="text-[36px] sm:text-[44px] lg:text-[48px] font-bold font-notch text-black leading-[1.1]">
                   How <span className="text-[#0000FF]">TalentiFi-X</span>
                   <br />
                   Works for You

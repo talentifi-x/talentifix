@@ -25,7 +25,8 @@ export const MediaSection = () => {
           className="w-fit shrink-0 flex items-center gap-2 bg-[#0000FF] text-white px-8 py-4 rounded-[5px] font-bold text-sm uppercase tracking-wider hover:bg-blue transition-colors"
         >
           View All
-          <ArrowRight size={18} />
+          <span className="sr-only"> media coverage</span>
+          <ArrowRight size={18} aria-hidden="true" />
         </Link>
       </div>
 

@@ -17,6 +17,7 @@ import { ClientsSection } from "@components/home/ClientsSection";
 import { MediaSection } from "@components/home/MediaSection";
 import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
+import { TechnologyStaffingSection, specialistLinksJsonLd } from "@components/home/TechnologyStaffingSection";
 import Link from "next/link";
 import { PageQuestions } from "@components/content/PageQuestions";
 import { JsonLd } from "@components/seo/JsonLd";
@@ -25,14 +26,16 @@ import { jsonLdGraph, pageMetadata, webPageNode } from "@lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "AI, ML & Cybersecurity Staffing in India & US | TalentiFi-X" },
   description:
-    "Human-led, AI-assisted staffing for AI, ML, cybersecurity and GCC teams across India and the US. Fewer resumes, better hires. Tell us the role you need.",
+    "Human-led, AI-assisted IT staffing in India and the US for AI, ML, cybersecurity, data, cloud, QA and offshore engineering teams. Share the role you need.",
   path: "/",
 });
 
 export default function Home() {
   return (
     <div className="w-full flex flex-col items-center bg-white">
-      <JsonLd data={jsonLdGraph(webPageNode("/", "AI, ML & Cybersecurity Staffing in India & US"))} />
+      <JsonLd
+        data={jsonLdGraph(webPageNode("/", "AI, ML & Cybersecurity Staffing in India & US"), specialistLinksJsonLd())}
+      />
       <Banner />
       <Bannertwo />
       <Bannerthree />
@@ -49,6 +52,7 @@ export default function Home() {
       <YourChapterSection />
       <HowItWorksSection />
       <WhereWeSpecializeSection />
+      <TechnologyStaffingSection />
       <TheOriginSection />
       <PageQuestions
         title="Staffing questions employers ask"

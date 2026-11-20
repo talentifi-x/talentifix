@@ -30,7 +30,7 @@ const OfferingCard = ({
           {title}
         </h3>
       </div>
-      <p className=" lg:text-[24px] font-bold font-stack-text text-dark leading-relaxed opacity-90">
+      <p className="text-[17px] lg:text-[20px] font-medium font-stack-text text-dark/80 leading-relaxed">
         {description}
       </p>
 
@@ -41,9 +41,10 @@ const OfferingCard = ({
           className="flex items-center gap-2 min-h-11 text-primary text-[22px] font-bold group"
         >
           Know More
-          <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+          {/* Visible text stays "Know More"; the link's name says where it goes. */}
+          <span className="sr-only"> about {title}</span>
+          <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
-        <div className="w-[140px] h-[4px] text-secondary rounded-full" />
       </div>
     </div>
   </div>

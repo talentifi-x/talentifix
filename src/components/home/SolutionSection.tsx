@@ -32,7 +32,7 @@ export const Solutionsection = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {/* Card 1 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 
@@ -43,7 +43,7 @@ export const Solutionsection = () => {
                 alt=""
                 width={350}
                 height={312}
-                className="w-full h-auto opacity-100"
+                className="w-full h-auto opacity-50"
               />
             </div>
 
@@ -60,7 +60,7 @@ export const Solutionsection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 
@@ -71,7 +71,7 @@ export const Solutionsection = () => {
                 alt=""
                 width={350}
                 height={312}
-                className="w-full h-auto opacity-100"
+                className="w-full h-auto opacity-50"
               />
             </div>
 
@@ -88,7 +88,7 @@ export const Solutionsection = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 
@@ -99,7 +99,7 @@ export const Solutionsection = () => {
                 alt=""
                 width={350}
                 height={312}
-                className="w-full h-auto opacity-100"
+                className="w-full h-auto opacity-50"
               />
             </div>
 

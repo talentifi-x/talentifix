@@ -26,7 +26,7 @@ const WhereWeSpecializeSection = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center gap-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center gap-14 lg:gap-20">
         {/* Header */}
         <div className="flex flex-col items-center gap-6 text-center">
           <h2 className="lg:text-[54px] text-[48px] font-bold font-notch text-black leading-tight">
