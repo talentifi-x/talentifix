@@ -21,6 +21,17 @@
   --font-sans: "Inter", sans-serif;
   --font-stack-text: "Stack Sans Text", "Inter", sans-serif;
 
+  /* Site grid: content is at most 1400px wide on every page, with a fluid side
+     gutter, var(--site-gutter) (defined below; the px-site utility applies it).
+     - max-w-site (1400px): a container inside a section that has the gutters.
+     - max-w-7xl (1400px + two gutters): a container that carries the gutters
+       itself (px-site), so its content is the same 1400px at every zoom level.
+       (Tailwind's default 7xl is 1280px.)
+     Narrow blocks (forms, reading text) keep their own smaller max-width.
+     Zoom-stable layout rules: see CLAUDE.md. */
+  --container-site: 87.5rem;
+  --container-7xl: calc(87.5rem + 2 * var(--site-gutter));
+
   --image-primary-gradient: linear-gradient(90deg, rgba(0, 0, 255, 1) 0%, rgba(0, 0, 153, 1) 100%);
 
   /* Duration is supplied per-instance via --marquee-duration so the scroll
@@ -71,11 +82,380 @@
   }
 }
 
+/* No scrollbars on screen (the page's and every scrolling area's). Everything
+   still scrolls by wheel, trackpad, touch and keyboard. Chrome, Edge and
+   Firefox read scrollbar-width; Safari reads the -webkit- pseudo-element. In
+   the base layer, so the opt-in scrollbar-brand strips above keep their bar. */
+@layer base {
+  * {
+    scrollbar-width: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* The side gutter of every page: about 5.6% of the window, from 20px on small
+   phones to 88px on wide screens. This is the only size in the site allowed to
+   use vw: it keeps the margins in proportion at every zoom level while the
+   content inside (max 1400px) is laid out in fixed px/rem. See CLAUDE.md. */
+:root {
+  --site-gutter: clamp(20px, 5.6vw, 88px);
+}
+
+@utility px-site {
+  padding-inline: var(--site-gutter);
+}
+
 /* Entrance motion for the blog grid and search dialog; used through the
    motion-safe: variant so it switches off with reduced motion. */
 @theme {
   --animate-fade-in: fade-in 180ms ease-out;
   --animate-dialog-in: dialog-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Homepage splash screen (SiteSplash). Three rows, centred: the logo mark, large
+   and on its own, drawn piece by piece and filled in; the name, letter by
+   letter; then a line and a percentage that count up while the 3D emblem starts
+   behind it. SplashGate adds data-complete (count to 100%), then data-done
+   (fade out), then data-seen (remove). */
+
+/* The count, 0 to 100. Registered as a whole number so it can be animated and shown. */
+@property --splash-progress {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+
+.site-splash {
+  /* The height of the mark. The name, the line and the gaps are all sized from
+     it, so the three rows keep their proportions on every screen. Fixed sizes
+     (phone, then tablet and up), so it scales with browser zoom like the page. */
+  --splash-mark: 10.5rem;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  /* Walled off from the page: nothing that moves in here makes the browser lay out the page behind it. */
+  contain: strict;
+  background:
+    radial-gradient(58% 46% at 0% 56%, rgb(40 120 220 / 0.14), transparent 70%),
+    radial-gradient(58% 46% at 100% 56%, rgb(240 120 110 / 0.12), transparent 70%),
+    #fff;
+  transition:
+    opacity 0.6s ease,
+    visibility 0s linear 0.6s;
+  /* Safety net: whatever happens to the script, the splash is gone after 6 seconds. */
+  animation: site-splash-out 0.6s ease 6s forwards;
+  touch-action: none;
+}
+
+.site-splash[data-done] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .site-splash {
+    --splash-mark: 13.75rem;
+  }
+}
+
+.site-splash[data-seen] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-splash {
+    display: none;
+  }
+}
+
+.site-splash__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.6s ease;
+}
+
+/* As the splash fades it comes forward a touch, towards the emblem behind it. */
+.site-splash[data-done] .site-splash__stack {
+  transform: scale(1.05);
+}
+
+/* Row 1: the mark on its own, with a soft light behind it. */
+.site-splash__emblem {
+  position: relative;
+}
+
+.site-splash__emblem::before {
+  content: "";
+  position: absolute;
+  inset: -46%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 102 255 / 0.13), rgb(0 221 226 / 0.06) 58%, transparent);
+  opacity: 0;
+  animation: site-splash-glow 0.9s ease-out 0.5s forwards;
+}
+
+.site-splash__mark {
+  position: relative;
+  display: block;
+  width: auto;
+  height: var(--splash-mark);
+  overflow: visible;
+}
+
+/* Each piece of the mark: its outline is drawn, then it fills while the outline
+   fades, so the finished mark is the brand file's shapes exactly. --piece is its
+   place in the order. */
+.site-splash__piece {
+  fill-opacity: 0;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    site-splash-draw 0.55s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--piece) * 70ms + 120ms) forwards,
+    site-splash-fill 0.4s ease-out calc(var(--piece) * 70ms + 620ms) forwards;
+}
+
+/* Row 2: the name, as in the logo. */
+.site-splash__name {
+  display: block;
+  width: calc(var(--splash-mark) * 1.08);
+  height: auto;
+  margin-top: calc(var(--splash-mark) * 0.17);
+  overflow: visible;
+}
+
+/* Each letter of the name, left to right, once the mark is under way. */
+.site-splash__glyph {
+  opacity: 0;
+  animation: site-splash-rise 0.4s ease-out calc(var(--glyph) * 45ms + 880ms) forwards;
+}
+
+/* Row 3: the line, with the number under it. Both read one value. It runs to 92
+   for as long as the build; SplashGate uses its end as "the build is done" and
+   then lets it reach 100. */
+.site-splash__meter {
+  --splash-progress: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: calc(var(--splash-mark) * 0.92);
+  margin-top: calc(var(--splash-mark) * 0.2);
+  animation: site-splash-progress 1.75s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+.site-splash[data-complete] .site-splash__meter {
+  --splash-progress: 100;
+  animation: none;
+  transition: --splash-progress 0.3s ease-out;
+}
+
+.site-splash__bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(0 0 255 / 0.1);
+}
+
+.site-splash__bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0000ff, #00dde2);
+  transform: scaleX(calc(var(--splash-progress) / 100));
+  transform-origin: left;
+}
+
+.site-splash__pct {
+  /* A box of fixed size, cut off from the layout around it: when the number
+     changes, the browser redraws this box and nothing else. */
+  width: 6ch;
+  height: 1.2em;
+  contain: size layout style;
+  /* The left padding balances the spacing after the last character, so the number sits dead centre. */
+  padding-left: 0.08em;
+  font-family: var(--font-stack-sans-notch), "Stack Sans Notch", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  color: rgb(30 30 36 / 0.74);
+  text-align: center;
+  white-space: nowrap;
+  counter-reset: splash-progress var(--splash-progress);
+}
+
+.site-splash__pct::after {
+  content: counter(splash-progress) "%";
+}
+
+@keyframes site-splash-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes site-splash-fill {
+  to {
+    fill-opacity: 1;
+    stroke-opacity: 0;
+  }
+}
+
+@keyframes site-splash-glow {
+  to {
+    opacity: 1;
+  }
+}
+
+/* In the logo's own units (the name is 182 wide), so 3 is a small lift. */
+@keyframes site-splash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes site-splash-progress {
+  to {
+    --splash-progress: 92;
+  }
+}
+
+@keyframes site-splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Homepage hero stat cards (Banner): the 94% line fills and the 12 days light
+   up one by one as the splash lifts. While the splash is up (it comes before
+   the hero in the page) they wait at zero; without the splash they are simply
+   full. */
+.hero-stat-fill {
+  transform-origin: left;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.hero-stat-day {
+  transition:
+    opacity 0.3s ease calc(var(--day) * 70ms + 0.3s),
+    transform 0.3s ease calc(var(--day) * 70ms + 0.3s);
+}
+
+.site-splash:not([data-done], [data-seen]) ~ * .hero-stat-fill {
+  transform: scaleX(0);
+}
+
+.site-splash:not([data-done], [data-seen]) ~ * .hero-stat-day {
+  opacity: 0.15;
+  transform: scaleY(0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-splash ~ * .hero-stat-fill,
+  .site-splash ~ * .hero-stat-day {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Homepage hero streams (HeroStreams). The shapes never change: every
+   animation here moves or fades a whole layer, which the browser runs on the
+   compositor without redrawing. All of it is inside the reduced-motion queries. */
+
+/* Veils and silk ribbons sway a fraction of a degree around the emblem. */
+@keyframes hero-sway {
+  from {
+    transform: rotate(var(--sway-from, -0.4deg));
+  }
+  to {
+    transform: rotate(var(--sway-to, 0.4deg));
+  }
+}
+
+/* Nodes on the data lines glow and dim. */
+@keyframes hero-twinkle {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Light flowing towards the emblem (FlowTrain). The window of pulses slides one
+   spacing per cycle while the bright copy inside it slides back by the same
+   distance, so the copy stays on the lines it lights and only the light
+   travels. The pulses repeat at that spacing, so the loop has no seam. */
+@keyframes hero-flow-window {
+  to {
+    transform: translate3d(var(--flow-window), 0, 0);
+  }
+}
+
+@keyframes hero-flow-picture {
+  to {
+    transform: translate3d(var(--flow-picture), 0, 0);
+  }
+}
+
+/* The dot texture in the blue band drifts towards the emblem, eight dots per
+   cycle, so it too loops without a seam. */
+@keyframes hero-drift {
+  to {
+    transform: translate3d(var(--drift), 0, 0);
+  }
+}
+
+.hero-sway {
+  transform-origin: 50.48% 48.44%;
+}
+
+/* Pulses standing still would look like stray marks, so without motion they are not drawn. */
+.hero-flow {
+  display: none;
+}
+
+/* The sway turns several screen-sized layers on the GPU, so phones skip it. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  .hero-sway {
+    animation: hero-sway var(--sway-duration, 12s) ease-in-out var(--sway-delay, 0s) infinite alternate;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-twinkle {
+    animation: hero-twinkle var(--twinkle-duration, 4s) ease-in-out var(--twinkle-delay, 0s) infinite alternate;
+  }
+
+  .hero-flow {
+    display: block;
+    animation: hero-flow-window var(--flow-duration, 3s) linear var(--flow-delay, 0s) infinite;
+  }
+
+  .hero-flow-picture {
+    animation: hero-flow-picture var(--flow-duration, 3s) linear var(--flow-delay, 0s) infinite;
+  }
+
+  .hero-drift {
+    animation: hero-drift 3.2s linear infinite;
+  }
 }
 
 @keyframes fade-in {

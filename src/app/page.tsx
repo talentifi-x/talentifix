@@ -17,6 +17,7 @@ import { ClientsSection } from "@components/home/ClientsSection";
 import { MediaSection } from "@components/home/MediaSection";
 import { Bannertwo } from "@components/home/Bannertwo";
 import { Bannerthree } from "@components/home/Bannerthree";
+import { SiteSplash } from "@components/home/SiteSplash";
 import { TechnologyStaffingSection, specialistLinksJsonLd } from "@components/home/TechnologyStaffingSection";
 import Link from "next/link";
 import { PageQuestions } from "@components/content/PageQuestions";
@@ -33,14 +34,16 @@ export const metadata: Metadata = pageMetadata({
 export default function Home() {
   return (
     <div className="w-full flex flex-col items-center bg-white">
+      <SiteSplash />
       <JsonLd
         data={jsonLdGraph(webPageNode("/", "AI, ML & Cybersecurity Staffing in India & US"), specialistLinksJsonLd())}
       />
       <Banner />
       <Bannertwo />
       <Bannerthree />
-      <StorySection />
       <ClientsSection />
+      <TechnologyStaffingSection />
+      <StorySection />
       <MediaSection />
       <StatsSection />
       <StatementSection />
@@ -52,7 +55,6 @@ export default function Home() {
       <YourChapterSection />
       <HowItWorksSection />
       <WhereWeSpecializeSection />
-      <TechnologyStaffingSection />
       <TheOriginSection />
       <PageQuestions
         title="Staffing questions employers ask"

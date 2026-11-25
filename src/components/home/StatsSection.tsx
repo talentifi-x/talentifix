@@ -2,11 +2,11 @@ import React from "react";
 
 export const StatsSection = () => {
   return (
-    <section className="w-full bg-grey-accent py-20 px-6 md:px-8 lg:px-16 flex flex-col items-center">
+    <section className="w-full bg-grey-accent py-20 px-site flex flex-col items-center">
       <h2 className="text-[30px] md:text-[42px] lg:text-[54px] font-notch font-bold text-dark mb-16 text-center leading-tight">
         The Hidden Cost No One Talks About
       </h2>
-      <div className="flex flex-col md:flex-row gap-8 w-full font-notch max-w-300">
+      <div className="flex flex-col md:flex-row gap-8 w-full font-notch max-w-site">
         {/* Card 1 */}
         <div className="flex-1 bg-linear-to-b from-grey to-white shadow-lg rounded-[10px] p-10 flex flex-col lg:flex-row items-center justify-center gap-10 min-h-62.5 transform hover:-translate-y-1 transition-transform duration-300 border-b-6 border-secondary">
           <span className="text-[52px] lg:text-[75px] font-bold text-primary leading-none">

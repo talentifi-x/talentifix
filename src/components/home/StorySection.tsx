@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 
 export const StorySection = () => {
   return (
-    <section className="w-full py-20 px-6 md:px-8 flex flex-col gap-14 bg-white">
-      <div className=" max-w-7xl mx-auto">
+    <section className="w-full py-20 px-site flex flex-col gap-14 bg-white">
+      <div className=" max-w-site mx-auto">
         {/* Top Part: Story Text & Image */}
-        <div className="flex flex-col lg:flex-row items-center lg:gap-16 xl:gap-48 justify-between">
+        <div className="flex flex-col lg:flex-row items-center lg:gap-20 justify-between">
           {/* Left Content */}
           <div className="flex flex-col lg:gap-12 gap-4 flex-1">
             <h2 className="text-[50px] md:text-[80px] lg:leading-[1.3] leading-none font-bold text-dark font-notch">
@@ -20,7 +20,7 @@ export const StorySection = () => {
           </div>
 
           {/* Right Content - Image */}
-          <div className="relative w-full lg:w-1/2 xl:w-[710px] h-[300px] lg:h-[500px] overflow-hidden ">
+          <div className="relative w-full lg:w-1/2 h-[300px] lg:h-[500px] overflow-hidden ">
             <Image
               src="/assets/figma/story-image.png"
               alt="A role opens. The clock starts. Days turn into weeks. Resumes pile up. Teams stretch thin. Hiring becomes waiting. Waiting becomes settling."

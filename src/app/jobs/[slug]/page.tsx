@@ -195,8 +195,8 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
       <JsonLd data={buildJobSchema(job, slug)} />
 
       {/* Hero */}
-      <section className="w-full px-6 md:px-14 pt-10 pb-16">
-        <div className="max-w-7xl mx-auto flex flex-col gap-6 ">
+      <section className="w-full px-site pt-10 pb-16">
+        <div className="max-w-site mx-auto flex flex-col gap-6 ">
           {/* Schema is already in the page's JSON-LD graph, so the visible path only. */}
           <Breadcrumbs
             withSchema={false}
@@ -270,8 +270,8 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
       </section>
 
       {/* Body */}
-      <section className="w-full px-6 md:px-14 pb-20">
-        <div className="max-w-7xl mx-auto flex flex-col gap-14">
+      <section className="w-full px-site pb-20">
+        <div className="max-w-site mx-auto flex flex-col gap-14">
           {job.aboutRole && (
             <Block title="About the Role">
               <Paragraphs text={job.aboutRole} />

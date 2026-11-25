@@ -75,7 +75,7 @@ export default async function SitemapHtmlPage() {
   ];
 
   return (
-    <div className="w-full bg-white min-h-screen px-6 md:px-10 py-14">
+    <div className="w-full bg-white min-h-screen px-site py-14">
       <JsonLd data={jsonLdGraph({
         ...webPageNode("/sitemap.html", "TalentiFi-X Sitemap", "CollectionPage"),
         mainEntity: {
@@ -85,7 +85,7 @@ export default async function SitemapHtmlPage() {
           })),
         },
       })} />
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-site mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-dark mb-4">
           Sitemap
         </h1>

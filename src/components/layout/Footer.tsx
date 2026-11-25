@@ -70,14 +70,14 @@ export const Footer = () => {
   const talentPages = livePages("talent");
 
   return (
-    <footer className="w-full bg-white pt-12 sm:pt-16 xl:pt-20 flex flex-col items-center relative overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        <div className={`grid gap-x-6 gap-y-8 sm:grid-cols-2 xl:gap-x-8 ${
+    <footer className="w-full bg-white pt-12 sm:pt-16 lg:pt-20 flex flex-col items-center relative overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-site relative z-10">
+        <div className={`grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:gap-x-8 ${
           talentPages.length > 0
-            ? "md:grid-cols-[1fr_1.15fr_1.45fr] xl:grid-cols-[1.25fr_0.85fr_1fr_1.35fr]"
-            : "xl:grid-cols-3"
+            ? "md:grid-cols-[1fr_1.15fr_1.45fr] lg:grid-cols-[1.25fr_0.85fr_1fr_1.35fr]"
+            : "lg:grid-cols-3"
         }`}>
-          <div className="flex min-w-0 flex-col items-start gap-5 border-b border-gray-200 pb-8 sm:col-span-full sm:flex-row sm:items-center sm:justify-between xl:col-span-1 xl:flex-col xl:items-start xl:justify-start xl:gap-8 xl:border-0 xl:pb-0">
+          <div className="flex min-w-0 flex-col items-start gap-5 border-b border-gray-200 pb-8 sm:col-span-full sm:flex-row sm:items-center sm:justify-between lg:col-span-1 lg:flex-col lg:items-start lg:justify-start lg:gap-8 lg:border-0 lg:pb-0">
             {/* Footer text uses <p>, not headings, so it never breaks a page's H1-H6 outline. */}
             <p className="text-[28px] lg:text-[32px] font-bold font-sans text-black leading-tight text-balance">
               Staffing isn’t about filling roles. <br />
@@ -92,7 +92,7 @@ export const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex min-w-0 flex-col gap-3 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+          <div className="flex min-w-0 flex-col gap-3 lg:gap-6 lg:border-l lg:border-gray-300 lg:pl-6">
             <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
               Navigate
             </p>
@@ -119,7 +119,7 @@ export const Footer = () => {
           </div>
 
           {talentPages.length > 0 && (
-            <div className="flex min-w-0 flex-col gap-3 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+            <div className="flex min-w-0 flex-col gap-3 lg:gap-6 lg:border-l lg:border-gray-300 lg:pl-6">
               <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
                 Technology Talent
               </p>
@@ -137,7 +137,7 @@ export const Footer = () => {
             </div>
           )}
 
-          <div className="flex min-w-0 flex-col gap-4 sm:col-span-full md:col-span-1 xl:gap-6 xl:border-l xl:border-gray-300 xl:pl-6">
+          <div className="flex min-w-0 flex-col gap-4 sm:col-span-full md:col-span-1 lg:gap-6 lg:border-l lg:border-gray-300 lg:pl-6">
             <p className="text-2xl md:text-xl lg:text-2xl font-bold font-notch text-black">
               Connect With Us
             </p>
@@ -222,7 +222,7 @@ export const Footer = () => {
 
       {/* Footer Links - Part of the footer, scrolls with it */}
       <div className="relative z-50 w-full pb-8">
-        <div className="max-w-7xl mx-auto w-full px-6 md:pl-8 md:pr-24 2xl:pr-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
+        <div className="max-w-7xl mx-auto w-full px-site md:pr-[max(var(--site-gutter),6rem)] flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-gray-500">
           <div className="flex items-center gap-8">
             <Link
               href="/privacy-policy"

@@ -4,11 +4,11 @@ import { Check } from "lucide-react";
 
 const YourChapterSection = () => {
   return (
-    <section className="relative w-full lg:py-24 py-16 px-6 md:px-8 overflow-hidden bg-white">
+    <section className="relative w-full lg:py-24 py-16 px-site overflow-hidden bg-white">
       {/* Decorative Background - Bottom Left Glow */}
       <div className="absolute -left-50 bottom-0 w-150 h-150 bg-blue-100/50 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 lg:gap-20 relative z-10">
+      <div className="max-w-site mx-auto flex flex-col gap-12 lg:gap-20 relative z-10">
         {/* Main Header */}
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="lg:text-[54px] text-[48px] font-bold font-notch text-black leading-tight">

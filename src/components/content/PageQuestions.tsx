@@ -8,8 +8,8 @@ export function PageQuestions({ title, items, updatedPath }: {
   updatedPath?: string;
 }) {
   return (
-    <section className="w-full px-6 py-12 md:py-16">
-      <div className="mx-auto max-w-5xl">
+    <section className="w-full px-site py-12 md:py-16">
+      <div className="mx-auto max-w-site">
         <h2 className="font-notch text-3xl font-bold text-dark md:text-4xl">{title}</h2>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           {items.map(({ question, answer }) => (

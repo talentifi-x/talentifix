@@ -70,7 +70,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 py-20 flex justify-center">
+      <div className="w-full max-w-7xl mx-auto px-site py-20 flex justify-center">
         <div className="w-full max-w-5xl rounded-[10px] overflow-hidden">
           <ContactForm />
         </div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
       />
 
       {/* Next Step Section */}
-      <div className="w-full px-4 lg:mb-20 flex justify-center">
+      <div className="w-full lg:mb-20 flex justify-center">
         <TheNextStepSection />
       </div>
     </div>

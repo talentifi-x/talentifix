@@ -76,7 +76,7 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
     <section className="w-full pb-24">
       {/* Sticky filter bar: search first, then topics that scroll sideways. top = header height (40px top bar + 80px nav). */}
       <div ref={toolbarRef} className="sticky top-[120px] z-20 bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 pt-2.5 pb-1.5 flex items-start gap-3 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-site pt-2.5 pb-1.5 flex items-start gap-3 sm:gap-4">
           <div className="pt-1">
             <BlogSearch posts={posts} onSelectCategory={(value) => selectCategory(value, true)} />
           </div>
@@ -93,7 +93,7 @@ export default function BlogGrid({ posts }: { posts: Post[] }) {
       <div
         key={active}
         ref={gridRef}
-        className="max-w-7xl mx-auto px-6 md:px-8 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 motion-safe:animate-fade-in"
+        className="max-w-7xl mx-auto px-site pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 motion-safe:animate-fade-in"
       >
         {displayed.length === 0 && (
           <div className="col-span-full py-24 text-center">

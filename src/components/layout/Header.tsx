@@ -87,7 +87,7 @@ export function Header() {
     <div ref={headerRef} data-site-header className="w-full flex flex-col font-sans sticky top-0 z-100">
       {/* Top Bar */}
       <div className="w-full bg-linear-to-br from-primary to-blue">
-        <div className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between h-10">
+        <div className="w-full max-w-7xl mx-auto py-4 px-site flex items-center justify-between h-10">
           <a
             href="mailto:contact@TalentiFi-X.com"
             className="inline-flex h-10 items-center text-white text-sm font-medium underline-offset-4 hover:underline focus-visible:underline"
@@ -128,7 +128,7 @@ export function Header() {
 
       {/* Navigation Bar */}
       <nav className="w-full bg-white h-20 shadow-sm relative z-50">
-        <div className="w-full max-w-7xl mx-auto h-full px-6 md:px-8 flex items-center justify-between">
+        <div className="w-full max-w-7xl mx-auto h-full px-site flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
             {/* No fixed height: a 200px-tall box overflowed the 80px nav and its
@@ -148,7 +148,7 @@ export function Header() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-5">
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>

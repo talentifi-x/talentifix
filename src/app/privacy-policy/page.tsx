@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
     <div className="w-full bg-white flex flex-col items-center">
       {/* Hero Section */}
       <section className="w-full bg-linear-to-r from-[#0000FF] to-blue py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-site">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6"
@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Content Section */}
-      <section className="w-full max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+      <section className="w-full max-w-5xl mx-auto px-site py-16 md:py-20">
         <div className="prose prose-lg max-w-none">
           {/* Effective Date */}
           <p className="text-gray-500 text-sm mb-8">

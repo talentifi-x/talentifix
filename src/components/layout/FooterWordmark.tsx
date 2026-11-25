@@ -1,37 +1,43 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-
 /**
- * The oversized footer wordmark and its blur, hidden when the page is zoomed in
- * (it would overflow). The only part of the footer that needs the browser.
+ * The oversized footer wordmark and its blur. It is SVG text that fills the
+ * footer's width (95% of it, up to 1430px, as the old 20vw type did), so it scales with the layout at every screen
+ * size and zoom level: no viewport units, nothing to hide when zoomed in.
+ *
+ * FONT_SIZE is the wordmark's natural size in the 1000-unit-wide drawing
+ * (measured in the browser for Stack Sans Notch bold with tight tracking), so
+ * textLength only corrects rounding and never visibly stretches the letters.
  */
+const FONT_SIZE = 210;
+const HEIGHT = Math.round(FONT_SIZE * 0.96);
+const BASELINE = Math.round(FONT_SIZE * 0.8);
+
 export const FooterWordmark = () => {
-  const [isZoomed, setIsZoomed] = useState(false);
-
-  useEffect(() => {
-    const checkZoom = () => {
-      // Heuristic: compare window.outerWidth (browser window) with innerWidth (viewport)
-      // When zooming in, innerWidth decreases, so the ratio increases.
-      // Threshold 1.02 accounts for minor rounding differences.
-      const zoomLevel = window.outerWidth / window.innerWidth;
-      setIsZoomed(zoomLevel > 1.02);
-    };
-
-    checkZoom();
-    window.addEventListener("resize", checkZoom);
-    return () => window.removeEventListener("resize", checkZoom);
-  }, []);
-
-  if (isZoomed) return null;
-
   return (
     <>
       <div className="w-full flex justify-center mt-10 md:-mb-6 lg:-mb-12 relative z-0">
         {/* Decorative wordmark - not a heading, so every page keeps a single H1 */}
-        <div className="text-[20vw] md:text-[clamp(150px,20vw,300px)] font-bold font-notch bg-linear-to-r from-[#0000FF] to-secondary bg-clip-text text-transparent text-center select-none whitespace-nowrap leading-none tracking-tight">
-          TalentiFi-X
-        </div>
+        <svg viewBox={`0 0 1000 ${HEIGHT}`} className="block h-auto w-[95%] max-w-[1430px] select-none" aria-hidden="true">
+          <defs>
+            <linearGradient id="footer-wordmark" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#0000FF" />
+              <stop offset="1" stopColor="#00DDE2" />
+            </linearGradient>
+          </defs>
+          <text
+            x="500"
+            y={BASELINE}
+            textAnchor="middle"
+            fontSize={FONT_SIZE}
+            fontWeight="700"
+            letterSpacing="-0.025em"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            fill="url(#footer-wordmark)"
+            style={{ fontFamily: "var(--font-notch)" }}
+          >
+            TalentiFi-X
+          </text>
+        </svg>
       </div>
 
       {/* Non-moving Blur for Big Text Bottom - Scrolls with footer */}

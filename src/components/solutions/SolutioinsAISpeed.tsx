@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export const SolutionsAISpeed = () => {
   return (
-    <section className="w-full py-16 px-6 md:px-14 bg-[#F2F4F8] overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full py-16 px-site bg-[#F2F4F8] overflow-hidden">
+      <div className="max-w-site mx-auto">
         <div className="flex items-center flex-col justify-center text-center gap-16">
           <div className="flex-1">
             <h2 className="text-[30px] md:text-[54px] font-notch font-bold text-dark mb-6 leading-tight">

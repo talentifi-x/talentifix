@@ -11,7 +11,7 @@ const values = [
 export const WhatWeStandFor = () => {
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="relative w-full px-4 sm:px-6 md:px-14 py-18 sm:py-22">
+      <div className="relative w-full py-18 sm:py-22">
         <div className="absolute inset-0">
           <Image
             src="/assets/about/what-we-stand-for-bg.png"
@@ -25,7 +25,7 @@ export const WhatWeStandFor = () => {
           <div className="absolute inset-0 bg-linear-to-b from-white/30 via-white/55 to-white/75" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center px-10">
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center px-site">
           <h2 className="text-[36px] sm:text-[44px] md:text-[54px] font-notch font-bold text-black leading-tight">
             What We <span className="text-primary">Stand for</span>.
           </h2>
@@ -44,7 +44,7 @@ export const WhatWeStandFor = () => {
         </div>
       </div>
 
-      <div className="w-full bg-black px-4 sm:px-6 md:px-14 py-6 sm:py-7">
+      <div className="w-full bg-black px-site py-6 sm:py-7">
         <p className="max-w-6xl mx-auto text-center text-white text-[16px] sm:text-[18px] md:text-[20px] font-notch font-semibold leading-tight">
           We don&apos;t send resume stacks. We{" "}
           <span className="text-secondary">deliver candidates</span> who make

@@ -4,8 +4,8 @@ import Image from "next/image";
 export const Leadership = () => {
   return (
     // id: blog expert cards link here as the founder's on-site profile.
-    <section id="leadership" className="relative w-full bg-white px-4 sm:px-6 md:px-14 pt-16 sm:pt-20 md:pt-22 overflow-hidden lg:-mb-[120px] scroll-mt-24">
-      <div className="max-w-7xl mx-auto">
+    <section id="leadership" className="relative w-full bg-white px-site pt-16 sm:pt-20 md:pt-22 overflow-hidden lg:-mb-[120px] scroll-mt-24">
+      <div className="max-w-site mx-auto">
         <div className="pointer-events-none absolute left-1/2 top-[83px] hidden md:block h-[737px] w-[533px] -translate-x-[410px] opacity-20">
           <Image
             src="/assets/about/leadership-deco.svg"
@@ -17,7 +17,7 @@ export const Leadership = () => {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-site mx-auto">
           <h2 className="text-center text-[34px] sm:text-[44px] md:text-[54px] font-notch font-bold text-black leading-tight">
             Leadership.
           </h2>

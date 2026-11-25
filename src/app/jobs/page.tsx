@@ -27,8 +27,8 @@ export default async function JobsPage() {
   return (
     <div className="w-full bg-white min-h-screen">
       {/* Hero */}
-      <section className="w-full px-6 md:px-14 py-20 lg:py-28 relative overflow-hidden bg-white">
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-6 text-center">
+      <section className="w-full px-site py-20 lg:py-28 relative overflow-hidden bg-white">
+        <div className="relative z-10 w-full max-w-site mx-auto flex flex-col gap-6 text-center">
           {/* The label is the H1 (what people search for); the slogan below is styling only. */}
           <h1 className="inline-block text-primary font-notch font-bold text-base tracking-widest uppercase border border-primary/30 px-5 py-2 rounded-sm bg-primary/5 w-fit mx-auto">
             Careers at TalentiFi-X
@@ -43,8 +43,8 @@ export default async function JobsPage() {
       </section>
 
       {/* Jobs list */}
-      <section className="w-full pb-24 px-6 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col gap-6">
+      <section className="w-full pb-24 px-site">
+        <div className="max-w-site mx-auto flex flex-col gap-6">
           {openJobs.length === 0 && (
             <div className="py-24 text-center">
               <p className="text-dark/50 font-sans text-lg">

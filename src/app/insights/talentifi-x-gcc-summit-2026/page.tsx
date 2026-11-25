@@ -124,7 +124,7 @@ export default function GccSummit2026Page() {
       <JsonLd data={buildJsonLd(SITE_URL)} />
 
       {/* 1. Hero */}
-      <section className="w-full px-6 md:px-8 pt-14 pb-10 md:pt-20 md:pb-14">
+      <section className="w-full px-site pt-14 pb-10 md:pt-20 md:pb-14">
         <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
           <Breadcrumbs
             items={[
@@ -159,7 +159,7 @@ export default function GccSummit2026Page() {
           <PageUpdated path={SLUG} />
         </div>
 
-        <div className="w-full max-w-6xl mx-auto mt-10 md:mt-14">
+        <div className="w-full max-w-site mx-auto mt-10 md:mt-14">
           <div className="rounded-[10px] overflow-hidden border border-gray-200 shadow-sm bg-white">
             <Image
               src={BANNER}
@@ -179,7 +179,7 @@ export default function GccSummit2026Page() {
       {gccSummitGallery.length > 0 && (
         <section className="w-full pb-16 md:pb-24">
           {/* Same container as the site header so the gallery lines up with the navbar */}
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
+          <div className="w-full max-w-7xl mx-auto px-site">
             <div className="mb-8 md:mb-12">
               <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-5">
                 Conversations Beyond the Stage
@@ -199,8 +199,8 @@ export default function GccSummit2026Page() {
       )}
 
       {/* 3. What We Heard */}
-      <section className="w-full bg-grey-accent px-6 md:px-8 py-16 md:py-24">
-        <div className="w-full max-w-6xl mx-auto">
+      <section className="w-full bg-grey-accent px-site py-16 md:py-24">
+        <div className="w-full max-w-site mx-auto">
           <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight mb-10 md:mb-14">
             What were the key talent themes at GCC Summit 2026?
           </h2>
@@ -234,7 +234,7 @@ export default function GccSummit2026Page() {
       </section>
 
       {/* 4. The GCC Talent Conversation Is Changing */}
-      <section className="w-full px-6 md:px-8 py-16 md:py-24">
+      <section className="w-full px-site py-16 md:py-24">
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
           <h2 className="text-[30px] md:text-[44px] font-notch font-bold text-dark leading-tight">
             How do these themes change GCC hiring decisions?
@@ -295,8 +295,8 @@ export default function GccSummit2026Page() {
       </section>
 
       {/* 5. Single CTA */}
-      <section className="w-full bg-grey-accent px-6 md:px-8 py-16 md:py-20">
-        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
+      <section className="w-full bg-grey-accent px-site py-16 md:py-20">
+        <div className="w-full max-w-site mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="flex flex-col gap-3">
             <h2 className="text-[28px] md:text-[38px] font-notch font-bold text-dark leading-tight">
               Building capability, not just headcount

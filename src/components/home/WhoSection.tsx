@@ -23,7 +23,7 @@ export const WhoSection = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-site flex flex-col items-center gap-16 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center gap-6 text-center">
           <h2 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
@@ -36,7 +36,7 @@ export const WhoSection = () => {
         </div>
 
         {/* Main Card */}
-        <div className="w-full max-w-7xl bg-white rounded-[20px] shadow-[0px_10px_40px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div className="w-full max-w-site bg-white rounded-[20px] shadow-[0px_10px_40px_rgba(0,0,0,0.05)] overflow-hidden">
           {/* Tabs Header */}
           <div className="flex w-full border-b border-grey">
             {/* Leaders Tab */}

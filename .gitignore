@@ -34,7 +34,8 @@ yarn-error.log*
 
 # audit artifacts (logs, Lighthouse dumps, rendered HTML)
 .audit/
-audit/*.docx
+# SEO audits, reports and screenshots stay on this machine; never pushed to GitHub.
+/audit/
 
 # vercel
 .vercel

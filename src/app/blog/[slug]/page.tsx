@@ -637,7 +637,7 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
+      <div className="max-w-7xl mx-auto px-site pb-24">
         {/* Back link (44 px tall to tap; the padding keeps the old spacing on desktop) */}
         <div className="pt-2 md:pt-5 md:pb-1">
           <Link
@@ -650,10 +650,10 @@ function SanityPostPage({ post, related }: { post: SanityPostFull; related: Sani
         </div>
 
         {/* Two-column layout */}
-        <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start mt-2">
           {/* Sticky TOC */}
           {tocItems.length > 0 && (
-            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
+            <aside className="hidden lg:block lg:w-68 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
               <TableOfContents items={tocItems} />
             </aside>
           )}
@@ -884,7 +884,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-24">
+      <div className="max-w-7xl mx-auto px-site pb-24">
         {/* Back link */}
         <div className="pt-2 md:pt-5 md:pb-1">
           <Link
@@ -897,9 +897,9 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* ── Two-column layout ── */}
-        <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start mt-2">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start mt-2">
           {/* ── LEFT: Sticky Table of Contents ── */}
-          <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
+          <aside className="hidden lg:block lg:w-68 shrink-0 sticky" style={{ top: "calc(var(--site-header-height, 7.5rem) + 1rem)" }}>
             <TableOfContents items={tocItems} />
           </aside>
 

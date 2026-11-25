@@ -4,7 +4,7 @@ import { Mail, Globe } from "lucide-react";
 
 const TheNextStepSection = () => {
   return (
-    <section className="w-full py-24 px-4 md:px-4 max-w-7xl mx-auto rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
+    <section className="w-[calc(100%-2*var(--site-gutter))] py-24 px-4 max-w-site mx-auto rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image

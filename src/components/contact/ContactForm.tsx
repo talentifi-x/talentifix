@@ -85,7 +85,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="w-full bg-[#F2F4F8] py-16 px-4 md:px-8 flex justify-center">
+    <section className="w-full bg-[#F2F4F8] py-16 px-site flex justify-center">
       <div className="w-full max-w-4xl flex flex-col gap-10">
         {/* Header */}
         <div className="flex flex-col gap-4">

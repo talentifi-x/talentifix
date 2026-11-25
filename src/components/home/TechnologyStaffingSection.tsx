@@ -60,30 +60,41 @@ export function specialistLinksJsonLd() {
 function LinkGroup({ id, title, links }: { id: string; title: string; links: SpecialistLink[] }) {
   if (!links.length) return null;
   return (
-    <div className="flex flex-col gap-6 w-full">
-      <h3 id={id} className="text-primary font-notch font-bold text-sm md:text-base tracking-[0.18em] uppercase">
-        {title}
-      </h3>
-      <ul aria-labelledby={id} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+    <div className="flex w-full flex-col gap-5 md:gap-6">
+      {/* The group's label, then a thin rule that fades out across the row. */}
+      <div className="flex items-center gap-4">
+        <h3 id={id} className="shrink-0 text-primary font-notch font-bold text-sm md:text-base tracking-[0.18em] uppercase">
+          {title}
+        </h3>
+        <span aria-hidden="true" className="h-px flex-1 bg-linear-to-r from-primary/25 to-transparent" />
+      </div>
+      <ul aria-labelledby={id} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         {links.map((link) => (
           <li
             key={link.id}
-            className="group relative flex flex-col gap-2 md:gap-3 rounded-[10px] border border-gray-200/80 bg-white p-5 md:p-6 shadow-[0px_4px_7px_rgba(0,0,0,0.05)] transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg focus-within:border-primary focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+            className="group relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-[#dbe4fa] bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_14px_30px_-24px_rgba(0,0,255,0.22)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_22px_40px_-24px_rgba(0,0,255,0.35)] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 md:p-6"
           >
+            {/* The brand line (blue to cyan) slides across the top on hover. */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-linear-to-r from-primary to-secondary transition-transform duration-300 group-hover:scale-x-100 group-focus-within:scale-x-100"
+            />
             <div className="flex items-start justify-between gap-3">
               {/* The whole card is clickable; the link text stays the search phrase alone. */}
               <Link
                 href={link.href}
-                className="font-bold text-[16px] md:text-[17px] leading-snug text-dark group-hover:text-primary after:absolute after:inset-0 after:rounded-[10px] focus-visible:outline-none"
+                className="font-bold text-[16px] md:text-[17px] leading-snug text-dark transition-colors group-hover:text-primary after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none"
               >
                 {link.text}
               </Link>
-              <ArrowRight
-                className="mt-0.5 size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1"
+              <span
                 aria-hidden="true"
-              />
+                className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/[0.07] text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white"
+              >
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </span>
             </div>
-            <p className="text-[14px] md:text-[15px] leading-relaxed text-dark/70">{link.blurb}</p>
+            <p className="text-[14px] md:text-[15px] leading-relaxed text-dark/65">{link.blurb}</p>
           </li>
         ))}
       </ul>
@@ -93,9 +104,8 @@ function LinkGroup({ id, title, links }: { id: string; title: string; links: Spe
 
 /**
  * Links from the homepage to every specialist talent and service page, with the
- * phrase each page targets as its link text. Added after "Where We Specialize"
- * (SEO update, 20 Nov 2026) so the strongest page on the site passes authority
- * and context to the pages built for those searches.
+ * phrase each page targets as its link text. Placed after the client section so
+ * visitors can find relevant services before the longer company story.
  */
 export function TechnologyStaffingSection() {
   const { talent, services } = specialistLinks();
@@ -103,9 +113,10 @@ export function TechnologyStaffingSection() {
     <section
       id="technology-staffing-services"
       aria-labelledby="technology-staffing-heading"
-      className="w-full bg-[#F7F9FC] py-16 lg:py-24"
+      // Grey at the top like the client logos above, white at the bottom like the story below.
+      className="w-full bg-linear-to-b from-grey-accent to-white py-16 md:py-20 lg:py-24"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-site flex flex-col items-center gap-12 lg:gap-16">
         <div className="flex flex-col items-center gap-6 text-center max-w-4xl">
           <h2
             id="technology-staffing-heading"
@@ -113,10 +124,17 @@ export function TechnologyStaffingSection() {
           >
             Technology Staffing Services<span className="text-secondary">.</span>
           </h2>
-          <p className="text-[20px] md:text-[24px] text-dark">
-            Specialist hiring for the technology roles and engagement models employers ask us about most, in India and
-            the USA.
-          </p>
+          <div className="flex max-w-3xl flex-col gap-4 text-[17px] leading-relaxed text-dark/80 md:text-[19px]">
+            <p>
+              TalentiFi-X helps employers in India and the USA hire technology professionals across AI and machine
+              learning, software engineering, cloud and DevOps, cybersecurity, data and analytics, and ERP and SAP.
+            </p>
+            <p>
+              We support contract staffing, contract-to-hire and permanent recruitment, with recruiters assessing
+              candidates against the role&apos;s technical requirements and business context. Share the skills,
+              location and timeline you need to start a hiring conversation.
+            </p>
+          </div>
         </div>
 
         <LinkGroup id="technology-talent-heading" title="Technology talent we hire" links={talent} />
@@ -124,10 +142,10 @@ export function TechnologyStaffingSection() {
 
         <Link
           href="/start-hiring"
-          className="inline-flex min-h-11 items-center gap-2 font-bold text-primary hover:underline underline-offset-4"
+          className="inline-flex min-h-12 items-center gap-2 rounded-[5px] border-2 border-primary px-6 py-3 text-sm font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary hover:text-white"
         >
           Tell us the role you need
-          <ArrowRight className="size-5" aria-hidden="true" />
+          <ArrowRight className="size-[18px]" aria-hidden="true" />
         </Link>
       </div>
     </section>

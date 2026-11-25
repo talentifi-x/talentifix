@@ -445,7 +445,7 @@ export const CandidateRegistrationForm = () => {
   const resumeName = formData.resumeFile?.name ?? "";
 
   return (
-    <section className="w-full bg-[#F2F4F8] py-16 px-4 md:px-8 flex justify-center">
+    <section className="w-full bg-[#F2F4F8] py-16 px-site flex justify-center">
       <div className="w-full max-w-5xl flex flex-col gap-10">
         <div className="flex flex-col gap-3">
           <h1 className="text-[40px] font-bold font-notch text-[#1E1E24]">

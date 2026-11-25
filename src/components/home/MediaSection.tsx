@@ -8,8 +8,8 @@ const latest = pressCoverage.slice(0, 3);
 
 export const MediaSection = () => {
   return (
-    <section className="w-full bg-white py-20 px-6 md:px-8 lg:px-16 flex flex-col items-center">
-      <div className="w-full max-w-300 flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+    <section className="w-full bg-white py-20 px-site flex flex-col items-center">
+      <div className="w-full max-w-site flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
         <div className="flex flex-col gap-4">
           <h2 className="text-[30px] md:text-[42px] lg:text-[54px] font-notch font-bold text-dark leading-tight">
             In the Media<span className="text-secondary">.</span>
@@ -30,7 +30,7 @@ export const MediaSection = () => {
         </Link>
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-300">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-site">
         {latest.map((item, index) => (
           // Two columns on tablets: show two cards rather than leave one orphaned.
           <li key={item.id} className={index === 2 ? "md:max-lg:hidden" : undefined}>

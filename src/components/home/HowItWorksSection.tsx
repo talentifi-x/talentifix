@@ -37,14 +37,14 @@ const HowItWorksSection = () => {
 
   return (
     <section className="w-full lg:py-24 py-12 bg-[#F2F4F8]">
-      <div className="max-w-7xl mx-auto px-4 lg:px-4 flex flex-col items-center gap-12 md:gap-20">
+      <div className="max-w-7xl mx-auto px-site flex flex-col items-center gap-12 md:gap-20">
         {/* Header */}
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
-          <h2 className="text-[clamp(32px,4.5vw,54px)] font-bold font-notch text-black leading-tight">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[54px] font-bold font-notch text-black leading-tight">
             How It <span className="text-primary">Works</span>
             <span className="text-secondary">.</span>
           </h2>
-          <p className="text-[clamp(16px,2vw,24px)] font-bold font-sans text-black">
+          <p className="text-base md:text-lg lg:text-2xl font-bold font-sans text-black">
             A Clear, Human-Centered Process
           </p>
         </div>
@@ -72,7 +72,7 @@ const HowItWorksSection = () => {
                   </div>
 
                   <div className="flex flex-col gap-2 pt-4">
-                    <h3 className="text-[clamp(22px,2.6vw,28px)] font-bold font-notch text-black leading-tight">
+                    <h3 className="text-[22px] md:text-[23px] lg:text-[28px] font-bold font-notch text-black leading-tight">
                       {step.title}
                     </h3>
                     {step.days && (
@@ -93,7 +93,7 @@ const HowItWorksSection = () => {
         {/* Desktop View (≥1024px): Single row with small icons + connector */}
         <div className="hidden lg:block relative w-full">
           <div className="absolute left-0 right-0 top-[52px] h-[3px] bg-linear-to-r from-[#0000FF] to-[#00DDE2] opacity-20" />
-          <div className="grid w-full grid-cols-5 gap-6 xl:gap-8">
+          <div className="grid w-full grid-cols-5 gap-6 lg:gap-8">
             {steps.map((step, index) => (
               <div
                 key={index}
@@ -110,17 +110,17 @@ const HowItWorksSection = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <h3 className="text-[clamp(18px,1.6vw,26px)] font-bold font-notch text-black leading-tight">
+                  <h3 className="text-[18px] lg:text-[23px] font-bold font-notch text-black leading-tight">
                     {step.title}
                   </h3>
                   {step.days && (
-                    <span className="text-[clamp(12px,1.1vw,16px)] font-bold font-sans text-black uppercase tracking-wide">
+                    <span className="text-xs lg:text-base font-bold font-sans text-black uppercase tracking-wide">
                       {step.days}
                     </span>
                   )}
                 </div>
 
-                <p className="text-[clamp(12px,1.05vw,14px)] font-sans text-black font-medium leading-relaxed opacity-80 max-w-[190px]">
+                <p className="text-xs lg:text-sm font-sans text-black font-medium leading-relaxed opacity-80 max-w-[190px]">
                   {step.desc}
                 </p>
               </div>

@@ -17,7 +17,7 @@ export default function JoinOurNetworkPage() {
   return (
     <div className="w-full bg-white flex flex-col items-center">
       <JsonLd data={jsonLdGraph(webPageNode("/join-our-network", "Join the TalentiFi-X Talent Network"))} />
-      <div className="w-full max-w-7xl mx-auto px-4 py-20 flex justify-center">
+      <div className="w-full max-w-7xl mx-auto px-site py-20 flex justify-center">
         <div className="w-full max-w-5xl rounded-[10px] overflow-hidden">
           <CandidateRegistrationForm />
         </div>
