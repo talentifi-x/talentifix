@@ -348,7 +348,7 @@ export function BlogSearch({
         createPortal(
           <div
             ref={rootRef}
-            className="fixed inset-0 z-1000 flex justify-center sm:items-start sm:px-4 sm:pt-[12vh]"
+            className="fixed inset-0 z-1000 flex justify-center sm:items-start sm:px-4 sm:pt-24"
           >
             <div
               aria-hidden="true"

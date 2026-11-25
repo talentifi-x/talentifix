@@ -48,7 +48,7 @@ export const RebuildSection = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-site flex flex-col items-center">
         {/* Header */}
         <div className="text-center lg:translate-y-[-50%]">
           <h2 className="text-[50px] lg:text-[54px] font-notch font-bold text-dark mb-6">
@@ -80,7 +80,7 @@ export const RebuildSection = () => {
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm border-3 border-white/70 rounded-[10px] p-6 w-full md:max-w-[280px] shadow-sm">
+            <div className="hover-pop bg-white/80 backdrop-blur-sm border-3 border-white/70 rounded-[10px] p-6 w-full md:max-w-[280px] shadow-sm">
               <ul className="flex flex-col gap-2">
                 <li className="text-[18px] text-dark font-medium">• Speed</li>
                 <li className="text-[18px] text-dark font-medium">• Scale</li>
@@ -148,7 +148,7 @@ export const RebuildSection = () => {
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm border-3 border-white/70 rounded-[10px] p-6 w-full md:max-w-[280px] shadow-sm">
+            <div className="hover-pop bg-white/80 backdrop-blur-sm border-3 border-white/70 rounded-[10px] p-6 w-full md:max-w-[280px] shadow-sm">
               <ul className="flex flex-col gap-2">
                 <li className="text-[18px] text-dark font-medium">
                   • Judgement

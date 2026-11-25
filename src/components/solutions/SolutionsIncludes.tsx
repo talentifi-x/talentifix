@@ -25,7 +25,7 @@ export const SolutionsIncludes = () => {
         sizes="100vw"
         className="object-cover object-center opacity-10"
       />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14 py-22">
+      <div className="relative z-10 max-w-7xl mx-auto px-site py-22">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-[32px] md:text-[48px] font-notch font-bold text-[#1E1E24] leading-tight">
             What Every <span className="text-[#0000FF]">TalentiFi-X</span> Solutions Includes:

@@ -1,71 +1,54 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const TheOriginSection = () => {
   return (
-    <section className="relative w-full py-24 bg-dark overflow-hidden">
-      {/* Decorative Favicon (Bottom Right) */}
-      <div className="absolute -right-25 -bottom-25 md:right-25 md:bottom-12.5 w-127.75 h-157.5 opacity-10 pointer-events-none blur-md">
-        <Image
-          src="/assets/figma/origin-favicon.svg"
-          alt=""
-          width={511}
-          height={630}
-        />
-      </div>
+    <section className="relative w-full overflow-hidden bg-dark py-20 md:py-24 lg:py-28">
+      {/* One soft brand glow, top right */}
+      <div aria-hidden="true" className="pointer-events-none absolute -right-[15%] -top-[40%] h-[90%] w-[50%] rounded-full bg-primary/25 blur-[140px]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center gap-20">
-        {/* Quote Block */}
-        <div className="relative flex flex-col items-center gap-10 text-center">
-          {/* Quote Icon */}
-          <div className="absolute -top-12 -left-12 md:-left-24 w-40 h-32 md:w-65 md:h-50 opacity-10 md:opacity-90 pointer-events-none block">
-            <Image
-              src="/assets/figma/origin-quote.svg"
-              alt=""
-              width={261}
-              height={198}
-            />
-          </div>
-
-          <h2 className="lg:text-[54px] text-[40px] font-bold font-notch text-white leading-tight">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-site lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-20">
+        {/* The story */}
+        <div className="flex flex-col items-start gap-6 md:gap-8">
+          <h2 className="font-notch text-[40px] font-bold leading-tight text-white lg:text-[54px]">
             The Origin Story<span className="text-secondary">.</span>
           </h2>
-
-          <p className="text-[16px] md:text-[26px] lg:text-[40px] font-sans text-white leading-tight font-normal">
-            TalentiFi-X was built after{" "}
-            <span className="text-secondary">23+ years in staffing. </span>
-            Years spent seeing what slows teams down. What causes mis-hires.
-            What gets ignored.
-            <br />
-            <br />
-            <span className="opacity-60 md:opacity-100">
-              Experience gave us clarity. Urgency gave us momentum.
-            </span>
+          <p className="text-[20px] leading-snug text-white md:text-[26px] lg:text-[30px]">
+            TalentiFi-X was built after <span className="text-secondary">23+ years in staffing.</span> Years spent
+            seeing what slows teams down. What causes mis-hires. What gets ignored.
           </p>
+          <p className="text-[17px] leading-snug text-white/60 md:text-[20px]">
+            Experience gave us clarity. Urgency gave us momentum.
+          </p>
+          <Link
+            href="/blog/what-20-years-of-placing-talent-taught-me-about-hiring-and-why-i-built-talentifi-x"
+            className="hover-pop group inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-white underline decoration-white/30 underline-offset-[6px] hover:decoration-secondary"
+          >
+            Read why we built TalentiFi-X
+            <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
         </div>
 
-        {/* Timeline */}
-        <div className="w-full flex flex-col gap-4">
-          {/* Timeline Graphic */}
-          <div className="w-full h-auto flex justify-center">
-            {/* Assuming origin-timeline.svg is the line/dots graphic */}
-            <Image
-              src="/assets/figma/origin-timeline.svg"
-              alt=""
-              width={840}
-              height={28}
-              className="w-full max-w-[840px]"
-            />
+        {/* The span of experience, as type rather than a panel */}
+        <div className="flex flex-col gap-8 lg:border-l lg:border-white/10 lg:pl-16">
+          <div>
+            <p className="font-notch text-[96px] font-bold leading-[0.9] text-white md:text-[128px] lg:text-[144px]">
+              23<span className="text-secondary">+</span>
+            </p>
+            <p className="mt-3 text-[17px] text-white/60 md:text-[18px]">years in staffing and recruitment</p>
           </div>
 
-          {/* Years Labels */}
-          <div className="w-full max-w-[840px] mx-auto flex justify-between px-2">
-            <span className="text-[32px] font-bold font-notch text-white">
-              1999
-            </span>
-            <span className="text-[32px] font-bold font-notch text-[#00DDE2]">
-              Today
-            </span>
+          <div>
+            <div aria-hidden="true" className="relative h-2">
+              <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-white/40 to-secondary" />
+              <span className="absolute left-0 top-1/2 size-2 -translate-y-1/2 rounded-full bg-white/70" />
+              <span className="absolute right-0 top-1/2 size-2 -translate-y-1/2 rounded-full bg-secondary shadow-[0_0_10px_2px_rgba(0,221,226,0.6)]" />
+            </div>
+            <div className="mt-3 flex justify-between font-notch text-[18px] font-bold md:text-[20px]">
+              <span className="text-white/70">1999</span>
+              <span className="text-secondary">Today</span>
+            </div>
           </div>
         </div>
       </div>

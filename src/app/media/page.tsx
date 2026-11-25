@@ -17,8 +17,8 @@ export default function MediaPage() {
   return (
     <div className="w-full bg-white min-h-screen">
       {/* Hero */}
-      <section className="w-full px-6 md:px-8 pt-16 pb-12 md:pt-24 md:pb-16">
-        <div className="w-full max-w-7xl mx-auto flex flex-col gap-6">
+      <section className="w-full px-site pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="w-full max-w-site mx-auto flex flex-col gap-6">
           <span className="flex items-center gap-3 text-primary font-notch font-bold text-[11px] tracking-[0.28em] uppercase">
             <span
               aria-hidden="true"
@@ -41,8 +41,8 @@ export default function MediaPage() {
       </section>
 
       {/* Industry Presence credential */}
-      <section className="w-full px-6 md:px-8 pb-16 md:pb-20">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="w-full px-site pb-16 md:pb-20">
+        <div className="w-full max-w-site mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-notch font-bold text-dark leading-tight mb-8">
             Industry Presence<span className="text-secondary">.</span>
           </h2>
@@ -93,8 +93,8 @@ export default function MediaPage() {
       </section>
 
       {/* Press and perspectives: media coverage plus our own LinkedIn posts, by date */}
-      <section className="w-full px-6 md:px-8 pb-20 md:pb-28">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="w-full px-site pb-20 md:pb-28">
+        <div className="w-full max-w-site mx-auto">
           <div className="flex flex-col gap-3 mb-8">
             <h2 className="text-[26px] md:text-[34px] font-notch font-bold text-dark leading-tight">
               Press &amp; Perspectives<span className="text-secondary">.</span>
@@ -117,8 +117,8 @@ export default function MediaPage() {
       </section>
 
       {/* Closing CTA */}
-      <section className="w-full bg-grey-accent px-6 md:px-8 py-16 md:py-20">
-        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
+      <section className="w-full bg-grey-accent px-site py-16 md:py-20">
+        <div className="w-full max-w-site mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="flex flex-col gap-3">
             <h2 className="text-[28px] md:text-[38px] font-notch font-bold text-dark leading-tight">
               Human Led. AI Assisted<span className="text-secondary">.</span>

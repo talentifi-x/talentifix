@@ -75,7 +75,7 @@ export const ToastProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="pointer-events-none fixed right-4 top-4 z-[9999] flex w-[min(92vw,420px)] flex-col gap-3">
+      <div className="pointer-events-none fixed right-4 top-4 z-[9999] flex w-[calc(100%-2rem)] max-w-[420px] flex-col gap-3">
         {toasts.map((t) => {
           const styles =
             t.variant === "success"

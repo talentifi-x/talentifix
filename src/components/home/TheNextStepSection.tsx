@@ -1,21 +1,12 @@
 import React from "react";
-import Image from "next/image";
+import { GlobeBackdrop } from "./GlobeBackdrop";
 import { Mail, Globe } from "lucide-react";
 
 const TheNextStepSection = () => {
   return (
-    <section className="w-full py-24 px-4 md:px-4 max-w-7xl mx-auto rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/banner-home/Next.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-top"
-          quality={100}
-        />
-      </div>
+    <section className="w-[calc(100%-2*var(--site-gutter))] py-24 px-4 max-w-site mx-auto rounded-2xl my-4 relative bg-white overflow-hidden flex flex-col items-center justify-center lg:min-h-125 shadow-2xl">
+      {/* Globe: the printed artwork, then the same globe turning in WebGL */}
+      <GlobeBackdrop />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center gap-8 md:gap-12 max-w-5xl mx-auto w-full">
@@ -34,10 +25,10 @@ const TheNextStepSection = () => {
         </div>
 
         {/* Contact Bar */}
-        <div className="mt-4 md:mt-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 bg-white/90 md:bg-white/80 backdrop-blur-md border border-gray-200 rounded-lg p-6 md:px-8 md:py-4 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] w-[90%] md:w-auto mx-auto">
+        <div className="hover-pop mt-4 md:mt-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 lg:gap-16 bg-white/90 md:bg-white/80 backdrop-blur-md border border-gray-200 rounded-lg p-6 md:px-6 lg:px-8 md:py-4 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] w-[90%] md:w-auto mx-auto">
           <div className="flex items-center gap-3 w-full md:w-auto">
             <Mail className="w-5 h-5 md:w-6 md:h-6 text-[#0000FF] flex-shrink-0" />
-            <span className="text-[16px] md:text-2xl font-bold text-black break-all md:break-normal">
+            <span className="text-[16px] md:text-lg lg:text-2xl font-bold text-black break-all md:break-normal md:whitespace-nowrap">
               contact@TalentiFi-X.com
             </span>
           </div>
@@ -47,7 +38,7 @@ const TheNextStepSection = () => {
 
           <div className="flex items-center gap-3 w-full md:w-auto">
             <Globe className="w-5 h-5 md:w-6 md:h-6 text-[#0000FF] flex-shrink-0" />
-            <span className="text-[16px] md:text-2xl font-bold text-black break-all md:break-normal">
+            <span className="text-[16px] md:text-lg lg:text-2xl font-bold text-black break-all md:break-normal md:whitespace-nowrap">
               www.talentifix.com
             </span>
           </div>

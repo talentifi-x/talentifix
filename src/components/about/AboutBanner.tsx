@@ -25,8 +25,8 @@ export const AboutBanner = () => {
         <div className="absolute inset-0 bg-linear-to-r from-primary/10 via-white/25 to-secondary/10" />
       </div>
 
-      <div className="relative z-10 w-full px-4  md:px-14 py-10 sm:py-14">
-        <div className="w-full max-w-7xl mx-auto">
+      <div className="relative z-10 w-full px-site py-10 sm:py-14">
+        <div className="w-full max-w-site mx-auto">
           <div className="relative rounded-[18px] bg-linear-to-r from-secondary to-primary p-[2px] ">
             {/* Mask layer (blocks gradient bleed) */}
             <div className="absolute inset-[2px] rounded-[16px] bg-white "></div>

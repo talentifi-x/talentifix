@@ -9,7 +9,7 @@ import Link from "next/link";
 export const SolutionsGuide = () => {
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-14 pb-14 lg:pb-[72px]">
+      <div className="mx-auto w-full max-w-7xl px-site pb-14 lg:pb-[72px]">
         <div className="rounded-[10px] border border-primary/20 bg-primary/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
           <div className="max-w-[640px]">
             <h2 className="font-notch font-bold text-dark text-[22px] md:text-[26px] leading-tight">

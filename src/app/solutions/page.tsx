@@ -26,7 +26,7 @@ export const metadata: Metadata = pageMetadata({
 const SolutionsDivider = () => {
   return (
     <div className="w-full bg-white">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-14">
+      <div className="mx-auto w-full max-w-7xl px-site">
         <div className="h-px w-full bg-grey" />
       </div>
     </div>
@@ -38,8 +38,8 @@ export default function Solutions() {
     <div className="w-full">
       <SolutionsBanner />
       <SolutionsAISpeed />
-      <section id="quality-engineering" className="w-full bg-grey-accent/60 px-6 md:px-8 py-16 lg:py-24">
-        <div className="max-w-6xl 2xl:max-w-7xl mx-auto grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
+      <section id="quality-engineering" className="w-full bg-grey-accent/60 px-site py-16 lg:py-24">
+        <div className="max-w-site mx-auto grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
           <div>
             <p className="text-primary font-notch font-bold text-sm tracking-[0.18em] uppercase">Quality engineering</p>
             <h2 className="mt-3 font-notch font-bold text-dark text-[32px] sm:text-[40px] leading-tight">

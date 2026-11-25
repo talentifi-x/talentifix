@@ -17,7 +17,7 @@ export const Solutionsection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl px-6 md:px-16 flex flex-col items-center gap-20">
+      <div className="relative z-10 w-full max-w-7xl px-site flex flex-col items-center gap-20">
         {/* Header */}
         <div className="text-center flex flex-col gap-6">
           <h2 className="text-[40px] md:text-[54px] font-notch font-bold text-dark leading-tight">
@@ -32,7 +32,7 @@ export const Solutionsection = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {/* Card 1 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="hover-pop relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] min-h-[270px] md:min-h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 
@@ -60,7 +60,7 @@ export const Solutionsection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="hover-pop relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] min-h-[270px] md:min-h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 
@@ -88,7 +88,7 @@ export const Solutionsection = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] h-[270px] md:h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
+          <div className="hover-pop relative bg-linear-to-b from-white to-[#F2F4F8] rounded-[10px] min-h-[270px] md:min-h-[374px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] overflow-hidden flex flex-col items-center justify-center">
             {/* Top Border */}
             <div className="absolute top-0 left-0 w-full h-[4px] bg-primary z-20" />
 

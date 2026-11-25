@@ -38,7 +38,7 @@ export function PressCard({ item }: { item: CoverageItem }) {
           ) : (
             <span className="font-notch font-bold text-dark text-[17px]">{item.publication}</span>
           )}
-          <span className="shrink-0 text-[10px] font-notch font-bold uppercase tracking-[0.18em] text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-sm">
+          <span className="shrink-0 text-xs font-notch font-bold uppercase tracking-[0.14em] text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-sm">
             {item.type}
           </span>
         </div>
@@ -46,11 +46,11 @@ export function PressCard({ item }: { item: CoverageItem }) {
           {item.title}
         </h3>
         <div className="flex items-center justify-between gap-3 pt-4 border-t border-gray-100">
-          <span className="flex items-center gap-2 text-primary font-notch font-bold text-[11px] uppercase tracking-[0.18em]">
+          <span className="flex items-center gap-2 text-primary font-notch font-bold text-xs uppercase tracking-[0.14em]">
             {item.cta ?? `Read on ${item.publication}`}
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </span>
-          <time dateTime={item.dateTime} className="text-[11px] text-dark/70 shrink-0">
+          <time dateTime={item.dateTime} className="text-xs text-dark/70 shrink-0">
             {item.date}
           </time>
         </div>

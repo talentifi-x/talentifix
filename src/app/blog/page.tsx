@@ -46,8 +46,8 @@ export default async function BlogPage() {
     <div className="w-full bg-white min-h-screen">
       <JsonLd data={jsonLdGraph(webPageNode("/blog", "Hiring & Recruitment Insights", "CollectionPage"))} />
       {/* Hero */}
-      <section className="w-full h-auto lg:h-[calc(100vh-120px)] px-6 md:px-14 py-16 lg:py-0 relative overflow-hidden bg-white flex items-center">
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
+      <section className="w-full lg:min-h-[calc(100svh-var(--site-header-height,7.5rem))] px-site py-16 lg:py-20 relative overflow-hidden bg-white flex items-center">
+        <div className="relative z-10 w-full max-w-site mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
           {/* Text */}
           <div className="w-full lg:flex-1 flex flex-col gap-6 text-center lg:text-left">
             {/* The label is the H1 (the search phrase); the slogan below is styling only. */}

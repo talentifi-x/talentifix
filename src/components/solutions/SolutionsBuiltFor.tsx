@@ -36,7 +36,7 @@ export const SolutionsBuiltFor = () => {
   ] as const;
 
   return (
-    <section className="relative w-full bg-[#F2F4F8] overflow-hidden px-6 md:px-14 py-22">
+    <section className="relative w-full bg-[#F2F4F8] overflow-hidden px-site py-22">
       <div className="pointer-events-none absolute right-20 top-16 hidden md:block opacity-35">
         <Image
           src="/assets/Solutions/cube-2.png"
@@ -57,7 +57,7 @@ export const SolutionsBuiltFor = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-site mx-auto flex flex-col items-center text-center">
         <h2 className="text-[34px] md:text-[54px] font-notch font-bold text-black leading-tight">
           Who These Solutions Are Built For:
         </h2>

@@ -1,6 +1,6 @@
 /** Dates of substantive edits to these pages. Never replace with the build date. */
 export const PAGE_MODIFIED: Readonly<Record<string, string>> = {
-  "/": "2026-11-20",
+  "/": "2026-11-23",
   "/about": "2026-11-18",
   "/blog": "2026-11-18",
   "/contact": "2026-11-18",

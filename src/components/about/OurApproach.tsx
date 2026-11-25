@@ -22,8 +22,8 @@ const items = [
 
 export const OurApproach = () => {
   return (
-    <section className="relative w-full bg-white px-4 sm:px-6 md:px-14 py-6 sm:py-10 overflow-hidden">
-      <div className="relative z-10 max-w-6xl mx-auto">
+    <section className="relative w-full bg-white px-site py-6 sm:py-10 overflow-hidden">
+      <div className="relative z-10 max-w-site mx-auto">
         <div className="mx-auto w-full max-w-5xl rounded-[12px] bg-white  px-6 sm:px-10 md:px-14 py-12 sm:py-14">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-[34px] sm:text-[44px] md:text-[54px] font-notch font-bold text-dark leading-tight">

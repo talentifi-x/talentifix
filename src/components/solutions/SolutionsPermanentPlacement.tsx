@@ -17,7 +17,7 @@ export const SolutionsPermanentPlacement = () => {
         className="pointer-events-none  absolute left-1/2 top-[161px] -translate-x-1/2 opacity-100 max-w-none"
       />
 
-      <div className="relative mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-14 py-14 lg:py-[72px]">
+      <div className="relative mx-auto w-full max-w-7xl px-site py-14 lg:py-[72px]">
         <div className="flex flex-col items-center gap-6">
           <h2 className="text-center font-notch font-bold text-[34px] sm:text-[44px] lg:text-[54px] leading-[1.3] text-black">
             Permanent <span className="text-primary">Placement</span>

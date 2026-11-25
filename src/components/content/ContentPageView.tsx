@@ -114,14 +114,14 @@ function SectionView({
       <p className="font-notch font-bold text-primary text-sm tracking-[0.2em]" aria-hidden="true">
         {pad(index + 1)}
       </p>
-      <h2 className="mt-3 font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[34px] xl:text-[40px] leading-[1.12] text-balance">
+      <h2 className="mt-3 font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[40px] leading-[1.12] text-balance">
         <TwoTone text={section.heading} />
       </h2>
     </>
   );
   return (
-    <section id={id} className={`w-full px-6 md:px-8 py-16 lg:py-24 scroll-mt-36 ${tinted ? "bg-grey-accent/60" : "bg-white"}`}>
-      <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
+    <section id={id} className={`w-full px-site py-16 lg:py-24 scroll-mt-36 ${tinted ? "bg-grey-accent/60" : "bg-white"}`}>
+      <div className="max-w-site mx-auto">
         {section.image ? (
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
             <div className={`lg:col-span-6 ${flip ? "lg:order-2" : ""}`}>
@@ -200,10 +200,10 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
   const showToc = page.sections.length >= 5;
   const h1Size =
     page.h1.length <= 40
-      ? "text-[32px] min-[400px]:text-[36px] sm:text-[46px] lg:text-[50px] xl:text-[54px]"
+      ? "text-[32px] min-[400px]:text-[36px] sm:text-[46px] lg:text-[54px]"
       : page.h1.length <= 66
-        ? "text-[29px] min-[400px]:text-[32px] sm:text-[40px] lg:text-[42px] xl:text-[46px]"
-        : "text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[38px] xl:text-[40px]";
+        ? "text-[29px] min-[400px]:text-[32px] sm:text-[40px] lg:text-[46px]"
+        : "text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[40px]";
   const linkLists = [
     { title: "Talent areas", links: related.talent },
     { title: "Hiring solutions", links: related.solutions },
@@ -221,13 +221,13 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* Hero: sized to fit one screen on a laptop */}
       <section
-        className="relative w-full overflow-hidden px-6 md:px-8 pt-3 pb-12 lg:pb-14"
+        className="relative w-full overflow-hidden px-site pt-3 pb-12 lg:pb-14"
         style={{
           backgroundImage:
             "radial-gradient(48rem 26rem at 88% -8%, rgba(0, 221, 226, 0.14), transparent 70%), radial-gradient(42rem 24rem at 0% 0%, rgba(0, 0, 255, 0.06), transparent 70%)",
         }}
       >
-        <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
+        <div className="max-w-site mx-auto">
           <Breadcrumbs items={crumbs} withSchema={false} className="mb-3" />
           <div
             className={`grid grid-cols-1 gap-10 ${
@@ -267,7 +267,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
             </div>
             {page.heroImage && (
               <div className="relative lg:col-span-5">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-grey-accent shadow-[0_30px_70px_-30px_rgba(0,0,153,0.5)] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[380px] 2xl:min-h-[420px]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-grey-accent shadow-[0_30px_70px_-30px_rgba(0,0,153,0.5)] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[400px]">
                   <Image src={page.heroImage.src} alt={page.heroImage.alt} fill preload fetchPriority="high" loading="eager" sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
                   <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20" aria-hidden="true" />
                 </div>
@@ -318,8 +318,8 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* The rest of the introduction, beside the page contents */}
       {(rest.length > 0 || showToc) && (
-        <section className="w-full border-y border-gray-100 bg-white px-6 md:px-8 py-14 lg:py-16">
-          <div className={`max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 gap-10 ${rest.length > 0 && showToc ? "lg:grid-cols-12 lg:gap-14" : ""}`}>
+        <section className="w-full border-y border-gray-100 bg-white px-site py-14 lg:py-16">
+          <div className={`max-w-site mx-auto grid grid-cols-1 gap-10 ${rest.length > 0 && showToc ? "lg:grid-cols-12 lg:gap-14" : ""}`}>
             {rest.length > 0 && (
               <div className={showToc ? `lg:col-span-7 ${STICKY_SIDEBAR}` : "max-w-3xl"}>
                 <span className="block h-1 w-12 rounded-full bg-secondary" aria-hidden="true" />
@@ -397,8 +397,8 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* Sources */}
       {page.sources && page.sources.length > 0 && (
-        <section className="w-full bg-white px-6 md:px-8 py-12 border-t border-gray-100">
-          <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
+        <section className="w-full bg-white px-site py-12 border-t border-gray-100">
+          <div className="max-w-site mx-auto">
             <h2 className="font-notch font-bold text-dark text-[20px]">Sources</h2>
             <ol className="mt-4 grid grid-cols-1 gap-x-10 gap-y-1 md:grid-cols-2 list-decimal pl-5 text-dark/70 text-[14px] leading-relaxed">
               {page.sources.map((source) => (
@@ -417,9 +417,9 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* Keep exploring: related talent, solutions and reading */}
       {(linkLists.length > 0 || insights.length > 0) && (
-        <section className="w-full bg-grey-accent/60 px-6 md:px-8 py-16 lg:py-24">
-          <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
-            <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[34px] xl:text-[40px] leading-[1.12]">
+        <section className="w-full bg-grey-accent/60 px-site py-16 lg:py-24">
+          <div className="max-w-site mx-auto">
+            <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[40px] leading-[1.12]">
               <TwoTone text="Keep exploring" />
             </h2>
             <div className={`mt-10 grid grid-cols-1 gap-10 ${linkLists.length > 0 && insights.length > 0 ? "lg:grid-cols-12 lg:gap-12" : ""}`}>
@@ -460,10 +460,10 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
 
       {/* FAQ: visible answers, mirrored in the FAQPage data */}
       {page.faqs.length > 0 && (
-        <section id="faq" className="w-full bg-white px-6 md:px-8 py-16 lg:py-24 scroll-mt-36">
-          <div className="max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <section id="faq" className="w-full bg-white px-site py-16 lg:py-24 scroll-mt-36">
+          <div className="max-w-site mx-auto grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
             <div className={`lg:col-span-4 ${STICKY_SIDEBAR}`}>
-              <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[34px] xl:text-[40px] leading-[1.12]">
+              <h2 className="font-notch font-bold text-dark text-[27px] min-[400px]:text-[29px] sm:text-[36px] lg:text-[40px] leading-[1.12]">
                 <TwoTone text="Frequently asked questions" />
               </h2>
               <p className="mt-4 text-dark/70 text-[16px] leading-relaxed">Have a question that is not answered here?</p>
@@ -471,7 +471,7 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
                 Talk to our team <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="lg:col-span-8 2xl:max-w-[720px]">
+            <div className="lg:col-span-8 lg:max-w-[720px]">
               <FaqSection faqs={page.faqs} />
             </div>
           </div>
@@ -479,12 +479,12 @@ export function ContentPageView({ page, posts }: { page: ContentPage; posts: Rec
       )}
 
       {/* Call to action */}
-      <section className="w-full px-6 md:px-8 pb-16 lg:pb-24">
-        <div className="relative max-w-6xl 2xl:max-w-7xl mx-auto overflow-hidden rounded-3xl bg-linear-to-br from-primary to-blue px-6 py-12 sm:px-10 md:px-14 md:py-16">
+      <section className="w-full px-site pb-16 lg:pb-24">
+        <div className="relative max-w-site mx-auto overflow-hidden rounded-3xl bg-linear-to-br from-primary to-blue px-6 py-12 sm:px-10 md:px-14 md:py-16">
           <span className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-secondary/30 blur-3xl" aria-hidden="true" />
           <span className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
           <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-8 2xl:max-w-[720px]">
+            <div className="lg:col-span-8 lg:max-w-[720px]">
               <h2 className="font-notch font-bold text-white text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.12]">
                 {page.cta.heading}
                 {!/[.?!]$/.test(page.cta.heading) && <span className="text-secondary">.</span>}

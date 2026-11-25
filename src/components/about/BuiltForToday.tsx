@@ -30,7 +30,7 @@ const cards = [
 
 export const BuiltForToday = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-dark px-4 sm:px-6 md:px-14 py-16 sm:py-20 md:py-22">
+    <section className="relative w-full overflow-hidden bg-dark px-site py-16 sm:py-20 md:py-22">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-linear-to-b from-white/0 via-white/0 to-black/20" />
         <div className="absolute -right-28 top-1/2 hidden md:block h-[520px] w-[520px] -translate-y-1/2 opacity-10">
@@ -45,7 +45,7 @@ export const BuiltForToday = () => {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-site mx-auto flex flex-col items-center text-center">
         <h2 className="text-[34px] sm:text-[44px] md:text-[54px] font-notch font-bold text-white leading-tight">
           Built For Today<span className="text-secondary">.</span>
         </h2>
