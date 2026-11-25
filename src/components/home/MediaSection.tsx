@@ -22,7 +22,7 @@ export const MediaSection = () => {
 
         <Link
           href="/media"
-          className="w-fit shrink-0 flex items-center gap-2 bg-[#0000FF] text-white px-8 py-4 rounded-[5px] font-bold text-sm uppercase tracking-wider hover:bg-blue transition-colors"
+          className="hover-pop w-fit shrink-0 flex items-center gap-2 bg-[#0000FF] text-white px-8 py-4 rounded-[5px] font-bold text-sm uppercase tracking-wider hover:bg-blue"
         >
           View All
           <span className="sr-only"> media coverage</span>
@@ -33,7 +33,7 @@ export const MediaSection = () => {
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-site">
         {latest.map((item, index) => (
           // Two columns on tablets: show two cards rather than leave one orphaned.
-          <li key={item.id} className={index === 2 ? "md:max-lg:hidden" : undefined}>
+          <li key={item.id} className={`hover-pop ${index === 2 ? "md:max-lg:hidden" : ""}`}>
             <PressCard item={item} />
           </li>
         ))}

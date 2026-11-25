@@ -20,7 +20,7 @@ import { Bannerthree } from "@components/home/Bannerthree";
 import { SiteSplash } from "@components/home/SiteSplash";
 import { TechnologyStaffingSection, specialistLinksJsonLd } from "@components/home/TechnologyStaffingSection";
 import Link from "next/link";
-import { PageQuestions } from "@components/content/PageQuestions";
+import { HomeQuestions } from "@components/home/HomeQuestions";
 import { JsonLd } from "@components/seo/JsonLd";
 import { jsonLdGraph, pageMetadata, webPageNode } from "@lib/seo";
 
@@ -56,7 +56,7 @@ export default function Home() {
       <HowItWorksSection />
       <WhereWeSpecializeSection />
       <TheOriginSection />
-      <PageQuestions
+      <HomeQuestions
         title="Staffing questions employers ask"
         updatedPath="/"
         items={[

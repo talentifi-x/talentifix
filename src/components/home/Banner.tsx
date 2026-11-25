@@ -47,7 +47,7 @@ const DAYS = Array.from({ length: 12 }, (_, i) => {
 });
 
 const CARD =
-  "pointer-events-auto relative w-full overflow-hidden rounded-2xl border border-white/70 bg-white/70 py-4 pl-5 pr-4 text-left " +
+  "hover-pop pointer-events-auto relative w-full overflow-hidden rounded-2xl border border-white/70 bg-white/70 py-4 pl-5 pr-4 text-left " +
   "shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_24px_48px_-28px_rgba(15,23,42,0.5)] backdrop-blur-xl " +
   "lg:w-[284px] lg:py-5 lg:pl-6 lg:pr-5";
 
@@ -162,7 +162,7 @@ export const Banner = () => {
           <div className="relative z-10 mt-5 flex w-full shrink-0 flex-col justify-center gap-2.5 sm:mt-7 sm:w-auto sm:flex-row sm:gap-4 lg:col-start-1 lg:row-start-3 lg:justify-self-center">
             <Link
               href="/start-hiring"
-              className="bg-primary text-white min-h-12 sm:min-h-14 px-3 min-[390px]:px-5 sm:px-8 py-3 rounded-[5px] flex items-center justify-center text-sm min-[390px]:text-[15px] sm:text-base font-bold uppercase text-center hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+              className="hover-pop bg-primary text-white min-h-12 sm:min-h-14 px-3 min-[390px]:px-5 sm:px-8 py-3 rounded-[5px] flex items-center justify-center text-sm min-[390px]:text-[15px] sm:text-base font-bold uppercase text-center hover:bg-primary/90 shadow-lg shadow-primary/25"
             >
               <span className="text-balance sm:whitespace-nowrap">
                 Discuss Your Hiring{" "}
@@ -174,7 +174,7 @@ export const Banner = () => {
             </Link>
             <Link
               href="/join-our-network"
-              className="bg-white/90 text-primary border-2 border-primary min-h-12 sm:min-h-14 px-3 min-[390px]:px-5 sm:px-8 py-2.5 rounded-[5px] flex items-center justify-center text-sm min-[390px]:text-[15px] sm:text-base font-bold uppercase text-center backdrop-blur-sm hover:bg-white transition-colors"
+              className="hover-pop bg-white/90 text-primary border-2 border-primary min-h-12 sm:min-h-14 px-3 min-[390px]:px-5 sm:px-8 py-2.5 rounded-[5px] flex items-center justify-center text-sm min-[390px]:text-[15px] sm:text-base font-bold uppercase text-center backdrop-blur-sm hover:bg-white"
             >
               <span className="text-balance sm:whitespace-nowrap">
                 Explore Career{" "}

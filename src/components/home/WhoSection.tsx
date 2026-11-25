@@ -1,257 +1,123 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+
+/** The hexagon from the TalentiFi-X mark, used to frame each audience's photo. */
+const HEXAGON = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
+
+const AUDIENCES = [
+  {
+    title: "Leaders",
+    line: "Hiring roles that actually matter",
+    points: [
+      "Senior and business-critical technology roles",
+      "A shortlist of 3-5 finalists, not 30 resumes",
+      "Confidential executive search when the role needs it",
+    ],
+    image: "/assets/home/who-leaders.webp",
+    alt: "Business leader in a navy suit buttoning a jacket in an office atrium",
+    cta: { label: "Hire Talent", href: "/start-hiring" },
+  },
+  {
+    title: "Teams",
+    line: "Teams that can’t afford mis-hires",
+    points: [
+      "Candidates assessed on skills, context and fit",
+      "Contract, contract-to-hire or permanent hiring",
+      "Support for hiring in India and the USA",
+    ],
+    image: "/assets/home/who-teams.webp",
+    alt: "Technology team gathered around a laptop at a meeting table, one person pointing at the screen",
+    cta: { label: "Hire Talent", href: "/start-hiring" },
+  },
+  {
+    title: "Talent",
+    line: "Talent seeking alignment, not randomness",
+    points: [
+      "Opportunities aligned with your skills and ambition",
+      "Clear, honest communication at every step",
+      "Respect for your time and privacy",
+    ],
+    image: "/assets/home/who-talent.webp",
+    alt: "Software professional typing on a laptop at a desk with a coffee mug and notebook",
+    cta: { label: "Build Your Career", href: "/join-our-network" },
+  },
+];
 
 export const WhoSection = () => {
-  const [activeTab, setActiveTab] = useState<"leaders" | "teams" | "talent">(
-    "leaders",
-  );
-
   return (
-    <section className="w-full bg-[#F2F4F8] lg:py-24 py-14 relative overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-[#F2F4F8] py-14 md:py-20 lg:py-24">
       {/* Background Favicon */}
-      <div className="absolute -left-28 -top-9.75 w-86.75 h-107 pointer-events-none opacity-100">
-        <Image
-          src="/icons/who.svg"
-          alt=""
-          fill
-          sizes="347px"
-          className="object-contain"
-        />
+      <div className="pointer-events-none absolute -left-28 -top-9.75 h-107 w-86.75 opacity-100">
+        <Image src="/icons/who.svg" alt="" fill sizes="347px" className="object-contain" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-site flex flex-col items-center gap-16 relative z-10">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 px-site md:gap-14">
         {/* Header */}
-        <div className="flex flex-col items-center gap-6 text-center">
-          <h2 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
+        <div className="flex flex-col items-center gap-4 text-center md:gap-5">
+          <h2 className="font-notch text-[40px] font-bold leading-tight text-black md:text-[54px]">
             Who Is This Built For<span className="text-secondary">.</span>
           </h2>
-          <p className="text-[20px] md:text-[24px] font-semibold text-black">
-            TalentiFi-X is built for companies and professionals who refuse to
-            settle.
+          <p className="max-w-[640px] text-[18px] font-semibold text-black md:text-[22px]">
+            TalentiFi-X is built for companies and professionals who refuse to settle.
           </p>
         </div>
 
-        {/* Main Card */}
-        <div className="w-full max-w-site bg-white rounded-[20px] shadow-[0px_10px_40px_rgba(0,0,0,0.05)] overflow-hidden">
-          {/* Tabs Header */}
-          <div className="flex w-full border-b border-grey">
-            {/* Leaders Tab */}
-            <button
-              onClick={() => setActiveTab("leaders")}
-              className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "leaders" ? "text-black" : "text-[#707070]"
-              }`}
+        <ul className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+          {AUDIENCES.map(({ title, line, points, image, alt, cta }) => (
+            <li
+              key={title}
+              className="hover-pop group flex flex-col gap-6 rounded-[20px] border border-white bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.05)] duration-300 hover:shadow-[0_24px_50px_-24px_rgba(0,0,255,0.3)] md:p-7 lg:p-8"
             >
-              <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">
-                Leaders
-              </span>
-              {activeTab === "leaders" && (
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-blue-light to-primary shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
-              )}
-            </button>
-
-            {/* Teams Tab */}
-            <button
-              onClick={() => setActiveTab("teams")}
-              className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "teams" ? "text-black" : "text-[#707070]"
-              }`}
-            >
-              <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">
-                Teams
-              </span>
-              {activeTab === "teams" && (
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
-              )}
-            </button>
-
-            {/* Talent Tab */}
-            <button
-              onClick={() => setActiveTab("talent")}
-              className={`flex-1 py-8 text-center transition-all relative ${
-                activeTab === "talent" ? "text-black" : "text-[#707070]"
-              }`}
-            >
-              <span className="text-[18px] md:text-[20px] font-bold font-sans uppercase tracking-wider">
-                Talent
-              </span>
-              {activeTab === "talent" && (
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0000FF] shadow-[0px_-4px_10px_rgba(0,0,255,0.3)]" />
-              )}
-            </button>
-          </div>
-
-          {/* Content Area: all three panels stay in the HTML (inactive ones hidden) so search
-              engines can read every tab, not just the one open on load. */}
-          <div className="p-8 md:p-16 min-h-100 flex items-center">
-            <div hidden={activeTab !== "leaders"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              {/* Hexagon Image */}
-              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                <div
-                  className="relative w-full h-full"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                  }}
-                >
-                  <Image
-                    src="/assets/figma/who-polygon.png"
-                    alt="Professional adjusting a suit jacket in an office atrium"
-                    fill
-                    sizes="(max-width: 768px) 280px, 320px"
-                    className="object-cover"
+              <div className="flex items-center gap-5 lg:flex-col lg:items-start">
+                <div className="relative aspect-[0.88] w-[96px] shrink-0 md:w-[112px] lg:w-[124px]">
+                  {/* A cyan hexagon peeks out behind the photo, like the layered logo. */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 translate-x-[8%] translate-y-[6%] bg-linear-to-br from-secondary to-primary opacity-80"
+                    style={{ clipPath: HEXAGON }}
                   />
+                  <div className="absolute inset-0" style={{ clipPath: HEXAGON }}>
+                    <Image src={image} alt={alt} fill sizes="124px" className="object-cover" />
+                  </div>
                 </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="flex flex-col gap-6 max-w-150">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                    Leaders<span className="text-secondary">.</span>
+                <div className="flex min-w-0 flex-col gap-1">
+                  <h3 className="font-notch text-[32px] font-bold leading-none text-black lg:text-[38px]">
+                    {title}
+                    <span className="text-secondary">.</span>
                   </h3>
-                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                    Hiring roles that actually matter
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-4 mt-6">
-                  {/* Primary Button */}
-                  <Link
-                    href="/start-hiring"
-                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Hire Talent
-                    </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-
-                  {/* Secondary Button */}
-                  <Link
-                    href="/join-our-network"
-                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Build Your Career
-                    </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div hidden={activeTab !== "teams"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                <div
-                  className="relative w-full h-full"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                  }}
-                >
-                  <Image
-                    src="/assets/figma/who-polygon.png"
-                    alt="Professional adjusting a suit jacket in an office atrium"
-                    fill
-                    sizes="(max-width: 768px) 280px, 320px"
-                    className="object-cover"
-                  />
+                  <p className="text-[15px] font-semibold leading-snug text-dark/80 lg:text-[16px]">{line}</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-6 max-w-150">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                    Teams<span className="text-secondary">.</span>
-                  </h3>
-                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                    Teams that can’t afford mis-hires
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-4 mt-6">
-                  <Link
-                    href="/start-hiring"
-                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Hire Talent
+              <ul className="flex flex-col gap-3 border-t border-grey pt-6">
+                {points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-[15px] leading-snug text-dark/75 lg:text-[16px]">
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white"
+                    >
+                      <Check className="size-3" strokeWidth={3} />
                     </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
+                    {point}
+                  </li>
+                ))}
+              </ul>
 
-                  <Link
-                    href="/join-our-network"
-                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Build Your Career
-                    </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div hidden={activeTab !== "talent"} className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              <div className="relative w-70 h-75 md:w-[320px] md:h-85 shrink-0">
-                <div
-                  className="relative w-full h-full"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                  }}
-                >
-                  <Image
-                    src="/assets/figma/who-polygon.png"
-                    alt="Professional adjusting a suit jacket in an office atrium"
-                    fill
-                    sizes="(max-width: 768px) 280px, 320px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-6 max-w-150">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-[40px] md:text-[54px] font-notch font-bold text-black leading-tight">
-                    Talent<span className="text-secondary">.</span>
-                  </h3>
-                  <p className="text-[20px] md:text-[24px] font-semibold font-sans text-black leading-relaxed">
-                    Talent seeking alignment, not randomness
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-4 mt-6">
-                  <Link
-                    href="/start-hiring"
-                    className="flex items-center gap-3 px-8 py-3 bg-linear-to-l from-blue-light to-primary rounded-sm text-white transition-all hover:bg-primary shadow-md"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Hire Talent
-                    </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-
-                  <Link
-                    href="/join-our-network"
-                    className="flex items-center gap-3 px-8 py-3 border border-[#0000FF] rounded-sm text-[#0000FF] transition-all hover:bg-[#0000FF]/5"
-                  >
-                    <span className="text-[18px] font-medium font-sans">
-                      Build Your Career
-                    </span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              <Link
+                href={cta.href}
+                className={`hover-pop mt-auto inline-flex min-h-12 items-center justify-center gap-3 rounded-sm px-6 py-3 text-[16px] font-medium ${
+                  cta.href === "/start-hiring"
+                    ? "bg-linear-to-l from-blue-light to-primary text-white shadow-md hover:opacity-90"
+                    : "border border-primary text-primary hover:bg-primary/5"
+                }`}
+              >
+                {cta.label}
+                <ArrowRight className="size-5" aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

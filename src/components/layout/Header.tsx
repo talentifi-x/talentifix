@@ -135,20 +135,20 @@ export function Header() {
                 invisible lower half swallowed taps on the sticky blog filter bar. */}
             <Link
               href="/"
-              className="w-50 flex items-center justify-center"
+              className="w-44 shrink-0 flex items-center justify-center"
             >
               <Image
                 src="/logos/logo.svg"
                 alt="TalentiFi-X home"
                 width={200}
                 height={200}
-                style={{ width: "auto", height: "auto" }}
+                style={{ width: "100%", height: "auto" }}
               />
             </Link>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4 text-[15px] whitespace-nowrap">
             <Link href="/" className={getLinkClasses("/")}>
               Home
             </Link>
@@ -179,7 +179,7 @@ export function Header() {
           {/* CTA Button (Desktop) */}
           <Link
             href="/start-hiring"
-            className="hidden lg:flex items-center gap-2 bg-[#0000FF] text-white px-6 py-3 rounded-[5px] font-bold uppercase hover:bg-primary/90 transition-colors"
+            className="hidden lg:flex shrink-0 items-center gap-2 whitespace-nowrap bg-[#0000FF] text-white px-5 py-3 rounded-[5px] text-[15px] font-bold uppercase hover:bg-primary/90 transition-colors"
           >
             HIRE TALENT
             <ArrowRight size={20} />

@@ -34,7 +34,7 @@ export const ClientsSection = () => {
         {clients.map((client) => (
           <li
             key={client.name}
-            className="flex items-center justify-center rounded-2xl border border-dark/[0.06] bg-white px-5 py-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_28px_-22px_rgba(15,23,42,0.25)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_18px_36px_-22px_rgba(0,0,255,0.3)] sm:px-7 sm:py-8 lg:px-9 lg:py-10"
+            className="hover-pop flex items-center justify-center rounded-2xl border border-dark/[0.06] bg-white px-5 py-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_28px_-22px_rgba(15,23,42,0.25)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_18px_36px_-22px_rgba(0,0,255,0.3)] sm:px-7 sm:py-8 lg:px-9 lg:py-10"
           >
             <div className="flex aspect-15/7 w-full items-center justify-center">
               <div className={`relative h-full ${client.width}`}>

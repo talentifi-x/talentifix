@@ -15,7 +15,7 @@ const OfferingCard = ({
   href: string;
 }) => (
   <div className="flex flex-col h-full">
-    <div className="bg-white/30 backdrop-blur-xl border-[3px] border-white rounded-[10px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] p-8 md:p-12 flex flex-col gap-8 h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
+    <div className="hover-pop bg-white/30 backdrop-blur-xl border-[3px] border-white rounded-[10px] shadow-[0px_4px_7px_rgba(0,0,0,0.07)] p-8 md:p-12 flex flex-col gap-8 h-full hover:-translate-y-2 hover:shadow-lg">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5 lg:gap-6">
         <div className="relative flex shrink-0 items-center justify-center">
           <Image

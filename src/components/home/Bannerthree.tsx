@@ -13,13 +13,16 @@ export const Bannerthree = () => {
       <div className="w-full max-w-7xl mx-auto px-site grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-center gap-10 lg:gap-16">
         {/* Copy - first on mobile, left on desktop */}
         <div className="flex max-w-xl flex-col gap-5">
-          <span className="w-fit text-primary font-notch font-bold text-[11px] md:text-xs tracking-[0.2em] uppercase border border-primary/30 bg-primary/5 px-4 py-2 rounded-sm">
+          <span className="w-fit text-primary font-notch font-bold text-xs tracking-[0.2em] uppercase border border-primary/30 bg-primary/5 px-4 py-2 rounded-sm">
             Industry Presence
           </span>
 
-          <h2 className="text-[32px] md:text-[42px] lg:text-[46px] font-notch font-bold text-dark leading-[1.1] tracking-tight text-balance">
-            TalentiFi-X at GCC Summit 2026
-            <span className="text-secondary">.</span>
+          <h2 className="text-[32px] md:text-[42px] lg:text-[40px] font-notch font-bold text-dark leading-[1.1] tracking-tight">
+            {/* Two lines on every screen: "TalentiFi-X at" / "GCC Summit 2026." */}
+            <span className="whitespace-nowrap">TalentiFi-X at</span>{" "}
+            <span className="whitespace-nowrap">
+              GCC Summit 2026<span className="text-secondary">.</span>
+            </span>
           </h2>
 
           <p className="text-dark/70 text-base md:text-lg leading-relaxed">
@@ -35,7 +38,7 @@ export const Bannerthree = () => {
 
           <Link
             href="/insights/talentifi-x-gcc-summit-2026"
-            className="mt-3 flex w-full items-center justify-center gap-2 rounded-[5px] bg-[#0000FF] px-5 py-3.5 text-[13px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-blue sm:w-fit sm:px-6 sm:text-sm sm:tracking-wider"
+            className="hover-pop mt-3 flex w-full items-center justify-center gap-2 rounded-[5px] bg-[#0000FF] px-5 py-3.5 text-[13px] font-bold uppercase tracking-wide text-white hover:bg-blue sm:w-fit sm:px-6 sm:text-sm sm:tracking-wider"
           >
             Explore GCC Summit Highlights
             <ArrowRight size={18} />
@@ -46,7 +49,7 @@ export const Bannerthree = () => {
         <Link
           href="/insights/talentifi-x-gcc-summit-2026"
           aria-label="Explore GCC Summit 2026 highlights"
-          className="group block overflow-hidden rounded-2xl bg-white ring-1 ring-dark/[0.06] shadow-[0_16px_36px_-26px_rgba(40,30,120,0.4)] transition-shadow duration-300 hover:shadow-[0_22px_44px_-26px_rgba(40,30,120,0.5)]"
+          className="hover-pop group block overflow-hidden rounded-2xl bg-white ring-1 ring-dark/[0.06] shadow-[0_16px_36px_-26px_rgba(40,30,120,0.4)] duration-300 hover:shadow-[0_22px_44px_-26px_rgba(40,30,120,0.5)]"
         >
           <Image
             src="/banner/gcc-summit-2026-bengaluru-banner.png"

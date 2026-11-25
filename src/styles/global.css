@@ -492,3 +492,47 @@ p {
   font-family: var(--font-stack-text);
 }
 
+
+/*
+ * Hover "pop" for cards, chips and buttons: grows a little on hover and settles
+ * back. A transform, so it never shifts the layout around it.
+ */
+@utility hover-pop {
+  transition-property: transform, box-shadow, background-color, border-color, color, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.03);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+/* Homepage FAQ: answers slide open where the browser can animate to height: auto. */
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 350ms ease,
+    content-visibility 350ms allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-pop,
+  .hover-pop:hover,
+  .hover-pop:focus-visible,
+  .hover-pop:active {
+    transform: none;
+  }
+  .faq-item::details-content {
+    transition: none;
+  }
+}
