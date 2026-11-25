@@ -37,11 +37,15 @@ const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   output: "standalone",
   outputFileTracingRoot: __dirname,
+  experimental: {
+    // Next.js prompts coding agents to apply security releases (set by `next upgrade --agent=security`).
+    agentUpgrade: "security",
+  },
   images: {
     remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
     // AVIF first, WebP for browsers without it. AVIF was held back until Next.js
     // >= 16.3.3 (GHSA-2xp9-vwfh-vxw4, a remote-code-execution bug in AVIF
-    // optimisation); the site is on 16.4.2. AVIF files are typically 20-30%
+    // optimisation); the site is on 16.4.6. AVIF files are typically 20-30%
     // smaller than WebP, which matters most for the blog cover photos on phones.
     formats: ["image/avif", "image/webp"],
     qualities: [100, 75],
